@@ -23,12 +23,12 @@ jobs:
       - run: yarn build
 
       - id: publish
-        name: Publish to NPM
-        uses: JS-DevTools/npm-publish@v1
+        name: publish to npm
+        uses: JS-DevTools/npm-publish@v3
         with:
           registry-url: 'https://registry.npmjs.org'
           token: ${{ secrets.NPM_TOKEN }}
-          dry-run: false
+          provenance: true
 
       - if: steps.publish.outputs.type != 'none'
         run: |
