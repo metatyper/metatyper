@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <title>MetaTyper | Document</title>
+
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+        <meta name="title" content="MetaTyper | Documentation" />
+        <meta name="description" content="The MetaTyper project provides a powerful approach to using runtime types in TypeScript and JavaScript code" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0" />
+
+        <meta property="og:url" content="https://docs.metatyper.dev">
+        <meta property="og:type" content="website">
+        <meta property="og:title" content="MetaTyper">
+        <meta property="og:description" content="The MetaTyper project provides a powerful approach to using runtime types in TypeScript and JavaScript code">
+        <meta property="og:image" content="https://docs.metatyper.dev/images/og.png">
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+
+        <meta name="twitter:card" content="summary_large_image">
+        <meta property="twitter:domain" content="docs.metatyper.dev">
+        <meta property="twitter:url" content="https://docs.metatyper.dev">
+        <meta name="twitter:title" content="MetaTyper">
+        <meta name="twitter:description" content="The MetaTyper project provides a powerful approach to using runtime types in TypeScript and JavaScript code">
+        <meta name="twitter:image" content="https://docs.metatyper.dev/images/og.png">
+
+        <link rel="manifest" href="/manifest.json" />
+
+        <link rel="icon" href="/images/favicon.ico" sizes="any" />
+        <link rel="apple-touch-icon" href="/images/apple-touch-icon.png" />
+
+        <link rel="stylesheet" href="./style.css" />
+    </head>
+    <body>
+        <div id="app"></div>
+        <script>
+            window.$docsify = {
+                name: 'MetaTyper',
+                logo: 'images/icon128.png',
+                repo: 'metatyper/metatyper',
+
+                routerMode: 'history',
+                crossOriginLinks: [
+                    'https://github.com/metatyper/metatyper/actions',
+                    'https://github.com/metatyper/metatyper/issues/new',
+                    'https://opensource.org/licenses/MIT',
+                    'https://bundlephobia.com/result?p=metatyper',
+                    'https://paypal.me/vadzimsharai',
+                    'https://www.npmjs.com/package/metatyper',
+                    'https://metatyper.dev/',
+                ],
+
+                search: 'auto',
+
+                remoteMarkdown: {
+                    tag: 'remote'
+                }
+            }
+        </script>
+
+        <script src="//cdn.jsdelivr.net/npm/docsify@4"></script>
+        <script src="//cdn.jsdelivr.net/npm/docsify@4/lib/plugins/search.min.js"></script>
+        <script src="//cdn.jsdelivr.net/npm/docsify-copy-code/dist/docsify-copy-code.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs@1.28/components/prism-bash.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs@1.28/components/prism-typescript.min.js"></script>
+        <script src="//cdn.jsdelivr.net/npm/docsify-remote-markdown/dist/docsify-remote-markdown.min.js"></script>
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-SGNCZ2GMB4"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            window.gtag = window.gtag || function gtag(){ dataLayer.push(arguments) }
+            window.gtag('js', new Date());
+            window.gtag('config', 'G-SGNCZ2GMB4');
+ 
+            const gtagPlugin = function (hook) {
+                hook.beforeEach(() => window.gtag('event', 'page_view', {
+                    page_title: document.title,
+                    page_location: location.href,
+                    page_path: location.pathname,
+                }));
+            };
+
+            window.$docsify = window.$docsify || {};
+            $docsify.plugins = [gtagPlugin, ...($docsify.plugins || [])];
+        </script>
+    </body>
+</html>

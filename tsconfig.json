@@ -1,0 +1,29 @@
+{
+    "compilerOptions": {
+        "target": "es2020",
+        "module": "commonjs",
+        "lib": ["es2020"],
+        "moduleResolution": "node",
+        "outDir": "lib",
+        "baseUrl": "./",
+
+        "allowSyntheticDefaultImports": true,
+        "declaration": true,
+        "downlevelIteration": false,
+        "emitDecoratorMetadata": true,
+        "esModuleInterop": true,
+        "experimentalDecorators": true,
+        "importHelpers": false,
+        "incremental": true,
+        "noFallthroughCasesInSwitch": true,
+        "pretty": true,
+        "removeComments": true,
+        "skipLibCheck": true,
+        "sourceMap": true,
+        "stripInternal": true,
+        "strict": true,
+        "alwaysStrict": true,
+    },
+    "exclude": ["lib", "node_modules"],
+    "include": ["src", "test"]
+}

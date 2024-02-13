@@ -1,0 +1,14 @@
+{
+    "name": "MetaTyper",
+    "short_name": "MetaTyper",
+    "start_url": ".",
+    "display": "standalone",
+    "background_color": "#131313",
+    "description": "The MetaTyper project provides a powerful approach to using runtime types in TypeScript and JavaScript code",
+    "icons": [
+      { "src": "/images/favicon.ico", "type": "image/x-icon", "sizes": "16x16 32x32 64x64" },
+      { "src": "/images/icon128.png", "type": "image/png", "sizes": "128x128" },
+      { "src": "/images/icon192.png", "type": "image/png", "sizes": "192x192" },
+      { "src": "/images/icon512.png", "type": "image/png", "sizes": "512x512" }
+    ]
+}

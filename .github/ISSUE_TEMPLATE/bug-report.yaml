@@ -1,0 +1,60 @@
+name: 🐛 Confirmed Bug Report
+description: Kindly report any bug that can be consistently reproduced. If the issue isn't consistently reproducible, please initiate a discussion first.
+labels:
+  - bug
+  - requires triage
+body:
+  - type: markdown
+    attributes:
+      value: |2-
+          Thank you for taking the time to report a bug. Please provide a detailed 
+        description of the issue you're experiencing, and attach screenshots if necessary.
+  - type: textarea
+    id: description
+    attributes:
+      label: Issue description
+    validations:
+      required: true
+  - type: textarea
+    id: current
+    attributes:
+      label: Current Behavior
+      description: >-
+        A clear and concise description of what actually happened. Please wrap
+        any error messages or output in code tags.
+    validations:
+      required: true
+  
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected Behavior
+      description: "  A clear and concise description of what you expected to happen."
+    validations:
+      required: true
+
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to Reproduce
+      description: >-
+        Help us understand the issue by providing a code example that demonstrates the problem.
+        Consider using services like https://codesandbox.io for sharing your example.
+        Issues without reproduction steps or code examples may be closed as not actionable.
+    validations:
+      required: true
+  
+  - type: textarea
+    id: env
+    attributes:
+      label: Environment
+      description: >-
+        Please add any other relevant dependencies to this table at the end.
+      value: |
+        | Dependency          | Version  |
+        | ---                 | ---      |
+        | Operating System    |          |
+        | Node.js version     | x.y.zzz  |
+        | Typescript version  | x.y.zzz  |
+    validations:
+      required: false

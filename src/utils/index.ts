@@ -1,0 +1,6 @@
+export * from './checks'
+export * from './classes'
+export * from './deepMap'
+export * from './inspect'
+export * from './objects'
+export * from './typeTest'

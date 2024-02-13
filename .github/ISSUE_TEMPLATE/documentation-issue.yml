@@ -1,0 +1,31 @@
+name: 📃 Documentation Issue
+description: Documentation is unclear or otherwise insufficient.
+labels:
+  - documentation
+  - requires triage
+body:
+  - type: markdown
+    attributes:
+      value: |2-
+          Thank you for taking the time to report an issue. 
+        Please provide a detailed description of the issue you're experiencing.
+
+  - type: textarea
+    id: details
+    attributes:
+      label: What was unclear or otherwise insufficient?
+      description: >-
+        Specify the documentation file and its exact location that was unclear or insufficient. Include a link to the documentation in our repository if possible.
+      placeholder: >-
+        In cases where documentation is missing, please explain why a new section is needed.
+    validations:
+      required: true
+
+  - type: textarea
+    id: recommendation
+    attributes:
+      label: Recommended Fix
+      description: What improvements do you propose for resolving this documentation issue?
+      placeholder: Suggestions could include adding examples, clarifying terminology, revising the content, or suggesting new sections.
+    validations:
+      required: true
