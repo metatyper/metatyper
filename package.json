@@ -1,6 +1,6 @@
 {
   "name": "metatyper",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "license": "MIT",
   "description": "The MetaTyper project provides a powerful approach to using runtime types in TypeScript and JavaScript code",
   "author": {
