@@ -69,15 +69,12 @@
     "test:jest": "jest",
     "test:coverage": "jest --coverage",
     "test": "yarn lint && yarn test:types && yarn test:jest",
-    "build:tsc": "tsc --pretty --project ./tsconfig.build.json",
-    "build:rollup": "rollup -c",
-    "build": "rimraf ./lib && yarn build:tsc && yarn build:rollup",
+    "build": "rimraf ./lib && rollup -c",
+    "build:dev": "rimraf ./lib && rollup -cw",
     "benchmark": "ts-node test/benchmark/index.ts"
   },
-  "dependencies": {},
   "devDependencies": {
     "@jest/globals": "^29.7.0",
-    "@rollup/plugin-node-resolve": "^15.2.3",
     "@rollup/plugin-terser": "^0.4.4",
     "@rollup/plugin-typescript": "^11.1.6",
     "@trivago/prettier-plugin-sort-imports": "^4.3.0",
@@ -105,6 +102,6 @@
     "ts-node": "^10.9.2",
     "typescript": "^5.3.3"
   },
-  "packageManager": "yarn@1.22.19",
+  "packageManager": "yarn@4.1.0",
   "sideEffects": false
 }

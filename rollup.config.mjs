@@ -1,12 +1,13 @@
-import typescript from '@rollup/plugin-typescript'
-import nodeResolve from '@rollup/plugin-node-resolve'
-import terser from '@rollup/plugin-terser'
 import filesize from 'rollup-plugin-filesize'
+
+import terser from '@rollup/plugin-terser'
+import typescript from '@rollup/plugin-typescript'
 
 export default [
     {
         input: 'src/index.ts',
         output: [
+            // for browsers
             {
                 file: 'lib/metatyper.min.cjs',
                 format: 'cjs'
@@ -22,10 +23,11 @@ export default [
             }
         ],
         plugins: [
-            nodeResolve({ extensions: ['.js', '.ts'], browser: true }),
             typescript({
                 tsconfig: 'tsconfig.build.json',
-                sourceMap: false
+                sourceMap: true,
+
+                downlevelIteration: true
             }),
             terser(),
             filesize()
@@ -35,15 +37,18 @@ export default [
         input: 'src/index.ts',
         output: [
             {
+                file: 'lib/index.js',
+                format: 'cjs'
+            },
+            {
                 file: 'lib/index.mjs',
                 format: 'es'
             }
         ],
         plugins: [
-            nodeResolve({ extensions: ['.js', '.ts'], browser: true }),
             typescript({
                 tsconfig: 'tsconfig.build.json',
-                sourceMap: false
+                sourceMap: true
             }),
             filesize()
         ]

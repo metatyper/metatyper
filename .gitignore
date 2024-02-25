@@ -1,9 +1,18 @@
-# compiled output
-/build
-/lib
-/node_modules
-/*.tgz
-/.rollup.cache
+# Compiled output
+dist
+build
+lib
+node_modules
+*.tgz
+.rollup.cache
+.yarn
+
+# Vim
+[._]*.s[a-v][a-z]
+[._]*.sw[a-p]
+[._]s[a-rt-v][a-z]
+[._]ss[a-gi-z]
+[._]sw[a-p]
 
 # Logs
 logs
@@ -17,22 +26,23 @@ lerna-debug.log*
 .DS_Store
 
 # Tests
-/coverage
-/.nyc_output
+coverage
+.nyc_output
 
 # IDEs and editors
-/.idea
+.idea
 .project
 .classpath
-.c9/
+.c9
 *.launch
-.settings/
+.settings
 *.sublime-workspace
 .scannerwork
 .eslintcache
-
-# IDE - VSCode
+.awcache
 .vscode
+.devcontainer
+*.code-workspace
 
-# custom
+# Custom
 .dev
