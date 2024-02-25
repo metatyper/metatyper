@@ -16,8 +16,9 @@ The following steps will get you setup the project environment:
 
 3. Run `yarn` to install dependencies.
 
-4. Start working with the code! You can use `test/sandbox.ts` to play with your code.
-   To run it need to execute `yarn sandbox`.
+4. Start working with the code!
+
+> You can use `test/sandbox.ts` to play with your code. To run it need to execute `yarn sandbox`.
 
 &nbsp;
 
@@ -34,7 +35,7 @@ Your commit type must be one of the following:
 - **build**: Changes that affect the build system (yarn, npm, rollup, etc.)
 - **ci**: Changes to our CI configuration (GitHub Actions)
 - **docs**: Documentation only changes
-- **chore**: changes that do not relate to a fix or feature and don't modify src or test files
+- **chore**: Changes that do not relate to a fix or feature and don't modify src or test files
   (e.g. modifying the `.eslintrc.js` or updating dependencies)
 
 &nbsp;
@@ -49,7 +50,6 @@ Be sure to document any changes you implement.
 ## Pull requests
 
 Please try to keep your pull request focused on scope and avoid including unrelated commits.
-Once you submit an opt-in request, we will try to respond to you as soon as possible.
 
 &nbsp;
 
