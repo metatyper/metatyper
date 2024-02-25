@@ -171,6 +171,7 @@ Meta.deserialize(user, {
     - [Meta.Class decorator](#metaclass-decorator)
     - [Meta.declare decorator](#metadeclare-decorator)
     - [Meta.isMetaObject](#metaismetaobject)
+    - [Meta.isIgnoredProp](#metaisignoredprop)
     - [Meta.copy](#metacopy)
     - [Meta.rebuild](#metarebuild)
   - [Meta Types](#meta-types)
@@ -574,6 +575,12 @@ class Test {
 #### Meta.isMetaObject
 
 If you need to check if an object is a Meta object, you can use this method: `Meta.isMetaObject(obj)`.
+
+&nbsp;
+
+#### Meta.isIgnoredProp
+
+If you need to check if an property is ignored by Meta, you can use this method: `Meta.isIgnoredProp(obj, 'propName')`.
 
 &nbsp;
 

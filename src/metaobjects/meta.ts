@@ -314,6 +314,34 @@ export const isMetaObject = (Meta.isMetaObject = function isMetaObject(
 })
 
 /**
+ * Checks if propName is ignored.
+ *
+ * @param metaObject - The object to check.
+ * @param propName - The property to check.
+ *
+ * @returns `true` if the property is is ignored, otherwise `false`.
+ *
+ * @example
+ * ```ts
+ * const metaObject = Meta({ a: 1 }, { ignoreProps: ['a'] })
+ *
+ * console.log(Meta.isIgnoredProp(metaObject, 'a')) // true
+ * console.log(Meta.isIgnoredProp(metaObject, 'prototype')) // true, because built-in
+ * ```
+ */
+Meta.isIgnoredProp = function isMetaObject(metaObject: object, propName: string | symbol) {
+    if (!Meta.isMetaObject(metaObject)) {
+        return true
+    }
+
+    const handlerInstance: MetaObjectsHandler =
+        getDescriptorValue(metaObject, MetaObjectBuilderSymbol)?.handler ||
+        MetaObjectsBuilder.instance.handler
+
+    return handlerInstance.isIgnoredProp(metaObject, propName)
+}
+
+/**
  * Checks if validation is active for the given meta object.
  *
  * This function determines whether validation is currently enabled for the specified meta object.

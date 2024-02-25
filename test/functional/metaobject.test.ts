@@ -1135,4 +1135,23 @@ describe('Meta objects', () => {
             a: 'str'
         })
     })
+
+    test('isIgnoredProp', () => {
+        const symbol = Symbol('test')
+
+        const metaObject1 = Meta({ a: 1, b: 2, [symbol]: 1 }, { ignoreProps: ['a'] })
+        const metaObject2 = Meta(
+            { a: 1, b: 2, [symbol]: 1 },
+            { ignoreProps: (propName) => propName === 'a' }
+        )
+
+        expect(Meta.isIgnoredProp({}, 'a')).toBe(true)
+        expect(Meta.isIgnoredProp(metaObject1, 'a')).toBe(true)
+        expect(Meta.isIgnoredProp(metaObject2, 'a')).toBe(true)
+        expect(Meta.isIgnoredProp(metaObject1, symbol)).toBe(true)
+        expect(Meta.isIgnoredProp(metaObject1, 'prototype')).toBe(true)
+
+        expect(Meta.isIgnoredProp(metaObject1, 'b')).toBe(false)
+        expect(Meta.isIgnoredProp(metaObject2, 'b')).toBe(false)
+    })
 })
