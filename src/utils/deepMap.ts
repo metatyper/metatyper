@@ -1,6 +1,6 @@
 import { IsMetaObjectSymbol } from '../metaobjects/symbols'
 
-const DeepMapCircularRefSymbol = Symbol('DeepMapCircularRef')
+const DeepMapCircularRefSymbol = Symbol.for('[[DeepMapCircularRef]]')
 
 const objectsRefIndexMap = new WeakMap()
 const copyToOriginalMap = new WeakMap()

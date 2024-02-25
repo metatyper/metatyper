@@ -1,8 +1,8 @@
 import { StaticClass } from '../utils'
 import { MetaTypeArgs, type MetaTypeImpl } from './metatypeImpl'
 
-export const IsMetaTypeSymbol = Symbol('[[IsMetaType]]')
-export const MetaTypeImplSymbol = Symbol('[[MetaTypeImpl]]')
+export const IsMetaTypeSymbol = Symbol.for('[[IsMetaType]]')
+export const MetaTypeImplSymbol = Symbol.for('[[MetaTypeImpl]]')
 
 export type MetaTypeFlag = {
     readonly [IsMetaTypeSymbol]?: true

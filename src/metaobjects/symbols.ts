@@ -1,9 +1,9 @@
-export const IsMetaObjectSymbol = Symbol('[[IsMetaObject]]')
-export const MetaObjectBaseSymbol = Symbol('[[MetaObjectBase]]')
-export const MetaObjectProtoSymbol = Symbol('[[MetaObjectProto]]')
-export const MetaObjectBuilderSymbol = Symbol('[[MetaObjectBuilder]]')
-export const MetaObjectRegistrySymbol = Symbol('[[MetaObjectRegistry]]')
-export const MetaObjectRegistryInfoSymbol = Symbol('[[MetaObjectRegistryInfo]]')
-export const MetaObjectInitialClassDeclarationsSymbol = Symbol(
+export const IsMetaObjectSymbol = Symbol.for('[[IsMetaObject]]')
+export const MetaObjectBaseSymbol = Symbol.for('[[MetaObjectBase]]')
+export const MetaObjectProtoSymbol = Symbol.for('[[MetaObjectProto]]')
+export const MetaObjectBuilderSymbol = Symbol.for('[[MetaObjectBuilder]]')
+export const MetaObjectRegistrySymbol = Symbol.for('[[MetaObjectRegistry]]')
+export const MetaObjectRegistryInfoSymbol = Symbol.for('[[MetaObjectRegistryInfo]]')
+export const MetaObjectInitialClassDeclarationsSymbol = Symbol.for(
     '[[MetaObjectInitialClassDeclarations]]'
 )
