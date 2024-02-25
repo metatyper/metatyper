@@ -476,6 +476,12 @@ export class MetaObjectsHandler {
                 return result
             }
 
+            const registryInfo = this.registry.get(baseObject)
+
+            if (!registryInfo || this.isIgnoredProp(baseObject, propName, registryInfo)) {
+                return setValue(newValue)
+            }
+
             let curObject: any = targetObject
             let isMetaObjectInProtoChain = false
             let descriptor: PropertyDescriptor | undefined = undefined
