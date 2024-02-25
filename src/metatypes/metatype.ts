@@ -29,7 +29,7 @@ export type PrepareMetaType<
 
 export function MetaType<
     T = MetaType<unknown>,
-    IsNullishT extends boolean = boolean,
+    IsNullishT extends boolean = false,
     IsNullableT extends boolean = IsNullishT,
     IsOptionalT extends boolean = IsNullishT
 >(
