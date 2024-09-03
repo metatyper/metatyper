@@ -20,7 +20,7 @@
         "importHelpers": false,
         "incremental": false,
         "pretty": true,
-        "removeComments": true,
+        "removeComments": false,
         "skipLibCheck": true,
         "sourceMap": true,
         "stripInternal": true

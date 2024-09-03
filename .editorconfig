@@ -1,9 +1,5 @@
 root = true
 
-[*.{json,yml}]
-indent_size = 4
-indent_style = space
-
 [*]
 indent_size = 4
 indent_style = space
