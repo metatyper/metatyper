@@ -41,7 +41,7 @@ export function MetaType<
 
 export function MetaType<
     T = MetaType<unknown>,
-    IsNullishT extends boolean = boolean,
+    IsNullishT extends boolean = false,
     IsNullableT extends boolean = IsNullishT,
     IsOptionalT extends boolean = IsNullishT
 >(
@@ -53,7 +53,7 @@ export function MetaType<
 
 export function MetaType<
     T = MetaType<unknown>,
-    IsNullishT extends boolean = boolean,
+    IsNullishT extends boolean = false,
     IsNullableT extends boolean = IsNullishT,
     IsOptionalT extends boolean = IsNullishT
 >(
