@@ -56,7 +56,8 @@ export class InstanceImpl extends MetaTypeImpl {
         return (
             value instanceof Object &&
             Object.getPrototypeOf(value)['constructor'] &&
-            Object.getPrototypeOf(value)['constructor'] !== Object
+            Object.getPrototypeOf(value)['constructor'] !== Object &&
+            Object.getPrototypeOf(value)['constructor'] !== Function
         )
     }
 
