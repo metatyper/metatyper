@@ -36,7 +36,9 @@ export function MetaType<
     metaTypeImpl: MetaTypeImpl,
     metaTypeArgs?:
         | MetaTypeArgsType<T, IsNullishT, IsNullableT, IsOptionalT>
-        | ((metaTypeImpl: MetaTypeImpl) => MetaTypeArgsType<T, IsNullishT, IsNullableT, IsOptionalT>)
+        | ((
+              metaTypeImpl: MetaTypeImpl
+          ) => MetaTypeArgsType<T, IsNullishT, IsNullableT, IsOptionalT>)
 ): PrepareMetaType<T, IsNullishT, IsNullableT, IsOptionalT>
 
 export function MetaType<
@@ -48,7 +50,9 @@ export function MetaType<
     metaTypeImplCls: StaticClass<typeof MetaTypeImpl>,
     metaTypeArgs?:
         | MetaTypeArgsType<T, IsNullishT, IsNullableT, IsOptionalT>
-        | ((metaTypeImpl: MetaTypeImpl) => MetaTypeArgsType<T, IsNullishT, IsNullableT, IsOptionalT>)
+        | ((
+              metaTypeImpl: MetaTypeImpl
+          ) => MetaTypeArgsType<T, IsNullishT, IsNullableT, IsOptionalT>)
 ): PrepareMetaType<T, IsNullishT, IsNullableT, IsOptionalT>
 
 export function MetaType<
@@ -61,7 +65,9 @@ export function MetaType<
     metaTypeImpl: MetaTypeImpl | StaticClass<typeof MetaTypeImpl>,
     metaTypeArgs?:
         | MetaTypeArgsType<T, IsNullishT, IsNullableT, IsOptionalT>
-        | ((metaTypeImpl: MetaTypeImpl) => MetaTypeArgsType<T, IsNullishT, IsNullableT, IsOptionalT>)
+        | ((
+              metaTypeImpl: MetaTypeImpl
+          ) => MetaTypeArgsType<T, IsNullishT, IsNullableT, IsOptionalT>)
 ): T {
     if (!this || Reflect.getPrototypeOf(this) !== MetaType.prototype) {
         const MetaTypeAsClass = MetaType as any

@@ -186,7 +186,9 @@ export class MetaTypeImpl {
         return (Math.random() + 1).toString(36).substring(7)
     }
 
-    constructor(metaTypeArgs?: MetaTypeArgsType | ((metaTypeImpl: MetaTypeImpl) => MetaTypeArgsType)) {
+    constructor(
+        metaTypeArgs?: MetaTypeArgsType | ((metaTypeImpl: MetaTypeImpl) => MetaTypeArgsType)
+    ) {
         if (metaTypeArgs instanceof Function) {
             metaTypeArgs = metaTypeArgs(this)
         }
@@ -459,8 +461,14 @@ export class MetaTypeImpl {
     }
 
     static combineMetaTypeArgs(
-        metaTypeArgs1?: MetaTypeArgsType | ((metaTypeImpl: MetaTypeImpl) => MetaTypeArgsType) | null,
-        metaTypeArgs2?: MetaTypeArgsType | ((metaTypeImpl: MetaTypeImpl) => MetaTypeArgsType) | null
+        metaTypeArgs1?:
+            | MetaTypeArgsType
+            | ((metaTypeImpl: MetaTypeImpl) => MetaTypeArgsType)
+            | null,
+        metaTypeArgs2?:
+            | MetaTypeArgsType
+            | ((metaTypeImpl: MetaTypeImpl) => MetaTypeArgsType)
+            | null
     ) {
         if (metaTypeArgs1 instanceof Function || metaTypeArgs2 instanceof Function) {
             return (metaTypeImpl: MetaTypeImpl) => {
