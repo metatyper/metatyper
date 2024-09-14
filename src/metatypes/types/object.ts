@@ -3,7 +3,7 @@ import { deepMap, isPlainObject } from '../../utils'
 import { MetaType, MetaTypeFlag, PrepareMetaType } from '../metatype'
 import {
     DeSerializerArgsType,
-    MetaTypeArgs,
+    MetaTypeArgsType,
     MetaTypeImpl,
     SerializerArgsType,
     ValidatorArgsType
@@ -18,7 +18,7 @@ export type ObjectMetaTypeArgs<
     IsNullableT extends boolean = IsNullishT,
     IsOptionalT extends boolean = IsNullishT,
     IsFrozenT extends boolean = false
-> = MetaTypeArgs<T, IsNullishT, IsNullableT, IsOptionalT> & {
+> = MetaTypeArgsType<T, IsNullishT, IsNullableT, IsOptionalT> & {
     freeze?: IsFrozenT
     required?: RequiredKeysT
     serializeSubValues?: boolean

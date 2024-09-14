@@ -91,7 +91,7 @@ export type DeSerializerType = {
  * @typeParam T - The type of the value. This is used to infer the type of the default argument.
  * @typeParam IsNullableT - A boolean that indicates whether the value can be null or undefined. This is inferred from the nullable argument.
  */
-export type MetaTypeArgs<
+export type MetaTypeArgsType<
     T = any,
     IsNullishT extends boolean = boolean,
     IsNullableT extends boolean = IsNullishT,
@@ -119,14 +119,14 @@ export class MetaTypeImpl {
 
     readonly id: string
     readonly name: string
-    readonly metaTypeArgs: Readonly<MetaTypeArgs> = {}
+    readonly metaTypeArgs: Readonly<MetaTypeArgsType> = {}
     readonly parentMetaTypeImpl: MetaTypeImpl | undefined
 
     protected readonly builtinValidators: ValidatorType[] = []
     protected readonly builtinSerializers: SerializerType[] = []
     protected readonly builtinDeSerializers: DeSerializerType[] = []
 
-    protected prepareMetaTypeArgs(metaTypeArgs: MetaTypeArgs) {
+    protected prepareMetaTypeArgs(metaTypeArgs: MetaTypeArgsType) {
         metaTypeArgs = { ...metaTypeArgs }
 
         metaTypeArgs.name = metaTypeArgs.name ?? undefined
@@ -186,7 +186,7 @@ export class MetaTypeImpl {
         return (Math.random() + 1).toString(36).substring(7)
     }
 
-    constructor(metaTypeArgs?: MetaTypeArgs | ((metaTypeImpl: MetaTypeImpl) => MetaTypeArgs)) {
+    constructor(metaTypeArgs?: MetaTypeArgsType | ((metaTypeImpl: MetaTypeImpl) => MetaTypeArgsType)) {
         if (metaTypeArgs instanceof Function) {
             metaTypeArgs = metaTypeArgs(this)
         }
@@ -231,12 +231,12 @@ export class MetaTypeImpl {
 
     static build<T extends MetaTypeImpl>(
         this: new (...metaTypeArgs: any) => T,
-        metaTypeArgs?: MetaTypeArgs | ((metaTypeImpl: MetaTypeImpl) => MetaTypeArgs)
+        metaTypeArgs?: MetaTypeArgsType | ((metaTypeImpl: MetaTypeImpl) => MetaTypeArgsType)
     ): T {
         return new this(metaTypeArgs)
     }
 
-    rebuild(metaTypeArgs?: MetaTypeArgs | ((metaTypeImpl: MetaTypeImpl) => MetaTypeArgs)) {
+    rebuild(metaTypeArgs?: MetaTypeArgsType | ((metaTypeImpl: MetaTypeImpl) => MetaTypeArgsType)) {
         const Cls = this.constructor as typeof MetaTypeImpl
 
         return Cls.build(Cls.combineMetaTypeArgs(this.metaTypeArgs, metaTypeArgs))
@@ -459,8 +459,8 @@ export class MetaTypeImpl {
     }
 
     static combineMetaTypeArgs(
-        metaTypeArgs1?: MetaTypeArgs | ((metaTypeImpl: MetaTypeImpl) => MetaTypeArgs) | null,
-        metaTypeArgs2?: MetaTypeArgs | ((metaTypeImpl: MetaTypeImpl) => MetaTypeArgs) | null
+        metaTypeArgs1?: MetaTypeArgsType | ((metaTypeImpl: MetaTypeImpl) => MetaTypeArgsType) | null,
+        metaTypeArgs2?: MetaTypeArgsType | ((metaTypeImpl: MetaTypeImpl) => MetaTypeArgsType) | null
     ) {
         if (metaTypeArgs1 instanceof Function || metaTypeArgs2 instanceof Function) {
             return (metaTypeImpl: MetaTypeImpl) => {
@@ -505,7 +505,7 @@ export class MetaTypeImpl {
 
     static getMetaTypeImpl(
         value: any,
-        metaTypeArgs?: MetaTypeArgs | ((metaTypeImpl: MetaTypeImpl) => MetaTypeArgs)
+        metaTypeArgs?: MetaTypeArgsType | ((metaTypeImpl: MetaTypeImpl) => MetaTypeArgsType)
     ): MetaTypeImpl | undefined {
         if (MetaType.isMetaType(value)) {
             value = MetaType.getMetaTypeImpl(value)
@@ -524,7 +524,7 @@ export class MetaTypeImpl {
 
     static getMetaType(
         value: any,
-        metaTypeArgs?: MetaTypeArgs | ((metaTypeImpl: MetaTypeImpl) => MetaTypeArgs)
+        metaTypeArgs?: MetaTypeArgsType | ((metaTypeImpl: MetaTypeImpl) => MetaTypeArgsType)
     ): MetaType<unknown> | undefined {
         const metaTypeImplInstance = this.getMetaTypeImpl(value, metaTypeArgs)
 

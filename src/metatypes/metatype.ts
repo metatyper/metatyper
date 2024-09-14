@@ -1,5 +1,5 @@
 import { StaticClass } from '../utils'
-import { MetaTypeArgs, type MetaTypeImpl } from './metatypeImpl'
+import { MetaTypeArgsType, type MetaTypeImpl } from './metatypeImpl'
 
 export const IsMetaTypeSymbol = Symbol.for('[[IsMetaType]]')
 export const MetaTypeImplSymbol = Symbol.for('[[MetaTypeImpl]]')
@@ -35,8 +35,8 @@ export function MetaType<
 >(
     metaTypeImpl: MetaTypeImpl,
     metaTypeArgs?:
-        | MetaTypeArgs<T, IsNullishT, IsNullableT, IsOptionalT>
-        | ((metaTypeImpl: MetaTypeImpl) => MetaTypeArgs<T, IsNullishT, IsNullableT, IsOptionalT>)
+        | MetaTypeArgsType<T, IsNullishT, IsNullableT, IsOptionalT>
+        | ((metaTypeImpl: MetaTypeImpl) => MetaTypeArgsType<T, IsNullishT, IsNullableT, IsOptionalT>)
 ): PrepareMetaType<T, IsNullishT, IsNullableT, IsOptionalT>
 
 export function MetaType<
@@ -47,8 +47,8 @@ export function MetaType<
 >(
     metaTypeImplCls: StaticClass<typeof MetaTypeImpl>,
     metaTypeArgs?:
-        | MetaTypeArgs<T, IsNullishT, IsNullableT, IsOptionalT>
-        | ((metaTypeImpl: MetaTypeImpl) => MetaTypeArgs<T, IsNullishT, IsNullableT, IsOptionalT>)
+        | MetaTypeArgsType<T, IsNullishT, IsNullableT, IsOptionalT>
+        | ((metaTypeImpl: MetaTypeImpl) => MetaTypeArgsType<T, IsNullishT, IsNullableT, IsOptionalT>)
 ): PrepareMetaType<T, IsNullishT, IsNullableT, IsOptionalT>
 
 export function MetaType<
@@ -60,8 +60,8 @@ export function MetaType<
     this: any,
     metaTypeImpl: MetaTypeImpl | StaticClass<typeof MetaTypeImpl>,
     metaTypeArgs?:
-        | MetaTypeArgs<T, IsNullishT, IsNullableT, IsOptionalT>
-        | ((metaTypeImpl: MetaTypeImpl) => MetaTypeArgs<T, IsNullishT, IsNullableT, IsOptionalT>)
+        | MetaTypeArgsType<T, IsNullishT, IsNullableT, IsOptionalT>
+        | ((metaTypeImpl: MetaTypeImpl) => MetaTypeArgsType<T, IsNullishT, IsNullableT, IsOptionalT>)
 ): T {
     if (!this || Reflect.getPrototypeOf(this) !== MetaType.prototype) {
         const MetaTypeAsClass = MetaType as any

@@ -8,7 +8,7 @@ import {
 import { MetaType, PrepareMetaType } from '../metatype'
 import {
     DeSerializerArgsType,
-    MetaTypeArgs,
+    MetaTypeArgsType,
     MetaTypeImpl,
     SerializerArgsType,
     ValidatorArgsType
@@ -23,7 +23,7 @@ export type ArrayMetaTypeArgs<
     IsNullableT extends boolean = IsNullishT,
     IsOptionalT extends boolean = IsNullishT,
     IsFrozenT extends boolean = false
-> = MetaTypeArgs<T, IsNullishT, IsNullableT, IsOptionalT> &
+> = MetaTypeArgsType<T, IsNullishT, IsNullableT, IsOptionalT> &
     (
         | {
               notEmpty?: boolean

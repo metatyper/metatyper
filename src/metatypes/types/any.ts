@@ -1,5 +1,5 @@
 import { MetaType } from '../metatype'
-import { MetaTypeArgs, MetaTypeImpl } from '../metatypeImpl'
+import { MetaTypeArgsType, MetaTypeImpl } from '../metatypeImpl'
 
 export class AnyImpl extends MetaTypeImpl {
     static isCompatible(_value: any) {
@@ -10,7 +10,7 @@ export class AnyImpl extends MetaTypeImpl {
 /**
  * metatype that similar to the builtin 'any'
  *
- * @param args - {@link MetaTypeArgs}
+ * @param args - {@link MetaTypeArgsType}
  *
  * @example
  * ```ts
@@ -22,7 +22,7 @@ export class AnyImpl extends MetaTypeImpl {
  * obj1.a = {}
  * ```
  */
-export function ANY(args?: MetaTypeArgs<ANY>) {
+export function ANY(args?: MetaTypeArgsType<ANY>) {
     return MetaType(AnyImpl, args)
 }
 

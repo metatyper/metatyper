@@ -1,13 +1,13 @@
 import { Class } from '../../utils'
 import { MetaType } from '../metatype'
-import { MetaTypeArgs, MetaTypeImpl, ValidatorArgsType } from '../metatypeImpl'
+import { MetaTypeArgsType, MetaTypeImpl, ValidatorArgsType } from '../metatypeImpl'
 
 export type InstanceMetaTypeArgs<
     T,
     IsNullishT extends boolean = boolean,
     IsNullableT extends boolean = IsNullishT,
     IsOptionalT extends boolean = IsNullishT
-> = MetaTypeArgs<T, IsNullishT, IsNullableT, IsOptionalT> & {
+> = MetaTypeArgsType<T, IsNullishT, IsNullableT, IsOptionalT> & {
     allowChildren?: boolean
 }
 

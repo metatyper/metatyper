@@ -2,7 +2,7 @@ import { MetaError } from '../../errors'
 import { MetaType } from '../metatype'
 import {
     DeSerializerArgsType,
-    MetaTypeArgs,
+    MetaTypeArgsType,
     MetaTypeImpl,
     SerializerArgsType,
     ValidatorArgsType
@@ -84,7 +84,7 @@ export class UnionImpl extends StructuralMetaTypeImpl {
  * metatype that works like a union of specified types
  *
  * @param subType - array of types
- * @param args - {@link MetaTypeArgs}
+ * @param args - {@link MetaTypeArgsType}
  *
  * @typeParam T - union of specified types
  *
@@ -114,7 +114,7 @@ export function UNION<
           : UNION<PreparedT>
 >(
     subType: TArray | (() => TArray),
-    args?: MetaTypeArgs<DefaultT, any> & { serializeSubValues?: boolean }
+    args?: MetaTypeArgsType<DefaultT, any> & { serializeSubValues?: boolean }
 ) {
     return MetaType(UnionImpl, {
         nullish: true as any as false,

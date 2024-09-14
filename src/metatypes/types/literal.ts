@@ -1,6 +1,6 @@
 import { isEqual } from '../../utils'
 import { MetaType } from '../metatype'
-import { MetaTypeArgs, MetaTypeImpl, ValidatorArgsType } from '../metatypeImpl'
+import { MetaTypeArgsType, MetaTypeImpl, ValidatorArgsType } from '../metatypeImpl'
 
 export class LiteralImpl extends MetaTypeImpl {
     toString() {
@@ -21,7 +21,7 @@ export class LiteralImpl extends MetaTypeImpl {
 /**
  * metatype literal value
  *
- * @param args - {@link MetaTypeArgs}
+ * @param args - {@link MetaTypeArgsType}
  *
  * @example
  * ```ts
@@ -38,7 +38,7 @@ export function LITERAL<
     IsNullishT extends boolean = false,
     IsNullableT extends boolean = IsNullishT,
     IsOptionalT extends boolean = IsNullishT
->(subType: T, args?: MetaTypeArgs<LITERAL<T>, IsNullishT, IsNullableT, IsOptionalT>) {
+>(subType: T, args?: MetaTypeArgsType<LITERAL<T>, IsNullishT, IsNullableT, IsOptionalT>) {
     return MetaType(LiteralImpl, {
         ...args,
         subType

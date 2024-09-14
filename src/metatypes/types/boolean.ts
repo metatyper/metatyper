@@ -1,13 +1,13 @@
 import { ReplaceValuesDeSerializerBuilder } from '../../serializers'
 import { MetaType } from '../metatype'
-import { DeSerializerArgsType, MetaTypeArgs, MetaTypeImpl } from '../metatypeImpl'
+import { DeSerializerArgsType, MetaTypeArgsType, MetaTypeImpl } from '../metatypeImpl'
 
 export type BooleanMetaTypeArgs<
     T extends boolean = boolean,
     IsNullishT extends boolean = boolean,
     IsNullableT extends boolean = IsNullishT,
     IsOptionalT extends boolean = IsNullishT
-> = MetaTypeArgs<T, IsNullishT, IsNullableT, IsOptionalT> & {
+> = MetaTypeArgsType<T, IsNullishT, IsNullableT, IsOptionalT> & {
     trueValues?: any[]
     falseValues?: any[]
 }
@@ -46,7 +46,7 @@ export class BooleanImpl extends MetaTypeImpl {
 /**
  * metatype that similar to boolean
  *
- * @param args - {@link MetaTypeArgs}
+ * @param args - {@link MetaTypeArgsType}
  *
  * @example
  * ```ts
@@ -62,7 +62,7 @@ export function BOOLEAN<
     IsNullishT extends boolean = false,
     IsNullableT extends boolean = IsNullishT,
     IsOptionalT extends boolean = IsNullishT
->(args?: MetaTypeArgs<BOOLEAN, IsNullishT, IsNullableT, IsOptionalT>) {
+>(args?: MetaTypeArgsType<BOOLEAN, IsNullishT, IsNullableT, IsOptionalT>) {
     return MetaType(BooleanImpl, args)
 }
 

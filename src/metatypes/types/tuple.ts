@@ -2,7 +2,7 @@ import { FreezeObjectDeSerializer } from '../../serializers'
 import { MetaType } from '../metatype'
 import {
     DeSerializerArgsType,
-    MetaTypeArgs,
+    MetaTypeArgsType,
     MetaTypeImpl,
     SerializerArgsType,
     ValidatorArgsType
@@ -15,7 +15,7 @@ export type TupleMetaTypeArgs<
     IsNullableT extends boolean = IsNullishT,
     IsOptionalT extends boolean = IsNullishT,
     IsFrozenT extends boolean = false
-> = MetaTypeArgs<T, IsNullishT, IsNullableT, IsOptionalT> & {
+> = MetaTypeArgsType<T, IsNullishT, IsNullableT, IsOptionalT> & {
     freeze?: IsFrozenT
     serializeSubValues?: boolean
 }

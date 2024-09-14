@@ -7,7 +7,7 @@ import {
 import { MetaType } from '../metatype'
 import {
     DeSerializerArgsType,
-    MetaTypeArgs,
+    MetaTypeArgsType,
     MetaTypeImpl,
     SerializerArgsType
 } from '../metatypeImpl'
@@ -17,7 +17,7 @@ type DateMetaTypeArgs<
     IsNullishT extends boolean = boolean,
     IsNullableT extends boolean = IsNullishT,
     IsOptionalT extends boolean = IsNullishT
-> = MetaTypeArgs<T, IsNullishT, IsNullableT, IsOptionalT> &
+> = MetaTypeArgsType<T, IsNullishT, IsNullableT, IsOptionalT> &
     (
         | {
               min?: number | bigint | Date

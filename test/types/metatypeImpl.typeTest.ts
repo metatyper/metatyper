@@ -1,6 +1,6 @@
 import { TypeExtends } from '../../src/utils/typeTest'
 
-import { MetaTypeArgs } from '../../src'
+import { MetaTypeArgsType } from '../../src'
 
 // Test MetaTypeArgs
 
@@ -12,5 +12,5 @@ TypeExtends<
     {
         default: typeof _type
     },
-    MetaTypeArgs<typeof _type>
+    MetaTypeArgsType<typeof _type>
 >(true)

@@ -1,4 +1,4 @@
-import { MetaTypeArgs, MetaTypeImpl } from '../metatypes'
+import { MetaTypeArgsType, MetaTypeImpl } from '../metatypes'
 import { getDescriptorValue } from '../utils'
 import { MetaObjectsBuilder } from './builder'
 import {
@@ -34,7 +34,7 @@ export type MetaObjectRegistryInfo = {
     changeHandlers: MetaChangeHandlerInfoType[]
     errorHandlers: MetaErrorHandlerInfoType[]
 
-    metaTypesArgs: MetaTypeArgs | ((metaTypeImpl: MetaTypeImpl) => MetaTypeArgs)
+    metaTypesArgs: MetaTypeArgsType | ((metaTypeImpl: MetaTypeImpl) => MetaTypeArgsType)
     metaTypesResolver: MetaTypesResolver
     autoResolveMetaTypes: boolean
     dynamicDeclarations: boolean

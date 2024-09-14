@@ -1,4 +1,4 @@
-import { MetaType, MetaTypeArgs, MetaTypeBase, MetaTypeImpl } from '../metatypes'
+import { MetaType, MetaTypeArgsType, MetaTypeBase, MetaTypeImpl } from '../metatypes'
 import { getDescriptorValue } from '../utils'
 import { MetaObjectsBuilder } from './builder'
 import { MetaObjectsHandler } from './handler'
@@ -61,7 +61,7 @@ export type MetaErrorHandlerInfoType = {
     places?: MetaErrorHandlerPlaceType[]
 }
 
-export type MetaTypesResolver = (value: any, args?: MetaTypeArgs) => MetaTypeImpl
+export type MetaTypesResolver = (value: any, args?: MetaTypeArgsType) => MetaTypeImpl
 
 /**
  * This is arguments for creating a meta object.
@@ -105,7 +105,7 @@ export type MetaArgs = {
     changeHandlers?: MetaChangeHandlerInfoType[]
     errorHandlers?: MetaErrorHandlerInfoType[]
 
-    metaTypesArgs?: MetaTypeArgs | ((metaTypeImpl: MetaTypeImpl) => MetaTypeArgs)
+    metaTypesArgs?: MetaTypeArgsType | ((metaTypeImpl: MetaTypeImpl) => MetaTypeArgsType)
 
     metaTypesResolver?: MetaTypesResolver
     autoResolveMetaTypes?: boolean
@@ -120,7 +120,7 @@ export type MetaArgs = {
 export type InitialClassPropertyDeclarationInfo = {
     propName: string
     metaTypeImpl?: MetaTypeImpl
-    metaTypeArgs?: MetaTypeArgs
+    metaTypeArgs?: MetaTypeArgsType
     descriptor?: PropertyDescriptor
     reflectType: any
 }
@@ -261,10 +261,10 @@ function declare<T extends object, K extends keyof T>(
 ): (target: T, propName: K) => void
 
 function declare<T extends object, K extends keyof T, IsNullableT extends boolean>(
-    metaTypeArgs?: MetaTypeArgs<T[K], IsNullableT>
+    metaTypeArgs?: MetaTypeArgsType<T[K], IsNullableT>
 ): (target: T, propName: K) => void
 
-function declare(metaTypeOrArgs?: MetaTypeBase | MetaTypeArgs | null) {
+function declare(metaTypeOrArgs?: MetaTypeBase | MetaTypeArgsType | null) {
     return (target: object, propName: string, descriptor?: TypedPropertyDescriptor<any>) => {
         const metaTypeImpl = MetaType.isMetaType(metaTypeOrArgs)
             ? MetaType.getMetaTypeImpl(metaTypeOrArgs as any) ?? undefined
@@ -272,7 +272,7 @@ function declare(metaTypeOrArgs?: MetaTypeBase | MetaTypeArgs | null) {
 
         const metaTypeArgs = MetaType.isMetaType(metaTypeOrArgs)
             ? undefined
-            : (metaTypeOrArgs as MetaTypeArgs)
+            : (metaTypeOrArgs as MetaTypeArgsType)
 
         const declarationInfo: InitialClassPropertyDeclarationInfo = {
             propName,
