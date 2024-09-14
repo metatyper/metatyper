@@ -1,6 +1,6 @@
 {
   "name": "metatyper",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "license": "MIT",
   "description": "The MetaTyper project provides a powerful approach to using runtime types in TypeScript and JavaScript code",
   "author": {
@@ -19,21 +19,21 @@
     "validation",
     "serialization",
     "typescript",
-    "javascript",
     "schema",
     "parser",
     "type",
-    "inference"
+    "inference",
+    "model"
   ],
   "keywords": [
     "validation",
     "serialization",
     "typescript",
-    "javascript",
     "schema",
     "parser",
     "type",
-    "inference"
+    "inference",
+    "model"
   ],
   "main": "./lib/index.js",
   "module": "./lib/index.mjs",
@@ -103,7 +103,7 @@
     "ts-jest": "^29.1.2",
     "ts-node": "^10.9.2",
     "tslib": "^2.7.0",
-    "typescript": "^5.3.3"
+    "typescript": "^5.5.3"
   },
   "packageManager": "yarn@4.4.1",
   "sideEffects": false
