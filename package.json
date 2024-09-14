@@ -1,6 +1,6 @@
 {
   "name": "metatyper",
-  "version": "1.0.8",
+  "version": "1.0.9",
   "license": "MIT",
   "description": "The MetaTyper project provides a powerful approach to using runtime types in TypeScript and JavaScript code",
   "author": {
@@ -9,7 +9,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/metatyper/metatyper.git"
+    "url": "git+https://github.com/metatyper/metatyper.git"
   },
   "bugs": {
     "url": "https://github.com/metatyper/metatyper/issues"
