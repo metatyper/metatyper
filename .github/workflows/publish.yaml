@@ -1,14 +1,33 @@
 name: Publish on npm
 
 on:
-  push:
-    branches:
-      - "main"
-    paths:
-      - package.json
+  workflow_dispatch:
 
 jobs:
+  check_version:
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main'
+    outputs:
+      should_run: ${{ steps.check_tag.outputs.should_run }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Get package version
+        id: package_version
+        run: echo "version=$(node -p "require('./package.json').version")" >> $GITHUB_OUTPUT
+      - name: Check if tag exists
+        id: check_tag
+        run: |
+          if git ls-remote --exit-code --tags origin "refs/tags/v${{ steps.package_version.outputs.version }}" >/dev/null 2>&1; then
+            echo "should_run=false" >> $GITHUB_OUTPUT
+            echo "should_run=false"
+          else
+            echo "should_run=true" >> $GITHUB_OUTPUT
+            echo "should_run=true"
+          fi
+
   build_and_publish:
+    needs: check_version
+    if: needs.check_version.outputs.should_run == 'true'
     runs-on: ubuntu-latest
     permissions: write-all
     steps:
