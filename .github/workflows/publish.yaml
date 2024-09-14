@@ -38,7 +38,7 @@ jobs:
       - name: Install Node.js
         uses: actions/setup-node@v4
         with:
-          registry-url: 'https://registry.npmjs.org'
+          registry-url: 'https://registry.npmjs.org/'
           node-version: 20.x
           cache: 'yarn'
 
@@ -50,9 +50,10 @@ jobs:
         name: publish to npm
         uses: JS-DevTools/npm-publish@v3
         with:
-          registry: 'https://registry.npmjs.org'
+          registry: 'https://registry.npmjs.org/'
           token: ${{ secrets.NPM_TOKEN }}
           provenance: true
+          access: public
 
       - if: steps.publish.outputs.type != 'none'
         run: |
