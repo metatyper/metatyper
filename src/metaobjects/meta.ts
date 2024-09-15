@@ -11,17 +11,17 @@ import {
 
 const reflectMetadata = (Reflect as any)['getMetadata']
 
-export type ValidateMetaObjectArgsType = { metaArgs?: MetaArgs } & {
+export type ValidateMetaObjectArgsType = { metaArgs?: MetaArgsType } & {
     safe?: boolean
     stopAtFirstError?: boolean
 } & Record<string, any>
 
 export type SerializeMetaObjectArgsType = {
-    metaArgs?: MetaArgs
+    metaArgs?: MetaArgsType
 } & Record<string, any>
 
 export type DeSerializeMetaObjectArgsType = {
-    metaArgs?: MetaArgs
+    metaArgs?: MetaArgsType
 } & Record<string, any>
 
 export type MetaChangeHandlerActionType = 'init' | 'set' | 'delete' | 'define' | 'deserialize'
@@ -93,7 +93,7 @@ export type MetaTypesResolver = (value: any, args?: MetaTypeArgsType) => MetaTyp
  * @param metaBuilder - A meta objects builder that is used to create the meta object.
  * The meta objects builder is an object that implements the MetaObjectsBuilder interface. The default value is the global meta objects builder.
  */
-export type MetaArgs = {
+export type MetaArgsType = {
     name?: string
     initialValues?: Record<string | symbol, any>
 
@@ -111,7 +111,7 @@ export type MetaArgs = {
     autoResolveMetaTypes?: boolean
     dynamicDeclarations?: boolean
 
-    metaInstanceArgs?: MetaArgs | 'same'
+    metaInstanceArgs?: MetaArgsType | 'same'
     buildMetaInstance?: boolean
 
     metaBuilder?: MetaObjectsBuilder
@@ -139,7 +139,7 @@ export type Meta<T> = (T extends new (...args: infer A) => infer R
  * Create a Meta object
  *
  * @param protoObject - The plain object used as the prototype/schema for the meta object.
- * @param metaArgs - Configuration arguments ({@link MetaArgs}) for creating the meta object.
+ * @param metaArgs - Configuration arguments ({@link MetaArgsType}) for creating the meta object.
  *
  * @returns A a new Meta object
  *
@@ -172,7 +172,7 @@ export type Meta<T> = (T extends new (...args: infer A) => infer R
  * myInstance.someInstanceProp = '2' // will throw an validation error
  * ```
  */
-export function Meta<T extends object>(protoObject?: T, metaArgs?: MetaArgs) {
+export function Meta<T extends object>(protoObject?: T, metaArgs?: MetaArgsType) {
     const builder = metaArgs?.metaBuilder ?? MetaObjectsBuilder.instance
 
     return builder.build(protoObject, metaArgs) as Meta<T>
@@ -190,7 +190,7 @@ export const M = Meta
  * The `Meta.Class` decorator enhances a class by applying meta object behavior to it,
  * allowing for runtime type checking, validation, and serialization based on the specified meta arguments.
  *
- * @param metaArgs - Configuration arguments ({@link MetaArgs}) for creating the meta class and meta instances.
+ * @param metaArgs - Configuration arguments ({@link MetaArgsType}) for creating the meta class and meta instances.
  *
  * @returns A decorator function that takes a class and returns its meta class equivalent.
  *
@@ -209,7 +209,7 @@ export const M = Meta
  * user.name = 'Jo' // Throws a validation error
  * ```
  */
-Meta.Class = function Class(metaArgs?: MetaArgs) {
+Meta.Class = function Class(metaArgs?: MetaArgsType) {
     return <T extends new (...args: any[]) => any>(cls: T) => {
         return Meta(cls, metaArgs) as any
     }
@@ -691,7 +691,7 @@ Meta.deserialize = <T extends object>(
 
         return handlerInstance.deserialize(metaObjectOrProto, rawObject, deserializeArgs) as any
     } else {
-        let preparedMetaArgs: MetaArgs = { ...(deserializeArgs?.metaArgs ?? {}) }
+        let preparedMetaArgs: MetaArgsType = { ...(deserializeArgs?.metaArgs ?? {}) }
 
         preparedMetaArgs = {
             ...preparedMetaArgs,
@@ -805,7 +805,7 @@ Meta.proto = <T extends object>(metaObject: T) => {
  */
 Meta.rebuild = <T extends object>(
     metaObject: T,
-    metaArgs?: MetaArgs
+    metaArgs?: MetaArgsType
 ): Required<T> extends Required<Meta<unknown>> ? T : Meta<T> | null => {
     const handlerInstance: MetaObjectsHandler =
         getDescriptorValue(metaObject, MetaObjectBuilderSymbol)?.handler ||
@@ -956,13 +956,13 @@ Meta.represent = (metaObject: object) => {
 
 /**
  * Retrieves the meta arguments used to configure a meta object.
- * This function extracts the configuration arguments (`MetaArgs`) that were used to create or configure the provided meta object.
+ * This function extracts the configuration arguments (`MetaArgsType`) that were used to create or configure the provided meta object.
  * These arguments include settings related to validation, serialization,
  * property ignoring, and more, which define the behavior and capabilities of the meta object.
  *
  * @param metaObject - The meta object from which to retrieve the meta arguments.
  *
- * @returns The `MetaArgs` used to configure the meta object, or `null` if the object is not a meta object or if no meta arguments were used.
+ * @returns The `MetaArgsType` used to configure the meta object, or `null` if the object is not a meta object or if no meta arguments were used.
  *
  * @example
  * ```ts

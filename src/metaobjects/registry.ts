@@ -3,7 +3,7 @@ import { getDescriptorValue } from '../utils'
 import { MetaObjectsBuilder } from './builder'
 import {
     InitialClassPropertyDeclarationInfo,
-    MetaArgs,
+    MetaArgsType,
     MetaChangeHandlerInfoType,
     MetaErrorHandlerInfoType,
     MetaTypesResolver
@@ -13,7 +13,7 @@ import { IsMetaObjectSymbol, MetaObjectBaseSymbol } from './symbols'
 export type MetaObjectTypeName = 'class' | 'instance' | 'function' | 'array' | 'object'
 
 export type MetaObjectRegistryInfo = {
-    metaArgs: MetaArgs
+    metaArgs: MetaArgsType
     builder: MetaObjectsBuilder
 
     name: string
@@ -39,7 +39,7 @@ export type MetaObjectRegistryInfo = {
     autoResolveMetaTypes: boolean
     dynamicDeclarations: boolean
 
-    metaInstanceArgs?: MetaArgs | 'same'
+    metaInstanceArgs?: MetaArgsType | 'same'
     buildMetaInstance?: boolean
 }
 

@@ -3,7 +3,7 @@ import { inspect, isClass } from '../utils'
 import { type MetaObjectsBuilder } from './builder'
 import {
     DeSerializeMetaObjectArgsType,
-    MetaArgs,
+    MetaArgsType,
     MetaChangeHandlerArgsType,
     MetaErrorHandlerArgsType,
     MetaTypesResolver,
@@ -76,7 +76,7 @@ export class MetaObjectsHandler {
         }
     }
 
-    getObjectNameAndType(protoObject: any, metaArgs: MetaArgs) {
+    getObjectNameAndType(protoObject: any, metaArgs: MetaArgsType) {
         let name: string
         let type: MetaObjectTypeName
 

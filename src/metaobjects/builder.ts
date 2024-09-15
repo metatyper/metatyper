@@ -1,7 +1,7 @@
 import { AnyImpl, MetaType, MetaTypeImpl } from '../metatypes'
 import { getDescriptorValue, isClass } from '../utils'
 import { MetaObjectsHandler } from './handler'
-import { InitialClassPropertyDeclarationInfo, MetaArgs } from './meta'
+import { InitialClassPropertyDeclarationInfo, MetaArgsType } from './meta'
 import { MetaObjectRegistryInfo, MetaObjectsRegistry } from './registry'
 import {
     IsMetaObjectSymbol,
@@ -27,7 +27,7 @@ export class MetaObjectsBuilder {
     registry = new MetaObjectsRegistry()
     handler = new MetaObjectsHandler(this)
 
-    build<T extends object>(protoObject?: T, metaArgs?: MetaArgs): T {
+    build<T extends object>(protoObject?: T, metaArgs?: MetaArgsType): T {
         if (!(protoObject instanceof Object)) {
             protoObject = {} as T
         }
@@ -61,7 +61,7 @@ export class MetaObjectsBuilder {
         return this.createProxy(newBaseObject, protoObject) as T
     }
 
-    configure<T extends object>(metaObject: T, metaArgs: MetaArgs): T {
+    configure<T extends object>(metaObject: T, metaArgs: MetaArgsType): T {
         if (getDescriptorValue(metaObject, IsMetaObjectSymbol)) {
             this.setNewRegistryInfo(
                 getDescriptorValue(metaObject, MetaObjectBaseSymbol),
@@ -168,7 +168,7 @@ export class MetaObjectsBuilder {
     protected getNewRegistryInfo(
         baseObject: object,
         protoObject: Record<keyof any, any>,
-        metaArgs: MetaArgs
+        metaArgs: MetaArgsType
     ) {
         const existsInfo: MetaObjectRegistryInfo | undefined = this.registry.get(baseObject)
         const newInfo: Partial<MetaObjectRegistryInfo> = {}
@@ -212,7 +212,7 @@ export class MetaObjectsBuilder {
         return newInfo as MetaObjectRegistryInfo
     }
 
-    protected setNewRegistryInfo(baseObject: object, protoObject: object, metaArgs: MetaArgs) {
+    protected setNewRegistryInfo(baseObject: object, protoObject: object, metaArgs: MetaArgsType) {
         const newInfo = this.getNewRegistryInfo(baseObject, protoObject, metaArgs)
 
         this.registry.set(baseObject, newInfo)
@@ -313,7 +313,7 @@ export class MetaObjectsBuilder {
         return new Proxy<T>(baseObject, this.getProxyHandler(baseObject, protoObject))
     }
 
-    protected createBaseObject<T extends object>(protoObject: T, metaArgs?: MetaArgs) {
+    protected createBaseObject<T extends object>(protoObject: T, metaArgs?: MetaArgsType) {
         let baseObject
 
         if (protoObject instanceof Function) {
@@ -331,7 +331,7 @@ export class MetaObjectsBuilder {
 
     protected createMetaClass<T extends new (...args: any[]) => any>(
         ProtoCls: T,
-        _metaArgs?: MetaArgs
+        _metaArgs?: MetaArgsType
     ) {
         const NewCls = class MetaClass extends ProtoCls {}
 
@@ -346,7 +346,7 @@ export class MetaObjectsBuilder {
 
     protected createMetaFunction<T extends (...args: any[]) => any>(
         protoFunc: T,
-        _metaArgs?: MetaArgs
+        _metaArgs?: MetaArgsType
     ) {
         function metaFunc(this: MetaObjectsBuilder, ...args: any[]): any {
             return protoFunc.apply(this, args)
@@ -367,7 +367,7 @@ export class MetaObjectsBuilder {
         return metaFunc as T
     }
 
-    protected createMetaObject<T extends object>(protoObject: T, _metaArgs?: MetaArgs) {
+    protected createMetaObject<T extends object>(protoObject: T, _metaArgs?: MetaArgsType) {
         let newObj: any
 
         if (Array.isArray(protoObject)) {
