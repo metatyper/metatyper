@@ -21,13 +21,13 @@ The goal of the project is to make runtime types as developer-friendly as possib
 
 More Facts:
 
-- Works in Node.JS and all modern browsers.
-- Automatically infers TypeScript types.
-- Works with native JavaScript.
-- It's tiny.
-- Zero dependencies.
-- Rich error details.
-- Rich extensibility support.
+-   Works in Node.JS and all modern browsers.
+-   Automatically infers TypeScript types.
+-   Works with native JavaScript.
+-   It's tiny.
+-   Zero dependencies.
+-   Rich error details.
+-   Rich extensibility support.
 
 &nbsp;
 
@@ -64,9 +64,9 @@ First, you can create a Meta object.
 import { Meta, NUMBER } from 'metatyper'
 
 const user = Meta({
-  id: 0,
-  username: 'some user name',
-  stars: NUMBER({ min: 0, default: 0 })
+    id: 0,
+    username: 'some user name',
+    stars: NUMBER({ min: 0, default: 0 })
 })
 
 user.id = 'some text' // type & validation error
@@ -81,23 +81,28 @@ You can also simply validate different objects.
 import { BOOLEAN, INTEGER, Meta, STRING } from 'metatyper'
 
 const userSchema = {
-  id: INTEGER(),
-  username: STRING({ minLength: 3, regexp: '^[a-zA-Z0-9 _]+$' }),
-  stars: 0, // any number
+    id: INTEGER(),
 
-  someFlag: BOOLEAN({ optional: true })
+    username: STRING({
+        minLength: 3,
+        regexp: '^[a-zA-Z0-9 _]+$'
+    }),
+
+    stars: 0, // any number
+
+    someFlag: BOOLEAN({ optional: true })
 }
 
 Meta.validate(userSchema, {
-  id: 1.1, // throw a validation error
-  username: 'some user name',
-  stars: 1
+    id: 1.1, // throw a validation error
+    username: 'some user name',
+    stars: 1
 })
 
 Meta.validate(userSchema, {
-  id: 1,
-  username: 'some user name'
-  // throw a validation error, because stars is not optional field
+    id: 1,
+    username: 'some user name'
+    // throw a validation error, because stars is not optional field
 })
 ```
 
@@ -112,46 +117,46 @@ import 'reflect-metadata'
 
 @Meta.Class({ ignoreProps: ['someInstanceFlag', 'someClassFlag'] })
 class User {
-  @Meta.declare(INTEGER({ default: 0 }))
-  id: number
+    @Meta.declare(INTEGER({ default: 0 }))
+    id: number
 
-  username = 'some user name'
+    username = 'some user name'
 
-  @Meta.declare({ default: 0, min: 0 })
-  stars: number // for this you need `reflect-metadata`
+    @Meta.declare({ default: 0, min: 0 })
+    stars: number // for this you need `reflect-metadata`
 
-  createdAt = DATE({
-    default: new Date(),
-    coercion: true // cast a string or number to a date (and vice versa)
-  })
+    createdAt = DATE({
+        default: new Date(),
+        coercion: true // cast a string or number to a date (and vice versa)
+    })
 
-  someInstanceFlag = false
+    someInstanceFlag = false
 
-  static someClassFlag = true
-  static someAnotherClassFlag = true
+    static someClassFlag = true
+    static someAnotherClassFlag = true
 }
 
 User.someClassFlag = 'string' as any
 // ok, because the field is listed in the ignoreProps
 
-User.someAnotherClassFlag = 'string' as any // type & validation error
+User.someAnotherClassFlag = 'string' // type & validation error
 
 const user = new User()
 
 Meta.deserialize(user, {
-  id: 2,
+    id: 2,
 
-  username: 'some another user name',
+    username: 'some another user name',
 
-  createdAt: 1704067200 * 1000,
-  // this timestamp will cast to Date("2024-01-01")
+    createdAt: 1704067200 * 1000,
+    // this timestamp will cast to Date("2024-01-01")
 
-  someInstanceFlag: 'no boolean'
-  // ok, because the field is listed in the ignoreProps
+    someInstanceFlag: 'no boolean'
+    // ok, because the field is listed in the ignoreProps
 })
 
 Meta.deserialize(user, {
-  id: 1.1 // validation error
+    id: 1.1 // validation error
 })
 ```
 
@@ -159,62 +164,62 @@ Meta.deserialize(user, {
 
 ## Table of Contents
 
-- [Introduction](#introduction)
-- [Installation](#installation)
-- [Basic Usage](#basic-usage)
-- [Table of Contents](#table-of-contents)
-- [Documentation](#documentation)
-  - [Meta Objects](#meta-objects)
-    - [Meta](#meta)
-    - [Meta args](#meta-args)
-    - [Meta inheritance](#meta-inheritance)
-    - [Meta.Class decorator](#metaclass-decorator)
-    - [Meta.declare decorator](#metadeclare-decorator)
-    - [Meta.isMetaObject](#metaismetaobject)
-    - [Meta.isIgnoredProp](#metaisignoredprop)
-    - [Meta.copy](#metacopy)
-    - [Meta.rebuild](#metarebuild)
-  - [Meta Types](#meta-types)
-    - [MetaType](#metatype)
-    - [MetaType Implementation](#metatype-implementation)
-    - [MetaTypeArgs](#metatypeargs)
-  - [Built-in Meta Types](#built-in-meta-types)
-    - [ANY](#any)
-    - [BOOLEAN](#boolean)
-    - [STRING](#string)
-    - [NUMBER](#number)
-    - [INTEGER](#integer)
-    - [BIGINT](#bigint)
-    - [DATE](#date)
-    - [LITERAL](#literal)
-    - [INSTANCE](#instance)
-    - [UNION](#union)
-    - [ARRAY](#array)
-    - [TUPLE](#tuple)
-    - [OBJECT](#object)
-    - [Recursive structures](#recursive-structures)
-  - [Validation](#validation)
-    - [Validators](#validators)
-    - [Disabling Validation](#disabling-validation)
-  - [Serialization and Deserialization](#serialization-and-deserialization)
-    - [Serializers and Deserializers](#serializers-and-deserializers)
-    - [Disable Serialization](#disable-serialization)
-    - [Types Coercion](#types-coercion)
-      - [BOOLEAN coercion](#boolean-coercion)
-      - [STRING coercion](#string-coercion)
-      - [NUMBER coercion](#number-coercion)
-      - [INTEGER coercion](#integer-coercion)
-      - [BIGINT coercion](#bigint-coercion)
-      - [DATE coercion](#date-coercion)
-  - [Errors](#errors)
-    - [MetaTypeSerializationError](#metatypeserializationerror)
-    - [MetaTypeSerializerError](#metatypeserializererror)
-    - [MetaTypeDeSerializerError](#metatypedeserializererror)
-    - [MetaTypeValidationError](#metatypevalidationerror)
-    - [MetaTypeValidatorError](#metatypevalidatorerror)
-    - [MetaTypeValidatorsArrayError](#metatypevalidatorsarrayerror)
-- [Similar Libraries](#similar-libraries)
-- [Change Log](#change-log)
+-   [Introduction](#introduction)
+-   [Installation](#installation)
+-   [Basic Usage](#basic-usage)
+-   [Table of Contents](#table-of-contents)
+-   [Documentation](#documentation)
+    -   [Meta Objects](#meta-objects)
+        -   [Meta](#meta)
+        -   [Meta args](#meta-args)
+        -   [Meta inheritance](#meta-inheritance)
+        -   [Meta.Class decorator](#metaclass-decorator)
+        -   [Meta.declare decorator](#metadeclare-decorator)
+        -   [Meta.isMetaObject](#metaismetaobject)
+        -   [Meta.isIgnoredProp](#metaisignoredprop)
+        -   [Meta.copy](#metacopy)
+        -   [Meta.rebuild](#metarebuild)
+    -   [Meta Types](#meta-types)
+        -   [MetaType](#metatype)
+        -   [MetaType Implementation](#metatype-implementation)
+        -   [MetaTypeArgsType](#metatypeargstype)
+    -   [Built-in Meta Types](#built-in-meta-types)
+        -   [ANY](#any)
+        -   [BOOLEAN](#boolean)
+        -   [STRING](#string)
+        -   [NUMBER](#number)
+        -   [INTEGER](#integer)
+        -   [BIGINT](#bigint)
+        -   [DATE](#date)
+        -   [LITERAL](#literal)
+        -   [INSTANCE](#instance)
+        -   [UNION](#union)
+        -   [ARRAY](#array)
+        -   [TUPLE](#tuple)
+        -   [OBJECT](#object)
+        -   [Recursive structures](#recursive-structures)
+    -   [Validation](#validation)
+        -   [Validators](#validators)
+        -   [Disabling Validation](#disabling-validation)
+    -   [Serialization and Deserialization](#serialization-and-deserialization)
+        -   [Serializers and Deserializers](#serializers-and-deserializers)
+        -   [Disable Serialization](#disable-serialization)
+        -   [Types Coercion](#types-coercion)
+            -   [BOOLEAN coercion](#boolean-coercion)
+            -   [STRING coercion](#string-coercion)
+            -   [NUMBER coercion](#number-coercion)
+            -   [INTEGER coercion](#integer-coercion)
+            -   [BIGINT coercion](#bigint-coercion)
+            -   [DATE coercion](#date-coercion)
+    -   [Errors](#errors)
+        -   [MetaTypeSerializationError](#metatypeserializationerror)
+        -   [MetaTypeSerializerError](#metatypeserializererror)
+        -   [MetaTypeDeSerializerError](#metatypedeserializererror)
+        -   [MetaTypeValidationError](#metatypevalidationerror)
+        -   [MetaTypeValidatorError](#metatypevalidatorerror)
+        -   [MetaTypeValidatorsArrayError](#metatypevalidatorsarrayerror)
+-   [Similar Libraries](#similar-libraries)
+-   [Change Log](#change-log)
 
 &nbsp;
 
@@ -231,7 +236,7 @@ Example:
 
 ```typescript
 const objA = {
-  a: 1
+    a: 1
 }
 const metaObjA = Meta(objA)
 
@@ -251,9 +256,9 @@ Example:
 
 ```typescript
 class A {
-  a = 'string'
+    a = 'string'
 
-  static staticA = 2
+    static staticA = 2
 }
 
 const MetaA = Meta(A) // similar to the @Meta.Class() decorator
@@ -276,113 +281,113 @@ metaInstanceA.a = 1 as any
 This is arguments for creating a Meta object.
 
 ```typescript
-function Meta<T extends object>(protoObject?: T, metaArgs?: MetaArgs): Meta<T>
+function Meta<T extends object>(protoObject?: T, metaArgs?: MetaArgsType): Meta<T>
 ```
 
 Meta function has the following arguments:
 
 ```typescript
-type MetaArgs = {
-  name?: string
-  initialValues?: Record<string | symbol, any>
+type MetaArgsType = {
+    name?: string
+    initialValues?: Record<string | symbol, any>
 
-  ignoreProps?: (string | symbol)[] | ((propName: string | symbol) => boolean)
+    ignoreProps?: (string | symbol)[] | ((propName: string | symbol) => boolean)
 
-  validationIsActive?: boolean
-  serializationIsActive?: boolean
+    validationIsActive?: boolean
+    serializationIsActive?: boolean
 
-  changeHandlers?: MetaChangeHandlerInfoType[]
-  errorHandlers?: MetaErrorHandlerInfoType[]
+    changeHandlers?: MetaChangeHandlerInfoType[]
+    errorHandlers?: MetaErrorHandlerInfoType[]
 
-  metaTypesArgs?: MetaTypeArgs | ((metaTypeImpl: MetaTypeImpl) => MetaTypeArgs)
+    metaTypesArgs?: MetaTypeArgsType | ((metaTypeImpl: MetaTypeImpl) => MetaTypeArgsType)
 
-  metaTypesResolver?: MetaTypesResolver
-  autoResolveMetaTypes?: boolean
-  dynamicDeclarations?: boolean
+    metaTypesResolver?: MetaTypesResolver
+    autoResolveMetaTypes?: boolean
+    dynamicDeclarations?: boolean
 
-  metaInstanceArgs?: MetaArgs | 'same'
-  buildMetaInstance?: boolean
+    metaInstanceArgs?: MetaArgsType | 'same'
+    buildMetaInstance?: boolean
 
-  metaBuilder?: MetaObjectsBuilder
+    metaBuilder?: MetaObjectsBuilder
 } & Record<string, any>
 ```
 
 &nbsp;
 
-- `name?: string` - A string that overrides the default name of the Meta object. The name is used when displaying the Meta object. For example, if the default name is `MetaObject`, you can pass `MyMetaObject` as the name argument to change it.
+-   `name?: string` - A string that overrides the default name of the Meta object. The name is used when displaying the Meta object. For example, if the default name is `MetaObject`, you can pass `MyMetaObject` as the name argument to change it.
 
 &nbsp;
 
-- `initialValues?: Record<string | symbol, any>` - An object that defines the initial values of the properties of the Meta object.
-  The `default` value is `{}`.
-
-&nbsp;
-
-- `ignoreProps?: (string | symbol)[] | ((propName: string | symbol) => boolean)` - Specifies which properties of the Meta object should be ignored by the Meta object. The `default` value is `[]`.
-  It can be either:
-  - An array of strings or symbols that represent the property names to ignore.
-  - A function that takes a property name as an argument and returns a boolean value indicating whether to ignore it or not.
-
-&nbsp;
-
-- `validationIsActive?: boolean` - A boolean that indicates whether the Meta object should perform validation on the Meta object or not.
-  The `default` value is `true`.
-
-&nbsp;
-
-- `serializationIsActive?: boolean` - A boolean that indicates whether the Meta object should perform serialization on the Meta object or not.
-  The `default` value is `true`.
-
-&nbsp;
-
-- `changeHandlers?: MetaChangeHandlerInfoType[]` - An array of handlers that handle changes in the Meta object.
-  The `default` value is `[]`.
-
-&nbsp;
-
-- `errorHandlers?: MetaErrorHandlerInfoType[]` - An array of handlers that handle errors in the Meta object.
-  The `default` value is `[]`.
-
-&nbsp;
-
-- `metaTypesArgs?: MetaTypeArgs | ((metaTypeImpl: MetaTypeImpl) => MetaTypeArgs)` - Defines the arguments for building or rebuilding the Meta types of the Meta object. It can be either:
-  - An object that contains the properties and values of the Meta types arguments.
-  - A function that takes a Meta type implementation as an argument and returns an object of Meta types arguments.
+-   `initialValues?: Record<string | symbol, any>` - An object that defines the initial values of the properties of the Meta object.
     The `default` value is `{}`.
 
 &nbsp;
 
-- `metaTypesResolver?: MetaTypesResolver` - A function that resolves Meta types from values. It takes any value as an argument and returns a Meta type: `(value: any, args?: MetaTypeArgs) => MetaTypeImpl`.
-  The `default` value is `MetaTypeImpl.getMetaTypeImpl`
+-   `ignoreProps?: (string | symbol)[] | ((propName: string | symbol) => boolean)` - Specifies which properties of the Meta object should be ignored by the Meta object. The `default` value is `[]`.
+    It can be either:
+    -   An array of strings or symbols that represent the property names to ignore.
+    -   A function that takes a property name as an argument and returns a boolean value indicating whether to ignore it or not.
 
 &nbsp;
 
-- `autoResolveMetaTypes?: boolean` - A boolean that indicates whether the Meta object should automatically resolve the Meta types from a value or not.
-  For example, the value 1 in the `Meta({field: 1 })` object will be used to declare a `NUMBER` metatype.
-  The `default` value is `true`.
+-   `validationIsActive?: boolean` - A boolean that indicates whether the Meta object should perform validation on the Meta object or not.
+    The `default` value is `true`.
 
 &nbsp;
 
-- `dynamicDeclarations?: boolean` - A boolean that indicates whether the Meta object should allow new declarations of new properties or not.
-  For example, you can define a new metatype like this: `metaObject.anyField = NUMBER({ default: 1 })`.
-  The `default` value is `true`.
+-   `serializationIsActive?: boolean` - A boolean that indicates whether the Meta object should perform serialization on the Meta object or not.
+    The `default` value is `true`.
 
 &nbsp;
 
-- `metaInstanceArgs?: MetaArgs | 'same'` - Defines the arguments for creating the Meta instance of the Meta class. It can be either:
-  - An object that contains the properties and values of the Meta instance arguments.
-  - The string `'same'` that indicates that the same arguments as the Meta class should be used.
-    The `default` value is `'same'`.
+-   `changeHandlers?: MetaChangeHandlerInfoType[]` - An array of handlers that handle changes in the Meta object.
+    The `default` value is `[]`.
 
 &nbsp;
 
-- `buildMetaInstance?: boolean` - A boolean that indicates whether the Meta class should build the Meta instance or not. If true, the Meta class will use the metaInstanceArgs object to create the Meta instance.
-  The `default` value is `true`.
+-   `errorHandlers?: MetaErrorHandlerInfoType[]` - An array of handlers that handle errors in the Meta object.
+    The `default` value is `[]`.
 
 &nbsp;
 
-- `metaBuilder?: MetaObjectsBuilder` - A Meta objects builder that is used to create the Meta object. The Meta objects builder is an object that implements the MetaObjectsBuilder interface.
-  The `default` value is the global Meta objects builder (`MetaObjectsBuilder.instance`).
+-   `metaTypesArgs?: MetaTypeArgsType | ((metaTypeImpl: MetaTypeImpl) => MetaTypeArgsType)` - Defines the arguments for building or rebuilding the Meta types of the Meta object. It can be either:
+    -   An object that contains the properties and values of the Meta types arguments.
+    -   A function that takes a Meta type implementation as an argument and returns an object of Meta types arguments.
+        The `default` value is `{}`.
+
+&nbsp;
+
+-   `metaTypesResolver?: MetaTypesResolver` - A function that resolves Meta types from values. It takes any value as an argument and returns a Meta type: `(value: any, args?: MetaTypeArgsType) => MetaTypeImpl`.
+    The `default` value is `MetaTypeImpl.getMetaTypeImpl`
+
+&nbsp;
+
+-   `autoResolveMetaTypes?: boolean` - A boolean that indicates whether the Meta object should automatically resolve the Meta types from a value or not.
+    For example, the value 1 in the `Meta({field: 1 })` object will be used to declare a `NUMBER` metatype.
+    The `default` value is `true`.
+
+&nbsp;
+
+-   `dynamicDeclarations?: boolean` - A boolean that indicates whether the Meta object should allow new declarations of new properties or not.
+    For example, you can define a new metatype like this: `metaObject.anyField = NUMBER({ default: 1 })`.
+    The `default` value is `true`.
+
+&nbsp;
+
+-   `metaInstanceArgs?: MetaArgsType | 'same'` - Defines the arguments for creating the Meta instance of the Meta class. It can be either:
+    -   An object that contains the properties and values of the Meta instance arguments.
+    -   The string `'same'` that indicates that the same arguments as the Meta class should be used.
+        The `default` value is `'same'`.
+
+&nbsp;
+
+-   `buildMetaInstance?: boolean` - A boolean that indicates whether the Meta class should build the Meta instance or not. If true, the Meta class will use the metaInstanceArgs object to create the Meta instance.
+    The `default` value is `true`.
+
+&nbsp;
+
+-   `metaBuilder?: MetaObjectsBuilder` - A Meta objects builder that is used to create the Meta object. The Meta objects builder is an object that implements the MetaObjectsBuilder interface.
+    The `default` value is the global Meta objects builder (`MetaObjectsBuilder.instance`).
 
 &nbsp;
 
@@ -402,18 +407,18 @@ Objects inheritance
 import { BOOLEAN, Meta, MetaType, NUMBER, STRING } from 'metatyper'
 
 const obj1: any = {
-  a: 1,
-  b: NUMBER({ optional: true })
+    a: 1,
+    b: NUMBER({ optional: true })
 }
 
 const obj2: any = {
-  c: 2,
-  d: STRING({ optional: true })
+    c: 2,
+    d: STRING({ optional: true })
 }
 
 const obj3: any = {
-  e: 3,
-  f: BOOLEAN({ optional: true })
+    e: 3,
+    f: BOOLEAN({ optional: true })
 }
 
 Object.setPrototypeOf(obj2, obj1)
@@ -453,19 +458,19 @@ import { Meta, NUMBER } from 'metatyper'
 
 @Meta.Class()
 class A {
-  static a = NUMBER({ optional: true })
-  a = NUMBER({ optional: true })
+    static a = NUMBER({ optional: true })
+    a = NUMBER({ optional: true })
 }
 
 class B extends A {
-  static b = NUMBER({ optional: true })
-  b = NUMBER({ optional: true })
+    static b = NUMBER({ optional: true })
+    b = NUMBER({ optional: true })
 }
 
 @Meta.Class()
 class C extends B {
-  static c = NUMBER({ optional: true })
-  c = NUMBER({ optional: true })
+    static c = NUMBER({ optional: true })
+    c = NUMBER({ optional: true })
 }
 
 console.log(A.toString())
@@ -513,9 +518,9 @@ import { Meta } from 'metatyper'
 
 @Meta.Class() // Meta.Class(args) has arguments as in Meta({}, args)
 class MetaA {
-  a = 'string'
+    a = 'string'
 
-  static a = 2
+    static a = 2
 }
 
 // throw a validation error because this property was initialized number
@@ -537,34 +542,34 @@ You can do this in different ways:
 
 &nbsp;
 
-- Specify the Meta type explicitly:
+-   Specify the Meta type explicitly:
 
 ```typescript
 class Test {
-  @Meta.declare(NUMBER({ min: 0 }))
-  a: number
+    @Meta.declare(NUMBER({ min: 0 }))
+    a: number
 }
 ```
 
 &nbsp;
 
-- Let the decorator infer the Meta type from the property value.
+-   Let the decorator infer the Meta type from the property value.
 
 ```typescript
 class Test {
-  @Meta.declare({ min: 0 })
-  a: number = 0
+    @Meta.declare({ min: 0 })
+    a: number = 0
 }
 ```
 
 &nbsp;
 
-- Use `reflect-metadata` to automatically resolve the Meta type from the property type:
+-   Use `reflect-metadata` to automatically resolve the Meta type from the property type:
 
 ```typescript
 class Test {
-  @Meta.declare({ min: 0 })
-  a: number
+    @Meta.declare({ min: 0 })
+    a: number
 }
 ```
 
@@ -655,12 +660,12 @@ Example, how to create a new Meta type:
 import { MetaType, StringImpl } from 'metatyper'
 
 const newType1 = MetaType<string>(StringImpl, {
-  /* metaTypeArgs */
+    /* metaTypeArgs */
 })
 const newType2 = MetaType<string>(
-  StringImpl.build({
-    /* metaTypeArgs */
-  })
+    StringImpl.build({
+        /* metaTypeArgs */
+    })
 )
 ```
 
@@ -674,17 +679,17 @@ Meta type implementation example:
 import { MetaType, StringImpl } from 'metatyper'
 
 class LowerCaseStringImpl extends StringImpl {
-  static isCompatible(value: string) {
-    if (!this.isCompatible(value)) {
-      return false
-    }
+    static isCompatible(value: string) {
+        if (!this.isCompatible(value)) {
+            return false
+        }
 
-    return !/[A-Z]/.test(value)
-  }
+        return !/[A-Z]/.test(value)
+    }
 }
 
 export function LowerCaseString() {
-  return MetaType<LowerCaseString>(LowerCaseStringImpl)
+    return MetaType<LowerCaseString>(LowerCaseStringImpl)
 }
 
 type LowerCaseString = MetaType<Lowercase<string>, LowerCaseStringImpl>
@@ -695,7 +700,7 @@ import { Meta } from 'metatyper'
 
 @Meta.Class()
 class MyNewExample {
-  str = LowerCaseString()
+    str = LowerCaseString()
 }
 
 const instance = new MyNewExample()
@@ -708,31 +713,31 @@ To learn more about the principles of Meta types creation, you can explore the [
 
 &nbsp;
 
-#### MetaTypeArgs
+#### MetaTypeArgsType
 
 This represents the arguments for creating a Meta type.
 
 ```typescript
-type MetaTypeArgs<
-  T = any,
-  IsNullishT extends boolean = boolean,
-  IsNullableT extends boolean = IsNullishT,
-  IsOptionalT extends boolean = IsNullishT
+type MetaTypeArgsType<
+    T = any,
+    IsNullishT extends boolean = boolean,
+    IsNullableT extends boolean = IsNullishT,
+    IsOptionalT extends boolean = IsNullishT
 > = {
-  name?: string
-  subType?: any
-  default?: T | ((declaration?: MetaTypeImpl) => T)
-  nullish?: IsNullishT
-  nullable?: IsNullableT
-  optional?: IsOptionalT
-  coercion?: boolean
-  validateType?: boolean
-  noBuiltinValidators?: boolean
-  noBuiltinSerializers?: boolean
-  noBuiltinDeSerializers?: boolean
-  validators?: (ValidatorType | ValidatorFuncType)[]
-  serializers?: (SerializerType | SerializeFuncType)[]
-  deserializers?: (DeSerializerType | DeSerializeFuncType)[]
+    name?: string
+    subType?: any
+    default?: T | ((declaration?: MetaTypeImpl) => T)
+    nullish?: IsNullishT
+    nullable?: IsNullableT
+    optional?: IsOptionalT
+    coercion?: boolean
+    validateType?: boolean
+    noBuiltinValidators?: boolean
+    noBuiltinSerializers?: boolean
+    noBuiltinDeSerializers?: boolean
+    validators?: (ValidatorType | ValidatorFuncType)[]
+    serializers?: (SerializerType | SerializeFuncType)[]
+    deserializers?: (DeSerializerType | DeSerializeFuncType)[]
 } & Record<string, any>
 ```
 
@@ -804,8 +809,8 @@ Default value is `false`.
 type ValidatorFuncType = (validateArgs: ValidatorArgsType) => boolean
 
 type ValidatorType = {
-  name?: string
-  validate: ValidatorFuncType
+    name?: string
+    validate: ValidatorFuncType
 }
 ```
 
@@ -820,9 +825,9 @@ For example, `obj['prop']` or `Meta.serialize(obj)`.
 type SerializeFuncType = (serializeArgs: SerializerArgsType) => any
 
 type SerializerType = {
-  serialize: SerializeFuncType
-  name?: string
-  serializePlaces?: ('get' | 'serialize' | 'unknown')[] | string[]
+    serialize: SerializeFuncType
+    name?: string
+    serializePlaces?: ('get' | 'serialize' | 'unknown')[] | string[]
 }
 ```
 
@@ -837,9 +842,9 @@ prior to validation. For example, `obj['prop'] = 'value'` or `Meta.deserialize(m
 type DeSerializeFuncType = (deserializeArgs: DeSerializerArgsType) => any
 
 type DeSerializerType = {
-  serialize: DeSerializeFuncType
-  name?: string
-  deserializePlaces?: ('init' | 'reinit' | 'set' | 'deserialize' | 'unknown')[] | string[]
+    serialize: DeSerializeFuncType
+    name?: string
+    deserializePlaces?: ('init' | 'reinit' | 'set' | 'deserialize' | 'unknown')[] | string[]
 }
 ```
 
@@ -849,7 +854,7 @@ type DeSerializerType = {
 
 ### Built-in Meta Types
 
-Each built-in Meta type has `args?: MetaTypeArgs` at the end of arguments. How to use it you can see below.
+Each built-in Meta type has `args?: MetaTypeArgsType` at the end of arguments. How to use it you can see below.
 
 &nbsp;
 
@@ -859,7 +864,7 @@ Each built-in Meta type has `args?: MetaTypeArgs` at the end of arguments. How t
 import { ANY, Meta } from 'metatyper'
 
 const obj1 = Meta({
-  a: ANY({ nullish: true })
+    a: ANY({ nullish: true })
 }) // as { a: any }
 
 obj1.a = 1
@@ -874,15 +879,15 @@ obj1.a = {}
 import { BOOLEAN, Meta } from 'metatyper'
 
 const obj = Meta({
-  someField: BOOLEAN({
-    default: false,
+    someField: BOOLEAN({
+        default: false,
 
-    // BooleanMetaTypeArgs
-    trueValues: [1],
-    // will replace 1 with true
-    falseValues: [(value) => value === 0]
-    // will replace 0 with false
-  })
+        // BooleanMetaTypeArgs
+        trueValues: [1],
+        // will replace 1 with true
+        falseValues: [(value) => value === 0]
+        // will replace 0 with false
+    })
 }) // as { someField: boolean }
 
 obj.someField = true
@@ -898,20 +903,20 @@ obj.someField = 'true' // type & validation error
 import { Meta, STRING } from 'metatyper'
 
 const obj = Meta({
-  someField: STRING({
-    nullish: true,
+    someField: STRING({
+        nullish: true,
 
-    // StringMetaTypeArgs
-    notEmpty: true, // == minLength: 0
-    minLength: 0,
-    maxLength: 10,
+        // StringMetaTypeArgs
+        notEmpty: true, // == minLength: 0
+        minLength: 0,
+        maxLength: 10,
 
-    regexp: '^[a-zA-Z]+$',
-    // validate using this regular expression
+        regexp: '^[a-zA-Z]+$',
+        // validate using this regular expression
 
-    toCase: 'lower'
-    // serialize to lowercase (or 'upper')
-  })
+        toCase: 'lower'
+        // serialize to lowercase (or 'upper')
+    })
 }) // as { someField?: string | null | undefined }
 
 obj.someField = 'STR' // will serialize to lowercase
@@ -926,15 +931,15 @@ obj.someField = 1 // type & validation error
 import { Meta, NUMBER } from 'metatyper'
 
 const obj = Meta({
-  someField: NUMBER({
-    nullish: true,
+    someField: NUMBER({
+        nullish: true,
 
-    // NumberMetaTypeArgs
-    min: 1, // value >= 1
-    max: 9, // value <= 9
-    greater: 0, // value > 0
-    less: 10 // value < 10
-  })
+        // NumberMetaTypeArgs
+        min: 1, // value >= 1
+        max: 9, // value <= 9
+        greater: 0, // value > 0
+        less: 10 // value < 10
+    })
 }) // as { someField?: number | null | undefined }
 
 obj.someField = 1.2
@@ -950,15 +955,15 @@ obj.someField = 'str' // type & validation error
 import { INTEGER, Meta } from 'metatyper'
 
 const obj = Meta({
-  someField: INTEGER({
-    nullish: true,
+    someField: INTEGER({
+        nullish: true,
 
-    // NumberMetaTypeArgs
-    min: 1, // value >= 1
-    max: 9, // value <= 9
-    greater: 0, // value > 0
-    less: 10 // value < 10
-  })
+        // NumberMetaTypeArgs
+        min: 1, // value >= 1
+        max: 9, // value <= 9
+        greater: 0, // value > 0
+        less: 10 // value < 10
+    })
 }) // as { someField?: number | null | undefined }
 
 obj.someField = 1
@@ -974,15 +979,15 @@ obj.someField = 1.1 // validation error
 import { BIGINT, Meta } from 'metatyper'
 
 const obj = Meta({
-  someField: BIGINT({
-    nullish: true,
+    someField: BIGINT({
+        nullish: true,
 
-    // NumberMetaTypeArgs
-    min: 1, // value >= 1
-    max: 9, // value <= 9
-    greater: 0, // value > 0
-    less: 10 // value < 10
-  })
+        // NumberMetaTypeArgs
+        min: 1, // value >= 1
+        max: 9, // value <= 9
+        greater: 0, // value > 0
+        less: 10 // value < 10
+    })
 }) // as { someField?: bigint | null | undefined }
 
 obj.someField = 1n
@@ -998,15 +1003,15 @@ obj.someField = 1 // type and validation error
 import { DATE, Meta } from 'metatyper'
 
 const obj = Meta({
-  someField: DATE({
-    nullish: true,
+    someField: DATE({
+        nullish: true,
 
-    // DateMetaTypeArgs
-    min: 1, // value >= new Date(1)
-    max: new Date(), // value <= new Date()
-    greater: 0, // value > new Date(0)
-    less: 10n // value < new Date(10)
-  })
+        // DateMetaTypeArgs
+        min: 1, // value >= new Date(1)
+        max: new Date(), // value <= new Date()
+        greater: 0, // value > new Date(0)
+        less: 10n // value < new Date(10)
+    })
 }) // as { someField?: Date | null | undefined }
 
 obj.someField = new Date(1)
@@ -1021,9 +1026,9 @@ obj.someField = 1 // type and validation error
 import { LITERAL, Meta } from 'metatyper'
 
 const obj = Meta({
-  someField: LITERAL(1, {
-    nullish: true
-  })
+    someField: LITERAL(1, {
+        nullish: true
+    })
 }) // as { someField?: 1 | null | undefined }
 
 obj.someField = 1
@@ -1069,7 +1074,7 @@ obj.someField = B // type and validation error
 import { BOOLEAN, Meta, STRING, UNION } from 'metatyper'
 
 const obj = Meta({
-  someField: UNION([BOOLEAN({ nullable: true }), STRING({ optional: true })])
+    someField: UNION([BOOLEAN({ nullable: true }), STRING({ optional: true })])
 })
 // as { someField: (boolean | null) | (string | undefined) }
 
@@ -1129,16 +1134,16 @@ obj.someField = [1, '1'] // type and validation error
 import { Meta, STRING, TUPLE } from 'metatyper'
 
 const obj = Meta({
-  someField: TUPLE([false, STRING({ optional: true })], {
-    nullish: true,
+    someField: TUPLE([false, STRING({ optional: true })], {
+        nullish: true,
 
-    // TupleMetaTypeArgs
+        // TupleMetaTypeArgs
 
-    freeze: true,
-    // will create a frozen copy when deserializing
+        freeze: true,
+        // will create a frozen copy when deserializing
 
-    serializeSubValues: false // default: true
-  })
+        serializeSubValues: false // default: true
+    })
 })
 /* 
 as { 
@@ -1242,15 +1247,15 @@ Use argument to create a REF
 import { Meta, OBJECT } from 'metatyper'
 
 OBJECT((selfImpl) => {
-  type MyObjectType = {
-    // ... any fields
-    self?: MyObjectType
-  }
+    type MyObjectType = {
+        // ... any fields
+        self?: MyObjectType
+    }
 
-  return {
-    // ... any fields
-    self: selfImpl as any
-  } as MyObjectType
+    return {
+        // ... any fields
+        self: selfImpl as any
+    } as MyObjectType
 })
 // OBJECT(g4dv1h)<{ self: REF<g4dv1h> }>
 ```
@@ -1265,15 +1270,15 @@ Use a variable to create a REF
 import { Meta, OBJECT } from 'metatyper'
 
 type MyType = {
-  // ... any fields
-  self?: MyType
+    // ... any fields
+    self?: MyType
 }
 
 const myType: OBJECT<MyType> = OBJECT(() => {
-  return {
-    // ... any fields
-    self: myType
-  }
+    return {
+        // ... any fields
+        self: myType
+    }
 })
 // OBJECT(g4dv1h)<{ self: REF<g4dv1h> }>
 ```
@@ -1286,12 +1291,12 @@ Use recursive structures to create a REF
 import { Meta, OBJECT } from 'metatyper'
 
 type MyType = {
-  // ... any fields
-  self?: MyType
+    // ... any fields
+    self?: MyType
 }
 
 const myTypeSchema: MyType = {
-  /* any fields */
+    /* any fields */
 }
 myTypeSchema.self = myTypeSchema
 
@@ -1307,24 +1312,24 @@ And of course you can create more complex structures like this
 import { Meta, OBJECT, STRING, TUPLE } from 'metatyper'
 
 const myObjectType = OBJECT((selfImpl) => {
-  type MyTuple = [MyObjectType, string, MyTuple]
-  type MyObjectType = {
-    a: number
-    b: { selfImpl: MyObjectType }
-    c: MyObjectType[]
-    d: MyTuple
-  }
+    type MyTuple = [MyObjectType, string, MyTuple]
+    type MyObjectType = {
+        a: number
+        b: { selfImpl: MyObjectType }
+        c: MyObjectType[]
+        d: MyTuple
+    }
 
-  const myObjectSchema: any = {
-    a: 1,
-    b: { selfImpl },
-    c: null,
-    d: TUPLE((selfImpl) => [myObjectType, STRING(), selfImpl])
-  }
+    const myObjectSchema: any = {
+        a: 1,
+        b: { selfImpl },
+        c: null,
+        d: TUPLE((selfImpl) => [myObjectType, STRING(), selfImpl])
+    }
 
-  myObjectSchema.c = [myObjectSchema, selfImpl, myObjectType]
+    myObjectSchema.c = [myObjectSchema, selfImpl, myObjectType]
 
-  return myObjectSchema as MyObjectType
+    return myObjectSchema as MyObjectType
 })
 
 console.log(myObjectType.toString())
@@ -1362,11 +1367,11 @@ Meta objects come with built-in validation capability. Validators specific to ea
 
 Validators for Meta types are categorized into:
 
-- **Built-in Validators**: For example, `STRING` Meta type uses `MinLengthValidator`, configurable via the `minLength` argument.
+-   **Built-in Validators**: For example, `STRING` Meta type uses `MinLengthValidator`, configurable via the `minLength` argument.
 
-- **Runtime Validators**: These are provided as arguments at runtime to the Meta type.
+-   **Runtime Validators**: These are provided as arguments at runtime to the Meta type.
 
-For more details on the arguments accepted by Meta types, see the [MetaTypeArgs](#metatypeargs) section.
+For more details on the arguments accepted by Meta types, see the [MetaTypeArgsType](#metatypeargs) section.
 
 Validation occurs automatically when assigning new values to a Meta object. Additionally, you can explicitly validate another object using the method:
 
@@ -1387,12 +1392,12 @@ Meta.validate(
 import { Meta } from 'metatyper'
 
 const schema = {
-  id: 0,
-  name: STRING({
-    validators: [
-      /* validators here */
-    ]
-  })
+    id: 0,
+    name: STRING({
+        validators: [
+            /* validators here */
+        ]
+    })
 }
 
 Meta.validate(schema, { id: '351', name: null })
@@ -1407,29 +1412,29 @@ A validator is an object that contains a `validate` method:
 
 ```typescript
 type ValidatorType = {
-  name?: string
-  validate: (args: ValidatorArgsType) => boolean
+    name?: string
+    validate: (args: ValidatorArgsType) => boolean
 }
 
 type ValidatorArgsType = {
-  value: any
-  metaTypeImpl?: MetaTypeImpl
-  propName?: string | symbol
-  targetObject?: object
-  baseObject?: object
+    value: any
+    metaTypeImpl?: MetaTypeImpl
+    propName?: string | symbol
+    targetObject?: object
+    baseObject?: object
 
-  safe?: boolean
-  stopAtFirstError?: boolean
+    safe?: boolean
+    stopAtFirstError?: boolean
 } & Record<string, any>
 ```
 
-- `value`: The value to be validated.
-- `metaTypeImpl`: The Meta type implementation invoking this validator.
-- `propName`: Specified when using Meta objects for validation.
-- `targetObject`: The object that needs to be validated.
-- `baseObject`: The object that contains the Meta type declaration with this validator.
-- `safe`: Determines whether a validation error should throw an exception.
-- `stopAtFirstError`: Specifies if validation should cease after the first error. Defaults to true.
+-   `value`: The value to be validated.
+-   `metaTypeImpl`: The Meta type implementation invoking this validator.
+-   `propName`: Specified when using Meta objects for validation.
+-   `targetObject`: The object that needs to be validated.
+-   `baseObject`: The object that contains the Meta type declaration with this validator.
+-   `safe`: Determines whether a validation error should throw an exception.
+-   `stopAtFirstError`: Specifies if validation should cease after the first error. Defaults to true.
 
 &nbsp;
 
@@ -1456,13 +1461,13 @@ Method 2
 ```typescript
 @Meta.Class()
 class MyClass2 {
-  myProp = MyType({
-    validators: [],
-    // Set empty array
+    myProp = MyType({
+        validators: [],
+        // Set empty array
 
-    noBuiltinValidators: true
-    // Disables the built-in validators like MetaTypeValidator or MinLengthValidator
-  })
+        noBuiltinValidators: true
+        // Disables the built-in validators like MetaTypeValidator or MinLengthValidator
+    })
 }
 ```
 
@@ -1476,7 +1481,7 @@ Serialization and deserialization of values are handled by Meta type's serialize
 Meta.serialize = (
     metaObject: Meta<T> | T,
     serializeArgs?: {
-        metaArgs?: MetaArgs
+        metaArgs?: MetaArgsType
     }
 ): { [key in keyof T]: any }
 ```
@@ -1488,7 +1493,7 @@ Meta.deserialize = (
     metaObjectOrProto: Meta<T> | T,
     rawObject: object,
     deserializeArgs?: {
-        metaArgs?: MetaArgs
+        metaArgs?: MetaArgsType
     }
 ): Meta<T>
 ```
@@ -1503,8 +1508,8 @@ import { Meta } from 'metatyper'
 const objToSerialize = { id: '351', date: new Date(123) }
 
 const objToDeSerialize = Meta.serialize<{
-  id: string
-  date: number
+    id: string
+    date: number
 }>({ id: '', name: DATE({ coercion: true }) }, objToSerialize)
 
 // objToDeSerialize now equals { id: '351', date: 123 }
@@ -1520,37 +1525,37 @@ A **serializer** is an object with a `serialize` method, and a **deserializer** 
 
 ```typescript
 type SerializerArgsType = {
-  value: any
-  metaTypeImpl?: MetaTypeImpl
-  propName?: string | symbol
-  targetObject?: object
-  baseObject?: object
-  place?: SerializePlaceType
+    value: any
+    metaTypeImpl?: MetaTypeImpl
+    propName?: string | symbol
+    targetObject?: object
+    baseObject?: object
+    place?: SerializePlaceType
 }
 
 type SerializerType = {
-  serialize: (serializeArgs: SerializerArgsType) => any
+    serialize: (serializeArgs: SerializerArgsType) => any
 
-  name?: string
-  serializePlaces?: SerializePlaceType[]
+    name?: string
+    serializePlaces?: SerializePlaceType[]
 }
 ```
 
 ```typescript
 type DeSerializerArgsType = {
-  value: any
-  metaTypeImpl?: MetaTypeImpl
-  propName?: string | symbol
-  targetObject?: object
-  baseObject?: object
-  place?: DeSerializePlaceType
+    value: any
+    metaTypeImpl?: MetaTypeImpl
+    propName?: string | symbol
+    targetObject?: object
+    baseObject?: object
+    place?: DeSerializePlaceType
 }
 
 type DeSerializerType = {
-  deserialize: (deserializeArgs: DeSerializerArgsType) => any
+    deserialize: (deserializeArgs: DeSerializerArgsType) => any
 
-  name?: string
-  deserializePlaces?: DeSerializePlaceType[]
+    name?: string
+    deserializePlaces?: DeSerializePlaceType[]
 }
 ```
 
@@ -1560,17 +1565,17 @@ Serialization and deserialization processes can be adjusted depending on their s
 
 `SerializePlaceType` indicates various contexts where serialization can happen:
 
-- `get`: This is used when retrieving a property, for example, accessing a property like `obj.prop`.
-- `serialize`: This context is applied during the serialization of an object, such as when using `Meta.serialize(obj)`.
-- `unknown`: This default setting is used for custom serialization logic that does not fit the other predefined contexts.
+-   `get`: This is used when retrieving a property, for example, accessing a property like `obj.prop`.
+-   `serialize`: This context is applied during the serialization of an object, such as when using `Meta.serialize(obj)`.
+-   `unknown`: This default setting is used for custom serialization logic that does not fit the other predefined contexts.
 
 Similarly, `DeSerializePlaceType` outlines different scenarios for deserialization:
 
-- `init`: Indicates the initialization of a new type declaration, like starting a Meta object with `Meta({ prop: 'value' })`.
-- `reinit`: Used when re-initializing type declarations by defining a new Meta type, for example, changing a property's type with `obj.prop = NUMBER()`.
-- `set`: Applies when setting a new property value, such as `obj.prop = 1`.
-- `deserialize`: This context is for deserializing an object, done like `Meta.deserialize(obj, rawData)`.
-- `unknown`: The default setting for custom deserialization logic that doesn't align with the specified contexts.
+-   `init`: Indicates the initialization of a new type declaration, like starting a Meta object with `Meta({ prop: 'value' })`.
+-   `reinit`: Used when re-initializing type declarations by defining a new Meta type, for example, changing a property's type with `obj.prop = NUMBER()`.
+-   `set`: Applies when setting a new property value, such as `obj.prop = 1`.
+-   `deserialize`: This context is for deserializing an object, done like `Meta.deserialize(obj, rawData)`.
+-   `unknown`: The default setting for custom deserialization logic that doesn't align with the specified contexts.
 
 &nbsp;
 
@@ -1597,19 +1602,19 @@ Method 2
 ```typescript
 @Meta.Class()
 class MyClass2 {
-  myProp = MyType({
-    serializers: [],
-    // Empty array disables serializers
+    myProp = MyType({
+        serializers: [],
+        // Empty array disables serializers
 
-    deserializers: [],
-    // Empty array disables deserializers
+        deserializers: [],
+        // Empty array disables deserializers
 
-    noBuiltinSerializers: true,
-    // Disables all built-in serializers like Coercion
+        noBuiltinSerializers: true,
+        // Disables all built-in serializers like Coercion
 
-    noBuiltinDeSerializers: true
-    // Disables all built-in deserializers like Coercion
-  })
+        noBuiltinDeSerializers: true
+        // Disables all built-in deserializers like Coercion
+    })
 }
 ```
 
@@ -1658,10 +1663,10 @@ NUMBER({ coercion: true })
 
 `Meta.deserialize` will cast `value` depending on the type of the value:
 
-- `Date` -> `value.getTime()`
-- `bigint` -> `Number(value)`
-- `string` -> `Number(value)`
-- `boolean` -> `Number(value)`
+-   `Date` -> `value.getTime()`
+-   `bigint` -> `Number(value)`
+-   `string` -> `Number(value)`
+-   `boolean` -> `Number(value)`
 
 &nbsp;
 
@@ -1673,11 +1678,11 @@ INTEGER({ coercion: true })
 
 `Meta.deserialize` will cast `value` depends on the type of the value:
 
-- `Date` -> `value.getTime()`
-- `bigint` -> `Number(value)`
-- `string` -> `Number(value)`
-- `boolean` -> `Number(value)`
-- `number` -> `Math.trunc(value)`
+-   `Date` -> `value.getTime()`
+-   `bigint` -> `Number(value)`
+-   `string` -> `Number(value)`
+-   `boolean` -> `Number(value)`
+-   `number` -> `Math.trunc(value)`
 
 &nbsp;
 
@@ -1689,10 +1694,10 @@ BIGINT({ coercion: true })
 
 `Meta.deserialize` will cast `value` depends on the type of the value:
 
-- `Date` -> `BigInt(value.getTime())`
-- `string` -> `BigInt(value)`
-- `boolean` -> `BigInt(value)`
-- `number` -> `BigInt(Math.trunc(value))`
+-   `Date` -> `BigInt(value.getTime())`
+-   `string` -> `BigInt(value)`
+-   `boolean` -> `BigInt(value)`
+-   `number` -> `BigInt(Math.trunc(value))`
 
 `Meta.serialize` will cast `value` to `string`.
 
@@ -1706,9 +1711,9 @@ DATE({ coercion: true })
 
 `Meta.deserialize` will cast `value` depends on the type of the value:
 
-- `bigint` -> `new Date(Number(value))`
-- `number` -> `new Date(value)`
-- `string` -> `new Date(value)`
+-   `bigint` -> `new Date(Number(value))`
+-   `number` -> `new Date(value)`
+-   `string` -> `new Date(value)`
 
 `Meta.serialize` will cast `value` to timestamp (`value.getTime()`).
 
@@ -1734,22 +1739,22 @@ When it comes to serialization of Meta type data, encountering errors is a possi
 
 Key fields of the `MetaTypeSerializerError`:
 
-- **serializer**: This property provides a direct link to the `SerializerType` instance responsible for the error. This allows developers to easily identify which serializer was involved in the process and potentially inspect its configuration or state at the time of failure.
+-   **serializer**: This property provides a direct link to the `SerializerType` instance responsible for the error. This allows developers to easily identify which serializer was involved in the process and potentially inspect its configuration or state at the time of failure.
 
-- **serializerErrorArgs**: Holding the type `SerializerErrorArgsType`, this property delivers a detailed look at the arguments fed into the serialization function at the error's occurrence. These arguments cover a range of information, from the value being serialized, the property's name, the target object, to additional options affecting serialization. Within `serializerErrorArgs`, there's a `subError` field holding an `Error` instance, shedding light on the precise cause of the serialization failure. This layered error reporting strategy significantly aids in debugging by providing a clear context of the error beyond merely indicating its occurrence.
+-   **serializerErrorArgs**: Holding the type `SerializerErrorArgsType`, this property delivers a detailed look at the arguments fed into the serialization function at the error's occurrence. These arguments cover a range of information, from the value being serialized, the property's name, the target object, to additional options affecting serialization. Within `serializerErrorArgs`, there's a `subError` field holding an `Error` instance, shedding light on the precise cause of the serialization failure. This layered error reporting strategy significantly aids in debugging by providing a clear context of the error beyond merely indicating its occurrence.
 
 ```typescript
 type SerializerErrorArgsType = {
-  value: any
+    value: any
 
-  subError?: Error
+    subError?: Error
 
-  propName?: string | symbol
-  targetObject?: object
-  baseObject?: object
-  place?: SerializePlaceType
+    propName?: string | symbol
+    targetObject?: object
+    baseObject?: object
+    place?: SerializePlaceType
 
-  metaTypeImpl?: MetaTypeImpl
+    metaTypeImpl?: MetaTypeImpl
 } & Record<string, any>
 ```
 
@@ -1761,22 +1766,22 @@ Mirroring the `MetaTypeSerializerError`, the `MetaTypeDeSerializerError` address
 
 Key fields of the `MetaTypeDeSerializerError`:
 
-- **deserializer**: Reflecting the `serializer` attribute in `MetaTypeSerializerError`, this field links to the deserializer instance that encountered the error, facilitating an understanding of which deserialization logic didn't succeed.
+-   **deserializer**: Reflecting the `serializer` attribute in `MetaTypeSerializerError`, this field links to the deserializer instance that encountered the error, facilitating an understanding of which deserialization logic didn't succeed.
 
-- **deserializerErrorArgs**: As `DeSerializerErrorArgsType`, this attribute documents the arguments present at the deserialization function during the error event. Providing a comprehensive context, these arguments include the value being deserialized, relevant property names, and the objects involved, among others.
+-   **deserializerErrorArgs**: As `DeSerializerErrorArgsType`, this attribute documents the arguments present at the deserialization function during the error event. Providing a comprehensive context, these arguments include the value being deserialized, relevant property names, and the objects involved, among others.
 
 ```typescript
 type DeSerializerErrorArgsType = {
-  value: any
+    value: any
 
-  subError?: Error
+    subError?: Error
 
-  propName?: string | symbol
-  targetObject?: object
-  baseObject?: object
-  place?: DeSerializePlaceType
+    propName?: string | symbol
+    targetObject?: object
+    baseObject?: object
+    place?: DeSerializePlaceType
 
-  metaTypeImpl?: MetaTypeImpl
+    metaTypeImpl?: MetaTypeImpl
 } & Record<string, any>
 ```
 
@@ -1794,21 +1799,21 @@ During the validation process of Meta type data, it's plausible to encounter fai
 
 Key fields of the `MetaTypeValidatorError`:
 
-- **validator**: This field connects directly to the `ValidatorType` that generated the error, allowing developers to identify and investigate the specific validator causing the issue.
+-   **validator**: This field connects directly to the `ValidatorType` that generated the error, allowing developers to identify and investigate the specific validator causing the issue.
 
-- **validatorErrorArgs**: Holding the `ValidatorErrorArgsType`, this attribute provides a detailed account of the circumstances leading to the validation error. Information includes the value under validation, property names, the involved objects, and optionally, a subError detailing the underlying cause of failure, if applicable. Additionally, it may indicate whether the validation was set to stop at the first error or continue to gather all errors.
+-   **validatorErrorArgs**: Holding the `ValidatorErrorArgsType`, this attribute provides a detailed account of the circumstances leading to the validation error. Information includes the value under validation, property names, the involved objects, and optionally, a subError detailing the underlying cause of failure, if applicable. Additionally, it may indicate whether the validation was set to stop at the first error or continue to gather all errors.
 
 ```typescript
 type ValidatorErrorArgsType = {
-  value: any
-  subError?: Error
+    value: any
+    subError?: Error
 
-  propName?: string | symbol
-  targetObject?: object
-  baseObject?: object
+    propName?: string | symbol
+    targetObject?: object
+    baseObject?: object
 
-  metaTypeImpl?: MetaTypeImpl
-  stopAtFirstError?: boolean
+    metaTypeImpl?: MetaTypeImpl
+    stopAtFirstError?: boolean
 } & Record<string, any>
 ```
 
@@ -1820,7 +1825,7 @@ Mirroring scenarios in which `MetaTypeValidatorError` arises, the `MetaTypeValid
 
 Key fields of the `MetaTypeValidatorsArrayError`:
 
-- **validatorsErrors**: This attribute is an array of `MetaTypeValidatorError` instances, each detailing a specific validation failure encountered during the process. This collection offers a broad perspective on the nature and extent of validation issues, facilitating thorough error resolution.
+-   **validatorsErrors**: This attribute is an array of `MetaTypeValidatorError` instances, each detailing a specific validation failure encountered during the process. This collection offers a broad perspective on the nature and extent of validation issues, facilitating thorough error resolution.
 
 &nbsp;
 
@@ -1830,15 +1835,15 @@ There are many other popular good libraries that perform similar functions well.
 
 These libs are worth a look:
 
-- class-validator
-- io-ts
-- joi
-- ow
-- runtypes
-- ts-toolbelt
-- type-fest
-- yup
-- zod
+-   class-validator
+-   io-ts
+-   joi
+-   ow
+-   runtypes
+-   ts-toolbelt
+-   type-fest
+-   yup
+-   zod
 
 &nbsp;
 
