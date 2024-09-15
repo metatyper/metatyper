@@ -10,22 +10,25 @@ export default [
             // for browsers
             {
                 file: 'lib/metatyper.min.cjs',
-                format: 'cjs'
+                format: 'cjs',
+                sourcemap: !!process.env.ROLLUP_WATCH
             },
             {
                 file: 'lib/metatyper.min.mjs',
-                format: 'es'
+                format: 'es',
+                sourcemap: !!process.env.ROLLUP_WATCH
             },
             {
                 file: 'lib/metatyper.min.js',
                 format: 'iife',
-                name: 'MetaTyper'
+                name: 'MetaTyper',
+                sourcemap: !!process.env.ROLLUP_WATCH
             }
         ],
         plugins: [
             typescript({
                 tsconfig: 'tsconfig.build.json',
-                sourceMap: true,
+                sourceMap: !!process.env.ROLLUP_WATCH,
 
                 downlevelIteration: true
             }),
@@ -38,17 +41,19 @@ export default [
         output: [
             {
                 file: 'lib/index.js',
-                format: 'cjs'
+                format: 'cjs',
+                sourcemap: !!process.env.ROLLUP_WATCH
             },
             {
                 file: 'lib/index.mjs',
-                format: 'es'
+                format: 'es',
+                sourcemap: !!process.env.ROLLUP_WATCH
             }
         ],
         plugins: [
             typescript({
                 tsconfig: 'tsconfig.build.json',
-                sourceMap: true
+                sourceMap: !!process.env.ROLLUP_WATCH
             }),
             filesize()
         ]
