@@ -4,9 +4,29 @@ on:
   push:
     branches:
       - main
+    paths:
+      - './src/**'
+      - './tests/**'
+      - '.github/workflows/test.yaml'
+      - '.prettierrc'
+      - 'eslint.config.mjs'
+      - 'jest.config.mjs'
+      - 'tsconfig.json'
+      - 'package.json'
+      - 'yarn.lock'
   pull_request:
     branches:
       - main
+    paths:
+      - './src/**'
+      - './tests/**'
+      - '.github/workflows/test.yaml'
+      - '.prettierrc'
+      - 'eslint.config.mjs'
+      - 'jest.config.mjs'
+      - 'tsconfig.json'
+      - 'package.json'
+      - 'yarn.lock'
 
 jobs:
   test:
