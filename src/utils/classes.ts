@@ -25,9 +25,13 @@ export function isClass(target: any): boolean {
 
         return false
     } else {
+        if (typeof target !== 'function') return false
+
+        const repr = Function.prototype.toString.call(target)
+
         return (
             typeof target === 'function' &&
-            /^\s*class\s+/.test(Function.prototype.toString.call(target))
+            (/^\S*\s*\S*\{constructor\(.+/.test(repr) || /^\S*class.+/.test(repr))
         )
     }
 }
