@@ -23,9 +23,10 @@ export class MetaTypeSerializerError extends MetaTypeSerializationError {
         const place = serializerErrorArgs.place
         const deserializerName = serializer['name'] ?? serializer.toString()
 
-        const message = `Serializer error { serializer: ${deserializerName}; value: ${value}; metaType: ${metaTypeImpl}; place: ${place} }`
+        const message = `Serializer error { serializer: ${deserializerName}; value: ${value}; metaType: ${metaTypeImpl}; place: ${place};  message: ${serializerErrorArgs.subError?.message ?? 'Serialization failed'} }`
 
         super(message)
+        this.stack = serializerErrorArgs.subError?.stack ?? this.stack
 
         this.serializer = serializer
         this.serializerErrorArgs = serializerErrorArgs
@@ -46,9 +47,10 @@ export class MetaTypeDeSerializerError extends MetaTypeSerializationError {
         const place = deserializerErrorArgs.place
         const deserializerName = deserializer['name'] ?? deserializer.toString()
 
-        const message = `DeSerializer error { deserializer: ${deserializerName}; value: ${value}; metaType: ${metaTypeImpl}; place: ${place} }`
+        const message = `DeSerializer error { deserializer: ${deserializerName}; value: ${value}; metaType: ${metaTypeImpl}; place: ${place}; message: ${deserializerErrorArgs.subError?.message ?? 'Deserialization failed'} }`
 
         super(message)
+        this.stack = deserializerErrorArgs.subError?.stack ?? this.stack
 
         this.deserializer = deserializer
         this.deserializerErrorArgs = deserializerErrorArgs

@@ -17,9 +17,10 @@ export class MetaTypeValidatorError extends MetaTypeValidationError {
         const metaTypeImpl = validatorErrorArgs.metaTypeImpl
         const validatorName = validator.name ?? validator.validate.toString()
 
-        const message = `Validator error { validator: ${validatorName}; value: ${value}; metaType: ${metaTypeImpl} }`
+        const message = `Validator error { validator: ${validatorName}; value: ${value}; metaType: ${metaTypeImpl}; propName: ${validatorErrorArgs.propName?.toString() ?? 'unknown'}; message: ${validatorErrorArgs.subError?.message ?? 'Validation failed'} }`
 
         super(message)
+        this.stack = validatorErrorArgs.subError?.stack ?? this.stack
 
         this.validator = validator
         this.validatorErrorArgs = validatorErrorArgs
