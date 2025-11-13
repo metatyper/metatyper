@@ -123,4 +123,4 @@ export function UNION<
     }) as ResultT
 }
 
-export type UNION<T> = MetaType<T, UnionImpl>
+export type UNION<T> = T

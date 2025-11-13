@@ -26,6 +26,18 @@ export type ObjectMetaTypeArgs<
 
 @MetaTypeImpl.registerMetaType()
 export class ObjectImpl extends StructuralMetaTypeImpl {
+    protected prepareMetaTypeArgs(
+        metaTypeArgs: MetaTypeArgsType
+    ): MetaTypeArgsType<any, boolean, boolean, boolean> {
+        metaTypeArgs = super.prepareMetaTypeArgs(metaTypeArgs)
+
+        if (!Reflect.has(metaTypeArgs, 'default') && !metaTypeArgs.optional) {
+            metaTypeArgs.default = {}
+        }
+
+        return metaTypeArgs
+    }
+
     protected prepareSubType(subType: any) {
         if (!subType) subType = {}
 

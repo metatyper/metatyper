@@ -42,6 +42,18 @@ export type ArrayMetaTypeArgs<
 
 @MetaTypeImpl.registerMetaType()
 export class ArrayImpl extends StructuralMetaTypeImpl {
+    protected prepareMetaTypeArgs(
+        metaTypeArgs: MetaTypeArgsType
+    ): MetaTypeArgsType<any, boolean, boolean, boolean> {
+        metaTypeArgs = super.prepareMetaTypeArgs(metaTypeArgs)
+
+        if (!Reflect.has(metaTypeArgs, 'default') && !metaTypeArgs.optional) {
+            metaTypeArgs.default = []
+        }
+
+        return metaTypeArgs
+    }
+
     protected prepareNoLazySubType(subType: any): any {
         if (!Array.isArray(subType)) {
             subType = [subType]
@@ -95,7 +107,7 @@ export class ArrayImpl extends StructuralMetaTypeImpl {
 
         const subType = this.getSubType()
 
-        if (subType instanceof AnyImpl) {
+        if (!subType || subType instanceof AnyImpl) {
             return true
         }
 
@@ -118,12 +130,14 @@ export class ArrayImpl extends StructuralMetaTypeImpl {
         const subType = this.getSubType() as MetaTypeImpl
 
         return value.map((value: any) =>
-            subType.serialize({
-                value,
-                targetObject: args.targetObject,
-                baseObject: args.baseObject,
-                place: args.place
-            })
+            !subType
+                ? value
+                : subType.serialize({
+                      value,
+                      targetObject: args.targetObject,
+                      baseObject: args.baseObject,
+                      place: args.place
+                  })
         )
     }
 
@@ -133,12 +147,14 @@ export class ArrayImpl extends StructuralMetaTypeImpl {
         const subType = this.getSubType() as MetaTypeImpl
 
         return value.map((value: any) =>
-            subType.deserialize({
-                value,
-                targetObject: args.targetObject,
-                baseObject: args.baseObject,
-                place: args.place
-            })
+            !subType
+                ? value
+                : subType.deserialize({
+                      value,
+                      targetObject: args.targetObject,
+                      baseObject: args.baseObject,
+                      place: args.place
+                  })
         )
     }
 
@@ -219,6 +235,7 @@ export function ARRAY<
 
 export function ARRAY(subType?: any, args?: any) {
     return MetaType(ArrayImpl, {
+        default: [],
         ...args,
         subType
     })

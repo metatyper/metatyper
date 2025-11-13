@@ -628,7 +628,7 @@ describe('Meta types', () => {
             coercion: true,
             default: 1
         })
-        const metaTypeImpl = MetaType.getMetaTypeImpl(metaType) as UnionImpl
+        const metaTypeImpl = MetaType.getMetaTypeImpl<MetaType<unknown, UnionImpl>>(metaType)
 
         // toString
 
