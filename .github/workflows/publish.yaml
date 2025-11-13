@@ -58,14 +58,14 @@ jobs:
         run: |
           version=$(node -p "require('./package.json').version")
           echo "version=$version" >> $GITHUB_OUTPUT
-          echo "Version: ${{ inputs.target }}-v$version"
+          echo "Version: v$version"
 
       - id: create_release
         name: Create GitHub Release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          tag: ${{ inputs.target }}-v${{ steps.get_version.outputs.version }}
         run: |
+          tag=v$(node -p "require('./package.json').version")
           gh release create "$tag" \
               --repo="$GITHUB_REPOSITORY" \
               --title="${tag#v}" \
