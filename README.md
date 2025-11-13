@@ -883,10 +883,12 @@ const obj = Meta({
         default: false,
 
         // BooleanMetaTypeArgs
-        trueValues: [1],
+
         // will replace 1 with true
-        falseValues: [(value) => value === 0]
+        trueValues: [1],
+
         // will replace 0 with false
+        falseValues: [(value) => value === 0]
     })
 }) // as { someField: boolean }
 
@@ -911,11 +913,11 @@ const obj = Meta({
         minLength: 0,
         maxLength: 10,
 
-        regexp: '^[a-zA-Z]+$',
         // validate using this regular expression
+        regexp: '^[a-zA-Z]+$',
 
-        toCase: 'lower'
         // serialize to lowercase (or 'upper')
+        toCase: 'lower'
     })
 }) // as { someField?: string | null | undefined }
 
@@ -1055,8 +1057,9 @@ const obj = Meta({
         nullish: true
 
         // InstanceMetaTypeArgs
-        allowChildren: false
+
         // disallow the use of children B, default: true
+        allowChildren: false
     })
 })  // as { someField?: B | null | undefined }
 
@@ -1100,16 +1103,18 @@ const obj = Meta({
             nullish: true,
 
             // ArrayMetaTypeArgs
+
             notEmpty: true, // == minLength: 0
             minLength: 0,
             maxLength: 10,
-            freeze: true,
+
             // will create a frozen copy when deserializing
-            serializeSubValues: false // default: true
+            freeze: true
         }
     )
 
-    someField2: ARRAY(STRING(), { default: [] })
+    someField2: ARRAY(STRING(), { optional: true })
+    someField3: ARRAY(STRING())
 
 })
 /*
@@ -1117,8 +1122,9 @@ as {
     someField:
       | readonly (boolean | null | string | undefined)[]
       | null
-      | undefined
-    someField2: string[]
+      | undefined         === undefined (because nullish)
+    someField2?: string[] === undefined (because optional)
+    someField3: string[]  === [] (default value when not optional)
 }
 */
 
@@ -1139,10 +1145,8 @@ const obj = Meta({
 
         // TupleMetaTypeArgs
 
-        freeze: true,
         // will create a frozen copy when deserializing
-
-        serializeSubValues: false // default: true
+        freeze: true
     })
 })
 /* 
@@ -1180,16 +1184,15 @@ const obj = Meta({
 
         // ObjectMetaTypeArgs
 
-        freeze: true,
         // will create a frozen copy when deserializing
+        freeze: true,
 
-        required: ['a', 'b', 'c'],
         // by default all fields are required
-
-        serializeSubValues: false // default: true
+        required: ['a', 'b', 'c'],
     })
 
     someField2: OBJECT(BOOLEAN(), { optional: true })
+    someField3: OBJECT(BOOLEAN())
 
 })
 /*
@@ -1204,7 +1207,8 @@ as {
         }
     }
 
-    someField2?: Record<string, boolean>
+    someField2?: Record<string, boolean> === undefined
+    someField3: Record<string, boolean> === []
 }
 */
 
@@ -1249,7 +1253,7 @@ import { Meta, OBJECT } from 'metatyper'
 OBJECT((selfImpl) => {
     type MyObjectType = {
         // ... any fields
-        self?: MyObjectType
+        self: MyObjectType
     }
 
     return {
@@ -1260,7 +1264,7 @@ OBJECT((selfImpl) => {
 // OBJECT(g4dv1h)<{ self: REF<g4dv1h> }>
 ```
 
-> Be careful, `selfImpl` is of type `ObjectImpl`
+> Be careful, `selfImpl` is of type `ObjectImpl`, it's not meta type
 
 &nbsp;
 
@@ -1271,7 +1275,7 @@ import { Meta, OBJECT } from 'metatyper'
 
 type MyType = {
     // ... any fields
-    self?: MyType
+    self: MyType
 }
 
 const myType: OBJECT<MyType> = OBJECT(() => {
@@ -1292,7 +1296,7 @@ import { Meta, OBJECT } from 'metatyper'
 
 type MyType = {
     // ... any fields
-    self?: MyType
+    self: MyType
 }
 
 const myTypeSchema: MyType = {
@@ -1306,7 +1310,7 @@ OBJECT(myTypeSchema)
 
 &nbsp;
 
-And of course you can create more complex structures like this
+You can also create more complex recursive structures with nested references
 
 ```typescript
 import { Meta, OBJECT, STRING, TUPLE } from 'metatyper'
@@ -1314,20 +1318,20 @@ import { Meta, OBJECT, STRING, TUPLE } from 'metatyper'
 const myObjectType = OBJECT((selfImpl) => {
     type MyTuple = [MyObjectType, string, MyTuple]
     type MyObjectType = {
-        a: number
-        b: { selfImpl: MyObjectType }
-        c: MyObjectType[]
-        d: MyTuple
+        num: number
+        obj: { selfImpl: MyObjectType }
+        arr: MyObjectType[]
+        tup: MyTuple
     }
 
     const myObjectSchema: any = {
-        a: 1,
-        b: { selfImpl },
-        c: null,
-        d: TUPLE((selfImpl) => [myObjectType, STRING(), selfImpl])
+        num: 1,
+        obj: { selfImpl },
+        arr: null,
+        tup: TUPLE((selfImpl) => [myObjectType, STRING(), selfImpl])
     }
 
-    myObjectSchema.c = [myObjectSchema, selfImpl, myObjectType]
+    myObjectSchema.arr = [myObjectSchema, selfImpl, myObjectType]
 
     return myObjectSchema as MyObjectType
 })
@@ -1335,14 +1339,14 @@ const myObjectType = OBJECT((selfImpl) => {
 console.log(myObjectType.toString())
 /*
 OBJECT(n6f76)<{ 
-    a: NUMBER, 
-    b: OBJECT(jqrb3)<{ selfImpl: REF<n6f76> }>, 
-    c: ARRAY(pugop)<
+    num: NUMBER, 
+    obj: OBJECT(jqrb3)<{ selfImpl: REF<n6f76> }>, 
+    arr: ARRAY(pugop)<
         UNION(ljwth)<
             REF<n6f76> | REF<n6f76> | REF<n6f76>
         >[]
     >, 
-    d: TUPLE(zwgxz)<[ REF<n6f76>, STRING, REF<zwgxz> ]> 
+    tup: TUPLE(zwgxz)<[ REF<n6f76>, STRING, REF<zwgxz> ]> 
 }>
 */
 ```
@@ -1354,9 +1358,21 @@ Recursive value is not available now. You need to provide `undefined` value inst
 e.g.
 
 ```typescript
-// OBJECT( (myObjImpl) => ({ myObj: myObjImpl }) )
+const obj = M({
+    innerObj: OBJECT((myObjImpl) => ({ myObj: myObjImpl }), { optional: true })
+})
 
-const myObj = { myObj: { myObj: { myObj: undefined } } }
+obj.innerObj = { myObj: { myObj: { myObj: undefined } } }
+```
+
+```typescript
+const myObj = {
+    myObj: undefined
+} as any
+
+myObj.myObj = myObj
+
+obj.innerObj = myObj // Maximum call stack size exceeded
 ```
 
 &nbsp;
