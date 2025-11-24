@@ -9,10 +9,10 @@ import {
     MetaTypeImpl,
     MetaTypeValidator,
     MetaTypeValidatorError,
-    MetaTypeValidatorsArrayError,
     NullableValidator,
     OptionalValidator,
-    SerializePlaceType
+    SerializePlaceType,
+    ValidationError
 } from '../../src'
 
 describe('MetaType and MetaTypeImpl', () => {
@@ -131,27 +131,21 @@ describe('MetaType and MetaTypeImpl', () => {
         )
         const customMetaTypeImpl = MetaType.getMetaTypeImpl(customMetaType)
 
-        expect(customMetaTypeImpl.validate({ value: 1 })).toBe(true)
-        expect(() => customMetaTypeImpl.validate({ value: 2 })).toThrow(MetaTypeValidatorError)
+        expect(customMetaTypeImpl.validate({ value: 1 })).toBeUndefined()
+        const validationError = customMetaTypeImpl.validate({ value: 2 })
+        expect(validationError).toBeInstanceOf(ValidationError)
+        expect(validationError?.issues[0]).toBeInstanceOf(MetaTypeValidatorError)
 
-        try {
-            const result = customMetaTypeImpl.validate({ value: 2, stopAtFirstError: false })
-
-            expect(result).toBe('customMetaTypeImpl.validate should throw a validation error')
-        } catch (e) {
-            if (e instanceof MetaTypeValidatorsArrayError) {
-                expect(e.validatorsErrors.length).toBe(1)
-
-                const validatorError = e.validatorsErrors[0]
-
-                expect(validatorError.validator.validate).toBe(validator1)
-                expect(validatorError.validatorErrorArgs.subError).toBe(undefined)
-            } else {
-                throw e
-            }
-        }
-
-        expect(customMetaTypeImpl.validate({ value: 2, safe: true })).toBe(false)
+        const aggregatedError = customMetaTypeImpl.validate({
+            value: 2,
+            stopAtFirstError: false
+        })
+        expect(aggregatedError).toBeInstanceOf(ValidationError)
+        expect(aggregatedError?.issues).toHaveLength(1)
+        const validatorError = aggregatedError?.issues[0]
+        expect(validatorError).toBeInstanceOf(MetaTypeValidatorError)
+        expect(validatorError?.validator.validate).toBe(validator1)
+        expect(validatorError?.subError).toBeUndefined()
     })
 
     test('serialize and deserialize', () => {
@@ -236,38 +230,38 @@ describe('MetaType and MetaTypeImpl', () => {
         )
         const customMetaTypeImpl7 = MetaType.getMetaTypeImpl(customMetaType7)
 
-        expect(customMetaTypeImpl1.validate({ value: 1 })).toBe(true)
-        expect(customMetaTypeImpl1.validate({ value: null })).toBe(true)
-        expect(customMetaTypeImpl1.validate({ value: undefined })).toBe(true)
+        expect(customMetaTypeImpl1.validate({ value: 1 })).toBeUndefined()
+        expect(customMetaTypeImpl1.validate({ value: null })).toBeUndefined()
+        expect(customMetaTypeImpl1.validate({ value: undefined })).toBeUndefined()
 
-        expect(customMetaTypeImpl2.validate({ value: 1 })).toBe(true)
-        expect(customMetaTypeImpl2.validate({ value: null })).toBe(true)
-        expect(() => customMetaTypeImpl2.validate({ value: undefined })).toThrow(
-            MetaTypeValidatorError
-        )
+        expect(customMetaTypeImpl2.validate({ value: 1 })).toBeUndefined()
+        expect(customMetaTypeImpl2.validate({ value: null })).toBeUndefined()
+        expect(
+            customMetaTypeImpl2.validate({ value: undefined })
+        ).toBeInstanceOf(ValidationError)
 
-        expect(customMetaTypeImpl3.validate({ value: 1 })).toBe(true)
-        expect(customMetaTypeImpl3.validate({ value: undefined })).toBe(true)
-        expect(() => customMetaTypeImpl3.validate({ value: null })).toThrow(MetaTypeValidatorError)
+        expect(customMetaTypeImpl3.validate({ value: 1 })).toBeUndefined()
+        expect(customMetaTypeImpl3.validate({ value: undefined })).toBeUndefined()
+        expect(customMetaTypeImpl3.validate({ value: null })).toBeInstanceOf(ValidationError)
 
-        expect(customMetaTypeImpl4.validate({ value: 1 })).toBe(true)
-        expect(customMetaTypeImpl4.validate({ value: null })).toBe(true)
-        expect(() => customMetaTypeImpl4.validate({ value: undefined })).toThrow(
-            MetaTypeValidatorError
-        )
+        expect(customMetaTypeImpl4.validate({ value: 1 })).toBeUndefined()
+        expect(customMetaTypeImpl4.validate({ value: null })).toBeUndefined()
+        expect(
+            customMetaTypeImpl4.validate({ value: undefined })
+        ).toBeInstanceOf(ValidationError)
 
-        expect(customMetaTypeImpl5.validate({ value: 1 })).toBe(true)
-        expect(customMetaTypeImpl5.validate({ value: undefined })).toBe(true)
-        expect(() => customMetaTypeImpl5.validate({ value: null })).toThrow(MetaTypeValidatorError)
+        expect(customMetaTypeImpl5.validate({ value: 1 })).toBeUndefined()
+        expect(customMetaTypeImpl5.validate({ value: undefined })).toBeUndefined()
+        expect(customMetaTypeImpl5.validate({ value: null })).toBeInstanceOf(ValidationError)
 
-        expect(customMetaTypeImpl6.validate({ value: 1 })).toBe(true)
-        expect(customMetaTypeImpl6.validate({ value: undefined })).toBe(true)
-        expect(() => customMetaTypeImpl6.validate({ value: null })).toThrow(MetaTypeValidatorError)
+        expect(customMetaTypeImpl6.validate({ value: 1 })).toBeUndefined()
+        expect(customMetaTypeImpl6.validate({ value: undefined })).toBeUndefined()
+        expect(customMetaTypeImpl6.validate({ value: null })).toBeInstanceOf(ValidationError)
 
-        expect(customMetaTypeImpl7.validate({ value: 1 })).toBe(true)
-        expect(customMetaTypeImpl7.validate({ value: null })).toBe(true)
-        expect(() => customMetaTypeImpl7.validate({ value: undefined })).toThrow(
-            MetaTypeValidatorError
-        )
+        expect(customMetaTypeImpl7.validate({ value: 1 })).toBeUndefined()
+        expect(customMetaTypeImpl7.validate({ value: null })).toBeUndefined()
+        expect(
+            customMetaTypeImpl7.validate({ value: undefined })
+        ).toBeInstanceOf(ValidationError)
     })
 })

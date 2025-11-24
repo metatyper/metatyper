@@ -1,4 +1,5 @@
 import { FreezeObjectDeSerializer } from '../../serializers'
+import { MetaTypeValidatorError, ValidationError } from '../../errors'
 import { MetaType } from '../metatype'
 import {
     DeSerializerArgsType,
@@ -29,16 +30,43 @@ export class TupleImpl extends StructuralMetaTypeImpl {
         }
     }
 
-    metaTypeValidatorFunc({ value }: ValidatorArgsType) {
+    metaTypeValidatorFunc({ value, stopAtFirstError, ...args }: ValidatorArgsType) {
         if (value == null) return true
 
         const subType = this.getSubType() as any[]
 
-        return (
-            Array.isArray(value) &&
-            value.length === subType.length &&
-            subType.every((metaTypeImpl, i) => metaTypeImpl.validate({ value: value[i] }))
-        )
+        if (!Array.isArray(value) || value.length !== subType.length) {
+            return false
+        }
+
+        let i = 0
+
+        const errors: MetaTypeValidatorError[] = []
+
+        for (const subTypeItem of subType) {
+            const error = subTypeItem.validate({
+                ...args,
+                value: value[i],
+                stopAtFirstError,
+                path: args.path ? [...args.path, i] : [i]
+            }) as ValidationError | undefined
+
+            if (error) {
+                errors.push(...error.issues)
+            }
+
+            if (stopAtFirstError && errors.length > 0) {
+                break
+            }
+
+            i++
+        }
+
+        if (errors.length > 0) {
+            return new ValidationError(errors)
+        }
+
+        return true
     }
 
     serializeSubValues({ value, ...args }: SerializerArgsType) {

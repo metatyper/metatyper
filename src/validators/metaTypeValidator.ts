@@ -2,7 +2,7 @@ import { ValidatorArgsType } from '../metatypes'
 
 export const MetaTypeValidator = {
     name: 'MetaType',
-    validate: ({ value, metaTypeImpl }: ValidatorArgsType) => {
-        return !metaTypeImpl || metaTypeImpl.metaTypeValidatorFunc({ value, metaTypeImpl })
+    validate: ({ metaTypeImpl, ...args }: ValidatorArgsType) => {
+        return !metaTypeImpl || metaTypeImpl.metaTypeValidatorFunc({ metaTypeImpl, ...args })
     }
 }

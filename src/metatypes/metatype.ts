@@ -101,15 +101,12 @@ MetaType.prototype.toString = function () {
     return MetaType.getMetaTypeImpl(this).toString()
 }
 
-MetaType.prototype.validate = function (
-    value: any,
-    args?: { safe?: boolean; stopAtFirstError?: boolean }
-) {
+MetaType.prototype.validate = function (value: any, args?: { stopAtFirstError?: boolean }) {
     const metaTypeImpl = MetaType.getMetaTypeImpl(this)
 
     return metaTypeImpl.validate({
         value,
-        safe: args?.safe,
+        path: [],
         stopAtFirstError: args?.stopAtFirstError
     })
 }

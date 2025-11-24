@@ -1,5 +1,6 @@
 import { FreezeObjectDeSerializer } from '../../serializers'
 import { deepMap, isPlainObject } from '../../utils'
+import { MetaTypeValidatorError, ValidationError } from '../../errors'
 import { MetaType, MetaTypeFlag, PrepareMetaType } from '../metatype'
 import {
     DeSerializerArgsType,
@@ -60,7 +61,7 @@ export class ObjectImpl extends StructuralMetaTypeImpl {
         }
     }
 
-    metaTypeValidatorFunc({ value }: ValidatorArgsType) {
+    metaTypeValidatorFunc({ value, stopAtFirstError, ...args }: ValidatorArgsType) {
         if (value == null) return true
 
         if (!(value instanceof Object) || Array.isArray(value)) {
@@ -86,14 +87,31 @@ export class ObjectImpl extends StructuralMetaTypeImpl {
                 return false
             }
 
+            const errors: MetaTypeValidatorError[] = []
+
             for (const key of Object.keys(value)) {
                 if (deepMap.getCircularRefInfo(value[key])) {
                     continue
                 }
 
-                if (!subType.validate({ value: value[key] })) {
-                    return false
+                const error = subType.validate({
+                    ...args,
+                    value: value[key],
+                    stopAtFirstError,
+                    path: args.path ? [...args.path, key] : [key]
+                })
+
+                if (error) {
+                    errors.push(...error.issues)
                 }
+
+                if (stopAtFirstError && errors.length > 0) {
+                    break
+                }
+            }
+
+            if (errors.length > 0) {
+                return new ValidationError(errors)
             }
         } else {
             const requiredKeys = requiredArg ?? Object.keys(subType)
@@ -101,6 +119,8 @@ export class ObjectImpl extends StructuralMetaTypeImpl {
             if (!requiredKeys.every((k) => !!Reflect.getOwnPropertyDescriptor(value, k))) {
                 return false
             }
+
+            const errors: MetaTypeValidatorError[] = []
 
             for (const key of Object.keys(value)) {
                 if (deepMap.getCircularRefInfo(value[key])) {
@@ -111,9 +131,28 @@ export class ObjectImpl extends StructuralMetaTypeImpl {
 
                 if (!metaType) continue
 
-                if (!metaType.validate({ value: value[key] })) {
-                    return false
+                const validatorTarget = MetaType.isMetaType(metaType)
+                    ? MetaType.getMetaTypeImpl(metaType)
+                    : metaType
+
+                const error = validatorTarget.validate({
+                    ...args,
+                    value: value[key],
+                    stopAtFirstError,
+                    path: args.path ? [...args.path, key] : [key]
+                }) as ValidationError | undefined
+
+                if (error) {
+                    errors.push(...error.issues)
                 }
+
+                if (stopAtFirstError && errors.length > 0) {
+                    break
+                }
+            }
+
+            if (errors.length > 0) {
+                return new ValidationError(errors)
             }
         }
 

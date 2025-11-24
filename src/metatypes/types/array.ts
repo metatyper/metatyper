@@ -5,6 +5,7 @@ import {
     MinLengthValidatorBuilder,
     NotEmptyValidator
 } from '../../validators'
+import { MetaTypeValidatorError, ValidationError } from '../../errors'
 import { MetaType, PrepareMetaType } from '../metatype'
 import {
     DeSerializerArgsType,
@@ -98,27 +99,48 @@ export class ArrayImpl extends StructuralMetaTypeImpl {
         return `${this.getSubType()}[]`
     }
 
-    metaTypeValidatorFunc({ value }: ValidatorArgsType) {
+    metaTypeValidatorFunc({ value, stopAtFirstError, ...args }: ValidatorArgsType) {
         if (value == null) return true
 
         if (!Array.isArray(value)) {
             return false
         }
 
-        const subType = this.getSubType()
+        const subType: MetaTypeImpl | undefined = this.getSubType()
 
         if (!subType || subType instanceof AnyImpl) {
             return true
         }
+
+        const errors: MetaTypeValidatorError[] = []
+
+        let index = 0
 
         for (const item of value) {
             if (deepMap.getCircularRefInfo(item)) {
                 continue
             }
 
-            if (!subType.validate({ value: item })) {
-                return false
+            const validationError = subType.validate({
+                value: item,
+                stopAtFirstError,
+                ...args,
+                path: args.path ? [...args.path, index] : [index]
+            })
+
+            if (validationError) {
+                errors.push(...validationError.issues)
             }
+
+            if (stopAtFirstError && errors.length > 0) {
+                break
+            }
+
+            index++
+        }
+
+        if (errors.length > 0) {
+            return new ValidationError(errors)
         }
 
         return true

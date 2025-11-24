@@ -1,9 +1,8 @@
 import {
     MetaTypeDeSerializerError,
     MetaTypeSerializerError,
-    MetaTypeValidationError,
-    MetaTypeValidatorError,
-    MetaTypeValidatorsArrayError
+    ValidationError,
+    MetaTypeValidatorError
 } from '../errors'
 import {
     CoercionDeSerializer,
@@ -16,10 +15,9 @@ import { MetaType } from './metatype'
 
 export type ValidateMetaTypeArgsType = {
     value: any
-    propName?: string | symbol
+    path?: (string | number | symbol)[]
     targetObject?: object
     baseObject?: object
-    safe?: boolean
     stopAtFirstError?: boolean
 } & Record<string, any>
 
@@ -27,7 +25,7 @@ export type ValidatorArgsType = ValidateMetaTypeArgsType & {
     metaTypeImpl?: MetaTypeImpl
 }
 
-export type ValidatorFuncType = (validationArgs: ValidatorArgsType) => boolean
+export type ValidatorFuncType = (validationArgs: ValidatorArgsType) => boolean | Error
 export type ValidatorType = { name?: string; validate: ValidatorFuncType }
 
 export type SerializeMetaTypeArgsType = {
@@ -73,23 +71,69 @@ export type DeSerializerType = {
 /**
  * This represents the arguments for creating a meta type.
  *
- * @param name - A string that overrides the default name of the meta type. The name is used when displaying the meta type.
- * @param subType - A meta type or a value that defines the type of the nested values in the value. For example, if the value is an array, you can use the subType to specify the type of the elements in the array.
- * @param default - A value or a function that returns a value that is used as the default value for the meta type. The default value is used when the initial value is `undefined`.
- * @param nullish - A boolean indicating whether the value can be `null` or `undefined`. If `false`, a `NullableValidator` and an `OptionalValidator` are added to the meta type. The default value is `false`.
- * @param nullable - A boolean indicating whether the value can be `null`. If `false`, a `NullableValidator` is added to the meta type. If `nullish` and `nullable` are contradictory, the value of `nullable` will be chosen. Default value is the same as `nullish`
- * @param optional - A boolean indicating whether the value can be `undefined`. If `false`, an `OptionalValidator` is added to the meta type. If `nullish` and `optional` are contradictory, the value of `optional` will be chosen. Default value is the same as `nullish`
- * @param coercion - A boolean that indicates whether the value should be coerced to the expected type or not. If `true`, an `CoercionSerializer` is added to the meta type, which tries to convert the main value to the appropriate type. For example, if the meta type is a string, and the main value is a number, the number will be cast to a string.
- * @param validateType - A boolean that indicates whether the value should be validated against the expected type or not. If `true`, a `MetaTypeValidator` is added to the meta type, which checks that the main value matches the meta type. Default value is `true`.
- * @param noBuiltinValidators - A boolean that indicates whether the built-in validators should be disabled or not. If `true`, the meta type will not use any of the default validators, like `MetaTypeValidator` or NullableValidator. Default value is `false`.
- * @param noBuiltinSerializers - A boolean that indicates whether the built-in serializers should be disabled or not. If `true`, the meta type will not use any of the default serializers, like `CoercionSerializer`. Default value is `false`.
- * @param noBuiltinDeSerializers - A boolean that indicates whether the built-in deserializers should be disabled or not. If `true`, the meta type will not use any of the default deserializers, like `CoercionSerializer` or `ToLowerCaseSerializer` (case argument in STRING). Default value is `false`.
- * @param validators - An array of validators that are used to check the value when it is assigned to an object property.
- * @param serializers - An array of serializers that change the value when it is retrieved from the object. For example, `obj[prop]` or `Meta.serialize(obj)`.
- * @param deserializers - An array of deserializers that modify the value when it is set to an object property, prior to validation. For example, `obj[prop] = 'value'` or `Meta.deserialize(metaObject, rawObject)`.
+ * @param name - A string that overrides the default name of the meta type.
+ *               The name is used when displaying the meta type.
+ *
+ * @param subType - A meta type or a value that defines the type of the nested values in the value.
+ *                  For example, if the value is an array, you can use the subType to specify
+ *                  the type of the elements in the array.
+ *
+ * @param default - A value or a function that returns a value that is used as the default value
+ *                  for the meta type. The default value is used when the initial value is `undefined`.
+ *
+ * @param nullish - A boolean indicating whether the value can be `null` or `undefined`.
+ *                  If `false`, a `NullableValidator` and an `OptionalValidator` are added to the meta type.
+ *                  The default value is `false`.
+ *
+ * @param nullable - A boolean indicating whether the value can be `null`.
+ *                   If `false`, a `NullableValidator` is added to the meta type.
+ *                   If `nullish` and `nullable` are contradictory, the value of `nullable` will be chosen.
+ *                   Default value is the same as `nullish`
+ *
+ * @param optional - A boolean indicating whether the value can be `undefined`.
+ *                   If `false`, an `OptionalValidator` is added to the meta type.
+ *                   If `nullish` and `optional` are contradictory, the value of `optional` will be chosen.
+ *                   Default value is the same as `nullish`
+ *
+ * @param coercion - A boolean that indicates whether the value should be coerced to the expected type or not.
+ *                   If `true`, an `CoercionSerializer` is added to the meta type, which tries to convert
+ *                   the main value to the appropriate type. For example, if the meta type is a string,
+ *                   and the main value is a number, the number will be cast to a string.
+ *
+ * @param validateType - A boolean that indicates whether the value should be validated against
+ *                       the expected type or not. If `true`, a `MetaTypeValidator` is added to the meta type,
+ *                       which checks that the main value matches the meta type. Default value is `true`.
+ *
+ * @param noBuiltinValidators - A boolean that indicates whether the built-in validators should be disabled or not.
+ *                              If `true`, the meta type will not use any of the default validators,
+ *                              like `MetaTypeValidator` or NullableValidator. Default value is `false`.
+ *
+ * @param noBuiltinSerializers - A boolean that indicates whether the built-in serializers should be disabled or not.
+ *                               If `true`, the meta type will not use any of the default serializers,
+ *                               like `CoercionSerializer`. Default value is `false`.
+ *
+ * @param noBuiltinDeSerializers - A boolean that indicates whether the built-in deserializers should be disabled or not.
+ *                                 If `true`, the meta type will not use any of the default deserializers,
+ *                                 like `CoercionSerializer` or `ToLowerCaseSerializer` (case argument in STRING).
+ *                                 Default value is `false`.
+ *
+ * @param validators - An array of validators that are used to check the value when it is assigned
+ *                     to an object property.
+ *
+ * @param serializers - An array of serializers that change the value when it is retrieved from the object.
+ *                      For example, `obj[prop]` or `Meta.serialize(obj)`.
+ *
+ * @param deserializers - An array of deserializers that modify the value when it is set to an object property,
+ *                        prior to validation. For example, `obj[prop] = 'value'` or
+ *                        `Meta.deserialize(metaObject, rawObject)`.
+ *
+ * @param safe - A boolean that indicates whether validation errors should be thrown
+ *               or handled silently in case meta object validation.
+ *               Default value is `true`.
  *
  * @typeParam T - The type of the value. This is used to infer the type of the default argument.
- * @typeParam IsNullableT - A boolean that indicates whether the value can be null or undefined. This is inferred from the nullable argument.
+ * @typeParam IsNullableT - A boolean that indicates whether the value can be null or undefined.
+ *                          This is inferred from the nullable argument.
  */
 export type MetaTypeArgsType<
     T = any,
@@ -99,7 +143,9 @@ export type MetaTypeArgsType<
 > = {
     name?: string
     subType?: any
-    default?: T | ((declaration?: MetaTypeImpl) => T)
+    default?: [IsNullableT] extends [true]
+        ? T | null
+        : T | ((declaration?: MetaTypeImpl) => [IsNullableT] extends [true] ? T | null : T)
     nullish?: IsNullishT
     nullable?: IsNullableT
     optional?: IsOptionalT
@@ -111,6 +157,7 @@ export type MetaTypeArgsType<
     validators?: (ValidatorType | ValidatorFuncType)[]
     serializers?: (SerializerType | SerializeFuncType)[]
     deserializers?: (DeSerializerType | DeSerializeFuncType)[]
+    safe?: boolean
 } & Record<string, any>
 
 export class MetaTypeImpl {
@@ -145,6 +192,8 @@ export class MetaTypeImpl {
         metaTypeArgs.optional = !!(metaTypeArgs.optional ?? metaTypeArgs.nullish ?? false)
         metaTypeArgs.coercion = !!(metaTypeArgs.coercion ?? false)
         metaTypeArgs.validateType = !!(metaTypeArgs.validateType ?? true)
+
+        metaTypeArgs.safe = !!(metaTypeArgs.safe ?? true)
 
         return metaTypeArgs
     }
@@ -360,7 +409,7 @@ export class MetaTypeImpl {
         return value
     }
 
-    metaTypeValidatorFunc({ value }: ValidatorArgsType) {
+    metaTypeValidatorFunc({ value }: ValidatorArgsType): boolean | Error {
         if (value == null) return true
 
         return ((this as any).constructor as typeof MetaTypeImpl).isCompatible(value)
@@ -384,66 +433,68 @@ export class MetaTypeImpl {
         return validators
     }
 
-    validate(args: ValidateMetaTypeArgsType) {
-        const value = args.value
-        const propName = args.propName
-        const targetObject = args.targetObject
-        const baseObject = args.baseObject
-
+    validate(args: ValidateMetaTypeArgsType): ValidationError | undefined {
         const validators = this.getAllValidators()
+        const validatorArgs = {
+            value: args.value,
+            targetObject: args.targetObject,
+            baseObject: args.baseObject,
+            path: args.path ?? [],
+            stopAtFirstError: args.stopAtFirstError,
+            metaTypeImpl: this
+        }
+
+        const createNewError = (validator: ValidatorType, subError?: Error) => {
+            if (subError instanceof MetaTypeValidatorError) {
+                return subError
+            }
+
+            if (subError instanceof ValidationError) {
+                return subError
+            }
+
+            return new MetaTypeValidatorError({
+                validator,
+                validatorArgs,
+                subError
+            })
+        }
 
         const errors: MetaTypeValidatorError[] = []
 
-        const createNewError = (validator: ValidatorType, subError?: Error) => {
-            const error = new MetaTypeValidatorError(validator, {
-                value,
-                metaTypeImpl: this,
-                targetObject,
-                baseObject,
-                propName,
-                subError
-            })
-
-            errors.push(error)
-
-            return error
-        }
-
         for (const validator of validators) {
-            let newError: MetaTypeValidationError | undefined = undefined
+            let newError: MetaTypeValidatorError | ValidationError | undefined = undefined
 
             try {
-                const result = validator.validate({
-                    ...args,
-                    metaTypeImpl: this,
-                    value
-                })
+                const result = validator.validate(validatorArgs)
 
                 if (!result) {
                     newError = createNewError(validator)
                 }
-            } catch (e) {
-                if (!(e instanceof MetaTypeValidationError)) {
-                    throw e
-                }
 
-                newError = createNewError(validator, e)
+                if (result instanceof Error) {
+                    newError = createNewError(validator, result)
+                }
+            } catch (e) {
+                newError = createNewError(validator, e as Error)
+            }
+
+            if (newError instanceof MetaTypeValidatorError) {
+                errors.push(newError)
+            } else if (newError instanceof ValidationError) {
+                errors.push(...newError.issues)
             }
 
             if (newError && (args.stopAtFirstError === undefined || args.stopAtFirstError)) {
-                if (args.safe) return false
-
-                throw newError
+                break
             }
         }
 
         if (errors.length > 0) {
-            if (args.safe) return false
-
-            throw new MetaTypeValidatorsArrayError(errors)
+            return new ValidationError(errors)
         }
 
-        return true
+        return undefined
     }
 
     static isCompatible(_value: any) {

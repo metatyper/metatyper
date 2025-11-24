@@ -12,7 +12,6 @@ import {
 const reflectMetadata = (Reflect as any)['getMetadata']
 
 export type ValidateMetaObjectArgsType = { metaArgs?: MetaArgsType } & {
-    safe?: boolean
     stopAtFirstError?: boolean
 } & Record<string, any>
 
@@ -53,6 +52,7 @@ export type MetaErrorHandlerPlaceType =
 export type MetaErrorHandlerArgsType = {
     error: Error
     errorPlace: MetaErrorHandlerPlaceType
+    propName?: string | symbol
     targetObject: object
     baseObject: object
 }
@@ -256,7 +256,7 @@ Meta.Class = function Class(metaArgs?: MetaArgsType) {
  * }
  * ```
  */
-function declare<T extends object, K extends keyof T>(
+function declare<T extends object, K extends keyof T = keyof T>(
     metaType: T[K]
 ): (target: T, propName: K) => void
 
@@ -543,18 +543,12 @@ Meta.enableSerialization = (metaObject: object) => {
 
 /**
  * Validates a plain object against a meta object schema or a meta object, ensuring it conforms to the defined types and constraints.
- * If the object is valid according to the meta object schema, the function returns `true`.
- * If the object is not valid, it returns `false` or throws a validation error,
- * which can be either `MetaTypeValidatorsArrayError` or `MetaTypeValidatorError`, depending on the validation arguments.
+ * If the object is valid according to the meta object schema, the function returns undefined.
+ * If the object is not valid, it returns `ValidationError`,
  *
  * @param metaObject - The meta object or plain object as a schema against which to validate the `rawObject`.
  * @param rawObject - The plain object to validate.
  * @param validateArgs - arguments to customize the validation behavior, such as disabling throwing errors.
- *
- * @throws `MetaTypeValidatorError` if the plain object does not conform to the meta object schema
- * and `validateArgs.safe` is `false`.
- * @throws `MetaTypeValidatorsArrayError` if the plain object does not conform to the meta object schema
- * and `validateArgs.safe` is `false` and `validateArgs.stopAtFirstError` is `false`.
  *
  * @example
  * ```ts
@@ -566,19 +560,18 @@ Meta.enableSerialization = (metaObject: object) => {
  * const validUser = { id: 1, name: 'John Doe' }
  * const invalidUser = { id: 'not a number', name: 'JD' }
  *
- * // This will return true, as the validUser object conforms to the userSchema
- * Meta.validate(userSchema, validUser)
+ * const error = Meta.validate(userSchema, validUser)
+ * // error === undefined
  *
- * // This will throw a MetaTypeValidatorError
- * // because invalidUser does not conform to the userSchema
- * Meta.validate(userSchema, invalidUser)
+ * const error = Meta.validate(userSchema, invalidUser)
+ * // error instanceof ValidationError
  * ```
  */
 Meta.validate = (
     metaObjectOrProto: object,
     rawObject: object,
     validateArgs?: ValidateMetaObjectArgsType
-): boolean => {
+) => {
     const handlerInstance: MetaObjectsHandler =
         getDescriptorValue(metaObjectOrProto, MetaObjectBuilderSymbol)?.handler ??
         MetaObjectsBuilder.instance.handler

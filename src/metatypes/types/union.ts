@@ -32,7 +32,13 @@ export class UnionImpl extends StructuralMetaTypeImpl {
             try {
                 value = metaTypeImpl.deserialize({ value })
 
-                return metaTypeImpl.validate({ value })
+                const error = metaTypeImpl.validate({ value, path: [] })
+
+                if (error) {
+                    return false
+                }
+
+                return true
             } catch (e) {
                 if (e instanceof MetaError) return false
 

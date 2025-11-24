@@ -33,7 +33,7 @@ export class RefImpl extends LazyMetaTypeImpl {
     }
 
     validate(args: ValidatorArgsType) {
-        if (args.value === undefined) return true
+        if (args.value === undefined) return
 
         return this.getSubType().validate(args)
     }

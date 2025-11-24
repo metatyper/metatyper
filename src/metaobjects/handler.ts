@@ -1,4 +1,5 @@
 import { DeSerializePlaceType, MetaType, MetaTypeImpl } from '../metatypes'
+import { MetaTypeValidatorError, ValidationError } from '../errors'
 import { inspect, isClass } from '../utils'
 import { type MetaObjectsBuilder } from './builder'
 import {
@@ -352,12 +353,26 @@ export class MetaObjectsHandler {
                 }
 
                 if (registryInfo.validationIsActive) {
-                    declaration.validate({
+                    const error = declaration.validate({
                         value: descriptor.value,
-                        propName,
+                        path: [propName],
                         baseObject,
                         targetObject: baseObject
                     })
+
+                    if (error) {
+                        this.emitErrorEvent({
+                            error,
+                            propName,
+                            targetObject: baseObject,
+                            baseObject,
+                            errorPlace: 'init'
+                        })
+
+                        if (declaration.metaTypeArgs.safe) {
+                            throw error
+                        }
+                    }
                 }
 
                 registryInfo.declarations[propName] = declaration
@@ -371,17 +386,28 @@ export class MetaObjectsHandler {
                 throw new TypeError('Unexpected error in MetaObjectsHandler.initProp')
             }
 
-            this.emitChangeEvent({
-                action: 'init',
-                targetObject: baseObject,
-                baseObject,
-                propName,
-                descriptor,
-                declaration
-            })
+            try {
+                this.emitChangeEvent({
+                    action: 'init',
+                    targetObject: baseObject,
+                    baseObject,
+                    propName,
+                    descriptor,
+                    declaration
+                })
+            } catch (error) {
+                this.emitErrorEvent({
+                    error: error as Error,
+                    propName,
+                    targetObject: baseObject,
+                    baseObject,
+                    errorPlace: 'init'
+                })
+            }
         } catch (error) {
             this.emitErrorEvent({
                 error: error as Error,
+                propName,
                 targetObject: baseObject,
                 baseObject,
                 errorPlace: 'init'
@@ -444,6 +470,7 @@ export class MetaObjectsHandler {
         } catch (error) {
             this.emitErrorEvent({
                 error: error as Error,
+                propName,
                 targetObject,
                 baseObject,
                 errorPlace: 'get'
@@ -509,19 +536,30 @@ export class MetaObjectsHandler {
 
             setValue(newValue)
 
-            this.emitChangeEvent({
-                action: 'set',
-                baseObject,
-                targetObject,
-                propName,
-                prevDescriptor: descriptor,
-                descriptor: {
-                    value: newValue
-                }
-            })
+            try {
+                this.emitChangeEvent({
+                    action: 'set',
+                    baseObject,
+                    targetObject,
+                    propName,
+                    prevDescriptor: descriptor,
+                    descriptor: {
+                        value: newValue
+                    }
+                })
+            } catch (error) {
+                this.emitErrorEvent({
+                    error: error as Error,
+                    propName,
+                    targetObject,
+                    baseObject,
+                    errorPlace: 'set'
+                })
+            }
         } catch (error) {
             this.emitErrorEvent({
                 error: error as Error,
+                propName,
                 targetObject,
                 baseObject,
                 errorPlace: 'set'
@@ -627,11 +665,25 @@ export class MetaObjectsHandler {
                     }
 
                     if (registryInfo.validationIsActive) {
-                        declaration.validate({
+                        const error = declaration.validate({
                             value: newValue,
-                            propName,
+                            path: [propName],
                             targetObject: baseObject
                         })
+
+                        if (error) {
+                            if (declaration.metaTypeArgs.safe) {
+                                throw error
+                            } else {
+                                this.emitErrorEvent({
+                                    error,
+                                    propName,
+                                    targetObject: baseObject,
+                                    baseObject,
+                                    errorPlace: 'define'
+                                })
+                            }
+                        }
                     }
                 }
 
@@ -648,16 +700,26 @@ export class MetaObjectsHandler {
                 try {
                     defineDescriptor(newDescriptor)
 
-                    this.emitChangeEvent({
-                        action: 'define',
-                        targetObject: baseObject,
-                        baseObject,
-                        propName,
-                        prevDescriptor,
-                        descriptor: newDescriptor,
-                        prevDeclaration,
-                        declaration
-                    })
+                    try {
+                        this.emitChangeEvent({
+                            action: 'define',
+                            targetObject: baseObject,
+                            baseObject,
+                            propName,
+                            prevDescriptor,
+                            descriptor: newDescriptor,
+                            prevDeclaration,
+                            declaration
+                        })
+                    } catch (error) {
+                        this.emitErrorEvent({
+                            error: error as Error,
+                            propName,
+                            targetObject: baseObject,
+                            baseObject,
+                            errorPlace: 'define'
+                        })
+                    }
 
                     return true
                 } catch (error) {
@@ -697,6 +759,7 @@ export class MetaObjectsHandler {
         } catch (error) {
             this.emitErrorEvent({
                 error: error as Error,
+                propName,
                 targetObject: baseObject,
                 baseObject,
                 errorPlace: 'define'
@@ -757,18 +820,29 @@ export class MetaObjectsHandler {
                 Reflect.deleteProperty(declarations, propName)
             }
 
-            this.emitChangeEvent({
-                action: 'delete',
-                targetObject: baseObject,
-                baseObject,
-                propName,
-                prevDescriptor: curDescriptor,
-                prevDeclaration: curDeclaration,
-                declaration: curDeclaration
-            })
+            try {
+                this.emitChangeEvent({
+                    action: 'delete',
+                    targetObject: baseObject,
+                    baseObject,
+                    propName,
+                    prevDescriptor: curDescriptor,
+                    prevDeclaration: curDeclaration,
+                    declaration: curDeclaration
+                })
+            } catch (error) {
+                this.emitErrorEvent({
+                    error: error as Error,
+                    propName,
+                    targetObject: baseObject,
+                    baseObject,
+                    errorPlace: 'delete'
+                })
+            }
         } catch (error) {
             this.emitErrorEvent({
                 error: error as Error,
+                propName,
                 targetObject: baseObject,
                 baseObject,
                 errorPlace: 'delete'
@@ -805,47 +879,42 @@ export class MetaObjectsHandler {
         const objDeclarations = registryInfo ? registryInfo.declarations : targetObject
         const baseObject = registryInfo ? registryInfo.baseObject : targetObject
 
-        try {
-            Object.entries<any>(objDeclarations).forEach(([propName, declarationOrValue]) => {
-                const value = rawObject[propName]
+        const errors: MetaTypeValidatorError[] = []
 
-                if (MetaType.isMetaType(declarationOrValue)) {
-                    declarationOrValue = MetaType.getMetaTypeImpl(declarationOrValue)
+        Object.entries<any>(objDeclarations).forEach(([propName, declarationOrValue]) => {
+            const value = rawObject[propName]
+
+            if (MetaType.isMetaType(declarationOrValue)) {
+                declarationOrValue = MetaType.getMetaTypeImpl(declarationOrValue)
+            }
+
+            if (!(declarationOrValue instanceof MetaTypeImpl)) {
+                declarationOrValue = MetaTypeImpl.getMetaTypeImpl(
+                    declarationOrValue,
+                    validateArgs?.metaArgs?.metaTypesArgs
+                )
+            }
+
+            if (declarationOrValue) {
+                const error = (declarationOrValue as MetaTypeImpl).validate({
+                    ...(validateArgs ?? {}),
+                    value,
+                    path: [propName],
+                    targetObject,
+                    baseObject
+                })
+
+                if (error) {
+                    errors.push(...error.issues)
                 }
+            }
+        })
 
-                if (!(declarationOrValue instanceof MetaTypeImpl)) {
-                    declarationOrValue = MetaTypeImpl.getMetaTypeImpl(
-                        declarationOrValue,
-                        validateArgs?.metaArgs?.metaTypesArgs
-                    )
-                }
-
-                if (declarationOrValue) {
-                    const result = (declarationOrValue as MetaTypeImpl).validate({
-                        ...(validateArgs ?? {}),
-                        value,
-                        propName,
-                        targetObject,
-                        baseObject
-                    })
-
-                    if (!result) {
-                        return false
-                    }
-                }
-            })
-        } catch (error) {
-            this.emitErrorEvent({
-                error: error as Error,
-                targetObject,
-                baseObject,
-                errorPlace: 'validate'
-            })
-
-            throw error
+        if (errors.length > 0) {
+            return new ValidationError(errors)
         }
 
-        return true
+        return undefined
     }
 
     serialize(targetObject: Record<keyof any, any>, serializeArgs?: SerializeMetaObjectArgsType) {
@@ -856,13 +925,13 @@ export class MetaObjectsHandler {
         const baseObject = registryInfo.baseObject
         const objDeclarations = registryInfo.declarations
 
-        try {
-            const raw: Record<string, any> = {}
+        const raw: Record<string, any> = {}
 
-            Object.entries<MetaTypeImpl>(objDeclarations).forEach(([propName, declaration]) => {
-                const value = Reflect.get(baseObject, propName)
+        Object.entries<MetaTypeImpl>(objDeclarations).forEach(([propName, declaration]) => {
+            const value = Reflect.get(baseObject, propName)
 
-                if (registryInfo.serializationIsActive) {
+            if (registryInfo.serializationIsActive) {
+                try {
                     raw[propName] = declaration.serialize({
                         ...serializeArgs,
                         value,
@@ -871,22 +940,35 @@ export class MetaObjectsHandler {
                         targetObject,
                         baseObject
                     })
-                } else {
-                    raw[propName] = value
+                } catch (error) {
+                    this.emitErrorEvent({
+                        error: error as Error,
+                        propName,
+                        targetObject,
+                        baseObject,
+                        errorPlace: 'serialize'
+                    })
+
+                    throw error
                 }
-            })
+            } else {
+                try {
+                    raw[propName] = value
+                } catch (error) {
+                    this.emitErrorEvent({
+                        error: error as Error,
+                        propName,
+                        targetObject,
+                        baseObject,
+                        errorPlace: 'serialize'
+                    })
 
-            return raw
-        } catch (error) {
-            this.emitErrorEvent({
-                error: error as Error,
-                targetObject,
-                baseObject,
-                errorPlace: 'serialize'
-            })
+                    throw error
+                }
+            }
+        })
 
-            throw error
-        }
+        return raw
     }
 
     deserialize(
@@ -903,12 +985,14 @@ export class MetaObjectsHandler {
         const serializationIsActive = registryInfo.serializationIsActive
         const validationIsActive = registryInfo.validationIsActive
 
-        try {
-            Object.entries<MetaTypeImpl>(declarations).forEach(([propName, declaration]) => {
+        const deserializedObj: Record<string, any> = {}
+
+        Object.entries<MetaTypeImpl>(declarations).forEach(([propName, declaration]) => {
+            if (propName in rawObject) {
                 let value = rawObject[propName]
 
-                if (value !== undefined) {
-                    if (serializationIsActive) {
+                if (serializationIsActive) {
+                    try {
                         value = declaration.deserialize({
                             ...deserializeArgs,
                             value,
@@ -917,44 +1001,72 @@ export class MetaObjectsHandler {
                             targetObject,
                             baseObject
                         })
+                    } catch (error) {
+                        this.emitErrorEvent({
+                            error: error as Error,
+                            propName,
+                            targetObject,
+                            baseObject,
+                            errorPlace: 'deserialize'
+                        })
+
+                        throw error
                     }
-
-                    if (validationIsActive) {
-                        declaration.validate({ value, propName, targetObject })
-                    }
-
-                    const prevDescriptor = Reflect.getOwnPropertyDescriptor(targetObject, propName)
-
-                    const result = Reflect.set(baseObject, propName, value)
-
-                    if (!result) {
-                        throw new TypeError('Unexpected error in MetaObjectsHandler.deserialize')
-                    }
-
-                    this.emitChangeEvent({
-                        action: 'deserialize',
-                        targetObject,
-                        baseObject,
-                        propName,
-                        prevDescriptor,
-                        descriptor: { value },
-                        prevDeclaration: declaration,
-                        declaration
-                    })
                 }
-            })
 
-            return targetObject
-        } catch (error) {
-            this.emitErrorEvent({
-                error: error as Error,
-                targetObject,
-                baseObject,
-                errorPlace: 'deserialize'
-            })
+                if (validationIsActive) {
+                    const error = declaration.validate({ value, path: [propName], targetObject })
 
-            throw error
-        }
+                    if (error) {
+                        if (declaration.metaTypeArgs.safe) {
+                            throw error
+                        } else {
+                            this.emitErrorEvent({
+                                error,
+                                propName,
+                                targetObject,
+                                baseObject,
+                                errorPlace: 'deserialize'
+                            })
+                        }
+                    }
+                }
+
+                deserializedObj[propName] = value
+            }
+        })
+
+        const prevDescriptors = Object.getOwnPropertyDescriptors(targetObject)
+
+        Object.entries(deserializedObj).forEach(([propName, value]) => {
+            const declaration = declarations[propName]
+            const prevDescriptor = prevDescriptors[propName]
+
+            try {
+                Reflect.set(targetObject, propName, value)
+
+                this.emitChangeEvent({
+                    action: 'deserialize',
+                    targetObject,
+                    baseObject,
+                    propName,
+                    prevDescriptor,
+                    descriptor: { value },
+                    prevDeclaration: declaration,
+                    declaration
+                })
+            } catch (error) {
+                this.emitErrorEvent({
+                    error: error as Error,
+                    propName,
+                    targetObject,
+                    baseObject,
+                    errorPlace: 'deserialize'
+                })
+            }
+        })
+
+        return targetObject
     }
 
     copy<T extends object>(targetObject: T) {

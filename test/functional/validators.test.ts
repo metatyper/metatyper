@@ -12,6 +12,7 @@ import {
     NullableValidator,
     OptionalValidator,
     RegExpValidatorBuilder,
+    ValidationError,
     ValidatorArgsType
 } from '../../src'
 
@@ -20,7 +21,7 @@ describe('Validators', () => {
         validate: () => true
     }
 
-    const customError = new MetaTypeValidatorError(customValidator, { value: 'custom' })
+    const customError = new Error('custom')
 
     test('MetaTypeValidator', () => {
         const metaTypeImpl = class extends MetaTypeImpl {
@@ -41,29 +42,23 @@ describe('Validators', () => {
                 value: 1,
                 metaTypeImpl
             })
-        ).toBe(true)
-        expect(() =>
-            metaTypeImpl.validate({
-                value: 2,
-                metaTypeImpl
-            })
-        ).toThrow(MetaTypeValidatorError)
+        ).toBeUndefined()
+        const failedValidation = metaTypeImpl.validate({
+            value: 2,
+            metaTypeImpl
+        })
+        expect(failedValidation).toBeInstanceOf(ValidationError)
+        expect(failedValidation?.issues[0]).toBeInstanceOf(MetaTypeValidatorError)
 
-        try {
-            const result = metaTypeImpl.validate({
-                value: 0,
-                metaTypeImpl
-            })
-
-            expect(result).toBe('metaTypeImpl.validate should throw a validation error')
-        } catch (e) {
-            if (e instanceof MetaTypeValidatorError) {
-                expect(e.validator).toBe(MetaTypeValidator)
-                expect(e.validatorErrorArgs.subError).toBe(customError)
-            } else {
-                throw e
-            }
-        }
+        const thrownValidation = metaTypeImpl.validate({
+            value: 0,
+            metaTypeImpl
+        })
+        expect(thrownValidation).toBeInstanceOf(ValidationError)
+        const firstSubError = thrownValidation?.issues[0]
+        expect(firstSubError).toBeInstanceOf(MetaTypeValidatorError)
+        expect(firstSubError?.validator).toBe(MetaTypeValidator)
+        expect(firstSubError?.subError).toBe(customError)
     })
 
     test('NullableValidator', () => {
@@ -77,19 +72,19 @@ describe('Validators', () => {
                 value: 0,
                 metaTypeImpl
             })
-        ).toBe(true)
+        ).toBeUndefined()
         expect(
             metaTypeImpl.validate({
                 value: undefined,
                 metaTypeImpl
             })
-        ).toBe(true)
-        expect(() =>
+        ).toBeUndefined()
+        expect(
             metaTypeImpl.validate({
                 value: null,
                 metaTypeImpl
             })
-        ).toThrow(MetaTypeValidatorError)
+        ).toBeInstanceOf(ValidationError)
     })
 
     test('OptionalValidator', () => {
@@ -103,19 +98,19 @@ describe('Validators', () => {
                 value: 0,
                 metaTypeImpl
             })
-        ).toBe(true)
+        ).toBeUndefined()
         expect(
             metaTypeImpl.validate({
                 value: null,
                 metaTypeImpl
             })
-        ).toBe(true)
-        expect(() =>
+        ).toBeUndefined()
+        expect(
             metaTypeImpl.validate({
                 value: undefined,
                 metaTypeImpl
             })
-        ).toThrow(MetaTypeValidatorError)
+        ).toBeInstanceOf(ValidationError)
     })
 
     test('NotEmptyValidator', () => {
@@ -128,55 +123,55 @@ describe('Validators', () => {
             metaTypeImpl.validate({
                 value: [1]
             })
-        ).toBe(true)
+        ).toBeUndefined()
 
         expect(
             metaTypeImpl.validate({
                 value: {}
             })
-        ).toBe(true)
+        ).toBeUndefined()
 
         expect(
             metaTypeImpl.validate({
                 value: '1'
             })
-        ).toBe(true)
+        ).toBeUndefined()
 
         expect(
             metaTypeImpl.validate({
                 value: 0
             })
-        ).toBe(true)
+        ).toBeUndefined()
 
         expect(
             metaTypeImpl.validate({
                 value: 1
             })
-        ).toBe(true)
+        ).toBeUndefined()
 
         expect(
             metaTypeImpl.validate({
                 value: undefined
             })
-        ).toBe(true)
+        ).toBeUndefined()
 
         expect(
             metaTypeImpl.validate({
                 value: null
             })
-        ).toBe(true)
+        ).toBeUndefined()
 
-        expect(() =>
+        expect(
             metaTypeImpl.validate({
                 value: []
             })
-        ).toThrow(MetaTypeValidatorError)
+        ).toBeInstanceOf(ValidationError)
 
-        expect(() =>
+        expect(
             metaTypeImpl.validate({
                 value: ''
             })
-        ).toThrow(MetaTypeValidatorError)
+        ).toBeInstanceOf(ValidationError)
     })
 
     test('MinLengthValidator', () => {
@@ -189,55 +184,55 @@ describe('Validators', () => {
             metaTypeImpl.validate({
                 value: [1, 2]
             })
-        ).toBe(true)
+        ).toBeUndefined()
 
         expect(
             metaTypeImpl.validate({
                 value: {}
             })
-        ).toBe(true)
+        ).toBeUndefined()
 
         expect(
             metaTypeImpl.validate({
                 value: '12'
             })
-        ).toBe(true)
+        ).toBeUndefined()
 
         expect(
             metaTypeImpl.validate({
                 value: 0
             })
-        ).toBe(true)
+        ).toBeUndefined()
 
         expect(
             metaTypeImpl.validate({
                 value: 1
             })
-        ).toBe(true)
+        ).toBeUndefined()
 
         expect(
             metaTypeImpl.validate({
                 value: undefined
             })
-        ).toBe(true)
+        ).toBeUndefined()
 
         expect(
             metaTypeImpl.validate({
                 value: null
             })
-        ).toBe(true)
+        ).toBeUndefined()
 
-        expect(() =>
+        expect(
             metaTypeImpl.validate({
                 value: [1]
             })
-        ).toThrow(MetaTypeValidatorError)
+        ).toBeInstanceOf(ValidationError)
 
-        expect(() =>
+        expect(
             metaTypeImpl.validate({
                 value: '1'
             })
-        ).toThrow(MetaTypeValidatorError)
+        ).toBeInstanceOf(ValidationError)
     })
 
     test('MaxLengthValidator', () => {
@@ -250,55 +245,55 @@ describe('Validators', () => {
             metaTypeImpl.validate({
                 value: [1]
             })
-        ).toBe(true)
+        ).toBeUndefined()
 
         expect(
             metaTypeImpl.validate({
                 value: {}
             })
-        ).toBe(true)
+        ).toBeUndefined()
 
         expect(
             metaTypeImpl.validate({
                 value: '1'
             })
-        ).toBe(true)
+        ).toBeUndefined()
 
         expect(
             metaTypeImpl.validate({
                 value: 0
             })
-        ).toBe(true)
+        ).toBeUndefined()
 
         expect(
             metaTypeImpl.validate({
                 value: 1
             })
-        ).toBe(true)
+        ).toBeUndefined()
 
         expect(
             metaTypeImpl.validate({
                 value: undefined
             })
-        ).toBe(true)
+        ).toBeUndefined()
 
         expect(
             metaTypeImpl.validate({
                 value: null
             })
-        ).toBe(true)
+        ).toBeUndefined()
 
-        expect(() =>
+        expect(
             metaTypeImpl.validate({
                 value: [1, 2]
             })
-        ).toThrow(MetaTypeValidatorError)
+        ).toBeInstanceOf(ValidationError)
 
-        expect(() =>
+        expect(
             metaTypeImpl.validate({
                 value: '12'
             })
-        ).toThrow(MetaTypeValidatorError)
+        ).toBeInstanceOf(ValidationError)
     })
 
     test('MinValidator', () => {
@@ -311,55 +306,55 @@ describe('Validators', () => {
             metaTypeImpl.validate({
                 value: 1
             })
-        ).toBe(true)
+        ).toBeUndefined()
 
         expect(
             metaTypeImpl.validate({
                 value: new Date()
             })
-        ).toBe(true)
+        ).toBeUndefined()
 
         expect(
             metaTypeImpl.validate({
                 value: '1'
             })
-        ).toBe(true)
+        ).toBeUndefined()
 
         expect(
             metaTypeImpl.validate({
                 value: undefined
             })
-        ).toBe(true)
+        ).toBeUndefined()
 
         expect(
             metaTypeImpl.validate({
                 value: null
             })
-        ).toBe(true)
+        ).toBeUndefined()
 
-        expect(() =>
+        expect(
             metaTypeImpl.validate({
                 value: 0
             })
-        ).toThrow(MetaTypeValidatorError)
+        ).toBeInstanceOf(ValidationError)
 
-        expect(() =>
+        expect(
             metaTypeImpl.validate({
                 value: '0'
             })
-        ).toThrow(MetaTypeValidatorError)
+        ).toBeInstanceOf(ValidationError)
 
-        expect(() =>
+        expect(
             metaTypeImpl.validate({
                 value: new Date(0)
             })
-        ).toThrow(MetaTypeValidatorError)
+        ).toBeInstanceOf(ValidationError)
 
-        expect(() =>
+        expect(
             metaTypeImpl.validate({
                 value: NaN
             })
-        ).toThrow(MetaTypeValidatorError)
+        ).toBeInstanceOf(ValidationError)
     })
 
     test('MaxValidator', () => {
@@ -372,55 +367,55 @@ describe('Validators', () => {
             metaTypeImpl.validate({
                 value: 0
             })
-        ).toBe(true)
+        ).toBeUndefined()
 
         expect(
             metaTypeImpl.validate({
                 value: new Date(0)
             })
-        ).toBe(true)
+        ).toBeUndefined()
 
         expect(
             metaTypeImpl.validate({
                 value: '1'
             })
-        ).toBe(true)
+        ).toBeUndefined()
 
         expect(
             metaTypeImpl.validate({
                 value: undefined
             })
-        ).toBe(true)
+        ).toBeUndefined()
 
         expect(
             metaTypeImpl.validate({
                 value: null
             })
-        ).toBe(true)
+        ).toBeUndefined()
 
-        expect(() =>
+        expect(
             metaTypeImpl.validate({
                 value: 2
             })
-        ).toThrow(MetaTypeValidatorError)
+        ).toBeInstanceOf(ValidationError)
 
-        expect(() =>
+        expect(
             metaTypeImpl.validate({
                 value: '2'
             })
-        ).toThrow(MetaTypeValidatorError)
+        ).toBeInstanceOf(ValidationError)
 
-        expect(() =>
+        expect(
             metaTypeImpl.validate({
                 value: new Date(2)
             })
-        ).toThrow(MetaTypeValidatorError)
+        ).toBeInstanceOf(ValidationError)
 
-        expect(() =>
+        expect(
             metaTypeImpl.validate({
                 value: NaN
             })
-        ).toThrow(MetaTypeValidatorError)
+        ).toBeInstanceOf(ValidationError)
     })
 
     test('GreaterValidator', () => {
@@ -433,55 +428,55 @@ describe('Validators', () => {
             metaTypeImpl.validate({
                 value: 2
             })
-        ).toBe(true)
+        ).toBeUndefined()
 
         expect(
             metaTypeImpl.validate({
                 value: new Date()
             })
-        ).toBe(true)
+        ).toBeUndefined()
 
         expect(
             metaTypeImpl.validate({
                 value: '2'
             })
-        ).toBe(true)
+        ).toBeUndefined()
 
         expect(
             metaTypeImpl.validate({
                 value: undefined
             })
-        ).toBe(true)
+        ).toBeUndefined()
 
         expect(
             metaTypeImpl.validate({
                 value: null
             })
-        ).toBe(true)
+        ).toBeUndefined()
 
-        expect(() =>
+        expect(
             metaTypeImpl.validate({
                 value: 1
             })
-        ).toThrow(MetaTypeValidatorError)
+        ).toBeInstanceOf(ValidationError)
 
-        expect(() =>
+        expect(
             metaTypeImpl.validate({
                 value: '1'
             })
-        ).toThrow(MetaTypeValidatorError)
+        ).toBeInstanceOf(ValidationError)
 
-        expect(() =>
+        expect(
             metaTypeImpl.validate({
                 value: new Date(1)
             })
-        ).toThrow(MetaTypeValidatorError)
+        ).toBeInstanceOf(ValidationError)
 
-        expect(() =>
+        expect(
             metaTypeImpl.validate({
                 value: NaN
             })
-        ).toThrow(MetaTypeValidatorError)
+        ).toBeInstanceOf(ValidationError)
     })
 
     test('LessValidator', () => {
@@ -494,55 +489,55 @@ describe('Validators', () => {
             metaTypeImpl.validate({
                 value: 0
             })
-        ).toBe(true)
+        ).toBeUndefined()
 
         expect(
             metaTypeImpl.validate({
                 value: new Date(0)
             })
-        ).toBe(true)
+        ).toBeUndefined()
 
         expect(
             metaTypeImpl.validate({
                 value: '0'
             })
-        ).toBe(true)
+        ).toBeUndefined()
 
         expect(
             metaTypeImpl.validate({
                 value: undefined
             })
-        ).toBe(true)
+        ).toBeUndefined()
 
         expect(
             metaTypeImpl.validate({
                 value: null
             })
-        ).toBe(true)
+        ).toBeUndefined()
 
-        expect(() =>
+        expect(
             metaTypeImpl.validate({
                 value: 1
             })
-        ).toThrow(MetaTypeValidatorError)
+        ).toBeInstanceOf(ValidationError)
 
-        expect(() =>
+        expect(
             metaTypeImpl.validate({
                 value: '1'
             })
-        ).toThrow(MetaTypeValidatorError)
+        ).toBeInstanceOf(ValidationError)
 
-        expect(() =>
+        expect(
             metaTypeImpl.validate({
                 value: new Date(1)
             })
-        ).toThrow(MetaTypeValidatorError)
+        ).toBeInstanceOf(ValidationError)
 
-        expect(() =>
+        expect(
             metaTypeImpl.validate({
                 value: NaN
             })
-        ).toThrow(MetaTypeValidatorError)
+        ).toBeInstanceOf(ValidationError)
     })
 
     test('RegExpValidator', () => {
@@ -555,60 +550,60 @@ describe('Validators', () => {
             metaTypeImpl.validate({
                 value: 0
             })
-        ).toBe(true)
+        ).toBeUndefined()
 
         expect(
             metaTypeImpl.validate({
                 value: 'abc'
             })
-        ).toBe(true)
+        ).toBeUndefined()
 
         expect(
             metaTypeImpl.validate({
                 value: 'abcd'
             })
-        ).toBe(true)
+        ).toBeUndefined()
 
         expect(
             metaTypeImpl.validate({
                 value: `abcd`
             })
-        ).toBe(true)
+        ).toBeUndefined()
 
         expect(
             metaTypeImpl.validate({
                 value: 'abc1'
             })
-        ).toBe(true)
+        ).toBeUndefined()
 
         expect(
             metaTypeImpl.validate({
                 value: []
             })
-        ).toBe(true)
+        ).toBeUndefined()
 
         expect(
             metaTypeImpl.validate({
                 value: undefined
             })
-        ).toBe(true)
+        ).toBeUndefined()
 
         expect(
             metaTypeImpl.validate({
                 value: null
             })
-        ).toBe(true)
+        ).toBeUndefined()
 
-        expect(() =>
+        expect(
             metaTypeImpl.validate({
                 value: 'abc12'
             })
-        ).toThrow(MetaTypeValidatorError)
+        ).toBeInstanceOf(ValidationError)
 
-        expect(() =>
+        expect(
             metaTypeImpl.validate({
                 value: 'ab1'
             })
-        ).toThrow(MetaTypeValidatorError)
+        ).toBeInstanceOf(ValidationError)
     })
 })
