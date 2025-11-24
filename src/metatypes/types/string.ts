@@ -1,4 +1,8 @@
-import { ToLowerCaseDeSerializer, ToUpperCaseDeSerializer } from '../../serializers'
+import {
+    ToLowerCaseDeSerializer,
+    ToUpperCaseDeSerializer,
+    TrimDeSerializer
+} from '../../serializers'
 import {
     MaxLengthValidatorBuilder,
     MinLengthValidatorBuilder,
@@ -23,6 +27,8 @@ type StringMetaTypeArgs<
           }
     ) & {
         maxLength?: number
+
+        trim?: boolean
 
         regexp?: RegExp | string
         toCase?: 'lower' | 'upper'
@@ -57,6 +63,10 @@ export class StringImpl extends MetaTypeImpl {
 
         if (metaTypeArgs.toCase === 'upper') {
             this.builtinDeSerializers.push(ToUpperCaseDeSerializer)
+        }
+
+        if (metaTypeArgs.trim) {
+            this.builtinDeSerializers.push(TrimDeSerializer)
         }
     }
 

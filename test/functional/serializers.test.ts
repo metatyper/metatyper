@@ -11,7 +11,8 @@ import {
     SubValuesDeSerializer,
     SubValuesSerializer,
     ToLowerCaseDeSerializer,
-    ToUpperCaseDeSerializer
+    ToUpperCaseDeSerializer,
+    TrimDeSerializer
 } from '../../src'
 
 describe('Serializers and Deserializers', () => {
@@ -301,6 +302,39 @@ describe('Serializers and Deserializers', () => {
                 value: 'aBc'
             })
         ).toBe('ABC')
+
+        expect(
+            metaTypeImpl.deserialize({
+                value: 1
+            })
+        ).toBe(1)
+
+        expect(
+            metaTypeImpl.deserialize({
+                value: undefined
+            })
+        ).toBe(undefined)
+
+        expect(
+            metaTypeImpl.deserialize({
+                value: null
+            })
+        ).toBe(null)
+    })
+
+    test('TrimSerializer', () => {
+        const metaTypeImpl = MetaTypeImpl.build({
+            deserializers: [TrimDeSerializer],
+            noBuiltinSerializers: true,
+            noBuiltinDeSerializers: true
+        })
+
+        expect(
+            metaTypeImpl.deserialize({
+                value: `  a Bc  
+                `
+            })
+        ).toBe('a Bc')
 
         expect(
             metaTypeImpl.deserialize({
