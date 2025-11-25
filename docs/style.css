@@ -49,6 +49,7 @@ div#app:empty:before {
     content: 'Loading...';
 }
 
+
 img {
     max-width: 100%;
 }
@@ -312,6 +313,7 @@ body.sticky .sidebar-toggle {
     border: none;
     border-bottom: 1px solid #444444;
     margin: 2em 0;
+    margin-bottom: 7em;
 }
 .markdown-section iframe {
     margin: 1em 0;
