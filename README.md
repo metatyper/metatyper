@@ -49,7 +49,7 @@ or
 <script src="https://cdn.jsdelivr.net/npm/metatyper/lib/metatyper.min.js"></script>
 
 <!-- or another cdn -->
-<script src="https://www.unpkg.com/metatyper/lib/metatyper.min.js"></script>
+<script src="https://unpkg.com/metatyper/lib/metatyper.min.js"></script>
 ```
 
 > In this case, you need to use this library through the `MetaTyper` global variable: `MetaTyper.Meta({ /* ... */ })`
@@ -63,14 +63,18 @@ First, you can create a Meta object.
 ```typescript
 import { Meta, NUMBER } from 'metatyper'
 
-const user = Meta({
-    id: 0,
-    username: 'some user name',
-    stars: NUMBER({ min: 0, default: 0 })
+// Simple product model with runtime validation
+const product = Meta({
+    id: 1,
+    name: 'Example product',
+    price: NUMBER({ min: 0, default: 0 })
 })
 
-user.id = 'some text' // type & validation error
-user.stars = 'some text' // type & validation error
+product.price = 10 // ok
+product.price = -5 // type & validation error (fails NUMBER({ min: 0 }))
+
+product.name = 'Updated name' // ok
+product.name = 123 // type & validation error (inferred string type)
 ```
 
 &nbsp;
@@ -80,30 +84,61 @@ You can also simply validate different objects.
 ```typescript
 import { BOOLEAN, INTEGER, Meta, STRING } from 'metatyper'
 
-const userSchema = {
-    id: INTEGER(),
+// Schema for validating incoming "create user" payloads
+const createUserSchema = {
+    id: INTEGER({ min: 1 }),
 
     username: STRING({
         minLength: 3,
         regexp: '^[a-zA-Z0-9 _]+$'
     }),
 
-    stars: 0, // any number
+    age: INTEGER({ min: 18 }),
 
-    someFlag: BOOLEAN({ optional: true })
+    isAdmin: BOOLEAN({ optional: true })
 }
 
-Meta.validate(userSchema, {
-    id: 1.1, // throw a validation error
-    username: 'some user name',
-    stars: 1
-})
+// Example: validating an incoming HTTP/JSON payload
+const badPayload = {
+    id: 0,
+    username: 'jd',
+    age: 16
+}
 
-Meta.validate(userSchema, {
+let error = Meta.validate(createUserSchema, badPayload)
+
+if (error) {
+    console.error('User payload is invalid:')
+
+    for (const issue of error.issues) {
+        const path = issue.path.join('.') || '(root)'
+
+        console.error(` - field "${path}" failed with code "${issue.code}", value:`, issue.value)
+    }
+}
+/*
+Console log
+
+User payload is invalid:
+- field "id" failed with code "Min", value: 0
+- field "username" failed with code "MinLength", value: jd
+- field "age" failed with code "Min", value: 16
+
+*/
+
+const goodPayload = {
     id: 1,
-    username: 'some user name'
-    // throw a validation error, because stars is not optional field
-})
+    username: 'John_Doe',
+    age: 25,
+    isAdmin: false
+}
+
+error = Meta.validate(createUserSchema, goodPayload)
+// === undefined (no validation issues)
+
+if (!error) {
+    console.log('ok')
+}
 ```
 
 &nbsp;
@@ -111,53 +146,60 @@ Meta.validate(userSchema, {
 Finally, you can work with classes instead of objects.
 
 ```typescript
-import { DATE, INTEGER, Meta, STRING } from 'metatyper'
-
 import 'reflect-metadata'
+import { BOOLEAN, DATE, INTEGER, Meta, STRING, ValidationError } from 'metatyper'
 
-@Meta.Class({ ignoreProps: ['someInstanceFlag', 'someClassFlag'] })
+// Domain model with runtime-checked properties
+@Meta.Class()
 class User {
-    @Meta.declare(INTEGER({ default: 0 }))
+    @Meta.declare(INTEGER({ min: 1 })) // runtime type as decorator
     id: number
 
-    username = 'some user name'
+    @Meta.declare({ minLength: 3 }) // runtime type as decorator with reflection
+    username = 'Anonymous user'
 
-    @Meta.declare({ default: 0, min: 0 })
-    stars: number // for this you need `reflect-metadata`
+    isAdmin = BOOLEAN({ default: false }) // runtime type as value
 
     createdAt = DATE({
         default: new Date(),
-        coercion: true // cast a string or number to a date (and vice versa)
-    })
-
-    someInstanceFlag = false
-
-    static someClassFlag = true
-    static someAnotherClassFlag = true
+        coercion: true // cast timestamp/string from DB/API to Date (and back)
+    }) // runtime type cast
 }
-
-User.someClassFlag = 'string' as any
-// ok, because the field is listed in the ignoreProps
-
-User.someAnotherClassFlag = 'string' // type & validation error
 
 const user = new User()
 
-Meta.deserialize(user, {
-    id: 2,
+// Typical use‑case: hydrate instance from plain data (e.g. API/DB)
+try {
+    Meta.deserialize(user, {
+        id: 42,
+        username: 'Alice',
 
-    username: 'some another user name',
+        createdAt: 1704067200 * 1000,
+        // this timestamp will cast to Date("2024-01-01")
 
-    createdAt: 1704067200 * 1000,
-    // this timestamp will cast to Date("2024-01-01")
+        isAdmin: true
+    })
+} catch (error) {
+    if (error instanceof ValidationError) {
+        console.error('Failed to deserialize User: ValidationError')
+    } else {
+        console.error('Unexpected error while deserializing User:', error)
+    }
+}
 
-    someInstanceFlag: 'no boolean'
-    // ok, because the field is listed in the ignoreProps
-})
+Object.assign(user, {
+    username: 'Updated name'
+}) // ok
 
-Meta.deserialize(user, {
-    id: 1.1 // validation error
-})
+try {
+    user.id = 0 // validation error (id must be >= 1)
+} catch (error) {
+    if (error instanceof ValidationError) {
+        console.error('Failed to update User instance: ValidationError')
+    } else {
+        console.error('Unexpected error while updating User:', error)
+    }
+}
 ```
 
 &nbsp;
@@ -215,9 +257,9 @@ Meta.deserialize(user, {
         -   [MetaTypeSerializationError](#metatypeserializationerror)
         -   [MetaTypeSerializerError](#metatypeserializererror)
         -   [MetaTypeDeSerializerError](#metatypedeserializererror)
-        -   [MetaTypeValidationError](#metatypevalidationerror)
         -   [MetaTypeValidatorError](#metatypevalidatorerror)
-        -   [MetaTypeValidatorsArrayError](#metatypevalidatorsarrayerror)
+        -   [ValidationError](#validationerror)
+-   [API Reference](#api-reference)
 -   [Similar Libraries](#similar-libraries)
 -   [Change Log](#change-log)
 
@@ -228,6 +270,8 @@ Meta.deserialize(user, {
 ### Meta Objects
 
 #### Meta
+
+Signature: [`Meta()`](docs/api/README#meta)
 
 To work with Meta types it is convenient to use Meta objects.
 A Meta object is a proxy object that changes the logic of reading and writing values to the object's properties.
@@ -240,13 +284,13 @@ const objA = {
 }
 const metaObjA = Meta(objA)
 
-// throw a validation error because this property has been initialized number
+// throws a validation error because this property was initialized with a number
 metaObjA.a = 'str'
 
 const metaObjB = Meta()
 metaObjB.a = 'str'
 
-// throw a validation error because this property has been initialized string
+// throws a validation error because this property was initialized with a string
 metaObjB.a = 2
 ```
 
@@ -278,7 +322,9 @@ metaInstanceA.a = 1 as any
 
 #### Meta args
 
-This is arguments for creating a Meta object.
+Signature: [`MetaArgsType`](docs/api/README#metaargstype)
+
+These are the arguments for creating a Meta object.
 
 ```typescript
 function Meta<T extends object>(protoObject?: T, metaArgs?: MetaArgsType): Meta<T>
@@ -401,7 +447,7 @@ type MetaArgsType = {
 
 Meta objects support the extension of classic objects with an additional side effect.
 
-Objects inheritance
+Object inheritance
 
 ```typescript
 import { BOOLEAN, Meta, MetaType, NUMBER, STRING } from 'metatyper'
@@ -451,7 +497,7 @@ obj3.c = '1'
 
 &nbsp;
 
-Classes inheritance
+Class inheritance
 
 ```typescript
 import { Meta, NUMBER } from 'metatyper'
@@ -509,6 +555,8 @@ console.log(cInstance.toString())
 
 #### Meta.Class decorator
 
+Signature: [`Meta.Class()`](docs/api/README#metaclass)
+
 Decorator does the same thing as `Meta(A)`.
 
 Example:
@@ -523,18 +571,20 @@ class MetaA {
     static a = 2
 }
 
-// throw a validation error because this property was initialized number
+// throws a validation error because this property was initialized with a number
 MetaA.a = 'str'
 
 const metaInstanceA = new MetaA()
 
-// throw a validation error because this property was initialized 'string'
+// throws a validation error because this property was initialized with a string
 metaInstanceA.a = 1
 ```
 
 &nbsp;
 
 #### Meta.declare decorator
+
+Signature: [`Meta.declare()`](docs/api/README#metadeclare)
 
 This decorator lets you specify the Meta type of your properties.
 
@@ -579,17 +629,23 @@ class Test {
 
 #### Meta.isMetaObject
 
+Signature: [`Meta.isMetaObject()`](docs/api/README#metaismetaobject)
+
 If you need to check if an object is a Meta object, you can use this method: `Meta.isMetaObject(obj)`.
 
 &nbsp;
 
 #### Meta.isIgnoredProp
 
+Signature: [`Meta.isIgnoredProp()`](docs/api/README#metaisignoredprop)
+
 If you need to check if an property is ignored by Meta, you can use this method: `Meta.isIgnoredProp(obj, 'propName')`.
 
 &nbsp;
 
 #### Meta.copy
+
+Signature: [`Meta.copy()`](docs/api/README#metacopy)
 
 Sometimes you may need to copy a Meta object. You can do this by using the spread operator: `{ ...metaObject }`. However, this will not copy the type declarations of the Meta object. To copy the type declarations as well, you can use `Meta.copy`:
 
@@ -618,6 +674,8 @@ metaObjectCopy.b === '' // true
 &nbsp;
 
 #### Meta.rebuild
+
+Signature: [`Meta.rebuild()`](docs/api/README#metarebuild)
 
 You may also need to reset the meta object to its original state.
 The `Meta.rebuild` is useful for creating a new instance of a Meta object with its initial state and configuration.
@@ -651,6 +709,8 @@ newMetaObject.b === undefined // true
 
 #### MetaType
 
+Signature: [`MetaType()`](docs/api/README#metatype)
+
 Meta types extend built-in types, but they have more features: validation and serialization.
 The basic logic of Meta types is in metaTypeImpl.
 
@@ -673,6 +733,8 @@ const newType2 = MetaType<string>(
 
 #### MetaType Implementation
 
+Signature: [`MetaTypeImpl`](docs/api/README#metatypeimpl)
+
 Meta type implementation example:
 
 ```typescript
@@ -680,7 +742,7 @@ import { MetaType, StringImpl } from 'metatyper'
 
 class LowerCaseStringImpl extends StringImpl {
     static isCompatible(value: string) {
-        if (!this.isCompatible(value)) {
+        if (!super.isCompatible(value)) {
             return false
         }
 
@@ -715,6 +777,8 @@ To learn more about the principles of Meta types creation, you can explore the [
 
 #### MetaTypeArgsType
 
+Signature: [`MetaTypeArgsType`](docs/api/README#metatypeargstype)
+
 This represents the arguments for creating a Meta type.
 
 ```typescript
@@ -738,6 +802,8 @@ type MetaTypeArgsType<
     validators?: (ValidatorType | ValidatorFuncType)[]
     serializers?: (SerializerType | SerializeFuncType)[]
     deserializers?: (DeSerializerType | DeSerializeFuncType)[]
+
+    safe?: boolean
 } & Record<string, any>
 ```
 
@@ -774,7 +840,7 @@ If `nullish` and `optional` are contradictory, the value of `optional` will be c
 &nbsp;
 
 `coercion?: boolean` - A boolean that indicates whether the value should be coerced to the expected type or not.
-If `true`, an `CoercionSerializer` is added to the Meta type, which tries to convert the main value to the appropriate type.
+If `true`, a `CoercionSerializer` is added to the Meta type, which tries to convert the main value to the appropriate type.
 For example, if the Meta type is a string, and the main value is a number, the number will be cast to a string.
 
 &nbsp;
@@ -842,7 +908,7 @@ prior to validation. For example, `obj['prop'] = 'value'` or `Meta.deserialize(m
 type DeSerializeFuncType = (deserializeArgs: DeSerializerArgsType) => any
 
 type DeSerializerType = {
-    serialize: DeSerializeFuncType
+    deserialize: DeSerializeFuncType
     name?: string
     deserializePlaces?: ('init' | 'reinit' | 'set' | 'deserialize' | 'unknown')[] | string[]
 }
@@ -852,20 +918,26 @@ type DeSerializerType = {
 
 &nbsp;
 
+`safe?: boolean` - Controls data integrity enforcement in meta objects. When `true` (default), validation errors are thrown immediately. When `false`, invalid data can be written to object fields without throwing; errors can be handled via event handling mechanisms instead (see [Meta Args](#meta-args)).
+
+&nbsp;
+
 ### Built-in Meta Types
 
-Each built-in Meta type has `args?: MetaTypeArgsType` at the end of arguments. How to use it you can see below.
+Each built-in Meta type has `args?: MetaTypeArgsType` as the last argument. You can see how to use it below.
 
 &nbsp;
 
 #### ANY
+
+Signature: [`ANY()`](docs/api/README#any)
 
 ```typescript
 import { ANY, Meta } from 'metatyper'
 
 const obj1 = Meta({
     a: ANY({ nullish: true })
-}) // as { a: any }
+}) // as { a: any | null | undefined }
 
 obj1.a = 1
 obj1.a = {}
@@ -874,6 +946,8 @@ obj1.a = {}
 &nbsp;
 
 #### BOOLEAN
+
+Signature: [`BOOLEAN()`](docs/api/README#boolean)
 
 ```typescript
 import { BOOLEAN, Meta } from 'metatyper'
@@ -901,6 +975,8 @@ obj.someField = 'true' // type & validation error
 
 #### STRING
 
+Signature: [`STRING()`](docs/api/README#string)
+
 ```typescript
 import { Meta, STRING } from 'metatyper'
 
@@ -909,15 +985,16 @@ const obj = Meta({
         nullish: true,
 
         // StringMetaTypeArgs
-        notEmpty: true, // == minLength: 0
-        minLength: 0,
+        notEmpty: true, // alias for minLength: 1
         maxLength: 10,
 
         // validate using this regular expression
         regexp: '^[a-zA-Z]+$',
 
         // serialize to lowercase (or 'upper')
-        toCase: 'lower'
+        toCase: 'lower',
+        // trim whitespace from both ends of the string
+        trim: true
     })
 }) // as { someField?: string | null | undefined }
 
@@ -928,6 +1005,8 @@ obj.someField = 1 // type & validation error
 &nbsp;
 
 #### NUMBER
+
+Signature: [`NUMBER()`](docs/api/README#number)
 
 ```typescript
 import { Meta, NUMBER } from 'metatyper'
@@ -953,6 +1032,8 @@ obj.someField = 'str' // type & validation error
 
 #### INTEGER
 
+Signature: [`INTEGER()`](docs/api/README#integer)
+
 ```typescript
 import { INTEGER, Meta } from 'metatyper'
 
@@ -976,6 +1057,8 @@ obj.someField = 1.1 // validation error
 &nbsp;
 
 #### BIGINT
+
+Signature: [`BIGINT()`](docs/api/README#bigint)
 
 ```typescript
 import { BIGINT, Meta } from 'metatyper'
@@ -1001,6 +1084,8 @@ obj.someField = 1 // type and validation error
 
 #### DATE
 
+Signature: [`DATE()`](docs/api/README#date)
+
 ```typescript
 import { DATE, Meta } from 'metatyper'
 
@@ -1024,6 +1109,8 @@ obj.someField = 1 // type and validation error
 
 #### LITERAL
 
+Signature: [`LITERAL()`](docs/api/README#literal)
+
 ```typescript
 import { LITERAL, Meta } from 'metatyper'
 
@@ -1040,6 +1127,8 @@ obj.someField = 2 // type and validation error
 &nbsp;
 
 #### INSTANCE
+
+Signature: [`INSTANCE()`](docs/api/README#instance)
 
 ```typescript
 import { Meta, INSTANCE } from 'metatyper'
@@ -1073,6 +1162,8 @@ obj.someField = B // type and validation error
 
 #### UNION
 
+Signature: [`UNION()`](docs/api/README#union)
+
 ```typescript
 import { BOOLEAN, Meta, STRING, UNION } from 'metatyper'
 
@@ -1089,6 +1180,8 @@ obj.someField = new Date() // type and validation error
 
 #### ARRAY
 
+Signature: [`ARRAY()`](docs/api/README#array)
+
 ```typescript
 import { Meta, ARRAY, BOOLEAN, STRING } from 'metatyper'
 
@@ -1104,8 +1197,7 @@ const obj = Meta({
 
             // ArrayMetaTypeArgs
 
-            notEmpty: true, // == minLength: 0
-            minLength: 0,
+            notEmpty: true, // alias for minLength: 1
             maxLength: 10,
 
             // will create a frozen copy when deserializing
@@ -1135,6 +1227,8 @@ obj.someField = [1, '1'] // type and validation error
 &nbsp;
 
 #### TUPLE
+
+Signature: [`TUPLE()`](docs/api/README#tuple)
 
 ```typescript
 import { Meta, STRING, TUPLE } from 'metatyper'
@@ -1166,6 +1260,8 @@ obj.someField = ['1', true] // type and validation error
 
 #### OBJECT
 
+Signature: [`OBJECT()`](docs/api/README#object)
+
 ```typescript
 import { Meta, OBJECT, STRING, BOOLEAN } from 'metatyper'
 
@@ -1192,7 +1288,7 @@ const obj = Meta({
     })
 
     someField2: OBJECT(BOOLEAN(), { optional: true })
-    someField3: OBJECT(BOOLEAN())
+    someField3: OBJECT(BOOLEAN())  // default {}, if not optional
 
 })
 /*
@@ -1208,7 +1304,7 @@ as {
     }
 
     someField2?: Record<string, boolean> === undefined
-    someField3: Record<string, boolean> === []
+    someField3: Record<string, boolean>
 }
 */
 
@@ -1240,8 +1336,10 @@ obj.someField2 = {
 
 #### Recursive structures
 
-Meta types like `OBJECT`, `ARRAY`, `TUPLE` and `UNION` inherited from `StructuralMetaTypeImpl`.
-So, it allows to create a recursive structures like this:
+Signature: [`StructuralMetaTypeImpl`](docs/api/README#structuralmetatypeimpl)
+
+Meta types like `OBJECT`, `ARRAY`, `TUPLE` and `UNION` inherit from `StructuralMetaTypeImpl`.
+This allows you to create recursive structures like this:
 
 &nbsp;
 
@@ -1264,7 +1362,7 @@ OBJECT((selfImpl) => {
 // OBJECT(g4dv1h)<{ self: REF<g4dv1h> }>
 ```
 
-> Be careful, `selfImpl` is of type `ObjectImpl`, it's not meta type
+> Be careful, `selfImpl` is of type `ObjectImpl`, it's not a meta type
 
 &nbsp;
 
@@ -1353,12 +1451,12 @@ OBJECT(n6f76)<{
 
 > `REF` - another optional type that works like a proxy.
 
-Recursive value is not available now. You need to provide `undefined` value instead of recursive reference.
+Recursive values are not supported yet. You need to provide an `undefined` value instead of a recursive reference.
 
 e.g.
 
 ```typescript
-const obj = M({
+const obj = Meta({
     innerObj: OBJECT((myObjImpl) => ({ myObj: myObjImpl }), { optional: true })
 })
 
@@ -1387,25 +1485,25 @@ Validators for Meta types are categorized into:
 
 -   **Runtime Validators**: These are provided as arguments at runtime to the Meta type.
 
-For more details on the arguments accepted by Meta types, see the [MetaTypeArgsType](#metatypeargs) section.
+For more details on the arguments accepted by Meta types, see the [MetaTypeArgsType](#metatypeargstype) section.
 
-Validation occurs automatically when assigning new values to a Meta object. Additionally, you can explicitly validate another object using the method:
+Validation occurs automatically when assigning new values to a Meta object. Additionally, you can explicitly validate another object using the [`Meta.validate`](docs/api/README#metavalidate) helper:
 
 ```typescript
 Meta.validate(
     metaObjectOrSchema: Meta<object> | object,
     rawObject: object,
     validateArgs?: {
-        safe?: boolean,
+        /** Stop collecting issues for a particular field at the first problem. */
         stopAtFirstError?: boolean
     }
-) => boolean
+): ValidationError | undefined
 ```
 
 **Example**:
 
 ```typescript
-import { Meta } from 'metatyper'
+import { Meta, STRING, ValidationError } from 'metatyper'
 
 const schema = {
     id: 0,
@@ -1416,13 +1514,21 @@ const schema = {
     })
 }
 
-Meta.validate(schema, { id: '351', name: null })
-// throws MetaTypeValidatorError
+const error = Meta.validate(schema, { id: '351', name: null })
+
+if (error instanceof ValidationError) {
+    // each issue is MetaTypeValidatorError
+    for (const issue of error.issues) {
+        console.log(issue.code, issue.path, issue.value)
+    }
+}
 ```
 
 &nbsp;
 
 #### Validators
+
+Signature: [`ValidatorType`](docs/api/README#validatortype) · [`ValidatorArgsType`](docs/api/README#validatorargstype) · [`ValidatorFuncType`](docs/api/README#validatorfunctype)
 
 A validator is an object that contains a `validate` method:
 
@@ -1439,7 +1545,6 @@ type ValidatorArgsType = {
     targetObject?: object
     baseObject?: object
 
-    safe?: boolean
     stopAtFirstError?: boolean
 } & Record<string, any>
 ```
@@ -1449,8 +1554,16 @@ type ValidatorArgsType = {
 -   `propName`: Specified when using Meta objects for validation.
 -   `targetObject`: The object that needs to be validated.
 -   `baseObject`: The object that contains the Meta type declaration with this validator.
--   `safe`: Determines whether a validation error should throw an exception.
 -   `stopAtFirstError`: Specifies if validation should cease after the first error. Defaults to true.
+
+You can also validate standalone values directly via Meta types:
+
+```typescript
+const nameType = STRING({ minLength: 3 })
+
+const error = nameType.validate('Jo')
+// error is ValidationError | undefined
+```
 
 &nbsp;
 
@@ -1519,23 +1632,25 @@ Meta.deserialize = (
 **Example**:
 
 ```typescript
-import { Meta } from 'metatyper'
+import { Meta, DATE } from 'metatyper'
 
 const objToSerialize = { id: '351', date: new Date(123) }
 
 const objToDeSerialize = Meta.serialize<{
     id: string
     date: number
-}>({ id: '', name: DATE({ coercion: true }) }, objToSerialize)
+}>({ id: '', date: DATE({ coercion: true }) }, objToSerialize)
 
-// objToDeSerialize now equals { id: '351', date: 123 }
+// objToDeSerialize = { id: '351', date: 123 }
 
-Meta.deserialize({ id: '', name: DATE({ coercion: true }) }, objToDeSerialize) // returns Meta({ id: '351', date: new Date(123) })
+Meta.deserialize({ id: '', date: DATE({ coercion: true }) }, objToDeSerialize) // -> Meta({ id: '351', date: new Date(123) })
 ```
 
 &nbsp;
 
 #### Serializers and Deserializers
+
+Signature: [`SerializerType`](docs/api/README#serializertype) · [`SerializerArgsType`](docs/api/README#serializerargstype) · [`DeSerializerType`](docs/api/README#deserializertype) · [`DeSerializerArgsType`](docs/api/README#deserializerargstype)
 
 A **serializer** is an object with a `serialize` method, and a **deserializer** likewise has a `deserialize` method:
 
@@ -1638,6 +1753,8 @@ class MyClass2 {
 
 #### Types Coercion
 
+Signature: [`MetaTypeArgsType`](docs/api/README#metatypeargstype)
+
 Meta types have coercion capabilities upon serialization and deserialization.
 This is particularly handy for handling various value types such as dates in JSON data.
 
@@ -1739,19 +1856,40 @@ DATE({ coercion: true })
 
 When working with Meta objects, you may encounter a range of errors. These can be broadly categorized into standard errors, such as `TypeError('Cannot assign to read only property ...')`, and specialized errors unique to the handling of Meta objects. Understanding these errors and their hierarchy is crucial for effectively managing exceptions and maintaining robust code.
 
-Specialized errors fall under the umbrella of `MetaError` and include:
+Specialized errors fall under the umbrella of `MetaError` and mainly cover:
+
+-   **Validation** – `ValidationError` (group of errors) and `MetaTypeValidatorError` (a single validator failure).
+-   **Serialization/Deserialization** – `MetaTypeSerializerError` and `MetaTypeDeSerializerError`.
+
+This allows you to catch all MetaTyper-specific issues with `instanceof MetaError`, while still distinguishing between validation and serialization problems when needed.
 
 &nbsp;
 
 #### MetaTypeSerializationError
 
+Signature: [`MetaTypeSerializationError`](docs/api/README#metatypeserializationerror)
+
 `MetaTypeSerializationError` serves as an extended version of `MetaError`, focusing specifically on the identification and handling of serialization errors. Its main purpose is to allow developers to pinpoint serialization issues distinctively using `instanceof` checks. This differentiation is crucial for separating serialization errors from others, like validation errors, enhancing debugging efficiency.
+
+All concrete serialization-related errors (`MetaTypeSerializerError` and `MetaTypeDeSerializerError`) extend this base class.  
+This means you can:
+
+-   catch **any** serialization problem via `error instanceof MetaTypeSerializationError`, and
+-   still distinguish direction when necessary using `MetaTypeSerializerError` (serialize, read, get) or `MetaTypeDeSerializerError` (deserialize, write, set).
 
 &nbsp;
 
 #### MetaTypeSerializerError
 
-When it comes to serialization of Meta type data, encountering errors is a possibility. The `MetaTypeSerializerError` is designed to throw an exception in such cases. This error aims to simplify the debugging process and error handling by offering in-depth information about where and why the failure occurred.
+Signature: [`MetaTypeSerializerError`](docs/api/README#metatypeserializererror)
+
+When it comes to serialization of Meta type data, encountering errors is a possibility. The `MetaTypeSerializerError` is thrown when a **serializer** fails while producing an output value (for example, on coercion or in a custom serializer). This error aims to simplify the debugging process and error handling by offering in-depth information about where and why the failure occurred.
+
+You can expect this error when:
+
+-   reading values from a Meta object while serialization is active (property access `metaObj.prop`),
+-   calling `Meta.serialize(metaObj)` / `MetaType.serialize(value)`,
+-   or any other place where serializers run with `place: 'get' | 'serialize' | 'unknown'`.
 
 Key fields of the `MetaTypeSerializerError`:
 
@@ -1774,11 +1912,49 @@ type SerializerErrorArgsType = {
 } & Record<string, any>
 ```
 
+Typical handling pattern:
+
+```typescript
+import { Meta, STRING, MetaTypeSerializerError } from 'metatyper'
+
+const obj = Meta({
+    name: STRING({
+        serializers: [
+            {
+                name: 'CrashSerializer',
+                serialize() {
+                    throw new Error('boom')
+                }
+            }
+        ]
+    })
+})
+
+try {
+    const plain = Meta.serialize(obj)
+} catch (error) {
+    if (error instanceof MetaTypeSerializerError) {
+        console.error('Serializer failed at place:', error.serializerErrorArgs.place)
+        console.error('Value:', error.serializerErrorArgs.value)
+        console.error('Inner error:', error.serializerErrorArgs.subError)
+    }
+}
+```
+
 &nbsp;
 
 #### MetaTypeDeSerializerError
 
-Mirroring the `MetaTypeSerializerError`, the `MetaTypeDeSerializerError` addresses errors during the deserialization of Meta type data. This exception is crucial for developers aiming to resolve issues arising from converting serialized data back into a usable form within the application.
+Signature: [`MetaTypeDeSerializerError`](docs/api/README#metatypedeserializererror)
+
+Mirroring the `MetaTypeSerializerError`, the `MetaTypeDeSerializerError` addresses errors during the **deserialization** of Meta type data. This exception is crucial for developers aiming to resolve issues arising from converting serialized data back into a usable form within the application.
+
+You can encounter this error when:
+
+-   assigning values to Meta object properties (when deserializers are active),
+-   calling `Meta.deserialize(metaObjOrSchema, rawObject)`,
+-   using `Meta.fromJson(...)`,
+-   or inside `MetaType.deserialize(value)`.
 
 Key fields of the `MetaTypeDeSerializerError`:
 
@@ -1801,53 +1977,96 @@ type DeSerializerErrorArgsType = {
 } & Record<string, any>
 ```
 
-&nbsp;
+Example of handling deserialization failures:
 
-#### MetaTypeValidationError
+```typescript
+import { Meta, STRING, MetaTypeDeSerializerError } from 'metatyper'
 
-`MetaTypeValidationError` functions as an enhanced variant of `MetaError`, specifically dedicated to identifying and managing validation errors. Its primary role is to enable developers to efficiently distinguish validation errors from other types, such as serialization or deserialization errors, through `instanceof` checks. This specificity is vital for streamlined error handling and debugging processes.
+const schema = {
+    name: STRING({
+        deserializers: [
+            {
+                name: 'CrashDeSerializer',
+                deserialize() {
+                    throw new Error('bad input')
+                }
+            }
+        ]
+    })
+}
+
+try {
+    Meta.deserialize(schema, { name: 'John' })
+} catch (error) {
+    if (error instanceof MetaTypeDeSerializerError) {
+        console.error('Deserializer failed at place:', error.deserializerErrorArgs.place)
+        console.error('Raw value:', error.deserializerErrorArgs.value)
+        console.error('Inner error:', error.deserializerErrorArgs.subError)
+    }
+}
+```
 
 &nbsp;
 
 #### MetaTypeValidatorError
 
-During the validation process of Meta type data, it's plausible to encounter failures. The `MetaTypeValidatorError` is thrown in such scenarios to indicate a validation issue. The uniqueness of this error, compared to `MetaTypeValidatorsArrayError`, is determined by the function arguments during validation. Specifically, setting `stopAtFirstError: false` in the function arguments collects all encountered validation errors, encapsulating them within a `MetaTypeValidatorsArrayError` containing multiple `MetaTypeValidatorError` instances.
+Signature: [`MetaTypeValidatorError`](docs/api/README#metatypevalidatorerror)
+
+During the validation process of Meta type data, it's possible to encounter failures. A `MetaTypeValidatorError` describes a _single_ validator issue and is typically exposed inside `ValidationError.issues`.
 
 Key fields of the `MetaTypeValidatorError`:
 
--   **validator**: This field connects directly to the `ValidatorType` that generated the error, allowing developers to identify and investigate the specific validator causing the issue.
+-   **validator**: Direct link to the `ValidatorType` that generated the error.
+-   **validatorArgs**: `ValidatorErrorArgsType` with detailed context (value, path, target/base objects, etc.).
+-   **subError**: Optional nested `Error` instance containing the original failure reason.
+-   **code**: Short identifier for the validator (its `name` or `'Unknown'`). You can find all available codes in the [built-in validators](https://github.com/metatyper/metatyper/tree/main/src/validators).
+-   **path**: Property path within the validated object (for example, `['users', 0, 'name']`).
+-   **value**: Offending value.
 
--   **validatorErrorArgs**: Holding the `ValidatorErrorArgsType`, this attribute provides a detailed account of the circumstances leading to the validation error. Information includes the value under validation, property names, the involved objects, and optionally, a subError detailing the underlying cause of failure, if applicable. Additionally, it may indicate whether the validation was set to stop at the first error or continue to gather all errors.
+This level of detail helps you build precise error messages and map validation problems back to UI fields.
+
+&nbsp;
+
+#### ValidationError
+
+Signature: [`ValidationError`](docs/api/README#validationerror)
+
+`ValidationError` represents the group of validation errors aggregated for one operation.
+
+In practice you will most often see it when:
+
+-   calling `Meta.validate(...)` – the function returns `ValidationError | undefined`.
+-   assigning invalid values to a meta object – a `ValidationError` may be thrown depending on the `safe` flag in [Meta type arguments](#metatype).
 
 ```typescript
-type ValidatorErrorArgsType = {
-    value: any
-    subError?: Error
+import { Meta, STRING, ValidationError } from 'metatyper'
 
-    propName?: string | symbol
-    targetObject?: object
-    baseObject?: object
+const user = Meta({
+    name: STRING({ minLength: 3 })
+})
 
-    metaTypeImpl?: MetaTypeImpl
-    stopAtFirstError?: boolean
-} & Record<string, any>
+try {
+    user.name = 'Jo'
+} catch (error) {
+    if (error instanceof ValidationError) {
+        for (const issue of error.issues) {
+            console.log(issue.code, issue.path, issue.value)
+        }
+    }
+}
 ```
 
 &nbsp;
 
-#### MetaTypeValidatorsArrayError
+## API Reference
 
-Mirroring scenarios in which `MetaTypeValidatorError` arises, the `MetaTypeValidatorsArrayError` is thrown when multiple validation errors are encountered during the checking of Meta type data. This exception is particularly generated when the validation function’s argument `stopAtFirstError` is set to `false`, allowing the accumulation of all validation errors into a single `MetaTypeValidatorsArrayError`. This error then contains an array of `MetaTypeValidatorError` instances, providing a comprehensive overview of all validation issues detected.
-
-Key fields of the `MetaTypeValidatorsArrayError`:
-
--   **validatorsErrors**: This attribute is an array of `MetaTypeValidatorError` instances, each detailing a specific validation failure encountered during the process. This collection offers a broad perspective on the nature and extent of validation issues, facilitating thorough error resolution.
+[![API Reference](https://img.shields.io/badge/API-Reference-1a9432?style=flat&labelColor=202020)](docs/api/README#functions)
 
 &nbsp;
 
 ## Similar Libraries
 
-There are many other popular good libraries that perform similar functions well. If you require specific functionality, you can explore various validation libraries (eg Zod) or type collections (eg Type-fest). Moreover, you have the flexibility to integrate the best features from these libraries alongside MetaTyper to achieve best outcomes.
+There are many other popular libraries that perform similar functions well. If you require specific functionality, you can explore various validation libraries (eg Zod) or type collections (eg Type-fest). Moreover, you have the flexibility to integrate the best features from these libraries alongside MetaTyper to achieve the best outcomes.
 
 These libs are worth a look:
 
