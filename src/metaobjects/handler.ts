@@ -13,6 +13,10 @@ import {
 } from './meta'
 import { MetaObjectRegistryInfo, MetaObjectTypeName, MetaObjectsRegistry } from './registry'
 
+/**
+ * Contains all proxy traps and helper utilities used by meta objects.
+ * Responsible for emitting change/error events and enforcing validation/serialization rules.
+ */
 export class MetaObjectsHandler {
     protected _builtinIgnoredProps = [
         'length',
@@ -29,12 +33,14 @@ export class MetaObjectsHandler {
         'constructor'
     ]
 
+    /** Copy of property names that are always ignored by meta proxies. */
     get builtinIgnoredProps(): (string | symbol)[] {
         return [...this._builtinIgnoredProps]
     }
 
     registry: MetaObjectsRegistry
 
+    /** Creates a handler bound to a particular builder/registry pair. */
     constructor(public builder: MetaObjectsBuilder) {
         this.registry = builder.registry
     }
@@ -77,6 +83,7 @@ export class MetaObjectsHandler {
         }
     }
 
+    /** Figures out a human-readable name/type used in inspector output. */
     getObjectNameAndType(protoObject: any, metaArgs: MetaArgsType) {
         let name: string
         let type: MetaObjectTypeName
@@ -105,6 +112,7 @@ export class MetaObjectsHandler {
         return { name, type }
     }
 
+    /** Checks whether the provided property should be ignored for a particular meta object. */
     isIgnoredProp(
         baseObject: Record<keyof any, any>,
         propName: string | symbol,
@@ -131,6 +139,7 @@ export class MetaObjectsHandler {
         }
     }
 
+    /** Builds a readable string representation of a meta object (used in `toString`). */
     represent(targetObject: any) {
         const registryInfo = this.registry.get(targetObject)
 
@@ -1018,16 +1027,16 @@ export class MetaObjectsHandler {
                     const error = declaration.validate({ value, path: [propName], targetObject })
 
                     if (error) {
+                        this.emitErrorEvent({
+                            error,
+                            propName,
+                            targetObject,
+                            baseObject,
+                            errorPlace: 'deserialize'
+                        })
+
                         if (declaration.metaTypeArgs.safe) {
                             throw error
-                        } else {
-                            this.emitErrorEvent({
-                                error,
-                                propName,
-                                targetObject,
-                                baseObject,
-                                errorPlace: 'deserialize'
-                            })
                         }
                     }
                 }

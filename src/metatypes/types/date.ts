@@ -12,7 +12,8 @@ import {
     SerializerArgsType
 } from '../metatypeImpl'
 
-type DateMetaTypeArgs<
+/** Options for {@link DATE} meta type (range constraints, defaults, etc.). */
+export type DateMetaTypeArgs<
     T = DATE,
     IsNullishT extends boolean = boolean,
     IsNullableT extends boolean = IsNullishT,
@@ -20,17 +21,21 @@ type DateMetaTypeArgs<
 > = MetaTypeArgsType<T, IsNullishT, IsNullableT, IsOptionalT> &
     (
         | {
+              /** Inclusive lower bound (timestamp, bigint or Date). */
               min?: number | bigint | Date
           }
         | {
+              /** Exclusive lower bound. */
               greater?: number | bigint | Date
           }
     ) &
     (
         | {
+              /** Inclusive upper bound. */
               max?: number | bigint | Date
           }
         | {
+              /** Exclusive upper bound. */
               less?: number | bigint | Date
           }
     )
@@ -105,19 +110,15 @@ export class DateImpl extends MetaTypeImpl {
 }
 
 /**
- * metatype that similar to Date
+ * Creates a `Date` meta type with optional range checks and coercion support.
  *
- * @param args - {@link DateMetaTypeArgs}
+ * @param args - {@link DateMetaTypeArgs} controlling bounds/default/nullability.
  *
  * @example
  * ```ts
- * const obj1 = Meta({
- *      a: DATE({ nullish: true })
- * }) // as { a: Date | null | undefined }
- *
- * obj1.a = new Date()
- * obj1.a = 1 // type & validation error
- * obj1.a = 'str' // type & validation error
+ * const obj = Meta({ createdAt: DATE({ nullish: true }) })
+ * obj.createdAt = new Date()
+ * obj.createdAt = 1 // validation error
  * ```
  */
 export function DATE<

@@ -1,6 +1,10 @@
 import { IsMetaObjectSymbol } from '../metaobjects/symbols'
 import { deepMap } from './deepMap'
 
+/**
+ * Produces a string representation of a value similar to Node's `util.inspect`,
+ * but aware of meta objects, circular refs, and custom toString implementations.
+ */
 export function inspect(value: any) {
     return deepMap(value, ({ value }: any) => {
         const circularRef = deepMap.getCircularRefInfo(value)

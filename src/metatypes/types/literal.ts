@@ -19,18 +19,16 @@ export class LiteralImpl extends MetaTypeImpl {
 }
 
 /**
- * metatype literal value
+ * Creates a meta type that allows only the provided literal value (with standard meta args).
  *
- * @param args - {@link MetaTypeArgsType}
+ * @param subType - Literal value to lock to.
+ * @param args - {@link MetaTypeArgsType} controlling nullability/defaults.
  *
  * @example
  * ```ts
- * const obj1 = Meta({
- *      a: LITERAL('1', { nullish: true })
- * }) // as { a: '1' | null | undefined }
- *
- * obj1.a = '1'
- * obj1.a = '2' // type & validation error
+ * const obj = Meta({ status: LITERAL('done') })
+ * obj.status = 'done'
+ * obj.status = 'pending' // validation error
  * ```
  */
 export function LITERAL<

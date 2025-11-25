@@ -1,5 +1,6 @@
 import { DeSerializerArgsType, SerializerArgsType } from '../metatypes'
 
+/** Serializes values by delegating to the meta type's `castToRawValue` implementation. */
 export const CoercionSerializer = {
     name: 'CoercionSerializer',
 
@@ -8,6 +9,7 @@ export const CoercionSerializer = {
     serializePlaces: ['serialize']
 }
 
+/** Deserializes values by delegating to the meta type's `castToType` implementation. */
 export const CoercionDeSerializer = {
     name: 'CoercionDeSerializer',
 

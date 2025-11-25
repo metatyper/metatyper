@@ -2,12 +2,14 @@ import { Class } from '../../utils'
 import { MetaType } from '../metatype'
 import { MetaTypeArgsType, MetaTypeImpl, ValidatorArgsType } from '../metatypeImpl'
 
+/** Options for {@link INSTANCE} meta type. */
 export type InstanceMetaTypeArgs<
     T,
     IsNullishT extends boolean = boolean,
     IsNullableT extends boolean = IsNullishT,
     IsOptionalT extends boolean = IsNullishT
 > = MetaTypeArgsType<T, IsNullishT, IsNullableT, IsOptionalT> & {
+    /** When false, enforces exact constructor match (no subclass instances). */
     allowChildren?: boolean
 }
 
@@ -67,9 +69,10 @@ export class InstanceImpl extends MetaTypeImpl {
 }
 
 /**
- * metatype for instances of any class
+ * Creates a meta type that validates values are instances of the provided class.
  *
- * @param args - {@link InstanceMetaTypeArgs}
+ * @param subType - Class or instance used as the target type.
+ * @param args - {@link InstanceMetaTypeArgs} controlling subclass allowance and meta args.
  *
  * @example
  * ```ts

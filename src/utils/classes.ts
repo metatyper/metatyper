@@ -11,6 +11,10 @@ export type StaticClass<
     StaticT = T extends new (...args: any[]) => any ? T : unknown
 > = Class<T> & StaticT
 
+/**
+ * Checks whether the provided target is a class constructor.
+ * Works with raw constructors and meta-object-wrapped classes.
+ */
 export function isClass(target: any): boolean {
     if (target instanceof Object && getDescriptorValue(target, IsMetaObjectSymbol)) {
         const registryInfo = getDescriptorValue(

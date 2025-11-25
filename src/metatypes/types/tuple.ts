@@ -10,6 +10,7 @@ import {
 } from '../metatypeImpl'
 import { StructuralMetaTypeImpl } from './_structural'
 
+/** Options for {@link TUPLE} meta type (freezing, sub-value serialization, etc.). */
 export type TupleMetaTypeArgs<
     T = any[],
     IsNullishT extends boolean = false,
@@ -17,7 +18,9 @@ export type TupleMetaTypeArgs<
     IsOptionalT extends boolean = IsNullishT,
     IsFrozenT extends boolean = false
 > = MetaTypeArgsType<T, IsNullishT, IsNullableT, IsOptionalT> & {
+    /** When true, deserialized tuples are frozen. */
     freeze?: IsFrozenT
+    /** Toggles serialization/deserialization of tuple entries. */
     serializeSubValues?: boolean
 }
 
@@ -109,10 +112,10 @@ export class TupleImpl extends StructuralMetaTypeImpl {
 }
 
 /**
- * metatype that works like an array with precise structure
+ * Creates a tuple meta type with a fixed list of item schemas.
  *
- * @param subType - array of types
- * @param args - {@link TupleMetaTypeArgs}
+ * @param types - Array (or factory) describing each position in the tuple.
+ * @param args - {@link TupleMetaTypeArgs} controlling nullability, freezing, etc.
  *
  * @example
  * ```ts

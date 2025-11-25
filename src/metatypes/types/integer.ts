@@ -61,9 +61,9 @@ export class IntegerImpl extends MetaTypeImpl {
 }
 
 /**
- * metatype that similar to number (with integer validation)
+ * Creates a meta type for integers (numbers coerced/truncated to whole values).
  *
- * @param args - {@link NumbersMetaTypeArgs}
+ * @param args - {@link NumbersMetaTypeArgs} controlling range/default/nullability.
  *
  * @example
  * ```ts

@@ -87,12 +87,10 @@ export class UnionImpl extends StructuralMetaTypeImpl {
 }
 
 /**
- * metatype that works like a union of specified types
+ * Creates a union meta type that accepts any of the provided sub meta types/literals.
  *
- * @param subType - array of types
- * @param args - {@link MetaTypeArgsType}
- *
- * @typeParam T - union of specified types
+ * @param subType - Array (or factory) of sub types/meta types.
+ * @param args - Standard {@link MetaTypeArgsType} plus `serializeSubValues` toggle.
  *
  * @example
  * ```ts

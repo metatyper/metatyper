@@ -18,6 +18,7 @@ import { StructuralMetaTypeImpl } from './_structural'
 import { AnyImpl } from './any'
 import { UnionImpl } from './union'
 
+/** Options for {@link ARRAY} meta type controlling length, immutability, etc. */
 export type ArrayMetaTypeArgs<
     T = any[],
     IsNullishT extends boolean = boolean,
@@ -27,17 +28,22 @@ export type ArrayMetaTypeArgs<
 > = MetaTypeArgsType<T, IsNullishT, IsNullableT, IsOptionalT> &
     (
         | {
+              /** Requires at least one element (alias for `minLength: 1`). */
               notEmpty?: boolean
               minLength?: never
           }
         | {
               notEmpty?: never
+              /** Minimum allowed length. */
               minLength?: number
           }
     ) & {
+        /** Maximum allowed length. */
         maxLength?: number
     } & {
+        /** When true, produces frozen arrays on deserialization. */
         freeze?: IsFrozenT
+        /** Toggles serialization/deserialization of array items. */
         serializeSubValues?: boolean
     }
 
@@ -118,6 +124,7 @@ export class ArrayImpl extends StructuralMetaTypeImpl {
 
         for (const item of value) {
             if (deepMap.getCircularRefInfo(item)) {
+                index++
                 continue
             }
 
@@ -190,30 +197,21 @@ export class ArrayImpl extends StructuralMetaTypeImpl {
 }
 
 /**
- * metatype that works like an array
+ * Creates an array meta type with optional item type, length limits, freezing, etc.
  *
- * @param subType - items type or union of items types (default: {@link ANY})
- * @param args - {@link ArrayMetaTypeArgs}
+ * @param subType - Item schema (meta type, literal, array, or factory). Defaults to {@link ANY}.
+ * @param args - {@link ArrayMetaTypeArgs} controlling length/default/nullability.
  *
  * @example
  * ```ts
- * const obj1 = Meta({
- *      a: ARRAY([
- *          1, 'string', BOOLEAN()
- *      ], { default: [] })
- * }) // as { a: (number | string | boolean)[] }
- *
- * obj1.a = [1]
- * obj1.a = [1, 'str']
- * obj1.a = [true, 2]
- * obj1.a = {} // type & validation error
- *
- * const obj2 = Meta({
- *      a: ARRAY( NUMBER({ default: 0 }), { default: [] } )
- * }) // as { a: number[] }
- *
- * obj2.a = [1]
- * obj2.a = ['str'] // type & validation error
+ * const obj = Meta({
+ *      tags: ARRAY(STRING()),
+ *      keys: [1, 'string', BOOLEAN()]
+ * }) // as { tags: string[], keys: (number | string | boolean)[] }
+ * obj.tags = ['foo', 'bar']
+ * obj.tags = [1] // validation error
+ * obj.keys = ['mystring', 1, 2, 3]
+ * obj.keys = ['mystring', 1, 2, 3 {}] // validation error
  * ```
  */
 export function ARRAY<

@@ -66,18 +66,15 @@ export class BigIntImpl extends MetaTypeImpl {
 }
 
 /**
- * metatype that similar to bigint
+ * Creates a bigint meta type with optional numeric bounds and default/meta args.
  *
- * @param args - {@link NumbersMetaTypeArgs}
+ * @param args - {@link NumbersMetaTypeArgs} controlling range/default/nullability.
  *
  * @example
  * ```ts
- * const obj1 = Meta({
- *      a: BIGINT({ nullish: true })
- * }) // as { a: bigint | null | undefined }
- *
- * obj1.a = 1n
- * obj1.a = 1 // type & validation error
+ * const obj = Meta({ amount: BIGINT({ nullish: true }) })
+ * obj.amount = 1n
+ * obj.amount = 1 // validation error
  * ```
  */
 export function BIGINT<

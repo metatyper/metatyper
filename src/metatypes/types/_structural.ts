@@ -10,6 +10,10 @@ export type LazyStructuresContext = LazyContext & {
     preparedTypesSet: WeakSet<MetaTypeImpl>
 }
 
+/**
+ * Base implementation shared by ARRAY/OBJECT/TUPLE/UNION meta types.
+ * Adds automatic handling for nested structures, recursive references and sub-value (de)serialization.
+ */
 export abstract class StructuralMetaTypeImpl extends LazyMetaTypeImpl {
     private typesToPrepare = new Set<MetaTypeImpl>()
 

@@ -2,13 +2,16 @@ import { ReplaceValuesDeSerializerBuilder } from '../../serializers'
 import { MetaType } from '../metatype'
 import { DeSerializerArgsType, MetaTypeArgsType, MetaTypeImpl } from '../metatypeImpl'
 
+/** Additional options supported by the `BOOLEAN` meta type. */
 export type BooleanMetaTypeArgs<
     T extends boolean = boolean,
     IsNullishT extends boolean = boolean,
     IsNullableT extends boolean = IsNullishT,
     IsOptionalT extends boolean = IsNullishT
 > = MetaTypeArgsType<T, IsNullishT, IsNullableT, IsOptionalT> & {
+    /** Values that should be coerced to `true` before validation. */
     trueValues?: any[]
+    /** Values that should be coerced to `false` before validation. */
     falseValues?: any[]
 }
 
@@ -44,25 +47,22 @@ export class BooleanImpl extends MetaTypeImpl {
 }
 
 /**
- * metatype that similar to boolean
+ * Creates a boolean meta type with optional coercion lists and standard meta args.
  *
- * @param args - {@link MetaTypeArgsType}
+ * @param args - {@link BooleanMetaTypeArgs} controlling coercion/default/nullability.
  *
  * @example
  * ```ts
- * const obj1 = Meta({
- *      a: BOOLEAN({ nullish: true })
- * }) // as { a: boolean | null | undefined }
- *
- * obj1.a = true
- * obj1.a = 'true' // type & validation error
+ * const obj = Meta({ flag: BOOLEAN({ nullish: true }) })
+ * obj.flag = true
+ * obj.flag = 'true' // validation error
  * ```
  */
 export function BOOLEAN<
     IsNullishT extends boolean = false,
     IsNullableT extends boolean = IsNullishT,
     IsOptionalT extends boolean = IsNullishT
->(args?: MetaTypeArgsType<BOOLEAN, IsNullishT, IsNullableT, IsOptionalT>) {
+>(args?: BooleanMetaTypeArgs<BOOLEAN, IsNullishT, IsNullableT, IsOptionalT>) {
     return MetaType(BooleanImpl, args)
 }
 

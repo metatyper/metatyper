@@ -11,35 +11,70 @@ import {
 
 const reflectMetadata = (Reflect as any)['getMetadata']
 
-export type ValidateMetaObjectArgsType = { metaArgs?: MetaArgsType } & {
+/** Extra arguments that control how `Meta.validate` reports issues. */
+export type ValidateMetaObjectArgsType = {
+    /** Meta arguments to apply temporarily while validating. */
+    metaArgs?: MetaArgsType
+
+    /** When `true`, validation stops at the first issue (default). */
     stopAtFirstError?: boolean
 } & Record<string, any>
 
+/** Extra arguments that control how `Meta.serialize` behaves. */
 export type SerializeMetaObjectArgsType = {
+    /** Overrides used when building a meta object from a plain schema before serialization. */
     metaArgs?: MetaArgsType
 } & Record<string, any>
 
+/** Extra arguments that control how `Meta.deserialize` behaves. */
 export type DeSerializeMetaObjectArgsType = {
+    /** Overrides used when schema/proto needs to be wrapped into a meta object before deserializing. */
     metaArgs?: MetaArgsType
 } & Record<string, any>
 
+/** Lifecycle actions that can trigger a change handler. */
 export type MetaChangeHandlerActionType = 'init' | 'set' | 'delete' | 'define' | 'deserialize'
+
+/** Arguments passed to change handlers describing what exactly changed. */
 export type MetaChangeHandlerArgsType = {
+    /** The action that occurred (e.g. `set`, `delete`). */
     action: MetaChangeHandlerActionType
+
+    /** Proxy object exposed to consumers. */
     targetObject: object
+
+    /** Underlying base object that stores state. */
     baseObject: object
+
+    /** Affected property name or symbol. */
     propName: string | symbol
+
+    /** Descriptor before change (if any). */
     prevDescriptor?: PropertyDescriptor
+
+    /** Descriptor after change (if any). */
     descriptor?: PropertyDescriptor
+
+    /** Previous meta type declaration for the property. */
     prevDeclaration?: MetaTypeImpl
+
+    /** Current meta type declaration for the property. */
     declaration?: MetaTypeImpl
 }
+
+/** Registration info for change handlers (which handler, for which actions/props). */
 export type MetaChangeHandlerInfoType = {
+    /** The handler callback to invoke. */
     handler: (args: MetaChangeHandlerArgsType) => void
+
+    /** Optional action filter; empty array means all actions. */
     actions?: MetaChangeHandlerActionType[]
+
+    /** Optional property filter. */
     props?: (string | symbol)[]
 }
 
+/** Places where an error handler can be triggered. */
 export type MetaErrorHandlerPlaceType =
     | 'init'
     | 'get'
@@ -49,79 +84,87 @@ export type MetaErrorHandlerPlaceType =
     | 'validate'
     | 'deserialize'
     | 'serialize'
+
+/** Arguments passed to an error handler when meta logic throws. */
 export type MetaErrorHandlerArgsType = {
+    /** The thrown error instance. */
     error: Error
+
+    /** Which lifecycle place raised the error. */
     errorPlace: MetaErrorHandlerPlaceType
+
+    /** Property name involved in the error, if any. */
     propName?: string | symbol
+
+    /** Proxy object exposed to consumers. */
     targetObject: object
+
+    /** Underlying base object. */
     baseObject: object
 }
+
+/** Registration info for error handlers (which handler, for which places). */
 export type MetaErrorHandlerInfoType = {
+    /** The handler callback to invoke. */
     handler: (args: MetaErrorHandlerArgsType) => void
+
+    /** Optional place filter. */
     places?: MetaErrorHandlerPlaceType[]
 }
 
+/** Resolves any value into a concrete `MetaTypeImpl`. */
 export type MetaTypesResolver = (value: any, args?: MetaTypeArgsType) => MetaTypeImpl
 
 /**
- * This is arguments for creating a meta object.
+ * Arguments that define how a meta object or class is built and behaves.
  *
- * @param name - A string that overrides the default name of the meta object. The name is used when displaying the meta object.
- * For example, if the default name is 'MetaObject', you can pass 'MyMetaObject' as the name argument to change it.
- * @param initialValues - An object that defines the initial values of the properties of the meta object. The default value is `{}`.
- * @param ignoreProps - Specifies which properties of the meta object should be ignored by the meta object. It can be either:
- *  - An array of strings or symbols that represent the property names to ignore.
- *  - A function that takes a property name as an argument and returns a boolean value indicating whether to ignore it or not.
- * The default value is [].
- * @param validationIsActive - A boolean that indicates whether the meta object should perform validation on the meta object or not. The default value is true.
- * @param serializationIsActive - A boolean that indicates whether the meta object should perform serialization on the meta object or not. The default value is true.
- * @param changeHandlers - An array of handlers that handle changes in the meta object. The default value is [].
- * @param errorHandlers - An array of handlers that handle errors in the meta object. The default value is [].
- * @param metaTypesArgs - Defines the arguments for building or rebuilding the meta types of the meta object. It can be either:
- *  - An object that contains the properties and values of the meta types arguments.
- *  - A function that takes a meta type implementation as an argument and returns an object of meta types arguments.
- * The default value is `{}`.
- * @param metaTypesResolver - A function that resolves meta types from values. It takes any value as an argument and returns a meta type.
- * @param autoResolveMetaTypes - A boolean that indicates whether the meta object should automatically resolve the meta types or not. The default value is true.
- * @param dynamicDeclarations - A boolean that indicates whether the meta object should allow new declarations of new properties or not. The default value is true.
- * @param metaInstanceArgs - Defines the arguments for creating the meta instance of the meta class. It can be either:
- *  - An object that contains the properties and values of the meta instance arguments.
- *  - The string 'same' that indicates that the same arguments as the meta class should be used.
- * The default value is 'same'.
- * @param buildMetaInstance - A boolean that indicates whether the meta class should build the meta instance or not.
- * If true, the meta class will use the metaInstanceArgs object to create the meta instance. The default value is true.
- * @param metaBuilder - A meta objects builder that is used to create the meta object.
- * The meta objects builder is an object that implements the MetaObjectsBuilder interface. The default value is the global meta objects builder.
+ * @property name - Overrides the default display name of the meta object/class.
+ * @property initialValues - Initial property values applied before validation/serialization.
+ * @property ignoreProps - Properties to ignore or a predicate that decides which props to ignore.
+ * @property validationIsActive - Enables/disables validation (enabled by default).
+ * @property serializationIsActive - Enables/disables serialization/deserialization (enabled by default).
+ * @property changeHandlers - Custom change handlers that react to meta object mutations.
+ * @property errorHandlers - Custom error handlers invoked when meta operations throw.
+ * @property metaTypesArgs - Meta type arguments or resolver used while building declarations.
+ * @property metaTypesResolver - Custom function that resolves a value to a `MetaType` implementation.
+ * @property autoResolveMetaTypes - Automatically resolve declarations from initial values.
+ * @property dynamicDeclarations - Allow adding new declarations at runtime via property assignments.
+ * @property metaInstanceArgs - Extra arguments used when building meta instances for classes (`'same'` to reuse).
+ * @property buildMetaInstance - When `false`, skips building meta instances for classes.
+ * @property metaBuilder - Custom builder instance to use instead of the global singleton.
  */
 export type MetaArgsType = {
     name?: string
     initialValues?: Record<string | symbol, any>
-
     ignoreProps?: (string | symbol)[] | ((propName: string | symbol) => boolean)
-
     validationIsActive?: boolean
     serializationIsActive?: boolean
-
     changeHandlers?: MetaChangeHandlerInfoType[]
     errorHandlers?: MetaErrorHandlerInfoType[]
-
     metaTypesArgs?: MetaTypeArgsType | ((metaTypeImpl: MetaTypeImpl) => MetaTypeArgsType)
-
     metaTypesResolver?: MetaTypesResolver
     autoResolveMetaTypes?: boolean
     dynamicDeclarations?: boolean
-
     metaInstanceArgs?: MetaArgsType | 'same'
     buildMetaInstance?: boolean
-
     metaBuilder?: MetaObjectsBuilder
 } & Record<string, any>
 
+/** Metadata describing a class property decorated via `Meta.declare`. */
 export type InitialClassPropertyDeclarationInfo = {
+    /** Property name on the prototype/constructor. */
     propName: string
+
+    /** Meta type implementation explicitly provided for the property. */
     metaTypeImpl?: MetaTypeImpl
+
+    /** Arguments used to rebuild or tweak the meta type implementation. */
     metaTypeArgs?: MetaTypeArgsType
+
+    /** Property descriptor snapshot at declaration time. */
     descriptor?: PropertyDescriptor
+
+    /** Reflected design type (via reflect-metadata) if available. */
     reflectType: any
 }
 
@@ -134,14 +177,13 @@ export type Meta<T> = (T extends new (...args: infer A) => infer R
       : T) & {
     [IsMetaObjectSymbol]?: true
 }
-
 /**
  * Create a Meta object
  *
  * @param protoObject - The plain object used as the prototype/schema for the meta object.
  * @param metaArgs - Configuration arguments ({@link MetaArgsType}) for creating the meta object.
  *
- * @returns A a new Meta object
+ * @returns A new Meta object
  *
  * @example
  * ```ts
@@ -171,6 +213,30 @@ export type Meta<T> = (T extends new (...args: infer A) => infer R
  * myInstance.someInstanceProp = 2
  * myInstance.someInstanceProp = '2' // will throw an validation error
  * ```
+ *
+ * @remarks
+ * The `Meta` function also provides several utility methods.
+ * These methods are available on the `Meta` object and can be used to interact with meta objects.
+ * The methods are:
+ * - `Meta.copy(metaObject)` - {@link MetaCopy} - Creates a copy of a meta object preserving its values, types, prototype and arguments.
+ * - `Meta.rebuild(metaObject)` - {@link MetaRebuild} - Rebuilds a meta object using the same original object and arguments, resetting to initial state.
+ * - `Meta.isMetaObject(obj)` - {@link MetaIsMetaObject} - Checks if an object is a meta object.
+ * - `Meta.isIgnoredProp(propName)` - {@link MetaIsIgnoredProp} - Checks if a property is ignored by Meta.
+ * - `@Meta.Class(metaArgs)` - {@link MetaClass} - Decorator for transforming a class into a meta class.
+ * - `@Meta.declare(metaType)` - {@link MetaDeclare} - Decorator for declaring meta type information on class properties.
+ * - `Meta.serialize(metaObject)` - {@link MetaSerialize} - Serializes a meta object.
+ * - `Meta.deserialize(data, protoObject)` - {@link MetaDeserialize} - Deserializes a value into a meta object.
+ * - `Meta.toJson(metaObject)` - {@link MetaToJson} - Serializes a meta object into a JSON string.
+ * - `Meta.fromJson(data, protoObject)` - {@link MetaFromJson} - Deserializes a JSON string into a meta object.
+ * - `Meta.represent(metaObject)` - {@link MetaRepresent} - Generates a textual representation of a meta object.
+ * - `Meta.getProto(metaObject)` - {@link MetaProto} - Retrieves the prototype of the meta object.
+ * - `Meta.getMetaArgs(metaObject)` - {@link MetaGetMetaArgs} - Retrieves the meta arguments used to create a meta object.
+ * - `Meta.validationIsActive(metaObject)` - {@link MetaValidationIsActive} - Checks if validation is active for the given meta object.
+ * - `Meta.disableValidation(metaObject)` - {@link MetaDisableValidation} - Disables validation for the specified meta object.
+ * - `Meta.enableValidation(metaObject)` - {@link MetaEnableValidation} - Enables validation for the specified meta object.
+ * - `Meta.serializationIsActive(metaObject)` - {@link MetaSerializationIsActive} - Checks if serialization is active for the given meta object.
+ * - `Meta.disableSerialization(metaObject)` - {@link MetaDisableSerialization} - Disables serialization for the specified meta object.
+ * - `Meta.enableSerialization(metaObject)` - {@link MetaEnableSerialization} - Enables serialization for the specified meta object.
  */
 export function Meta<T extends object>(protoObject?: T, metaArgs?: MetaArgsType) {
     const builder = metaArgs?.metaBuilder ?? MetaObjectsBuilder.instance
@@ -196,7 +262,7 @@ export const M = Meta
  *
  * @example
  * ```ts
- * ⠀@Meta.Class({ metaTypesArgs: { optional: true } })
+ * @Meta.Class({ metaTypesArgs: { optional: true } })
  * class User {
  *   id = NUMBER()
  *   name = STRING({ minLength: 3 })
@@ -209,20 +275,22 @@ export const M = Meta
  * user.name = 'Jo' // Throws a validation error
  * ```
  */
-Meta.Class = function Class(metaArgs?: MetaArgsType) {
+export function MetaClass(metaArgs?: MetaArgsType) {
     return <T extends new (...args: any[]) => any>(cls: T) => {
         return Meta(cls, metaArgs) as any
     }
 }
 
+Meta.Class = MetaClass
+
 /**
  * Decorator for declaring meta type information for class properties.
  *
  * The `declare` decorator allows you to specify meta type information directly on class properties.
- * This facilitates runtime type checking, validation,
- * and serialization/deserialization of property values based on the provided meta type or meta type arguments.
+ * This facilitates runtime type checking, validation, and serialization/deserialization of property values
+ * based on the provided meta type or meta type arguments.
  *
- * @param metaTypeOrArgs - The meta type instance or meta type arguments to apply to the class property.
+ * @param metaType - The meta type instance to apply to the class property.
  *
  * @returns A decorator function that applies the specified meta type information to the target class property.
  *
@@ -230,15 +298,28 @@ Meta.Class = function Class(metaArgs?: MetaArgsType) {
  * ```ts
  * import { Meta } from 'metatyper'
  *
- * ⠀@Meta.Class()
+ * @Meta.Class()
  * class User {
- *   ⠀@Meta.declare(NUMBER({ min:0, optional:true }))
+ *   @Meta.declare(NUMBER({ min:0, optional:true }))
  *   id: number | undefined
- *
- *   ⠀@Meta.declare({ minLength: 3 })
- *   name = 'some name
  * }
  * ```
+ */
+export function MetaDeclare<T extends object, K extends keyof T = keyof T>(
+    metaType: T[K]
+): (target: T, propName: K) => void
+
+/**
+ * Decorator for declaring meta type information for class properties.
+ *
+ * The `declare` decorator allows you to specify meta type information directly on class properties.
+ * This facilitates runtime type checking, validation, and serialization/deserialization of property values 
+ * based on the provided meta type or meta type arguments.
+ * 
+ * @param metaTypeArgs - The meta type arguments to apply to the class property. 
+ *                       The meta type itself will be reflected from the TypeScript property type using reflect-metadata.
+ *
+ * @returns A decorator function that applies the specified meta type information to the target class property.
  *
  * @example
  * Reflect metatype from class property type:
@@ -247,24 +328,20 @@ Meta.Class = function Class(metaArgs?: MetaArgsType) {
  *
  * import { Meta } from 'metatyper'
  *
- * ⠀@Meta.Class()
+ * @Meta.Class()
  * class Product {
- *
- *   ⠀@Meta.declare({ min: 0, optional: true })
+
+ *   @Meta.declare({ min: 0, optional: true })
  *   price?: number
- *
+ * 
  * }
  * ```
  */
-function declare<T extends object, K extends keyof T = keyof T>(
-    metaType: T[K]
-): (target: T, propName: K) => void
-
-function declare<T extends object, K extends keyof T, IsNullableT extends boolean>(
+export function MetaDeclare<T extends object, K extends keyof T, IsNullableT extends boolean>(
     metaTypeArgs?: MetaTypeArgsType<T[K], IsNullableT>
 ): (target: T, propName: K) => void
 
-function declare(metaTypeOrArgs?: MetaTypeBase | MetaTypeArgsType | null) {
+export function MetaDeclare(metaTypeOrArgs?: MetaTypeBase | MetaTypeArgsType | null) {
     return (target: object, propName: string, descriptor?: TypedPropertyDescriptor<any>) => {
         const metaTypeImpl = MetaType.isMetaType(metaTypeOrArgs)
             ? MetaType.getMetaTypeImpl(metaTypeOrArgs as any) ?? undefined
@@ -286,7 +363,7 @@ function declare(metaTypeOrArgs?: MetaTypeBase | MetaTypeArgsType | null) {
     }
 }
 
-Meta.declare = Meta.d = declare
+Meta.declare = Meta.d = MetaDeclare
 
 /**
  * Checks if the provided object is a meta object.
@@ -307,7 +384,7 @@ Meta.declare = Meta.d = declare
  * console.log(Meta.isMetaObject(plainObject)) // false
  * ```
  */
-export const isMetaObject = (Meta.isMetaObject = function isMetaObject(
+export const MetaIsMetaObject = (Meta.isMetaObject = function isMetaObject(
     metaObject?: object | null
 ) {
     return getDescriptorValue(metaObject, IsMetaObjectSymbol) || false
@@ -329,7 +406,7 @@ export const isMetaObject = (Meta.isMetaObject = function isMetaObject(
  * console.log(Meta.isIgnoredProp(metaObject, 'prototype')) // true, because built-in
  * ```
  */
-Meta.isIgnoredProp = function isMetaObject(metaObject: object, propName: string | symbol) {
+export function MetaIsIgnoredProp(metaObject: object, propName: string | symbol) {
     if (!Meta.isMetaObject(metaObject)) {
         return true
     }
@@ -340,6 +417,8 @@ Meta.isIgnoredProp = function isMetaObject(metaObject: object, propName: string 
 
     return handlerInstance.isIgnoredProp(metaObject, propName)
 }
+
+Meta.isIgnoredProp = MetaIsIgnoredProp
 
 /**
  * Checks if validation is active for the given meta object.
@@ -364,7 +443,7 @@ Meta.isIgnoredProp = function isMetaObject(metaObject: object, propName: string 
  * console.log(Meta.validationIsActive(metaObject)) // false
  * ```
  */
-Meta.validationIsActive = (metaObject: object) => {
+export function MetaValidationIsActive(metaObject: object) {
     const registryInfo = getDescriptorValue(
         metaObject,
         MetaObjectRegistryInfoSymbol
@@ -372,6 +451,8 @@ Meta.validationIsActive = (metaObject: object) => {
 
     return registryInfo?.validationIsActive ?? false
 }
+
+Meta.validationIsActive = MetaValidationIsActive
 
 /**
  * Disables validation for the specified meta object.
@@ -398,13 +479,15 @@ Meta.validationIsActive = (metaObject: object) => {
  * metaObject.id = 'not a number' // No validation error
  * ```
  */
-Meta.disableValidation = (metaObject: object) => {
+export function MetaDisableValidation(metaObject: object) {
     const builder = getDescriptorValue(metaObject, MetaObjectBuilderSymbol) as MetaObjectsBuilder
 
     builder.configure(metaObject, {
         validationIsActive: false
     })
 }
+
+Meta.disableValidation = MetaDisableValidation
 
 /**
  * Enables validation for the specified meta object.
@@ -432,13 +515,15 @@ Meta.disableValidation = (metaObject: object) => {
  * ```
  *
  */
-Meta.enableValidation = (metaObject: object) => {
+export function MetaEnableValidation(metaObject: object) {
     const builder = getDescriptorValue(metaObject, MetaObjectBuilderSymbol) as MetaObjectsBuilder
 
     builder.configure(metaObject, {
         validationIsActive: true
     })
 }
+
+Meta.enableValidation = MetaEnableValidation
 
 /**
  * Checks if serialization is active for the given meta object.
@@ -464,7 +549,7 @@ Meta.enableValidation = (metaObject: object) => {
  * console.log(Meta.serializationIsActive(metaObject)) // false
  * ```
  */
-Meta.serializationIsActive = (metaObject: object) => {
+export function MetaSerializationIsActive(metaObject: object) {
     const registryInfo = getDescriptorValue(
         metaObject,
         MetaObjectRegistryInfoSymbol
@@ -472,6 +557,8 @@ Meta.serializationIsActive = (metaObject: object) => {
 
     return registryInfo?.serializationIsActive ?? false
 }
+
+Meta.serializationIsActive = MetaSerializationIsActive
 
 /**
  * Disables serialization for the specified meta object.
@@ -499,13 +586,15 @@ Meta.serializationIsActive = (metaObject: object) => {
  * metaObject.id = '123' // No deserialization occurs and it will throw an validation error
  * ```
  */
-Meta.disableSerialization = (metaObject: object) => {
+export function MetaDisableSerialization(metaObject: object) {
     const builder = getDescriptorValue(metaObject, MetaObjectBuilderSymbol) as MetaObjectsBuilder
 
     builder.configure(metaObject, {
         serializationIsActive: false
     })
 }
+
+Meta.disableSerialization = MetaDisableSerialization
 
 /**
  * Enables serialization for the specified meta object.
@@ -533,7 +622,7 @@ Meta.disableSerialization = (metaObject: object) => {
  * metaObject.id = '123' // Deserialization occurs, converting '123' to number
  * ```
  */
-Meta.enableSerialization = (metaObject: object) => {
+export function MetaEnableSerialization(metaObject: object) {
     const builder = getDescriptorValue(metaObject, MetaObjectBuilderSymbol) as MetaObjectsBuilder
 
     builder.configure(metaObject, {
@@ -541,12 +630,14 @@ Meta.enableSerialization = (metaObject: object) => {
     })
 }
 
+Meta.enableSerialization = MetaEnableSerialization
+
 /**
  * Validates a plain object against a meta object schema or a meta object, ensuring it conforms to the defined types and constraints.
  * If the object is valid according to the meta object schema, the function returns undefined.
  * If the object is not valid, it returns `ValidationError`,
  *
- * @param metaObject - The meta object or plain object as a schema against which to validate the `rawObject`.
+ * @param metaObjectOrProto - The meta object or plain object as a schema against which to validate the `rawObject`.
  * @param rawObject - The plain object to validate.
  * @param validateArgs - arguments to customize the validation behavior, such as disabling throwing errors.
  *
@@ -567,17 +658,19 @@ Meta.enableSerialization = (metaObject: object) => {
  * // error instanceof ValidationError
  * ```
  */
-Meta.validate = (
+export function validateMeta(
     metaObjectOrProto: object,
     rawObject: object,
     validateArgs?: ValidateMetaObjectArgsType
-) => {
+) {
     const handlerInstance: MetaObjectsHandler =
         getDescriptorValue(metaObjectOrProto, MetaObjectBuilderSymbol)?.handler ??
         MetaObjectsBuilder.instance.handler
 
     return handlerInstance.validate(metaObjectOrProto, rawObject, validateArgs)
 }
+
+Meta.validate = validateMeta
 
 /**
  * Serializes a meta object into a plain object.
@@ -620,10 +713,10 @@ Meta.validate = (
  * // }
  * ```
  */
-Meta.serialize = <ResultT extends object = never, T extends object = object>(
+export function MetaSerialize<ResultT extends object = never, T extends object = object>(
     metaObject: Meta<T> | T,
     serializeArgs?: SerializeMetaObjectArgsType
-): [ResultT] extends [never] ? { [key in keyof T]: any } : ResultT => {
+): [ResultT] extends [never] ? { [key in keyof T]: any } : ResultT {
     if (!Meta.isMetaObject(metaObject)) {
         metaObject = Meta(metaObject, serializeArgs?.metaArgs) as any
     }
@@ -634,6 +727,8 @@ Meta.serialize = <ResultT extends object = never, T extends object = object>(
 
     return handlerInstance.serialize(metaObject, serializeArgs) as any
 }
+
+Meta.serialize = MetaSerialize
 
 /**
  * Deserializes a raw object into a meta object, updating or creating it based on the provided arguments.
@@ -672,11 +767,11 @@ Meta.serialize = <ResultT extends object = never, T extends object = object>(
  * console.log(newUserMeta) // New meta object with id and name from rawObject
  * ```
  */
-Meta.deserialize = <T extends object>(
+export function MetaDeserialize<T extends object>(
     metaObjectOrProto: Meta<T> | T,
     rawObject: object,
     deserializeArgs?: DeSerializeMetaObjectArgsType
-): Meta<T> => {
+): Meta<T> {
     if (Meta.isMetaObject(metaObjectOrProto)) {
         const handlerInstance: MetaObjectsHandler =
             getDescriptorValue(metaObjectOrProto, MetaObjectBuilderSymbol)?.handler ??
@@ -694,6 +789,8 @@ Meta.deserialize = <T extends object>(
         return Meta(metaObjectOrProto, preparedMetaArgs) as any
     }
 }
+
+Meta.deserialize = MetaDeserialize
 
 /**
  * Creates a copy of a meta object, preserving its public properties, values, types, and prototype.
@@ -721,15 +818,17 @@ Meta.deserialize = <T extends object>(
  * // Output: A new meta object with the same properties and values as originalMetaObject
  * ```
  */
-Meta.copy = <T extends object>(
+export function MetaCopy<T extends object>(
     metaObject: T
-): Required<T> extends Required<Meta<unknown>> ? T : Meta<T> | null => {
+): Required<T> extends Required<Meta<unknown>> ? T : Meta<T> | null {
     const handlerInstance: MetaObjectsHandler =
         getDescriptorValue(metaObject, MetaObjectBuilderSymbol)?.handler ||
         MetaObjectsBuilder.instance.handler
 
     return handlerInstance.copy(metaObject) as any
 }
+
+Meta.copy = MetaCopy
 
 /**
  * Retrieves the prototype (original object) used to create a meta object.
@@ -757,7 +856,7 @@ Meta.copy = <T extends object>(
  * console.log(protoObj === originalObject) // true
  * ```
  */
-Meta.proto = <T extends object>(metaObject: T) => {
+export function MetaProto<T extends object>(metaObject: T) {
     const handlerInstance: MetaObjectsHandler =
         getDescriptorValue(metaObject, MetaObjectBuilderSymbol)?.handler ||
         MetaObjectsBuilder.instance.handler
@@ -765,6 +864,8 @@ Meta.proto = <T extends object>(metaObject: T) => {
     return (handlerInstance.registry.get(metaObject)?.protoObject ??
         null) as Required<T> extends Required<Meta<infer U>> ? U : T | null
 }
+
+Meta.proto = MetaProto
 
 /**
  * Rebuilds a meta object using the same original object and arguments that were used to create the meta object. 
@@ -796,10 +897,10 @@ Meta.proto = <T extends object>(metaObject: T) => {
  * console.log(rebuiltMetaObject.name) // 'John Doe'
  * ```
  */
-Meta.rebuild = <T extends object>(
+export function MetaRebuild<T extends object>(
     metaObject: T,
     metaArgs?: MetaArgsType
-): Required<T> extends Required<Meta<unknown>> ? T : Meta<T> | null => {
+): Required<T> extends Required<Meta<unknown>> ? T : Meta<T> | null {
     const handlerInstance: MetaObjectsHandler =
         getDescriptorValue(metaObject, MetaObjectBuilderSymbol)?.handler ||
         MetaObjectsBuilder.instance.handler
@@ -814,6 +915,8 @@ Meta.rebuild = <T extends object>(
 
     return Meta(protoObject, metaArgs) as any
 }
+
+Meta.rebuild = MetaRebuild
 
 /**
  * Deserializes a JSON string into a meta object.
@@ -846,27 +949,30 @@ Meta.rebuild = <T extends object>(
  * // Output: Meta object with properties { id: 1, name: 'John Doe', isActive: false }
  * ```
  */
-Meta.fromJson = <T extends object>(
+export function MetaFromJson<T extends object>(
     metaObjectOrProto: T,
     text: string,
     deserializeArgs?: DeSerializeMetaObjectArgsType,
     jsonParseArgs?: {
         reviver?: (this: any, key: string, value: any) => any
     }
-) => {
+) {
     const obj = JSON.parse(text, jsonParseArgs?.reviver)
 
     return Meta.deserialize(metaObjectOrProto, obj, deserializeArgs)
 }
+
+Meta.fromJson = MetaFromJson
 
 /**
  * Serializes a meta object into a JSON string.
  * This function first converts a meta object into a plain object using the `Meta.serialize` method,
  * and then serializes that plain object into a JSON string using `JSON.stringify`.
  *
- * @param metaObject - The meta object to serialize into JSON.
+ * @param metaObject - The meta object or a plain object to serialize.
+ * If a plain object is provided, it is first converted into a meta object using the provided `serializeArgs.metaArgs`.
  * @param serializeArgs - arguments to customize the serialization behavior.
- * @param jsonParseArgs - arguments like in JSON.parse (`replacer` and `space`)
+ * @param jsonStringifyArgs - arguments like in `JSON.stringify` (`replacer` and `space`)
  *
  * @returns A JSON string representation of the meta object.
  *
@@ -894,20 +1000,22 @@ Meta.fromJson = <T extends object>(
  * // }
  * ```
  */
-Meta.toJson = (
+export function MetaToJson(
     metaObject: object,
     serializeArgs?: SerializeMetaObjectArgsType,
     jsonStringifyArgs?: {
         replacer?: ((this: any, key: string, value: any) => any) | (number | string)[]
         space?: string | number
     }
-) => {
+) {
     return JSON.stringify(
         Meta.serialize(metaObject, serializeArgs),
         jsonStringifyArgs?.replacer as any,
         jsonStringifyArgs?.space
     )
 }
+
+Meta.toJson = MetaToJson
 
 /**
  * Generates a textual representation of a meta object.
@@ -935,7 +1043,7 @@ Meta.toJson = (
  * // Output: [<meta> object] { id: NUMBER = 0 }
  * ```
  */
-Meta.represent = (metaObject: object) => {
+export function MetaRepresent(metaObject: object) {
     if (!Meta.isMetaObject(metaObject)) {
         return null
     }
@@ -946,6 +1054,8 @@ Meta.represent = (metaObject: object) => {
 
     return handlerInstance.represent(metaObject)
 }
+
+Meta.represent = MetaRepresent
 
 /**
  * Retrieves the meta arguments used to configure a meta object.
@@ -981,7 +1091,7 @@ Meta.represent = (metaObject: object) => {
  * // }
  * ```
  */
-Meta.getMetaArgs = (metaObject: object) => {
+export function MetaGetMetaArgs(metaObject: object) {
     const registryInfo = getDescriptorValue(
         metaObject,
         MetaObjectRegistryInfoSymbol
@@ -991,3 +1101,5 @@ Meta.getMetaArgs = (metaObject: object) => {
 
     return metaObject instanceof Object ? registryInfo.metaArgs || null : null
 }
+
+Meta.getMetaArgs = MetaGetMetaArgs

@@ -5,6 +5,7 @@ const DeepMapCircularRefSymbol = Symbol.for('[[DeepMapCircularRef]]')
 const objectsRefIndexMap = new WeakMap()
 const copyToOriginalMap = new WeakMap()
 
+/** Determines whether a value is a plain object/array without meta markers or circular refs. */
 export function isPlainObject(value: any) {
     return (
         value instanceof Object &&
@@ -15,6 +16,10 @@ export function isPlainObject(value: any) {
     )
 }
 
+/**
+ * Recursively walks an object/array tree, allowing a processing function to transform nodes.
+ * Handles circular references and preserves original object references.
+ */
 export function deepMap(
     obj: object,
     processFunc: (args: {
@@ -134,6 +139,7 @@ export function deepMap(
     return deepProcess(newObj, 0)
 }
 
+/** Returns circular reference metadata for a value created by `deepMap`. */
 deepMap.getCircularRefInfo = (
     obj: object
 ): {
@@ -143,6 +149,7 @@ deepMap.getCircularRefInfo = (
     return (obj && obj instanceof Object && (obj as any)[DeepMapCircularRefSymbol]) || undefined
 }
 
+/** Returns the reference index assigned to a copied object (used for inspection). */
 deepMap.getRefIndex = (obj: object): number | undefined => {
     return objectsRefIndexMap.get(obj) ?? undefined
 }

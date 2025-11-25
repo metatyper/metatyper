@@ -1,5 +1,6 @@
 import { ValidatorArgsType } from '../metatypes'
 
+/** Validator ensuring value has a non-zero `length`. */
 export const NotEmptyValidator = {
     name: 'NotEmpty',
     validate: ({ value }: ValidatorArgsType) => {
@@ -11,6 +12,7 @@ export const NotEmptyValidator = {
     }
 }
 
+/** Creates a validator ensuring value length is at least `length`. */
 export const MinLengthValidatorBuilder = (length: number) => ({
     name: 'MinLength',
     validate: ({ value }: ValidatorArgsType) => {
@@ -22,6 +24,7 @@ export const MinLengthValidatorBuilder = (length: number) => ({
     }
 })
 
+/** Creates a validator ensuring value length does not exceed `length`. */
 export const MaxLengthValidatorBuilder = (length: number) => ({
     name: 'MaxLength',
     validate: ({ value }: ValidatorArgsType) => {

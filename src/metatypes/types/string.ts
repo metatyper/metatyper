@@ -12,7 +12,8 @@ import {
 import { MetaType } from '../metatype'
 import { DeSerializerArgsType, MetaTypeArgsType, MetaTypeImpl } from '../metatypeImpl'
 
-type StringMetaTypeArgs<
+/** Additional options supported by the `STRING` meta type. */
+export type StringMetaTypeArgs<
     T = STRING,
     IsNullishT extends boolean = boolean,
     IsNullableT extends boolean = IsNullishT,
@@ -20,17 +21,23 @@ type StringMetaTypeArgs<
 > = MetaTypeArgsType<T, IsNullishT, IsNullableT, IsOptionalT> &
     (
         | {
+              /** Ensures the value is non-empty (alias for `minLength: 1`). */
               notEmpty?: boolean
           }
         | {
+              /** Minimum allowed length. */
               minLength?: number
           }
     ) & {
+        /** Maximum allowed length. */
         maxLength?: number
 
+        /** Trims whitespace before validation. */
         trim?: boolean
 
+        /** Regular expression (string or RegExp) the value must match. */
         regexp?: RegExp | string
+        /** Convert value to lower/upper case during deserialization. */
         toCase?: 'lower' | 'upper'
     }
 
@@ -88,18 +95,16 @@ export class StringImpl extends MetaTypeImpl {
 }
 
 /**
- * metatype that similar to string
+ * Creates a string meta type with length/regexp/casing options plus standard meta args.
  *
- * @param args - {@link StringMetaTypeArgs}
+ * @param args - {@link StringMetaTypeArgs} controlling min/max length, regexp, casing, etc.
  *
  * @example
  * ```ts
- * const obj1 = Meta({
- *      a: STRING({ nullish: true })
- * }) // as { a: string | null | undefined }
- *
- * obj1.a = 'str'
- * obj1.a = 1 // type & validation error
+ * const obj = Meta({ name: STRING({ minLength: 3 }) })
+ * obj.name = 'John'
+ * obj.name = 1 // validation error
+ * obj.name = '' // validation error
  * ```
  */
 export function STRING<

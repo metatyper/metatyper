@@ -13,13 +13,19 @@ import {
     MetaObjectRegistrySymbol
 } from './symbols'
 
+/**
+ * Constructs meta objects/classes by wrapping plain prototypes with validation/serialization logic.
+ * Acts as a factory as well as a registry synchroniser for meta instances.
+ */
 export class MetaObjectsBuilder {
     protected static _instance = new MetaObjectsBuilder()
 
+    /** Global builder singleton used by `Meta` utilities. */
     static get instance() {
         return this._instance
     }
 
+    /** Overrides the global singleton (mainly for testing/extensibility). */
     static setDefaultBuilderInstance(builder: MetaObjectsBuilder) {
         this._instance = builder
     }
@@ -27,6 +33,10 @@ export class MetaObjectsBuilder {
     registry = new MetaObjectsRegistry()
     handler = new MetaObjectsHandler(this)
 
+    /**
+     * Creates a meta object/class/function proxy for a given prototype and meta arguments.
+     * Exposed via `Meta()` helper.
+     */
     build<T extends object>(protoObject?: T, metaArgs?: MetaArgsType): T {
         if (!(protoObject instanceof Object)) {
             protoObject = {} as T
@@ -44,6 +54,10 @@ export class MetaObjectsBuilder {
         return this.createProxy(baseObject, protoObject)
     }
 
+    /**
+     * Clones an existing meta object by reusing its prototype, args and declarations.
+     * Returns `null` when called with a non-meta object.
+     */
     copy<T extends object>(metaObject: T) {
         const registryInfo = this.registry.get(metaObject)
 
@@ -61,6 +75,10 @@ export class MetaObjectsBuilder {
         return this.createProxy(newBaseObject, protoObject) as T
     }
 
+    /**
+     * Reconfigures an existing meta object with new meta arguments.
+     * Throws when the provided value is not a meta instance.
+     */
     configure<T extends object>(metaObject: T, metaArgs: MetaArgsType): T {
         if (getDescriptorValue(metaObject, IsMetaObjectSymbol)) {
             this.setNewRegistryInfo(
@@ -75,6 +93,9 @@ export class MetaObjectsBuilder {
         return metaObject
     }
 
+    /**
+     * Stores metadata describing declarations defined via `Meta.declare` so builder can replay them later.
+     */
     addInitialClassDeclarationInfo(
         clsOrPrototype: Record<keyof any, any>,
         declarationInfo: InitialClassPropertyDeclarationInfo

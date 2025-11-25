@@ -1,6 +1,7 @@
 import { MetaType } from '../metatype'
 import { MetaTypeArgsType, MetaTypeImpl } from '../metatypeImpl'
 
+/** Implementation for the unconstrained `ANY` meta type. */
 export class AnyImpl extends MetaTypeImpl {
     static isCompatible(_value: any) {
         return true
@@ -8,18 +9,15 @@ export class AnyImpl extends MetaTypeImpl {
 }
 
 /**
- * metatype that similar to the builtin 'any'
+ * Creates a runtime meta type equivalent to TypeScript's `any`.
  *
- * @param args - {@link MetaTypeArgsType}
+ * @param args - Standard {@link MetaTypeArgsType} options (defaults, optional, etc.).
  *
  * @example
  * ```ts
- * const obj1 = Meta({
- *      a: ANY({ nullish: true })
- * }) // as { a: any }
- *
- * obj1.a = 1
- * obj1.a = {}
+ * const obj = Meta({ field: ANY({ nullish: true }) }) // as { field: any }
+ * obj.field = 1
+ * obj.field = {}
  * ```
  */
 export function ANY(args?: MetaTypeArgsType<ANY>) {

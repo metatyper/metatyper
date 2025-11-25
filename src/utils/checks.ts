@@ -1,7 +1,9 @@
+/** Checks whether the provided value behaves like a `Date` instance. */
 export const isDateObject = (date: any) => {
     return !!(date?.getTimezoneOffset && date?.setUTCFullYear)
 }
 
+/** Performs a shallow-to-deep structural equality check (used when comparing literal schema values). */
 export const isEqual = function (a: any, b: any) {
     if (a === b) return true
 

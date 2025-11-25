@@ -18,6 +18,7 @@ function copyAndFreeze(value: any) {
     return Object.freeze(newObject)
 }
 
+/** Deserializer that produces a frozen copy of objects/arrays to prevent mutation. */
 export const FreezeObjectDeSerializer = {
     name: 'FreezeObjectDeSerializer',
     deserialize: ({ value }: DeSerializerArgsType) => copyAndFreeze(value)

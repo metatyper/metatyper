@@ -2,29 +2,41 @@ import { ValidatorArgsType, ValidatorType } from '../metatypes'
 import { inspect } from '../utils'
 import { MetaError } from './meta.error'
 
+/** Arguments collected when a validator throws or returns `false`. */
 export type ValidatorErrorArgsType = {
+    /** Validator definition that failed. */
     validator: ValidatorType
+    /** Context passed to the validator (value, meta type, path, etc.). */
     validatorArgs: ValidatorArgsType
+    /** Underlying error thrown inside the validator, if any. */
     subError?: Error
 }
 
+/**
+ * Error describing a single validator failure.
+ * Exposes helpers like `code`, `path`, `value`, and `targetObject`.
+ */
 export class MetaTypeValidatorError extends MetaError {
     readonly validator: ValidatorType
     readonly validatorArgs: ValidatorArgsType
     readonly subError?: Error
 
+    /** Identifier for the validator (name or 'Unknown'). */
     get code() {
         return this.validator.name || 'Unknown'
     }
 
+    /** Path to the property within the validated object. */
     get path() {
         return this.validatorArgs.path ? [...this.validatorArgs.path] : []
     }
 
+    /** Offending value. */
     get value() {
         return this.validatorArgs.value
     }
 
+    /** Meta object instance that was being validated. */
     get targetObject() {
         return this.validatorArgs.targetObject
     }
@@ -54,6 +66,9 @@ export class MetaTypeValidatorError extends MetaError {
     }
 }
 
+/**
+ * General validation error. Contains a list of validation issues (list of {@link MetaTypeValidatorError}).
+ */
 export class ValidationError extends MetaError {
     constructor(public readonly issues: MetaTypeValidatorError[]) {
         const message = `Validation issues\n${issues.map((v) => `  - ${v.message}`).join('\n')}`

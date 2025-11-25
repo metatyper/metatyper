@@ -12,6 +12,7 @@ import {
 import { StructuralMetaTypeImpl } from './_structural'
 import { AnyImpl } from './any'
 
+/** Options for {@link OBJECT} meta type. */
 export type ObjectMetaTypeArgs<
     T = OBJECT<object>,
     RequiredKeysT extends (keyof any)[] = string[],
@@ -20,8 +21,11 @@ export type ObjectMetaTypeArgs<
     IsOptionalT extends boolean = IsNullishT,
     IsFrozenT extends boolean = false
 > = MetaTypeArgsType<T, IsNullishT, IsNullableT, IsOptionalT> & {
+    /** When true, deserialized objects are frozen (immutable). */
     freeze?: IsFrozenT
+    /** Keys that must be present; defaults to schema keys when omitted. */
     required?: RequiredKeysT
+    /** Enables/disables serialization/deserialization of nested properties. */
     serializeSubValues?: boolean
 }
 
@@ -237,10 +241,11 @@ export class ObjectImpl extends StructuralMetaTypeImpl {
 }
 
 /**
- * metatype that works like an object or an `Record<string, MetaType>`
+ * Creates an object meta type. Accepts either a per-field schema or a single meta type applied to
+ * every property (record mode).
  *
- * @param subType - object structure with types or meta type (`Record<string, MetaType>`)
- * @param args - {@link ObjectMetaTypeArgs}
+ * @param subType - Schema object, meta type, or factory describing the object structure.
+ * @param args - {@link ObjectMetaTypeArgs} controlling required keys, freezing, etc.
  *
  * @example
  * ```ts
@@ -441,7 +446,7 @@ export function OBJECT(subType?: any, args?: any): any {
 
 declare const IsOBJECT: unique symbol
 
-type ObjectFlag = {
+export type ObjectFlag = {
     readonly [IsOBJECT]?: true
 }
 

@@ -8,9 +8,9 @@
 ///////////////////////////////////////
 ///////////////////////////////////////
 
-export * from './errors'
-export * from './metaobjects'
 export * from './metatypes'
+export * from './metaobjects'
 export * from './serializers'
-export * from './utils'
 export * from './validators'
+export * from './errors'
+export * from './utils'

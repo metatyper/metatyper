@@ -7,6 +7,7 @@ import {
 import { MetaType } from '../metatype'
 import { DeSerializerArgsType, MetaTypeArgsType, MetaTypeImpl } from '../metatypeImpl'
 
+/** Options for numeric meta types (NUMBER/INTEGER/BIGINT reuse this). */
 export type NumbersMetaTypeArgs<
     T = NUMBER,
     IsNullishT extends boolean = boolean,
@@ -15,20 +16,24 @@ export type NumbersMetaTypeArgs<
 > = MetaTypeArgsType<T, IsNullishT, IsNullableT, IsOptionalT> &
     (
         | {
+              /** Inclusive lower bound. */
               min?: number | bigint | Date
               greater?: never
           }
         | {
+              /** Exclusive lower bound. */
               greater?: number | bigint | Date
               min?: never
           }
     ) &
     (
         | {
+              /** Inclusive upper bound. */
               max?: number | bigint | Date
               less?: never
           }
         | {
+              /** Exclusive upper bound. */
               less?: number | bigint | Date
               max?: never
           }
@@ -88,18 +93,15 @@ export class NumberImpl extends MetaTypeImpl {
 }
 
 /**
- * metatype that similar to number
+ * Creates a number meta type (double precision) with optional range constraints.
  *
- * @param args - {@link NumbersMetaTypeArgs}
+ * @param args - {@link NumbersMetaTypeArgs} controlling min/max/greater/less and defaults.
  *
  * @example
  * ```ts
- * const obj1 = Meta({
- *      a: NUMBER(, { nullish: true })
- * }) // as { a: number | null | undefined }
- *
- * obj1.a = 1.2
- * obj1.a = 'str' // type & validation error
+ * const obj = Meta({ score: NUMBER({ min: 0 }) })
+ * obj.score = 1.2
+ * obj.score = 'str' // validation error
  * ```
  */
 export function NUMBER<
