@@ -22,7 +22,7 @@ describe('Serializers and Deserializers', () => {
     }
 
     const customSerializerError = new MetaTypeSerializerError(customSerializer, {
-        value: 'custom',
+        value: 'custom'
     })
 
     const customDeSerializerError = new MetaTypeDeSerializerError(customSerializer, {

@@ -1,6 +1,6 @@
 import { MetaType, type MetaTypeBase, StringImpl } from '../../src'
 import { DATE, STRING } from '../../src'
-import { TypeExtends, TypeIsEqual } from '../../src/utils/typeTest'
+import { TypeExtends, TypeIsEqual } from '../utils/typeTest'
 
 // Test MetaType
 

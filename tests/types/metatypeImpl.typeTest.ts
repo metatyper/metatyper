@@ -1,4 +1,4 @@
-import { TypeExtends } from '../../src/utils/typeTest'
+import { TypeExtends } from '../utils/typeTest'
 
 import { MetaTypeArgsType } from '../../src'
 

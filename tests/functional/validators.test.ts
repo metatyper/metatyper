@@ -17,10 +17,6 @@ import {
 } from '../../src'
 
 describe('Validators', () => {
-    const customValidator = {
-        validate: () => true
-    }
-
     const customError = new Error('custom')
 
     test('MetaTypeValidator', () => {
@@ -43,10 +39,12 @@ describe('Validators', () => {
                 metaTypeImpl
             })
         ).toBeUndefined()
+
         const failedValidation = metaTypeImpl.validate({
             value: 2,
             metaTypeImpl
         })
+
         expect(failedValidation).toBeInstanceOf(ValidationError)
         expect(failedValidation?.issues[0]).toBeInstanceOf(MetaTypeValidatorError)
 
@@ -54,8 +52,11 @@ describe('Validators', () => {
             value: 0,
             metaTypeImpl
         })
+
         expect(thrownValidation).toBeInstanceOf(ValidationError)
+
         const firstSubError = thrownValidation?.issues[0]
+
         expect(firstSubError).toBeInstanceOf(MetaTypeValidatorError)
         expect(firstSubError?.validator).toBe(MetaTypeValidator)
         expect(firstSubError?.subError).toBe(customError)

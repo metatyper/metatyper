@@ -13,7 +13,7 @@ import {
     TUPLE,
     UNION
 } from '../../src'
-import { TypeExtends, TypeIsEqual } from '../../src/utils/typeTest'
+import { TypeExtends, TypeIsEqual } from '../utils/typeTest'
 
 // NUMBER
 

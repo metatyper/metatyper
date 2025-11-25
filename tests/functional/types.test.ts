@@ -771,9 +771,9 @@ describe('Meta types', () => {
         expect(metaTypeImpl1.metaTypeValidatorFunc({ value: ['1'] })).toBe(true)
         expect(metaTypeImpl1.metaTypeValidatorFunc({ value: [1, '1'] })).toBe(true)
         expect(metaTypeImpl1.metaTypeValidatorFunc({ value: [new Date(2)] })).toBe(true)
-        expect(
-            metaTypeImpl1.metaTypeValidatorFunc({ value: [new Date(1)] })
-        ).toBeInstanceOf(ValidationError)
+        expect(metaTypeImpl1.metaTypeValidatorFunc({ value: [new Date(1)] })).toBeInstanceOf(
+            ValidationError
+        )
         expect(metaTypeImpl1.metaTypeValidatorFunc({ value: [1n] })).toBeInstanceOf(
             ValidationError
         )
@@ -786,12 +786,12 @@ describe('Meta types', () => {
         expect(metaTypeImpl1.metaTypeValidatorFunc({ value: 1 })).toBe(false)
 
         expect(metaTypeImpl2.metaTypeValidatorFunc({ value: [new Date(2)] })).toBe(true)
-        expect(
-            metaTypeImpl2.metaTypeValidatorFunc({ value: [new Date(1)] })
-        ).toBeInstanceOf(ValidationError)
-        expect(
-            metaTypeImpl2.metaTypeValidatorFunc({ value: [1, new Date(2)] })
-        ).toBeInstanceOf(ValidationError)
+        expect(metaTypeImpl2.metaTypeValidatorFunc({ value: [new Date(1)] })).toBeInstanceOf(
+            ValidationError
+        )
+        expect(metaTypeImpl2.metaTypeValidatorFunc({ value: [1, new Date(2)] })).toBeInstanceOf(
+            ValidationError
+        )
         expect(metaTypeImpl2.metaTypeValidatorFunc({ value: new Date() })).toBe(false)
 
         expect(metaTypeImpl3.metaTypeValidatorFunc({ value: ['1'] })).toBe(true)
@@ -911,9 +911,9 @@ describe('Meta types', () => {
             metaTypeImpl.metaTypeValidatorFunc({ value: ['1', 1n, new Date()] })
         ).toBeInstanceOf(ValidationError)
         expect(metaTypeImpl.metaTypeValidatorFunc({ value: ['1', 1] })).toBe(false)
-        expect(
-            metaTypeImpl.metaTypeValidatorFunc({ value: [1, '1', new Date()] })
-        ).toBeInstanceOf(ValidationError)
+        expect(metaTypeImpl.metaTypeValidatorFunc({ value: [1, '1', new Date()] })).toBeInstanceOf(
+            ValidationError
+        )
         expect(
             metaTypeImpl.metaTypeValidatorFunc({ value: [1, '1', new Date(), new Date()] })
         ).toBe(false)
@@ -1199,29 +1199,29 @@ describe('Meta types', () => {
         expect(metaTypeImpl4.metaTypeValidatorFunc({ value: {} })).toBe(true)
         expect(metaTypeImpl4.metaTypeValidatorFunc({ value: [] })).toBe(false)
         expect(metaTypeImpl4.metaTypeValidatorFunc({ value: { a: 2, b: 3 } })).toBe(true)
-        expect(
-            metaTypeImpl4.metaTypeValidatorFunc({ value: { a: 2, b: '3' } })
-        ).toBeInstanceOf(ValidationError)
+        expect(metaTypeImpl4.metaTypeValidatorFunc({ value: { a: 2, b: '3' } })).toBeInstanceOf(
+            ValidationError
+        )
         expect(metaTypeImpl4.metaTypeValidatorFunc({ value: { a: 0 } })).toBeInstanceOf(
             ValidationError
         )
-        expect(
-            metaTypeImpl4.metaTypeValidatorFunc({ value: { a: '2' } })
-        ).toBeInstanceOf(ValidationError)
+        expect(metaTypeImpl4.metaTypeValidatorFunc({ value: { a: '2' } })).toBeInstanceOf(
+            ValidationError
+        )
 
         expect(metaTypeImpl5.metaTypeValidatorFunc({ value: undefined })).toBe(true)
         expect(metaTypeImpl5.metaTypeValidatorFunc({ value: null })).toBe(true)
         expect(metaTypeImpl5.metaTypeValidatorFunc({ value: { a: 2, b: 3 } })).toBe(true)
-        expect(
-            metaTypeImpl5.metaTypeValidatorFunc({ value: { a: 2, b: '3' } })
-        ).toBeInstanceOf(ValidationError)
+        expect(metaTypeImpl5.metaTypeValidatorFunc({ value: { a: 2, b: '3' } })).toBeInstanceOf(
+            ValidationError
+        )
         expect(metaTypeImpl5.metaTypeValidatorFunc({ value: {} })).toBe(false)
         expect(metaTypeImpl5.metaTypeValidatorFunc({ value: { a: 0 } })).toBeInstanceOf(
             ValidationError
         )
-        expect(
-            metaTypeImpl5.metaTypeValidatorFunc({ value: { a: '2' } })
-        ).toBeInstanceOf(ValidationError)
+        expect(metaTypeImpl5.metaTypeValidatorFunc({ value: { a: '2' } })).toBeInstanceOf(
+            ValidationError
+        )
 
         expect(metaTypeImpl7.metaTypeValidatorFunc({ value: undefined })).toBe(true)
         expect(metaTypeImpl7.metaTypeValidatorFunc({ value: null })).toBe(true)
@@ -1277,9 +1277,9 @@ describe('Meta types', () => {
         expect(
             ref.validate({ value: { a: { b: { a: { b: undefined, c: 2n } }, c: 3n } } })
         ).toBeUndefined()
-        expect(
-            ref.validate({ value: { a: { b: { a: { c: 5n } }, c: 4n } } })
-        ).toBeInstanceOf(ValidationError)
+        expect(ref.validate({ value: { a: { b: { a: { c: 5n } }, c: 4n } } })).toBeInstanceOf(
+            ValidationError
+        )
 
         expect(
             ref.deserialize({ value: { a: { b: { a: { b: undefined, c: '-1' } }, c: '0' } } })

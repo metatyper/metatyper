@@ -63,16 +63,17 @@
     "prepare:husky": "husky && sh .husky/pre-commit",
     "prepare:typedoc": "typedoc",
     "prepare": "yarn prepare:husky",
-    "sandbox": "jest ./test/sandbox.test.ts",
+    "sandbox": "jest ./tests/sandbox.test.ts",
     "lint": "eslint {src,tests}/**/*.ts",
     "lint:fix": "yarn lint --fix && prettier --write {src,tests}/**/*.{ts,md}",
     "test:types": "tsc --noEmit --project  ./tsconfig.json",
     "test:jest": "jest",
     "test:coverage": "jest --coverage",
+    "test:prepare": "ts-node tests/scripts/prepare.mts",
     "test": "yarn lint && yarn test:types && yarn test:coverage",
     "build": "rimraf ./lib && rollup -c",
     "build:dev": "rimraf ./lib && rollup -cw",
-    "benchmark": "ts-node test/benchmark/index.ts"
+    "benchmark": "ts-node tests/benchmark/index.ts"
   },
   "devDependencies": {
     "@eslint/compat": "^1.1.1",

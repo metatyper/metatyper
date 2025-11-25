@@ -36,15 +36,23 @@ metaTypesSuite
     })
     .add('create a new instance of a simple class', () => {
         const _ = new ClassForBenchmark()
+
+        return _
     })
     .add('create a new instance of a meta class', () => {
         const _ = new MetaClassForBenchmark()
+
+        return _
     })
     .add('get a value of a property of a simple object', () => {
         const _ = simpleInstance.str
+
+        return _
     })
     .add('get a value of a property of a meta object', () => {
         const _ = metaInstance.str
+
+        return _
     })
     .add('set the value of a simpl object property (number)', () => {
         simpleInstance.number = 1

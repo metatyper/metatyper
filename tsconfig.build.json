@@ -3,5 +3,5 @@
         "outDir": "lib",
     },
     "extends": "./tsconfig.json",
-    "exclude": ["./src/**/*.spec.ts", "./test/**/*"]
+    "exclude": ["./src/**/*.spec.ts", "./tests/**/*"]
 }

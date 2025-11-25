@@ -40,6 +40,7 @@ describe('Meta objects', () => {
             action()
         } catch (error) {
             expect(error).toBeInstanceOf(ValidationError)
+
             return error as ValidationError
         }
 
@@ -109,11 +110,15 @@ describe('Meta objects', () => {
         expect(metaObjA.a).toBe(0)
         metaObjA.a = 1
         expect(metaObjA.a).toBe(1)
+
         const errorA = expectValidationError(() => {
             metaObjA.a = '2' as any
         })
+
         expect(errorA.issues).toHaveLength(1)
+
         const [subErrorA] = errorA.issues
+
         expect(subErrorA.validator.name).toBe('MetaType')
         expect(subErrorA.validatorArgs.path).toEqual(['a'])
         expect(subErrorA.validatorArgs.value).toBe('2')
@@ -123,8 +128,11 @@ describe('Meta objects', () => {
         const errorA1 = expectValidationError(() => {
             metaObjA.a1 = 100
         })
+
         expect(errorA1.issues).toHaveLength(1)
+
         const [subErrorA1] = errorA1.issues
+
         expect(subErrorA1.validatorArgs.path).toEqual(['a1'])
         expect(subErrorA1.validatorArgs.value).toBe(105)
         expect(subErrorA1.validatorArgs.metaTypeImpl?.name).toBe('NUMBER')
@@ -395,11 +403,15 @@ describe('Meta objects', () => {
         expect(MetaClsA.a).toBe(10)
         MetaClsA.a = 1
         expect(MetaClsA.a).toBe(1)
+
         const metaClsAError = expectValidationError(() => {
             MetaClsA.a = '2' as any
         })
+
         expect(metaClsAError.issues).toHaveLength(1)
+
         const [metaClsASubError] = metaClsAError.issues
+
         expect(metaClsASubError.validatorArgs.path).toEqual(['a'])
         expect(metaClsASubError.validatorArgs.value).toBe('2')
         expect(metaClsASubError.validatorArgs.metaTypeImpl?.name).toBe('NUMBER')
@@ -408,8 +420,11 @@ describe('Meta objects', () => {
         const metaClsA1Error = expectValidationError(() => {
             MetaClsA.a1 = 100
         })
+
         expect(metaClsA1Error.issues).toHaveLength(1)
+
         const [metaClsA1SubError] = metaClsA1Error.issues
+
         expect(metaClsA1SubError.validatorArgs.path).toEqual(['a1'])
         expect(metaClsA1SubError.validatorArgs.value).toBe(105)
         expect(metaClsA1SubError.validatorArgs.metaTypeImpl?.name).toBe('NUMBER')
@@ -470,8 +485,11 @@ describe('Meta objects', () => {
         const metaClsCDeserializeError = expectValidationError(() => {
             Meta.deserialize(MetaClsC, { c1: 100 })
         })
+
         expect(metaClsCDeserializeError.issues).toHaveLength(1)
+
         const [metaClsCDeserializeSubError] = metaClsCDeserializeError.issues
+
         expect(metaClsCDeserializeSubError.validatorArgs.path).toEqual(['c1'])
         expect(metaClsCDeserializeSubError.validatorArgs.value).toBe(105)
         expect(metaClsCDeserializeSubError.validatorArgs.metaTypeImpl?.name).toBe('NUMBER')
@@ -568,8 +586,11 @@ describe('Meta objects', () => {
         const metaCDeserializeError = expectValidationError(() => {
             Meta.deserialize(metaC, { a1: 100 })
         })
+
         expect(metaCDeserializeError.issues).toHaveLength(1)
+
         const [metaCDeserializeSubError] = metaCDeserializeError.issues
+
         expect(metaCDeserializeSubError.validatorArgs.path).toEqual(['a1'])
         expect(metaCDeserializeSubError.validatorArgs.value).toBe(105)
         expect(metaCDeserializeSubError.validatorArgs.metaTypeImpl?.name).toBe('NUMBER')
@@ -878,6 +899,7 @@ describe('Meta objects', () => {
         const validationError = Meta.validate(metaObject, {
             a: '1'
         })
+
         expect(validationError).toBeInstanceOf(ValidationError)
 
         expect(JSON.stringify(handler.mock.calls)).toBe(
@@ -987,10 +1009,11 @@ describe('Meta objects', () => {
             { a: NUMBER({ nullish: true }) },
             {
                 metaTypesArgs(metaTypeImpl) {
-                    if (metaTypeImpl instanceof NumberImpl)
+                    if (metaTypeImpl instanceof NumberImpl) {
                         return {
                             default: 2
                         }
+                    }
 
                     return {}
                 }
@@ -1005,10 +1028,11 @@ describe('Meta objects', () => {
             { a: NUMBER({ nullish: true }) },
             {
                 metaTypesArgs(metaTypeImpl) {
-                    if (metaTypeImpl instanceof NumberImpl)
+                    if (metaTypeImpl instanceof NumberImpl) {
                         return {
                             default: 2
                         }
+                    }
 
                     return {}
                 }
@@ -1037,7 +1061,7 @@ describe('Meta objects', () => {
             get() {
                 return 1
             },
-            set() { }
+            set() {}
         })
 
         metaObject.a = 2
@@ -1081,7 +1105,10 @@ describe('Meta objects', () => {
             b: STRING()
         }
 
-        const result = Meta.validate(descriptor, { a: 'invalid', b: 123 as any }) as ValidationError
+        const result = Meta.validate(descriptor, {
+            a: 'invalid',
+            b: 123 as any
+        }) as ValidationError
 
         expect(result).toBeInstanceOf(ValidationError)
         expect(result.issues).toHaveLength(2)
@@ -1109,16 +1136,20 @@ describe('Meta objects', () => {
             )
         }
 
-        const validationError = Meta.validate(descriptor, {
-            key1: [
-                { key2: { key3: [0, 1] } },
-                { key2: { key3: [2, 3] } },
-                { key2: { key3: [0, 'oops', 2] } },
-                { key2: { key4: [0, 'oops', 2] } },
-            ]
-        }, {
-            stopAtFirstError: false
-        }) as ValidationError
+        const validationError = Meta.validate(
+            descriptor,
+            {
+                key1: [
+                    { key2: { key3: [0, 1] } },
+                    { key2: { key3: [2, 3] } },
+                    { key2: { key3: [0, 'oops', 2] } },
+                    { key2: { key4: [0, 'oops', 2] } }
+                ]
+            },
+            {
+                stopAtFirstError: false
+            }
+        ) as ValidationError
 
         expect(validationError).toBeInstanceOf(ValidationError)
         expect(validationError.issues).toHaveLength(2)
@@ -1133,7 +1164,7 @@ describe('Meta objects', () => {
 
         expect(issue2.code).toBe('MetaType')
         expect(issue2.path).toEqual(['key1', 3, 'key2'])
-        expect(issue2.value).toEqual({ key4: [ 0, 'oops', 2 ] })
+        expect(issue2.value).toEqual({ key4: [0, 'oops', 2] })
         expect(issue2.targetObject).toBe(descriptor)
         expect(issue2.validatorArgs.metaTypeImpl?.name).toBe('OBJECT')
     })

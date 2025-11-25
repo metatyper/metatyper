@@ -18,7 +18,7 @@ The following steps will get you setup the project environment:
 
 4. Start working with the code!
 
-> You can use `test/sandbox.ts` to play with your code. To run it need to execute `yarn sandbox`.
+> You can use `tests/sandbox.ts` to play with your code. To run it need to execute `yarn sandbox`.
 
 &nbsp;
 
@@ -28,15 +28,15 @@ We follow the [conventional commit spec](https://www.conventionalcommits.org/en/
 
 Your commit type must be one of the following:
 
-- **feat**: A new feature
-- **fix**: A bug fix
-- **refactor**: A code change that neither fixes a bug nor adds a feature
-- **test**: Adding new tests or correcting existing tests
-- **build**: Changes that affect the build system (yarn, npm, rollup, etc.)
-- **ci**: Changes to our CI configuration (GitHub Actions)
-- **docs**: Documentation only changes
-- **chore**: Changes that do not relate to a fix or feature and don't modify src or test files
-  (e.g. modifying the `.eslintrc.js` or updating dependencies)
+-   **feat**: A new feature
+-   **fix**: A bug fix
+-   **refactor**: A code change that neither fixes a bug nor adds a feature
+-   **test**: Adding new tests or correcting existing tests
+-   **build**: Changes that affect the build system (yarn, npm, rollup, etc.)
+-   **ci**: Changes to our CI configuration (GitHub Actions)
+-   **docs**: Documentation only changes
+-   **chore**: Changes that do not relate to a fix or feature and don't modify src or test files
+    (e.g. modifying the `.eslintrc.js` or updating dependencies)
 
 &nbsp;
 
@@ -50,6 +50,16 @@ Be sure to document any changes you implement.
 ## Pull requests
 
 Please try to keep your pull request focused on scope and avoid including unrelated commits.
+
+&nbsp;
+
+### Tests
+
+All pull requests should include tests to verify the changes.
+
+When fixing issues, please add a test case for the issue in `tests/issues/issue-1234.test.ts` (or `.tsx`), where `1234` is the issue number.
+
+For new features or changes to existing functionality, please update the existing tests to cover the new or changed behavior.
 
 &nbsp;
 

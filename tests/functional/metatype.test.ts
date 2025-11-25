@@ -132,7 +132,9 @@ describe('MetaType and MetaTypeImpl', () => {
         const customMetaTypeImpl = MetaType.getMetaTypeImpl(customMetaType)
 
         expect(customMetaTypeImpl.validate({ value: 1 })).toBeUndefined()
+
         const validationError = customMetaTypeImpl.validate({ value: 2 })
+
         expect(validationError).toBeInstanceOf(ValidationError)
         expect(validationError?.issues[0]).toBeInstanceOf(MetaTypeValidatorError)
 
@@ -140,9 +142,12 @@ describe('MetaType and MetaTypeImpl', () => {
             value: 2,
             stopAtFirstError: false
         })
+
         expect(aggregatedError).toBeInstanceOf(ValidationError)
         expect(aggregatedError?.issues).toHaveLength(1)
+
         const validatorError = aggregatedError?.issues[0]
+
         expect(validatorError).toBeInstanceOf(MetaTypeValidatorError)
         expect(validatorError?.validator.validate).toBe(validator1)
         expect(validatorError?.subError).toBeUndefined()
@@ -236,9 +241,7 @@ describe('MetaType and MetaTypeImpl', () => {
 
         expect(customMetaTypeImpl2.validate({ value: 1 })).toBeUndefined()
         expect(customMetaTypeImpl2.validate({ value: null })).toBeUndefined()
-        expect(
-            customMetaTypeImpl2.validate({ value: undefined })
-        ).toBeInstanceOf(ValidationError)
+        expect(customMetaTypeImpl2.validate({ value: undefined })).toBeInstanceOf(ValidationError)
 
         expect(customMetaTypeImpl3.validate({ value: 1 })).toBeUndefined()
         expect(customMetaTypeImpl3.validate({ value: undefined })).toBeUndefined()
@@ -246,9 +249,7 @@ describe('MetaType and MetaTypeImpl', () => {
 
         expect(customMetaTypeImpl4.validate({ value: 1 })).toBeUndefined()
         expect(customMetaTypeImpl4.validate({ value: null })).toBeUndefined()
-        expect(
-            customMetaTypeImpl4.validate({ value: undefined })
-        ).toBeInstanceOf(ValidationError)
+        expect(customMetaTypeImpl4.validate({ value: undefined })).toBeInstanceOf(ValidationError)
 
         expect(customMetaTypeImpl5.validate({ value: 1 })).toBeUndefined()
         expect(customMetaTypeImpl5.validate({ value: undefined })).toBeUndefined()
@@ -260,8 +261,6 @@ describe('MetaType and MetaTypeImpl', () => {
 
         expect(customMetaTypeImpl7.validate({ value: 1 })).toBeUndefined()
         expect(customMetaTypeImpl7.validate({ value: null })).toBeUndefined()
-        expect(
-            customMetaTypeImpl7.validate({ value: undefined })
-        ).toBeInstanceOf(ValidationError)
+        expect(customMetaTypeImpl7.validate({ value: undefined })).toBeInstanceOf(ValidationError)
     })
 })
