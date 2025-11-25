@@ -1,2 +1,7 @@
 yarn lint-staged
-yarn test:types
+
+yarn test:prepare
+yarn test
+
+npx typedoc
+git add ./docs/api

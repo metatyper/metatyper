@@ -60,7 +60,8 @@
     ]
   },
   "scripts": {
-    "prepare:husky": "husky",
+    "prepare:husky": "husky && sh .husky/pre-commit",
+    "prepare:typedoc": "typedoc",
     "prepare": "yarn prepare:husky",
     "sandbox": "jest ./test/sandbox.test.ts",
     "lint": "eslint {src,tests}/**/*.ts",
@@ -68,7 +69,7 @@
     "test:types": "tsc --noEmit --project  ./tsconfig.json",
     "test:jest": "jest",
     "test:coverage": "jest --coverage",
-    "test": "yarn lint && yarn test:types && yarn test:jest",
+    "test": "yarn lint && yarn test:types && yarn test:coverage",
     "build": "rimraf ./lib && rollup -c",
     "build:dev": "rimraf ./lib && rollup -cw",
     "benchmark": "ts-node test/benchmark/index.ts"
@@ -103,6 +104,8 @@
     "ts-jest": "^29.1.2",
     "ts-node": "^10.9.2",
     "tslib": "^2.7.0",
+    "typedoc": "^0.28.14",
+    "typedoc-plugin-markdown": "^4.9.0",
     "typescript": "=5.5.3"
   },
   "packageManager": "yarn@4.11.0",

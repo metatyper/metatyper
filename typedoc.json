@@ -1,0 +1,44 @@
+{  
+    "gitRevision": "main",
+    "entryPoints": [
+        "src/index.ts"
+    ],
+    "out": "docs/api",
+    "plugin": [
+        "typedoc-plugin-markdown"
+    ],
+    "exclude": [
+        "**/node_modules/**"
+    ],
+    "entryPointStrategy": "resolve",
+    "outputFileStrategy": "modules",
+
+    "readme": "none",
+
+    "excludeExternals": true,
+    "excludePrivate": true,
+    "excludeProtected": true,
+    "excludeInternal": true,
+
+    "hideBreadcrumbs": true,
+    "hidePageTitle": true,
+    "excludeReferences": true,
+
+    "useCodeBlocks": true,
+    "expandObjects": true,
+    "expandParameters": true,
+
+    "indexFormat": "htmlTable",
+    "parametersFormat": "htmlTable",
+    "interfacePropertiesFormat": "htmlTable",
+    "classPropertiesFormat": "htmlTable",
+    "typeAliasPropertiesFormat": "htmlTable",
+    "enumMembersFormat": "htmlTable",
+    "propertyMembersFormat": "htmlTable",
+    "typeDeclarationFormat": "htmlTable",
+
+    "groupOrder": [
+        "Functions", "*", "TypeAliases", "Classes"
+    ]
+
+}
