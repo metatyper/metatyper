@@ -2172,7 +2172,7 @@ Creates a validator enforcing `value <= max`.
 function Meta<T>(protoObject?: T, metaArgs?: MetaArgsType): Meta<T>;
 ```
 
-Defined in: [src/metaobjects/meta.ts:241](https://github.com/metatyper/metatyper/blob/main/src/metaobjects/meta.ts#L241)
+Defined in: [src/metaobjects/meta.ts:242](https://github.com/metatyper/metatyper/blob/main/src/metaobjects/meta.ts#L242)
 
 Create a Meta object
 
@@ -2283,6 +2283,7 @@ myInstance.someInstanceProp = '2' // will throw an validation error
 The `Meta` function also provides several utility methods.
 These methods are available on the `Meta` object and can be used to interact with meta objects.
 The methods are:
+- `Meta.validate(metaObject, rawObject)` - [MetaValidate](#metavalidate) - Validates a raw object using the meta object (as schema).
 - `Meta.copy(metaObject)` - [MetaCopy](#metacopy) - Creates a copy of a meta object preserving its values, types, prototype and arguments.
 - `Meta.rebuild(metaObject)` - [MetaRebuild](#metarebuild) - Rebuilds a meta object using the same original object and arguments, resetting to initial state.
 - `Meta.isMetaObject(obj)` - [MetaIsMetaObject](#metaismetaobject) - Checks if an object is a meta object.
@@ -2311,7 +2312,7 @@ The methods are:
 function MetaClass(metaArgs?: MetaArgsType): <T>(cls: T) => any;
 ```
 
-Defined in: [src/metaobjects/meta.ts:278](https://github.com/metatyper/metatyper/blob/main/src/metaobjects/meta.ts#L278)
+Defined in: [src/metaobjects/meta.ts:279](https://github.com/metatyper/metatyper/blob/main/src/metaobjects/meta.ts#L279)
 
 Transforms a class into a meta class using the provided meta arguments.
 
@@ -2431,7 +2432,7 @@ function MetaCopy<T>(metaObject: T): Required<T> extends Required<{
 }> ? T : Meta<T> | null;
 ```
 
-Defined in: [src/metaobjects/meta.ts:821](https://github.com/metatyper/metatyper/blob/main/src/metaobjects/meta.ts#L821)
+Defined in: [src/metaobjects/meta.ts:822](https://github.com/metatyper/metatyper/blob/main/src/metaobjects/meta.ts#L822)
 
 Creates a copy of a meta object, preserving its public properties, values, types, and prototype.
 This method is particularly useful for creating independent instances of meta objects that share the same structure but need to manage their own state.
@@ -2527,7 +2528,7 @@ console.log(copiedMetaObject)
 function MetaDeclare<T, K>(metaType: T[K]): (target: T, propName: K) => void;
 ```
 
-Defined in: [src/metaobjects/meta.ts:308](https://github.com/metatyper/metatyper/blob/main/src/metaobjects/meta.ts#L308)
+Defined in: [src/metaobjects/meta.ts:309](https://github.com/metatyper/metatyper/blob/main/src/metaobjects/meta.ts#L309)
 
 Decorator for declaring meta type information for class properties.
 
@@ -2670,7 +2671,7 @@ class User {
 function MetaDeclare<T, K, IsNullableT>(metaTypeArgs?: MetaTypeArgsType<T[K], IsNullableT>): (target: T, propName: K) => void;
 ```
 
-Defined in: [src/metaobjects/meta.ts:340](https://github.com/metatyper/metatyper/blob/main/src/metaobjects/meta.ts#L340)
+Defined in: [src/metaobjects/meta.ts:341](https://github.com/metatyper/metatyper/blob/main/src/metaobjects/meta.ts#L341)
 
 Decorator for declaring meta type information for class properties.
 
@@ -2820,7 +2821,7 @@ function MetaDeserialize<T>(
 deserializeArgs?: DeSerializeMetaObjectArgsType): Meta<T>;
 ```
 
-Defined in: [src/metaobjects/meta.ts:770](https://github.com/metatyper/metatyper/blob/main/src/metaobjects/meta.ts#L770)
+Defined in: [src/metaobjects/meta.ts:771](https://github.com/metatyper/metatyper/blob/main/src/metaobjects/meta.ts#L771)
 
 Deserializes a raw object into a meta object, updating or creating it based on the provided arguments.
 This function is particularly useful for converting plain objects into structured, validated meta objects,
@@ -2955,7 +2956,7 @@ console.log(newUserMeta) // New meta object with id and name from rawObject
 function MetaDisableSerialization(metaObject: object): void;
 ```
 
-Defined in: [src/metaobjects/meta.ts:589](https://github.com/metatyper/metatyper/blob/main/src/metaobjects/meta.ts#L589)
+Defined in: [src/metaobjects/meta.ts:590](https://github.com/metatyper/metatyper/blob/main/src/metaobjects/meta.ts#L590)
 
 Disables serialization for the specified meta object.
 
@@ -3024,7 +3025,7 @@ metaObject.id = '123' // No deserialization occurs and it will throw an validati
 function MetaDisableValidation(metaObject: object): void;
 ```
 
-Defined in: [src/metaobjects/meta.ts:482](https://github.com/metatyper/metatyper/blob/main/src/metaobjects/meta.ts#L482)
+Defined in: [src/metaobjects/meta.ts:483](https://github.com/metatyper/metatyper/blob/main/src/metaobjects/meta.ts#L483)
 
 Disables validation for the specified meta object.
 
@@ -3092,7 +3093,7 @@ metaObject.id = 'not a number' // No validation error
 function MetaEnableSerialization(metaObject: object): void;
 ```
 
-Defined in: [src/metaobjects/meta.ts:625](https://github.com/metatyper/metatyper/blob/main/src/metaobjects/meta.ts#L625)
+Defined in: [src/metaobjects/meta.ts:626](https://github.com/metatyper/metatyper/blob/main/src/metaobjects/meta.ts#L626)
 
 Enables serialization for the specified meta object.
 
@@ -3161,7 +3162,7 @@ metaObject.id = '123' // Deserialization occurs, converting '123' to number
 function MetaEnableValidation(metaObject: object): void;
 ```
 
-Defined in: [src/metaobjects/meta.ts:518](https://github.com/metatyper/metatyper/blob/main/src/metaobjects/meta.ts#L518)
+Defined in: [src/metaobjects/meta.ts:519](https://github.com/metatyper/metatyper/blob/main/src/metaobjects/meta.ts#L519)
 
 Enables validation for the specified meta object.
 
@@ -3235,7 +3236,7 @@ function MetaFromJson<T>(
 }): Meta<T>;
 ```
 
-Defined in: [src/metaobjects/meta.ts:952](https://github.com/metatyper/metatyper/blob/main/src/metaobjects/meta.ts#L952)
+Defined in: [src/metaobjects/meta.ts:953](https://github.com/metatyper/metatyper/blob/main/src/metaobjects/meta.ts#L953)
 
 Deserializes a JSON string into a meta object.
 This function parses a JSON string into a plain object and then deserializes it into a meta object
@@ -3397,7 +3398,7 @@ console.log(user)
 function MetaGetMetaArgs(metaObject: object): MetaArgsType | null;
 ```
 
-Defined in: [src/metaobjects/meta.ts:1094](https://github.com/metatyper/metatyper/blob/main/src/metaobjects/meta.ts#L1094)
+Defined in: [src/metaobjects/meta.ts:1095](https://github.com/metatyper/metatyper/blob/main/src/metaobjects/meta.ts#L1095)
 
 Retrieves the meta arguments used to configure a meta object.
 This function extracts the configuration arguments (`MetaArgsType`) that were used to create or configure the provided meta object.
@@ -3474,7 +3475,7 @@ console.log(metaArgs)
 function MetaIsIgnoredProp(metaObject: object, propName: string | symbol): boolean;
 ```
 
-Defined in: [src/metaobjects/meta.ts:409](https://github.com/metatyper/metatyper/blob/main/src/metaobjects/meta.ts#L409)
+Defined in: [src/metaobjects/meta.ts:410](https://github.com/metatyper/metatyper/blob/main/src/metaobjects/meta.ts#L410)
 
 Checks if propName is ignored.
 
@@ -3549,7 +3550,7 @@ console.log(Meta.isIgnoredProp(metaObject, 'prototype')) // true, because built-
 function MetaProto<T>(metaObject: T): Required<T> extends Required<Meta<U>> ? U : T | null;
 ```
 
-Defined in: [src/metaobjects/meta.ts:859](https://github.com/metatyper/metatyper/blob/main/src/metaobjects/meta.ts#L859)
+Defined in: [src/metaobjects/meta.ts:860](https://github.com/metatyper/metatyper/blob/main/src/metaobjects/meta.ts#L860)
 
 Retrieves the prototype (original object) used to create a meta object.
 This function is particularly useful when you need to access the original structure or data of a meta object.
@@ -3643,7 +3644,7 @@ function MetaRebuild<T>(metaObject: T, metaArgs?: MetaArgsType): Required<T> ext
 }> ? T : Meta<T> | null;
 ```
 
-Defined in: [src/metaobjects/meta.ts:900](https://github.com/metatyper/metatyper/blob/main/src/metaobjects/meta.ts#L900)
+Defined in: [src/metaobjects/meta.ts:901](https://github.com/metatyper/metatyper/blob/main/src/metaobjects/meta.ts#L901)
 
 Rebuilds a meta object using the same original object and arguments that were used to create the meta object. 
 This function is useful for creating a new instance of a meta object with its initial state and configuration, 
@@ -3757,7 +3758,7 @@ console.log(rebuiltMetaObject.name) // 'John Doe'
 function MetaRepresent(metaObject: object): string | null;
 ```
 
-Defined in: [src/metaobjects/meta.ts:1046](https://github.com/metatyper/metatyper/blob/main/src/metaobjects/meta.ts#L1046)
+Defined in: [src/metaobjects/meta.ts:1047](https://github.com/metatyper/metatyper/blob/main/src/metaobjects/meta.ts#L1047)
 
 Generates a textual representation of a meta object.
 This function checks if the provided object is a meta object and,
@@ -3826,7 +3827,7 @@ console.log(representation)
 function MetaSerializationIsActive(metaObject: object): boolean;
 ```
 
-Defined in: [src/metaobjects/meta.ts:552](https://github.com/metatyper/metatyper/blob/main/src/metaobjects/meta.ts#L552)
+Defined in: [src/metaobjects/meta.ts:553](https://github.com/metatyper/metatyper/blob/main/src/metaobjects/meta.ts#L553)
 
 Checks if serialization is active for the given meta object.
 
@@ -3893,7 +3894,7 @@ console.log(Meta.serializationIsActive(metaObject)) // false
 function MetaSerialize<ResultT, T>(metaObject: T | Meta<T>, serializeArgs?: SerializeMetaObjectArgsType): [ResultT] extends [never] ? { [key in string | number | symbol]: any } : ResultT;
 ```
 
-Defined in: [src/metaobjects/meta.ts:716](https://github.com/metatyper/metatyper/blob/main/src/metaobjects/meta.ts#L716)
+Defined in: [src/metaobjects/meta.ts:717](https://github.com/metatyper/metatyper/blob/main/src/metaobjects/meta.ts#L717)
 
 Serializes a meta object into a plain object.
 This function is particularly useful when you need to convert a meta object back into a simple JavaScript object,
@@ -4045,7 +4046,7 @@ function MetaToJson(
 }): string;
 ```
 
-Defined in: [src/metaobjects/meta.ts:1003](https://github.com/metatyper/metatyper/blob/main/src/metaobjects/meta.ts#L1003)
+Defined in: [src/metaobjects/meta.ts:1004](https://github.com/metatyper/metatyper/blob/main/src/metaobjects/meta.ts#L1004)
 
 Serializes a meta object into a JSON string.
 This function first converts a meta object into a plain object using the `Meta.serialize` method,
@@ -4819,13 +4820,117 @@ Optional validation options (currently only `stopAtFirstError`).
 
 ***
 
+### MetaValidate()
+
+```ts
+function MetaValidate(
+   metaObjectOrProto: object, 
+   rawObject: object, 
+   validateArgs?: ValidateMetaObjectArgsType): ValidationError | undefined;
+```
+
+Defined in: [src/metaobjects/meta.ts:662](https://github.com/metatyper/metatyper/blob/main/src/metaobjects/meta.ts#L662)
+
+Validates a plain object against a meta object schema or a meta object, ensuring it conforms to the defined types and constraints.
+If the object is valid according to the meta object schema, the function returns undefined.
+If the object is not valid, it returns `ValidationError`,
+
+#### Parameters
+
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+
+`metaObjectOrProto`
+
+</td>
+<td>
+
+`object`
+
+</td>
+<td>
+
+The meta object or plain object as a schema against which to validate the `rawObject`.
+
+</td>
+</tr>
+<tr>
+<td>
+
+`rawObject`
+
+</td>
+<td>
+
+`object`
+
+</td>
+<td>
+
+The plain object to validate.
+
+</td>
+</tr>
+<tr>
+<td>
+
+`validateArgs?`
+
+</td>
+<td>
+
+[`ValidateMetaObjectArgsType`](#validatemetaobjectargstype)
+
+</td>
+<td>
+
+arguments to customize the validation behavior, such as disabling throwing errors.
+
+</td>
+</tr>
+</tbody>
+</table>
+
+#### Returns
+
+[`ValidationError`](#validationerror) \| `undefined`
+
+#### Example
+
+```ts
+const userSchema = {
+  id: NUMBER(),
+  name: STRING({ minLength: 3 })
+}
+
+const validUser = { id: 1, name: 'John Doe' }
+const invalidUser = { id: 'not a number', name: 'JD' }
+
+const error = Meta.validate(userSchema, validUser)
+// error === undefined
+
+const error = Meta.validate(userSchema, invalidUser)
+// error instanceof ValidationError
+```
+
+***
+
 ### MetaValidationIsActive()
 
 ```ts
 function MetaValidationIsActive(metaObject: object): boolean;
 ```
 
-Defined in: [src/metaobjects/meta.ts:446](https://github.com/metatyper/metatyper/blob/main/src/metaobjects/meta.ts#L446)
+Defined in: [src/metaobjects/meta.ts:447](https://github.com/metatyper/metatyper/blob/main/src/metaobjects/meta.ts#L447)
 
 Checks if validation is active for the given meta object.
 
@@ -6939,110 +7044,6 @@ obj1.a = true
 obj1.a = {} // type & validation error
 ```
 
-***
-
-### validateMeta()
-
-```ts
-function validateMeta(
-   metaObjectOrProto: object, 
-   rawObject: object, 
-   validateArgs?: ValidateMetaObjectArgsType): ValidationError | undefined;
-```
-
-Defined in: [src/metaobjects/meta.ts:661](https://github.com/metatyper/metatyper/blob/main/src/metaobjects/meta.ts#L661)
-
-Validates a plain object against a meta object schema or a meta object, ensuring it conforms to the defined types and constraints.
-If the object is valid according to the meta object schema, the function returns undefined.
-If the object is not valid, it returns `ValidationError`,
-
-#### Parameters
-
-<table>
-<thead>
-<tr>
-<th>Parameter</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>
-
-`metaObjectOrProto`
-
-</td>
-<td>
-
-`object`
-
-</td>
-<td>
-
-The meta object or plain object as a schema against which to validate the `rawObject`.
-
-</td>
-</tr>
-<tr>
-<td>
-
-`rawObject`
-
-</td>
-<td>
-
-`object`
-
-</td>
-<td>
-
-The plain object to validate.
-
-</td>
-</tr>
-<tr>
-<td>
-
-`validateArgs?`
-
-</td>
-<td>
-
-[`ValidateMetaObjectArgsType`](#validatemetaobjectargstype)
-
-</td>
-<td>
-
-arguments to customize the validation behavior, such as disabling throwing errors.
-
-</td>
-</tr>
-</tbody>
-</table>
-
-#### Returns
-
-[`ValidationError`](#validationerror) \| `undefined`
-
-#### Example
-
-```ts
-const userSchema = {
-  id: NUMBER(),
-  name: STRING({ minLength: 3 })
-}
-
-const validUser = { id: 1, name: 'John Doe' }
-const invalidUser = { id: 'not a number', name: 'JD' }
-
-const error = Meta.validate(userSchema, validUser)
-// error === undefined
-
-const error = Meta.validate(userSchema, invalidUser)
-// error instanceof ValidationError
-```
-
 ## Type Aliases
 
 ### ANY
@@ -8619,7 +8620,7 @@ type Meta<T> = T extends (...args: infer A) => infer R ? (...args: A) => Meta<R>
 };
 ```
 
-Defined in: [src/metaobjects/meta.ts:241](https://github.com/metatyper/metatyper/blob/main/src/metaobjects/meta.ts#L241)
+Defined in: [src/metaobjects/meta.ts:242](https://github.com/metatyper/metatyper/blob/main/src/metaobjects/meta.ts#L242)
 
 Create a Meta object
 
@@ -8719,6 +8720,7 @@ myInstance.someInstanceProp = '2' // will throw an validation error
 The `Meta` function also provides several utility methods.
 These methods are available on the `Meta` object and can be used to interact with meta objects.
 The methods are:
+- `Meta.validate(metaObject, rawObject)` - [MetaValidate](#metavalidate) - Validates a raw object using the meta object (as schema).
 - `Meta.copy(metaObject)` - [MetaCopy](#metacopy) - Creates a copy of a meta object preserving its values, types, prototype and arguments.
 - `Meta.rebuild(metaObject)` - [MetaRebuild](#metarebuild) - Rebuilds a meta object using the same original object and arguments, resetting to initial state.
 - `Meta.isMetaObject(obj)` - [MetaIsMetaObject](#metaismetaobject) - Checks if an object is a meta object.
@@ -13021,7 +13023,7 @@ Symbol flag injected into every runtime meta type wrapper.
 const M: typeof Meta = Meta;
 ```
 
-Defined in: [src/metaobjects/meta.ts:251](https://github.com/metatyper/metatyper/blob/main/src/metaobjects/meta.ts#L251)
+Defined in: [src/metaobjects/meta.ts:252](https://github.com/metatyper/metatyper/blob/main/src/metaobjects/meta.ts#L252)
 
 Alias for the `Meta`
 
@@ -13033,7 +13035,7 @@ Alias for the `Meta`
 const MetaIsMetaObject: (metaObject?: object | null) => any;
 ```
 
-Defined in: [src/metaobjects/meta.ts:387](https://github.com/metatyper/metatyper/blob/main/src/metaobjects/meta.ts#L387)
+Defined in: [src/metaobjects/meta.ts:388](https://github.com/metatyper/metatyper/blob/main/src/metaobjects/meta.ts#L388)
 
 Checks if the provided object is a meta object.
 

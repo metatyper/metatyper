@@ -218,6 +218,7 @@ export type Meta<T> = (T extends new (...args: infer A) => infer R
  * The `Meta` function also provides several utility methods.
  * These methods are available on the `Meta` object and can be used to interact with meta objects.
  * The methods are:
+ * - `Meta.validate(metaObject, rawObject)` - {@link MetaValidate} - Validates a raw object using the meta object (as schema).
  * - `Meta.copy(metaObject)` - {@link MetaCopy} - Creates a copy of a meta object preserving its values, types, prototype and arguments.
  * - `Meta.rebuild(metaObject)` - {@link MetaRebuild} - Rebuilds a meta object using the same original object and arguments, resetting to initial state.
  * - `Meta.isMetaObject(obj)` - {@link MetaIsMetaObject} - Checks if an object is a meta object.
@@ -658,7 +659,7 @@ Meta.enableSerialization = MetaEnableSerialization
  * // error instanceof ValidationError
  * ```
  */
-export function validateMeta(
+export function MetaValidate(
     metaObjectOrProto: object,
     rawObject: object,
     validateArgs?: ValidateMetaObjectArgsType
@@ -670,7 +671,7 @@ export function validateMeta(
     return handlerInstance.validate(metaObjectOrProto, rawObject, validateArgs)
 }
 
-Meta.validate = validateMeta
+Meta.validate = MetaValidate
 
 /**
  * Serializes a meta object into a plain object.
