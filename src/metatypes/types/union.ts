@@ -22,17 +22,19 @@ export class UnionImpl extends StructuralMetaTypeImpl {
         const subType = this.getSubType()
 
         return subType.find((metaTypeImpl: MetaTypeImpl) => {
+            let valueToValidate = value
+
             if (
-                value != null &&
-                !(metaTypeImpl.constructor as typeof MetaTypeImpl).isCompatible(value)
+                valueToValidate != null &&
+                !(metaTypeImpl.constructor as typeof MetaTypeImpl).isCompatible(valueToValidate)
             ) {
                 return false
             }
 
             try {
-                value = metaTypeImpl.deserialize({ value })
+                valueToValidate = metaTypeImpl.deserialize({ value: valueToValidate })
 
-                const error = metaTypeImpl.validate({ value, path: [] })
+                const error = metaTypeImpl.validate({ value: valueToValidate, path: [] })
 
                 if (error) {
                     return false

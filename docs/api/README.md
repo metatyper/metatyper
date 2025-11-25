@@ -6797,7 +6797,7 @@ function UNION<T, TArray, PreparedT, DefaultT, ResultT>(subType: TArray | () => 
 }): ResultT;
 ```
 
-Defined in: [src/metatypes/types/union.ts:107](https://github.com/metatyper/metatyper/blob/main/src/metatypes/types/union.ts#L107)
+Defined in: [src/metatypes/types/union.ts:109](https://github.com/metatyper/metatyper/blob/main/src/metatypes/types/union.ts#L109)
 
 Creates a union meta type that accepts any of the provided sub meta types/literals.
 
@@ -12066,7 +12066,7 @@ Toggles serialization/deserialization of tuple entries.
 type UNION<T> = T;
 ```
 
-Defined in: [src/metatypes/types/union.ts:107](https://github.com/metatyper/metatyper/blob/main/src/metatypes/types/union.ts#L107)
+Defined in: [src/metatypes/types/union.ts:109](https://github.com/metatyper/metatyper/blob/main/src/metatypes/types/union.ts#L109)
 
 Creates a union meta type that accepts any of the provided sub meta types/literals.
 
@@ -34204,7 +34204,7 @@ Runs builtin + custom deserializers and returns the final value.
 deserializeSubValues(__namedParameters: DeSerializerArgsType): any;
 ```
 
-Defined in: [src/metatypes/types/union.ts:71](https://github.com/metatyper/metatyper/blob/main/src/metatypes/types/union.ts#L71)
+Defined in: [src/metatypes/types/union.ts:73](https://github.com/metatyper/metatyper/blob/main/src/metatypes/types/union.ts#L73)
 
 ###### Parameters
 
@@ -34259,7 +34259,7 @@ Resolves (and caches) the prepared subtype, executing lazy factories when needed
 metaTypeValidatorFunc(__namedParameters: ValidatorArgsType): boolean;
 ```
 
-Defined in: [src/metatypes/types/union.ts:54](https://github.com/metatyper/metatyper/blob/main/src/metatypes/types/union.ts#L54)
+Defined in: [src/metatypes/types/union.ts:56](https://github.com/metatyper/metatyper/blob/main/src/metatypes/types/union.ts#L56)
 
 Default validator that asks the implementation whether the value is compatible.
 
@@ -34390,7 +34390,7 @@ Runs builtin + custom serializers and returns the final value.
 serializeSubValues(__namedParameters: SerializerArgsType): any;
 ```
 
-Defined in: [src/metatypes/types/union.ts:58](https://github.com/metatyper/metatyper/blob/main/src/metatypes/types/union.ts#L58)
+Defined in: [src/metatypes/types/union.ts:60](https://github.com/metatyper/metatyper/blob/main/src/metatypes/types/union.ts#L60)
 
 ###### Parameters
 
@@ -34925,7 +34925,7 @@ Finds the best registered implementation for the provided value using compatibil
 static isCompatible(_value: any): boolean;
 ```
 
-Defined in: [src/metatypes/types/union.ts:84](https://github.com/metatyper/metatyper/blob/main/src/metatypes/types/union.ts#L84)
+Defined in: [src/metatypes/types/union.ts:86](https://github.com/metatyper/metatyper/blob/main/src/metatypes/types/union.ts#L86)
 
 Checks if the provided value matches the implementation (override in subclasses).
 
