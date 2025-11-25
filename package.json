@@ -69,7 +69,7 @@
     "test:types": "tsc --noEmit --project  ./tsconfig.json",
     "test:jest": "jest",
     "test:coverage": "jest --coverage",
-    "test:prepare": "ts-node tests/scripts/prepare.mts",
+    "test:prepare": "ts-node tests/scripts/prepare.ts",
     "test": "yarn lint && yarn test:types && yarn test:coverage",
     "build": "rimraf ./lib && rollup -c",
     "build:dev": "rimraf ./lib && rollup -cw",
