@@ -271,7 +271,7 @@ try {
 
 #### Meta
 
-Signature: [`Meta()`](docs/api/README#meta)
+Signature: [`Meta()`](docs/api/README.md#meta)
 
 To work with Meta types it is convenient to use Meta objects.
 A Meta object is a proxy object that changes the logic of reading and writing values to the object's properties.
@@ -322,7 +322,7 @@ metaInstanceA.a = 1 as any
 
 #### Meta args
 
-Signature: [`MetaArgsType`](docs/api/README#metaargstype)
+Signature: [`MetaArgsType`](docs/api/README.md#metaargstype)
 
 These are the arguments for creating a Meta object.
 
@@ -555,7 +555,7 @@ console.log(cInstance.toString())
 
 #### Meta.Class decorator
 
-Signature: [`Meta.Class()`](docs/api/README#metaclass)
+Signature: [`Meta.Class()`](docs/api/README.md#metaclass)
 
 Decorator does the same thing as `Meta(A)`.
 
@@ -584,7 +584,7 @@ metaInstanceA.a = 1
 
 #### Meta.declare decorator
 
-Signature: [`Meta.declare()`](docs/api/README#metadeclare)
+Signature: [`Meta.declare()`](docs/api/README.md#metadeclare)
 
 This decorator lets you specify the Meta type of your properties.
 
@@ -629,7 +629,7 @@ class Test {
 
 #### Meta.isMetaObject
 
-Signature: [`Meta.isMetaObject()`](docs/api/README#metaismetaobject)
+Signature: [`Meta.isMetaObject()`](docs/api/README.md#metaismetaobject)
 
 If you need to check if an object is a Meta object, you can use this method: `Meta.isMetaObject(obj)`.
 
@@ -637,7 +637,7 @@ If you need to check if an object is a Meta object, you can use this method: `Me
 
 #### Meta.isIgnoredProp
 
-Signature: [`Meta.isIgnoredProp()`](docs/api/README#metaisignoredprop)
+Signature: [`Meta.isIgnoredProp()`](docs/api/README.md#metaisignoredprop)
 
 If you need to check if an property is ignored by Meta, you can use this method: `Meta.isIgnoredProp(obj, 'propName')`.
 
@@ -645,7 +645,7 @@ If you need to check if an property is ignored by Meta, you can use this method:
 
 #### Meta.copy
 
-Signature: [`Meta.copy()`](docs/api/README#metacopy)
+Signature: [`Meta.copy()`](docs/api/README.md#metacopy)
 
 Sometimes you may need to copy a Meta object. You can do this by using the spread operator: `{ ...metaObject }`. However, this will not copy the type declarations of the Meta object. To copy the type declarations as well, you can use `Meta.copy`:
 
@@ -675,7 +675,7 @@ metaObjectCopy.b === '' // true
 
 #### Meta.rebuild
 
-Signature: [`Meta.rebuild()`](docs/api/README#metarebuild)
+Signature: [`Meta.rebuild()`](docs/api/README.md#metarebuild)
 
 You may also need to reset the meta object to its original state.
 The `Meta.rebuild` is useful for creating a new instance of a Meta object with its initial state and configuration.
@@ -709,7 +709,7 @@ newMetaObject.b === undefined // true
 
 #### MetaType
 
-Signature: [`MetaType()`](docs/api/README#metatype)
+Signature: [`MetaType()`](docs/api/README.md#metatype)
 
 Meta types extend built-in types, but they have more features: validation and serialization.
 The basic logic of Meta types is in metaTypeImpl.
@@ -733,7 +733,7 @@ const newType2 = MetaType<string>(
 
 #### MetaType Implementation
 
-Signature: [`MetaTypeImpl`](docs/api/README#metatypeimpl)
+Signature: [`MetaTypeImpl`](docs/api/README.md#metatypeimpl)
 
 Meta type implementation example:
 
@@ -777,7 +777,7 @@ To learn more about the principles of Meta types creation, you can explore the [
 
 #### MetaTypeArgsType
 
-Signature: [`MetaTypeArgsType`](docs/api/README#metatypeargstype)
+Signature: [`MetaTypeArgsType`](docs/api/README.md#metatypeargstype)
 
 This represents the arguments for creating a Meta type.
 
@@ -930,7 +930,7 @@ Each built-in Meta type has `args?: MetaTypeArgsType` as the last argument. You 
 
 #### ANY
 
-Signature: [`ANY()`](docs/api/README#any)
+Signature: [`ANY()`](docs/api/README.md#any)
 
 ```typescript
 import { ANY, Meta } from 'metatyper'
@@ -947,7 +947,7 @@ obj1.a = {}
 
 #### BOOLEAN
 
-Signature: [`BOOLEAN()`](docs/api/README#boolean)
+Signature: [`BOOLEAN()`](docs/api/README.md#boolean)
 
 ```typescript
 import { BOOLEAN, Meta } from 'metatyper'
@@ -975,7 +975,7 @@ obj.someField = 'true' // type & validation error
 
 #### STRING
 
-Signature: [`STRING()`](docs/api/README#string)
+Signature: [`STRING()`](docs/api/README.md#string)
 
 ```typescript
 import { Meta, STRING } from 'metatyper'
@@ -1006,7 +1006,7 @@ obj.someField = 1 // type & validation error
 
 #### NUMBER
 
-Signature: [`NUMBER()`](docs/api/README#number)
+Signature: [`NUMBER()`](docs/api/README.md#number)
 
 ```typescript
 import { Meta, NUMBER } from 'metatyper'
@@ -1032,7 +1032,7 @@ obj.someField = 'str' // type & validation error
 
 #### INTEGER
 
-Signature: [`INTEGER()`](docs/api/README#integer)
+Signature: [`INTEGER()`](docs/api/README.md#integer)
 
 ```typescript
 import { INTEGER, Meta } from 'metatyper'
@@ -1058,7 +1058,7 @@ obj.someField = 1.1 // validation error
 
 #### BIGINT
 
-Signature: [`BIGINT()`](docs/api/README#bigint)
+Signature: [`BIGINT()`](docs/api/README.md#bigint)
 
 ```typescript
 import { BIGINT, Meta } from 'metatyper'
@@ -1084,7 +1084,7 @@ obj.someField = 1 // type and validation error
 
 #### DATE
 
-Signature: [`DATE()`](docs/api/README#date)
+Signature: [`DATE()`](docs/api/README.md#date)
 
 ```typescript
 import { DATE, Meta } from 'metatyper'
@@ -1109,7 +1109,7 @@ obj.someField = 1 // type and validation error
 
 #### LITERAL
 
-Signature: [`LITERAL()`](docs/api/README#literal)
+Signature: [`LITERAL()`](docs/api/README.md#literal)
 
 ```typescript
 import { LITERAL, Meta } from 'metatyper'
@@ -1128,7 +1128,7 @@ obj.someField = 2 // type and validation error
 
 #### INSTANCE
 
-Signature: [`INSTANCE()`](docs/api/README#instance)
+Signature: [`INSTANCE()`](docs/api/README.md#instance)
 
 ```typescript
 import { Meta, INSTANCE } from 'metatyper'
@@ -1162,7 +1162,7 @@ obj.someField = B // type and validation error
 
 #### UNION
 
-Signature: [`UNION()`](docs/api/README#union)
+Signature: [`UNION()`](docs/api/README.md#union)
 
 ```typescript
 import { BOOLEAN, Meta, STRING, UNION } from 'metatyper'
@@ -1180,7 +1180,7 @@ obj.someField = new Date() // type and validation error
 
 #### ARRAY
 
-Signature: [`ARRAY()`](docs/api/README#array)
+Signature: [`ARRAY()`](docs/api/README.md#array)
 
 ```typescript
 import { Meta, ARRAY, BOOLEAN, STRING } from 'metatyper'
@@ -1228,7 +1228,7 @@ obj.someField = [1, '1'] // type and validation error
 
 #### TUPLE
 
-Signature: [`TUPLE()`](docs/api/README#tuple)
+Signature: [`TUPLE()`](docs/api/README.md#tuple)
 
 ```typescript
 import { Meta, STRING, TUPLE } from 'metatyper'
@@ -1260,7 +1260,7 @@ obj.someField = ['1', true] // type and validation error
 
 #### OBJECT
 
-Signature: [`OBJECT()`](docs/api/README#object)
+Signature: [`OBJECT()`](docs/api/README.md#object)
 
 ```typescript
 import { Meta, OBJECT, STRING, BOOLEAN } from 'metatyper'
@@ -1336,7 +1336,7 @@ obj.someField2 = {
 
 #### Recursive structures
 
-Signature: [`StructuralMetaTypeImpl`](docs/api/README#structuralmetatypeimpl)
+Signature: [`StructuralMetaTypeImpl`](docs/api/README.md#structuralmetatypeimpl)
 
 Meta types like `OBJECT`, `ARRAY`, `TUPLE` and `UNION` inherit from `StructuralMetaTypeImpl`.
 This allows you to create recursive structures like this:
@@ -1487,7 +1487,7 @@ Validators for Meta types are categorized into:
 
 For more details on the arguments accepted by Meta types, see the [MetaTypeArgsType](#metatypeargstype) section.
 
-Validation occurs automatically when assigning new values to a Meta object. Additionally, you can explicitly validate another object using the [`Meta.validate`](docs/api/README#metavalidate) helper:
+Validation occurs automatically when assigning new values to a Meta object. Additionally, you can explicitly validate another object using the [`Meta.validate`](docs/api/README.md#metavalidate) helper:
 
 ```typescript
 Meta.validate(
@@ -1528,7 +1528,7 @@ if (error instanceof ValidationError) {
 
 #### Validators
 
-Signature: [`ValidatorType`](docs/api/README#validatortype) · [`ValidatorArgsType`](docs/api/README#validatorargstype) · [`ValidatorFuncType`](docs/api/README#validatorfunctype)
+Signature: [`ValidatorType`](docs/api/README.md#validatortype) · [`ValidatorArgsType`](docs/api/README.md#validatorargstype) · [`ValidatorFuncType`](docs/api/README.md#validatorfunctype)
 
 A validator is an object that contains a `validate` method:
 
@@ -1650,7 +1650,7 @@ Meta.deserialize({ id: '', date: DATE({ coercion: true }) }, objToDeSerialize) /
 
 #### Serializers and Deserializers
 
-Signature: [`SerializerType`](docs/api/README#serializertype) · [`SerializerArgsType`](docs/api/README#serializerargstype) · [`DeSerializerType`](docs/api/README#deserializertype) · [`DeSerializerArgsType`](docs/api/README#deserializerargstype)
+Signature: [`SerializerType`](docs/api/README.md#serializertype) · [`SerializerArgsType`](docs/api/README.md#serializerargstype) · [`DeSerializerType`](docs/api/README.md#deserializertype) · [`DeSerializerArgsType`](docs/api/README.md#deserializerargstype)
 
 A **serializer** is an object with a `serialize` method, and a **deserializer** likewise has a `deserialize` method:
 
@@ -1753,7 +1753,7 @@ class MyClass2 {
 
 #### Types Coercion
 
-Signature: [`MetaTypeArgsType`](docs/api/README#metatypeargstype)
+Signature: [`MetaTypeArgsType`](docs/api/README.md#metatypeargstype)
 
 Meta types have coercion capabilities upon serialization and deserialization.
 This is particularly handy for handling various value types such as dates in JSON data.
@@ -1867,7 +1867,7 @@ This allows you to catch all MetaTyper-specific issues with `instanceof MetaErro
 
 #### MetaTypeSerializationError
 
-Signature: [`MetaTypeSerializationError`](docs/api/README#metatypeserializationerror)
+Signature: [`MetaTypeSerializationError`](docs/api/README.md#metatypeserializationerror)
 
 `MetaTypeSerializationError` serves as an extended version of `MetaError`, focusing specifically on the identification and handling of serialization errors. Its main purpose is to allow developers to pinpoint serialization issues distinctively using `instanceof` checks. This differentiation is crucial for separating serialization errors from others, like validation errors, enhancing debugging efficiency.
 
@@ -1881,7 +1881,7 @@ This means you can:
 
 #### MetaTypeSerializerError
 
-Signature: [`MetaTypeSerializerError`](docs/api/README#metatypeserializererror)
+Signature: [`MetaTypeSerializerError`](docs/api/README.md#metatypeserializererror)
 
 When it comes to serialization of Meta type data, encountering errors is a possibility. The `MetaTypeSerializerError` is thrown when a **serializer** fails while producing an output value (for example, on coercion or in a custom serializer). This error aims to simplify the debugging process and error handling by offering in-depth information about where and why the failure occurred.
 
@@ -1945,7 +1945,7 @@ try {
 
 #### MetaTypeDeSerializerError
 
-Signature: [`MetaTypeDeSerializerError`](docs/api/README#metatypedeserializererror)
+Signature: [`MetaTypeDeSerializerError`](docs/api/README.md#metatypedeserializererror)
 
 Mirroring the `MetaTypeSerializerError`, the `MetaTypeDeSerializerError` addresses errors during the **deserialization** of Meta type data. This exception is crucial for developers aiming to resolve issues arising from converting serialized data back into a usable form within the application.
 
@@ -2010,7 +2010,7 @@ try {
 
 #### MetaTypeValidatorError
 
-Signature: [`MetaTypeValidatorError`](docs/api/README#metatypevalidatorerror)
+Signature: [`MetaTypeValidatorError`](docs/api/README.md#metatypevalidatorerror)
 
 During the validation process of Meta type data, it's possible to encounter failures. A `MetaTypeValidatorError` describes a _single_ validator issue and is typically exposed inside `ValidationError.issues`.
 
@@ -2029,7 +2029,7 @@ This level of detail helps you build precise error messages and map validation p
 
 #### ValidationError
 
-Signature: [`ValidationError`](docs/api/README#validationerror)
+Signature: [`ValidationError`](docs/api/README.md#validationerror)
 
 `ValidationError` represents the group of validation errors aggregated for one operation.
 
@@ -2060,7 +2060,7 @@ try {
 
 ## API Reference
 
-[![API Reference](https://img.shields.io/badge/API-Reference-1a9432?style=flat&labelColor=202020)](docs/api/README#functions)
+[![API Reference](https://img.shields.io/badge/API-Reference-1a9432?style=flat&labelColor=202020)](docs/api/README.md#functions)
 
 &nbsp;
 
