@@ -81,8 +81,34 @@
                 }));
             };
 
+            const replaceApiReferenceLinks = (hook, vm) => {
+                const resolveRelativeHash = (href) => href.replace(/^#\/docs\//g, '#\/');
+            
+                const rewriteAnchors = (root = document) => {
+                    root.querySelectorAll('a[href^="#/"]').forEach((a) => {
+                        const normalized = resolveRelativeHash(a.getAttribute('href'));
+                        a.setAttribute('href', normalized);
+                    });
+                };
+            
+                hook.doneEach(() => rewriteAnchors());
+            
+                hook.ready(() => {
+                    const target = document.getElementById('app') || document.body;
+                    const observer = new MutationObserver((records) => {
+                        records.forEach(({ addedNodes }) => {
+                            addedNodes.forEach((node) => {
+                                if (node.nodeType === 1) rewriteAnchors(node);
+                            });
+                        });
+                    });
+                    observer.observe(target, { childList: true, subtree: true });
+                    rewriteAnchors(target);
+                });
+            };
+
             window.$docsify = window.$docsify || {};
-            $docsify.plugins = [gtagPlugin, ...($docsify.plugins || [])];
+            $docsify.plugins = [replaceApiReferenceLinks, gtagPlugin, ...($docsify.plugins || [])];
         </script>
 
         <script>
