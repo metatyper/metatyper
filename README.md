@@ -1482,6 +1482,191 @@ obj.innerObj = myObj // Maximum call stack size exceeded
 
 &nbsp;
 
+#### EMAIL
+
+Signature: [`EMAIL()`](docs/api/README.md#email)
+
+```typescript
+import { Meta, EMAIL } from 'metatyper'
+
+const obj = Meta({
+    email: EMAIL({
+        nullish: true,
+
+        // StringMetaTypeArgs (except custom regexp)
+        maxLength: 255,
+        trim: true
+    })
+}) // as { email?: string | null | undefined }
+
+obj.email = 'John' // validation error
+obj.email = 'user@example.com' // ok
+```
+
+&nbsp;
+
+#### PHONE
+
+Signature: [`PHONE()`](docs/api/README.md#phone)
+
+```typescript
+import { Meta, PHONE } from 'metatyper'
+
+const obj = Meta({
+    phone: PHONE({
+        nullish: true
+    })
+}) // as { phone?: string | null | undefined }
+
+obj.phone = '12345' // validation error
+obj.phone = '+1234567890' // ok
+```
+
+&nbsp;
+
+#### PASSWORD
+
+Signature: [`PASSWORD()`](docs/api/README.md#password)
+
+```typescript
+import { Meta, PASSWORD } from 'metatyper'
+
+const obj = Meta({
+    password: PASSWORD({
+        // PasswordMetaTypeArgs
+        minLength: 8,
+        requireLowercase: true,
+        requireUppercase: true,
+        requireNumber: true,
+        requireSpecial: true
+    })
+}) // as { password: string }
+
+obj.password = 'short' // validation error (too short)
+obj.password = 'password' // validation error (no number / special / upper)
+obj.password = 'P@ssw0rd' // ok
+```
+
+&nbsp;
+
+#### CARD
+
+Credit card number validation using common brand patterns (Visa, MasterCard, American Express, Discover, Diners Club, JCB).
+
+The validation pattern is adapted from [regular-expressions.info](https://www.regular-expressions.info/creditcard.html).
+
+Signature: [`CARD()`](docs/api/README.md#card)
+
+```typescript
+import { Meta, CARD } from 'metatyper'
+
+const obj = Meta({
+    card: CARD({
+        nullish: true
+    })
+}) // as { card?: string | null | undefined }
+
+obj.card = '1234567890123456' // validation error
+obj.card = '4111111111111111' // ok
+```
+
+&nbsp;
+
+#### URL
+
+Signature: [`URL()`](docs/api/README.md#url)
+
+```typescript
+import { Meta, URL } from 'metatyper'
+
+const obj = Meta({
+    website: URL({
+        nullish: true
+    })
+}) // as { website?: string | null | undefined }
+
+obj.website = 'not-a-url' // validation error
+obj.website = 'https://user:pass@example.com/path/to/page.html?a=1#b=2' // ok
+```
+
+&nbsp;
+
+#### HOSTNAME
+
+Signature: [`HOSTNAME()`](docs/api/README.md#hostname)
+
+```typescript
+import { Meta, HOSTNAME } from 'metatyper'
+
+const obj = Meta({
+    host: HOSTNAME({
+        nullish: true
+    })
+}) // as { host?: string | null | undefined }
+
+obj.host = 'not a host' // validation error
+obj.host = 'example.com' // ok
+```
+
+&nbsp;
+
+#### IP
+
+Signature: [`IP()`](docs/api/README.md#ip)
+
+```typescript
+import { Meta, IP } from 'metatyper'
+
+const obj = Meta({
+    addr: IP({
+        nullish: true
+    })
+}) // as { addr?: string | null | undefined }
+
+obj.addr = '999.999.999.999' // validation error
+obj.addr = '192.168.0.1' // ok
+```
+
+&nbsp;
+
+#### UUID
+
+Signature: [`UUID()`](docs/api/README.md#uuid)
+
+```typescript
+import { Meta, UUID } from 'metatyper'
+
+const obj = Meta({
+    id: UUID({
+        nullish: true
+    })
+}) // as { id?: string | null | undefined }
+
+obj.id = 'not-uuid' // validation error
+obj.id = '550e8400-e29b-41d4-a716-446655440000' // ok
+```
+
+&nbsp;
+
+#### SLUG
+
+Signature: [`SLUG()`](docs/api/README.md#slug)
+
+```typescript
+import { Meta, SLUG } from 'metatyper'
+
+const obj = Meta({
+    slug: SLUG({
+        nullish: true
+    })
+}) // as { slug?: string | null | undefined }
+
+obj.slug = 'Not A Slug' // validation error
+obj.slug = 'my-blog-post-1' // ok
+```
+
+&nbsp;
+
 ### Validation
 
 Meta objects come with built-in validation capability. Validators specific to each Meta type are utilized during the validation process. If validation fails, an exception is raised. For more information on validation errors, refer to the [Errors](#errors) section.

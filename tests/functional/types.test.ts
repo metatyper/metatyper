@@ -5,20 +5,24 @@ import {
     ARRAY,
     AnyImpl,
     ArrayImpl,
-    CoercionDeSerializer,
-    CoercionSerializer,
     BIGINT,
     BOOLEAN,
     BigIntImpl,
     BooleanImpl,
+    CARD,
+    CoercionDeSerializer,
+    CoercionSerializer,
     DATE,
     DateImpl,
     DeSerializerArgsType,
     DefaultValueDeSerializerBuilder,
+    EMAIL,
     FreezeObjectDeSerializer,
     GreaterValidatorBuilder,
+    HOSTNAME,
     INSTANCE,
     INTEGER,
+    IP,
     InstanceImpl,
     IntegerImpl,
     LITERAL,
@@ -26,9 +30,9 @@ import {
     LiteralImpl,
     MaxLengthValidatorBuilder,
     MaxValidatorBuilder,
+    Meta,
     MetaType,
     MetaTypeImpl,
-    ValidationError,
     MetaTypeValidator,
     MinLengthValidatorBuilder,
     MinValidatorBuilder,
@@ -39,9 +43,12 @@ import {
     OBJECT,
     ObjectImpl,
     OptionalValidator,
+    PASSWORD,
+    PHONE,
     RefImpl,
     RegExpValidatorBuilder,
     ReplaceValuesDeSerializerBuilder,
+    SLUG,
     STRING,
     SerializerArgsType,
     StringImpl,
@@ -53,7 +60,10 @@ import {
     ToUpperCaseDeSerializer,
     TupleImpl,
     UNION,
-    UnionImpl
+    URL,
+    UUID,
+    UnionImpl,
+    ValidationError
 } from '../../src'
 
 describe('Meta types', () => {
@@ -317,6 +327,291 @@ describe('Meta types', () => {
         const builtinDeSerializers1 = metaTypeImpl1['builtinDeSerializers'].map((s) => s.name)
 
         expect(builtinDeSerializers1).toEqual(expectedDeSerializersNames1)
+    })
+
+    test('EMAIL', () => {
+        const metaType = EMAIL({
+            nullable: false,
+            coercion: true,
+            default: 'user@example.com'
+        })
+        const metaTypeImpl = MetaType.getMetaTypeImpl(metaType) as StringImpl
+
+        // toString
+
+        expect(metaTypeImpl.toString()).toBe('STRING')
+
+        // validators (should include regexp validator)
+
+        const builtinValidators = metaTypeImpl['builtinValidators'].map((v) => v.name)
+
+        expect(builtinValidators).toEqual([
+            OptionalValidator.name,
+            NullableValidator.name,
+            MetaTypeValidator.name,
+            RegExpValidatorBuilder('some regex').name
+        ])
+
+        // validation behaviour
+
+        expect(metaTypeImpl.validate({ value: 'valid@example.com' })).toBeUndefined()
+        expect(metaTypeImpl.validate({ value: 'invalid-email' })).toBeInstanceOf(ValidationError)
+    })
+
+    test('CARD', () => {
+        const metaType = CARD({
+            nullable: false,
+            coercion: true,
+            default: '4111111111111111'
+        })
+        const metaTypeImpl = MetaType.getMetaTypeImpl(metaType) as StringImpl
+
+        // toString
+
+        expect(metaTypeImpl.toString()).toBe('STRING')
+
+        // validators (should include regexp validator)
+
+        const builtinValidators = metaTypeImpl['builtinValidators'].map((v) => v.name)
+
+        expect(builtinValidators).toEqual([
+            OptionalValidator.name,
+            NullableValidator.name,
+            MetaTypeValidator.name,
+            RegExpValidatorBuilder('some regex').name
+        ])
+
+        // validation behaviour
+
+        expect(metaTypeImpl.validate({ value: '4111111111111111' })).toBeUndefined()
+        expect(metaTypeImpl.validate({ value: '1234567890123456' })).toBeInstanceOf(
+            ValidationError
+        )
+    })
+
+    test('URL', () => {
+        const metaType = URL({
+            nullable: false,
+            coercion: true,
+            default: 'https://example.com'
+        })
+        const metaTypeImpl = MetaType.getMetaTypeImpl(metaType) as StringImpl
+
+        // toString
+
+        expect(metaTypeImpl.toString()).toBe('STRING')
+
+        // validators (should include regexp validator)
+
+        const builtinValidators = metaTypeImpl['builtinValidators'].map((v) => v.name)
+
+        expect(builtinValidators).toEqual([
+            OptionalValidator.name,
+            NullableValidator.name,
+            MetaTypeValidator.name,
+            RegExpValidatorBuilder('some regex').name
+        ])
+
+        // validation behaviour
+
+        expect(
+            metaTypeImpl.validate({ value: 'https://example.com/path/to/page.html' })
+        ).toBeUndefined()
+        expect(
+            metaTypeImpl.validate({
+                value: 'https://use-r:pass@Example.com/path/to/page.html?a=1&b=2#c=3?-=1230-'
+            })
+        ).toBeUndefined()
+        expect(
+            metaTypeImpl.validate({
+                value: 'https://use-r:pass@example.com.2/path/to/page.html?a=1&b=2#c=3?-=1230-'
+            })
+        ).toBeInstanceOf(ValidationError)
+        expect(metaTypeImpl.validate({ value: 'not-a-url' })).toBeInstanceOf(ValidationError)
+    })
+
+    test('UUID', () => {
+        const metaType = UUID({
+            nullable: false,
+            coercion: true
+        })
+        const metaTypeImpl = MetaType.getMetaTypeImpl(metaType) as StringImpl
+
+        // toString
+
+        expect(metaTypeImpl.toString()).toBe('STRING')
+
+        // validators (should include regexp validator)
+
+        const builtinValidators = metaTypeImpl['builtinValidators'].map((v) => v.name)
+
+        expect(builtinValidators).toEqual([
+            OptionalValidator.name,
+            NullableValidator.name,
+            MetaTypeValidator.name,
+            RegExpValidatorBuilder('some regex').name
+        ])
+
+        // validation behaviour + toCase lower
+
+        const value = '550E8400-E29B-41D4-A716-446655440000'
+        const deserialized = metaTypeImpl.deserialize({ value })
+
+        expect(deserialized).toBe(value.toLowerCase())
+        expect(metaTypeImpl.validate({ value })).toBeUndefined()
+        expect(metaTypeImpl.validate({ value: 'not-uuid' })).toBeInstanceOf(ValidationError)
+    })
+
+    test('IP', () => {
+        const metaType = IP({
+            nullable: false,
+            coercion: true
+        })
+        const metaTypeImpl = MetaType.getMetaTypeImpl(metaType) as StringImpl
+
+        // toString
+
+        expect(metaTypeImpl.toString()).toBe('STRING')
+
+        // validators (should include regexp validator)
+
+        const builtinValidators = metaTypeImpl['builtinValidators'].map((v) => v.name)
+
+        expect(builtinValidators).toEqual([
+            OptionalValidator.name,
+            NullableValidator.name,
+            MetaTypeValidator.name,
+            RegExpValidatorBuilder('some regex').name
+        ])
+
+        // validation behaviour
+
+        expect(metaTypeImpl.validate({ value: '192.168.0.1' })).toBeUndefined()
+        expect(metaTypeImpl.validate({ value: '999.999.999.999' })).toBeInstanceOf(ValidationError)
+    })
+
+    test('PHONE', () => {
+        const metaType = PHONE({
+            safe: false,
+            nullable: false,
+            coercion: true
+        })
+        const metaTypeImpl = MetaType.getMetaTypeImpl(metaType) as StringImpl
+
+        // toString
+
+        expect(metaTypeImpl.toString()).toBe('STRING')
+
+        // validators (should include regexp validator)
+
+        const builtinValidators = metaTypeImpl['builtinValidators'].map((v) => v.name)
+
+        expect(builtinValidators).toEqual([
+            OptionalValidator.name,
+            NullableValidator.name,
+            MetaTypeValidator.name,
+            RegExpValidatorBuilder('some regex').name
+        ])
+
+        // validation behaviour
+
+        expect(metaTypeImpl.validate({ value: '+1234567890' })).toBeUndefined()
+        expect(metaTypeImpl.validate({ value: '+1234567890' })).toBeUndefined()
+        expect(metaTypeImpl.validate({ value: '12345' })).toBeInstanceOf(ValidationError)
+
+        const metaObj = Meta({
+            phone: metaType
+        })
+
+        metaObj.phone = '(123)456-7890'
+
+        expect(metaObj.phone).toBe('+1234567890')
+    })
+
+    test('SLUG', () => {
+        const metaType = SLUG({
+            nullable: false,
+            coercion: true
+        })
+        const metaTypeImpl = MetaType.getMetaTypeImpl(metaType) as StringImpl
+
+        // toString
+
+        expect(metaTypeImpl.toString()).toBe('STRING')
+
+        // validators (should include regexp validator)
+
+        const builtinValidators = metaTypeImpl['builtinValidators'].map((v) => v.name)
+
+        expect(builtinValidators).toEqual([
+            OptionalValidator.name,
+            NullableValidator.name,
+            MetaTypeValidator.name,
+            RegExpValidatorBuilder('some regex').name
+        ])
+
+        // validation behaviour
+
+        expect(metaTypeImpl.validate({ value: 'my-blog-post-1' })).toBeUndefined()
+        expect(metaTypeImpl.validate({ value: 'Not A Slug' })).toBeInstanceOf(ValidationError)
+    })
+
+    test('HOSTNAME', () => {
+        const metaType = HOSTNAME({
+            nullable: false,
+            coercion: true
+        })
+        const metaTypeImpl = MetaType.getMetaTypeImpl(metaType) as StringImpl
+
+        // toString
+
+        expect(metaTypeImpl.toString()).toBe('STRING')
+
+        // validators (should include regexp validator)
+
+        const builtinValidators = metaTypeImpl['builtinValidators'].map((v) => v.name)
+
+        expect(builtinValidators).toEqual([
+            OptionalValidator.name,
+            NullableValidator.name,
+            MetaTypeValidator.name,
+            RegExpValidatorBuilder('some regex').name
+        ])
+
+        // validation behaviour
+
+        expect(metaTypeImpl.validate({ value: 'example.com' })).toBeUndefined()
+        expect(metaTypeImpl.validate({ value: 'not a host' })).toBeInstanceOf(ValidationError)
+    })
+
+    test('PASSWORD', () => {
+        const metaType = PASSWORD({
+            nullable: false,
+            coercion: true
+        })
+        const metaTypeImpl = MetaType.getMetaTypeImpl(metaType) as StringImpl
+
+        // toString
+
+        expect(metaTypeImpl.toString()).toBe('STRING')
+
+        // validators (should include regexp + minLength validator)
+
+        const builtinValidators = metaTypeImpl['builtinValidators'].map((v) => v.name)
+
+        expect(builtinValidators).toEqual([
+            OptionalValidator.name,
+            NullableValidator.name,
+            MetaTypeValidator.name,
+            MinLengthValidatorBuilder(6).name,
+            RegExpValidatorBuilder('some regex').name
+        ])
+
+        // validation behaviour
+
+        expect(metaTypeImpl.validate({ value: 'P@ssw0rd' })).toBeUndefined()
+        expect(metaTypeImpl.validate({ value: 'short' })).toBeInstanceOf(ValidationError)
+        expect(metaTypeImpl.validate({ value: 'password' })).toBeInstanceOf(ValidationError)
     })
 
     test('NUMBER', () => {

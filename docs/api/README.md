@@ -1,13 +1,13 @@
 **metatyper**
 
-***
+---
 
 ## Functions
 
 ### ANY()
 
 ```ts
-function ANY(args?: MetaTypeArgsType<any>): any;
+function ANY(args?: MetaTypeArgsType<any>): any
 ```
 
 Defined in: [src/metatypes/types/any.ts:23](https://github.com/metatyper/metatyper/blob/main/src/metatypes/types/any.ts#L23)
@@ -57,14 +57,17 @@ obj.field = 1
 obj.field = {}
 ```
 
-***
+---
 
 ### ARRAY()
 
 #### Call Signature
 
 ```ts
-function ARRAY<T, IsNullishT, IsNullableT, IsOptionalT, IsFrozenT, PreparedT, ResultT>(subType: T[], args?: ArrayMetaTypeArgs<ARRAY<T[]>, IsNullishT, IsNullableT, IsOptionalT, IsFrozenT>): PrepareMetaType<ResultT, IsNullishT, IsNullableT, IsOptionalT>;
+function ARRAY<T, IsNullishT, IsNullableT, IsOptionalT, IsFrozenT, PreparedT, ResultT>(
+    subType: T[],
+    args?: ArrayMetaTypeArgs<ARRAY<T[]>, IsNullishT, IsNullableT, IsOptionalT, IsFrozenT>
+): PrepareMetaType<ResultT, IsNullishT, IsNullableT, IsOptionalT>
 ```
 
 Defined in: [src/metatypes/types/array.ts:217](https://github.com/metatyper/metatyper/blob/main/src/metatypes/types/array.ts#L217)
@@ -96,7 +99,7 @@ Creates an array meta type with optional item type, length limits, freezing, etc
 <tr>
 <td>
 
-`IsNullishT` *extends* `boolean`
+`IsNullishT` _extends_ `boolean`
 
 </td>
 <td>
@@ -108,7 +111,7 @@ Creates an array meta type with optional item type, length limits, freezing, etc
 <tr>
 <td>
 
-`IsNullableT` *extends* `boolean`
+`IsNullableT` _extends_ `boolean`
 
 </td>
 <td>
@@ -120,7 +123,7 @@ Creates an array meta type with optional item type, length limits, freezing, etc
 <tr>
 <td>
 
-`IsOptionalT` *extends* `boolean`
+`IsOptionalT` _extends_ `boolean`
 
 </td>
 <td>
@@ -132,7 +135,7 @@ Creates an array meta type with optional item type, length limits, freezing, etc
 <tr>
 <td>
 
-`IsFrozenT` *extends* `boolean`
+`IsFrozenT` _extends_ `boolean`
 
 </td>
 <td>
@@ -149,7 +152,7 @@ Creates an array meta type with optional item type, length limits, freezing, etc
 </td>
 <td>
 
-`T` *extends* [`MetaTypeImpl`](#metatypeimpl) ? `unknown` : `T`
+`T` _extends_ [`MetaTypeImpl`](#metatypeimpl) ? `unknown` : `T`
 
 </td>
 </tr>
@@ -161,7 +164,7 @@ Creates an array meta type with optional item type, length limits, freezing, etc
 </td>
 <td>
 
-[`ARRAY`](#array)\<`IsFrozenT` *extends* `true` ? readonly `PreparedT`[] : `PreparedT`[]\>
+[`ARRAY`](#array)\<`IsFrozenT` _extends_ `true` ? readonly `PreparedT`[] : `PreparedT`[]\>
 
 </td>
 </tr>
@@ -236,7 +239,10 @@ obj.keys = ['mystring', 1, 2, 3 {}] // validation error
 #### Call Signature
 
 ```ts
-function ARRAY<T, IsNullishT, IsNullableT, IsOptionalT, IsFrozenT, PreparedT, ResultT>(subType: () => T[], args?: ArrayMetaTypeArgs<ARRAY<T[]>, IsNullishT, IsNullableT, IsOptionalT, IsFrozenT>): PrepareMetaType<ResultT, IsNullishT, IsNullableT, IsOptionalT>;
+function ARRAY<T, IsNullishT, IsNullableT, IsOptionalT, IsFrozenT, PreparedT, ResultT>(
+    subType: () => T[],
+    args?: ArrayMetaTypeArgs<ARRAY<T[]>, IsNullishT, IsNullableT, IsOptionalT, IsFrozenT>
+): PrepareMetaType<ResultT, IsNullishT, IsNullableT, IsOptionalT>
 ```
 
 Defined in: [src/metatypes/types/array.ts:230](https://github.com/metatyper/metatyper/blob/main/src/metatypes/types/array.ts#L230)
@@ -268,7 +274,7 @@ Creates an array meta type with optional item type, length limits, freezing, etc
 <tr>
 <td>
 
-`IsNullishT` *extends* `boolean`
+`IsNullishT` _extends_ `boolean`
 
 </td>
 <td>
@@ -280,7 +286,7 @@ Creates an array meta type with optional item type, length limits, freezing, etc
 <tr>
 <td>
 
-`IsNullableT` *extends* `boolean`
+`IsNullableT` _extends_ `boolean`
 
 </td>
 <td>
@@ -292,7 +298,7 @@ Creates an array meta type with optional item type, length limits, freezing, etc
 <tr>
 <td>
 
-`IsOptionalT` *extends* `boolean`
+`IsOptionalT` _extends_ `boolean`
 
 </td>
 <td>
@@ -304,7 +310,7 @@ Creates an array meta type with optional item type, length limits, freezing, etc
 <tr>
 <td>
 
-`IsFrozenT` *extends* `boolean`
+`IsFrozenT` _extends_ `boolean`
 
 </td>
 <td>
@@ -321,7 +327,7 @@ Creates an array meta type with optional item type, length limits, freezing, etc
 </td>
 <td>
 
-`T` *extends* [`MetaTypeImpl`](#metatypeimpl) ? `unknown` : `T`
+`T` _extends_ [`MetaTypeImpl`](#metatypeimpl) ? `unknown` : `T`
 
 </td>
 </tr>
@@ -333,7 +339,7 @@ Creates an array meta type with optional item type, length limits, freezing, etc
 </td>
 <td>
 
-[`ARRAY`](#array)\<`IsFrozenT` *extends* `true` ? readonly `PreparedT`[] : `PreparedT`[]\>
+[`ARRAY`](#array)\<`IsFrozenT` _extends_ `true` ? readonly `PreparedT`[] : `PreparedT`[]\>
 
 </td>
 </tr>
@@ -408,7 +414,10 @@ obj.keys = ['mystring', 1, 2, 3 {}] // validation error
 #### Call Signature
 
 ```ts
-function ARRAY<T, IsNullishT, IsNullableT, IsOptionalT, IsFrozenT, PreparedT, ResultT>(subType: T, args?: ArrayMetaTypeArgs<ARRAY<T[]>, IsNullishT, IsNullableT, IsOptionalT, IsFrozenT>): PrepareMetaType<ResultT, IsNullishT, IsNullableT, IsOptionalT>;
+function ARRAY<T, IsNullishT, IsNullableT, IsOptionalT, IsFrozenT, PreparedT, ResultT>(
+    subType: T,
+    args?: ArrayMetaTypeArgs<ARRAY<T[]>, IsNullishT, IsNullableT, IsOptionalT, IsFrozenT>
+): PrepareMetaType<ResultT, IsNullishT, IsNullableT, IsOptionalT>
 ```
 
 Defined in: [src/metatypes/types/array.ts:243](https://github.com/metatyper/metatyper/blob/main/src/metatypes/types/array.ts#L243)
@@ -440,7 +449,7 @@ Creates an array meta type with optional item type, length limits, freezing, etc
 <tr>
 <td>
 
-`IsNullishT` *extends* `boolean`
+`IsNullishT` _extends_ `boolean`
 
 </td>
 <td>
@@ -452,7 +461,7 @@ Creates an array meta type with optional item type, length limits, freezing, etc
 <tr>
 <td>
 
-`IsNullableT` *extends* `boolean`
+`IsNullableT` _extends_ `boolean`
 
 </td>
 <td>
@@ -464,7 +473,7 @@ Creates an array meta type with optional item type, length limits, freezing, etc
 <tr>
 <td>
 
-`IsOptionalT` *extends* `boolean`
+`IsOptionalT` _extends_ `boolean`
 
 </td>
 <td>
@@ -476,7 +485,7 @@ Creates an array meta type with optional item type, length limits, freezing, etc
 <tr>
 <td>
 
-`IsFrozenT` *extends* `boolean`
+`IsFrozenT` _extends_ `boolean`
 
 </td>
 <td>
@@ -493,7 +502,7 @@ Creates an array meta type with optional item type, length limits, freezing, etc
 </td>
 <td>
 
-`T` *extends* [`MetaTypeImpl`](#metatypeimpl) ? `unknown` : `T`
+`T` _extends_ [`MetaTypeImpl`](#metatypeimpl) ? `unknown` : `T`
 
 </td>
 </tr>
@@ -505,7 +514,7 @@ Creates an array meta type with optional item type, length limits, freezing, etc
 </td>
 <td>
 
-[`ARRAY`](#array)\<`IsFrozenT` *extends* `true` ? readonly `PreparedT`[] : `PreparedT`[]\>
+[`ARRAY`](#array)\<`IsFrozenT` _extends_ `true` ? readonly `PreparedT`[] : `PreparedT`[]\>
 
 </td>
 </tr>
@@ -577,12 +586,14 @@ obj.keys = ['mystring', 1, 2, 3]
 obj.keys = ['mystring', 1, 2, 3 {}] // validation error
 ```
 
-***
+---
 
 ### BIGINT()
 
 ```ts
-function BIGINT<IsNullishT, IsNullableT, IsOptionalT>(args?: NumbersMetaTypeArgs<BIGINT, IsNullishT, IsNullableT, IsOptionalT>): PrepareMetaType<BIGINT, IsNullishT, IsNullableT, IsOptionalT>;
+function BIGINT<IsNullishT, IsNullableT, IsOptionalT>(
+    args?: NumbersMetaTypeArgs<BIGINT, IsNullishT, IsNullableT, IsOptionalT>
+): PrepareMetaType<BIGINT, IsNullishT, IsNullableT, IsOptionalT>
 ```
 
 Defined in: [src/metatypes/types/bigint.ts:80](https://github.com/metatyper/metatyper/blob/main/src/metatypes/types/bigint.ts#L80)
@@ -602,7 +613,7 @@ Creates a bigint meta type with optional numeric bounds and default/meta args.
 <tr>
 <td>
 
-`IsNullishT` *extends* `boolean`
+`IsNullishT` _extends_ `boolean`
 
 </td>
 <td>
@@ -614,7 +625,7 @@ Creates a bigint meta type with optional numeric bounds and default/meta args.
 <tr>
 <td>
 
-`IsNullableT` *extends* `boolean`
+`IsNullableT` _extends_ `boolean`
 
 </td>
 <td>
@@ -626,7 +637,7 @@ Creates a bigint meta type with optional numeric bounds and default/meta args.
 <tr>
 <td>
 
-`IsOptionalT` *extends* `boolean`
+`IsOptionalT` _extends_ `boolean`
 
 </td>
 <td>
@@ -681,12 +692,14 @@ obj.amount = 1n
 obj.amount = 1 // validation error
 ```
 
-***
+---
 
 ### BOOLEAN()
 
 ```ts
-function BOOLEAN<IsNullishT, IsNullableT, IsOptionalT>(args?: BooleanMetaTypeArgs<BOOLEAN, IsNullishT, IsNullableT, IsOptionalT>): PrepareMetaType<BOOLEAN, IsNullishT, IsNullableT, IsOptionalT>;
+function BOOLEAN<IsNullishT, IsNullableT, IsOptionalT>(
+    args?: BooleanMetaTypeArgs<BOOLEAN, IsNullishT, IsNullableT, IsOptionalT>
+): PrepareMetaType<BOOLEAN, IsNullishT, IsNullableT, IsOptionalT>
 ```
 
 Defined in: [src/metatypes/types/boolean.ts:61](https://github.com/metatyper/metatyper/blob/main/src/metatypes/types/boolean.ts#L61)
@@ -706,7 +719,7 @@ Creates a boolean meta type with optional coercion lists and standard meta args.
 <tr>
 <td>
 
-`IsNullishT` *extends* `boolean`
+`IsNullishT` _extends_ `boolean`
 
 </td>
 <td>
@@ -718,7 +731,7 @@ Creates a boolean meta type with optional coercion lists and standard meta args.
 <tr>
 <td>
 
-`IsNullableT` *extends* `boolean`
+`IsNullableT` _extends_ `boolean`
 
 </td>
 <td>
@@ -730,7 +743,7 @@ Creates a boolean meta type with optional coercion lists and standard meta args.
 <tr>
 <td>
 
-`IsOptionalT` *extends* `boolean`
+`IsOptionalT` _extends_ `boolean`
 
 </td>
 <td>
@@ -785,12 +798,123 @@ obj.flag = true
 obj.flag = 'true' // validation error
 ```
 
-***
+---
+
+### CARD()
+
+```ts
+function CARD<IsNullishT, IsNullableT, IsOptionalT>(
+    args?: Omit<StringMetaTypeArgs<CARD, IsNullishT, IsNullableT, IsOptionalT>, 'regexp'>
+): CARD
+```
+
+Defined in: src/metatypes/types/card.ts:19
+
+Creates a credit card meta type using common brand regexes (Visa, MasterCard, AmEx, etc.).
+
+Uses a pattern adapted from regular-expressions.info:
+https://www.regular-expressions.info/creditcard.html
+
+#### Type Parameters
+
+<table>
+<thead>
+<tr>
+<th>Type Parameter</th>
+<th>Default type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+
+`IsNullishT` _extends_ `boolean`
+
+</td>
+<td>
+
+`false`
+
+</td>
+</tr>
+<tr>
+<td>
+
+`IsNullableT` _extends_ `boolean`
+
+</td>
+<td>
+
+`IsNullishT`
+
+</td>
+</tr>
+<tr>
+<td>
+
+`IsOptionalT` _extends_ `boolean`
+
+</td>
+<td>
+
+`IsNullishT`
+
+</td>
+</tr>
+</tbody>
+</table>
+
+#### Parameters
+
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+
+`args?`
+
+</td>
+<td>
+
+`Omit`\<[`StringMetaTypeArgs`](#stringmetatypeargs)\<[`CARD`](#card), `IsNullishT`, `IsNullableT`, `IsOptionalT`\>, `"regexp"`\>
+
+</td>
+<td>
+
+[StringMetaTypeArgs](#stringmetatypeargs) controlling min/max length, casing, etc.
+
+</td>
+</tr>
+</tbody>
+</table>
+
+#### Returns
+
+[`CARD`](#card)
+
+#### Example
+
+```ts
+const obj = Meta({ card: CARD() })
+obj.card = '1234567890123456' // validation error
+obj.card = '4111111111111111' // ok
+```
+
+---
 
 ### DATE()
 
 ```ts
-function DATE<IsNullishT, IsNullableT, IsOptionalT>(args?: DateMetaTypeArgs<DATE, IsNullishT, IsNullableT, IsOptionalT>): PrepareMetaType<DATE, IsNullishT, IsNullableT, IsOptionalT>;
+function DATE<IsNullishT, IsNullableT, IsOptionalT>(
+    args?: DateMetaTypeArgs<DATE, IsNullishT, IsNullableT, IsOptionalT>
+): PrepareMetaType<DATE, IsNullishT, IsNullableT, IsOptionalT>
 ```
 
 Defined in: [src/metatypes/types/date.ts:124](https://github.com/metatyper/metatyper/blob/main/src/metatypes/types/date.ts#L124)
@@ -810,7 +934,7 @@ Creates a `Date` meta type with optional range checks and coercion support.
 <tr>
 <td>
 
-`IsNullishT` *extends* `boolean`
+`IsNullishT` _extends_ `boolean`
 
 </td>
 <td>
@@ -822,7 +946,7 @@ Creates a `Date` meta type with optional range checks and coercion support.
 <tr>
 <td>
 
-`IsNullableT` *extends* `boolean`
+`IsNullableT` _extends_ `boolean`
 
 </td>
 <td>
@@ -834,7 +958,7 @@ Creates a `Date` meta type with optional range checks and coercion support.
 <tr>
 <td>
 
-`IsOptionalT` *extends* `boolean`
+`IsOptionalT` _extends_ `boolean`
 
 </td>
 <td>
@@ -889,20 +1013,23 @@ obj.createdAt = new Date()
 obj.createdAt = 1 // validation error
 ```
 
-***
+---
 
 ### deepMap()
 
 ```ts
-function deepMap(obj: object, processFunc: (args: {
-  isRootValue: boolean;
-  key?: any;
-  keysChain?: any[];
-  origValue: any;
-  parentObj?: object;
-  rootObj: object;
-  value: any;
-}) => any): any;
+function deepMap(
+    obj: object,
+    processFunc: (args: {
+        isRootValue: boolean
+        key?: any
+        keysChain?: any[]
+        origValue: any
+        parentObj?: object
+        rootObj: object
+        value: any
+    }) => any
+): any
 ```
 
 Defined in: [src/utils/deepMap.ts:23](https://github.com/metatyper/metatyper/blob/main/src/utils/deepMap.ts#L23)
@@ -951,16 +1078,16 @@ Handles circular references and preserves original object references.
 
 `any`
 
-***
+---
 
 ### DefaultValueDeSerializerBuilder()
 
 ```ts
 function DefaultValueDeSerializerBuilder(defaultValue: any): {
-  deserialize: (args: DeSerializerArgsType) => any;
-  deserializePlaces: string[];
-  name: string;
-};
+    deserialize: (args: DeSerializerArgsType) => any
+    deserializePlaces: string[]
+    name: string
+}
 ```
 
 Defined in: [src/serializers/defaultValue.ts:9](https://github.com/metatyper/metatyper/blob/main/src/serializers/defaultValue.ts#L9)
@@ -1087,12 +1214,118 @@ Static value or factory invoked with [DeSerializerArgsType](#deserializerargstyp
 </tbody>
 </table>
 
-***
+---
+
+### EMAIL()
+
+```ts
+function EMAIL<IsNullishT, IsNullableT, IsOptionalT>(
+    args?: Omit<StringMetaTypeArgs<EMAIL, IsNullishT, IsNullableT, IsOptionalT>, 'regexp'>
+): EMAIL
+```
+
+Defined in: src/metatypes/types/email.ts:16
+
+Creates a email meta type with length/regexp/casing options plus standard meta args.
+
+#### Type Parameters
+
+<table>
+<thead>
+<tr>
+<th>Type Parameter</th>
+<th>Default type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+
+`IsNullishT` _extends_ `boolean`
+
+</td>
+<td>
+
+`false`
+
+</td>
+</tr>
+<tr>
+<td>
+
+`IsNullableT` _extends_ `boolean`
+
+</td>
+<td>
+
+`IsNullishT`
+
+</td>
+</tr>
+<tr>
+<td>
+
+`IsOptionalT` _extends_ `boolean`
+
+</td>
+<td>
+
+`IsNullishT`
+
+</td>
+</tr>
+</tbody>
+</table>
+
+#### Parameters
+
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+
+`args?`
+
+</td>
+<td>
+
+`Omit`\<[`StringMetaTypeArgs`](#stringmetatypeargs)\<[`EMAIL`](#email), `IsNullishT`, `IsNullableT`, `IsOptionalT`\>, `"regexp"`\>
+
+</td>
+<td>
+
+[StringMetaTypeArgs](#stringmetatypeargs) controlling min/max length, casing, etc.
+
+</td>
+</tr>
+</tbody>
+</table>
+
+#### Returns
+
+[`EMAIL`](#email)
+
+#### Example
+
+```ts
+const obj = Meta({ email: EMAIL() })
+obj.email = 'John' // validation error
+obj.email = 'vadzimsharai@gmail.com' // ok
+```
+
+---
 
 ### getDescriptorValue()
 
 ```ts
-function getDescriptorValue(obj: any, propName: string | symbol): any;
+function getDescriptorValue(obj: any, propName: string | symbol): any
 ```
 
 Defined in: [src/utils/objects.ts:2](https://github.com/metatyper/metatyper/blob/main/src/utils/objects.ts#L2)
@@ -1140,18 +1373,15 @@ Safely reads the value of an own property descriptor when the object is known.
 
 `any`
 
-***
+---
 
 ### GreaterValidatorBuilder()
 
 ```ts
-function GreaterValidatorBuilder(greater: any): {
-  name: string;
-  validate: (__namedParameters: ValidatorArgsType) => boolean;
-};
+function GreaterValidatorBuilder(greater: any): ValidatorType
 ```
 
-Defined in: [src/validators/minMaxValidators.ts:28](https://github.com/metatyper/metatyper/blob/main/src/validators/minMaxValidators.ts#L28)
+Defined in: [src/validators/minMaxValidators.ts:32](https://github.com/metatyper/metatyper/blob/main/src/validators/minMaxValidators.ts#L32)
 
 Creates a validator enforcing `value > greater`.
 
@@ -1182,76 +1412,120 @@ Creates a validator enforcing `value > greater`.
 
 #### Returns
 
+[`ValidatorType`](#validatortype)
+
+---
+
+### HOSTNAME()
+
 ```ts
-{
-  name: string;
-  validate: (__namedParameters: ValidatorArgsType) => boolean;
-}
+function HOSTNAME<IsNullishT, IsNullableT, IsOptionalT>(
+    args?: Omit<StringMetaTypeArgs<HOSTNAME, IsNullishT, IsNullableT, IsOptionalT>, 'regexp'>
+): HOSTNAME
 ```
+
+Defined in: src/metatypes/types/hostname.ts:16
+
+Creates a hostname/domain meta type.
+
+#### Type Parameters
 
 <table>
 <thead>
 <tr>
-<th>Name</th>
-<th>Type</th>
-<th>Default value</th>
-<th>Defined in</th>
+<th>Type Parameter</th>
+<th>Default type</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>
 
-`name`
+`IsNullishT` _extends_ `boolean`
 
 </td>
 <td>
 
-`string`
-
-</td>
-<td>
-
-`'Greater'`
-
-</td>
-<td>
-
-[src/validators/minMaxValidators.ts:29](https://github.com/metatyper/metatyper/blob/main/src/validators/minMaxValidators.ts#L29)
+`false`
 
 </td>
 </tr>
 <tr>
 <td>
 
-`validate()`
+`IsNullableT` _extends_ `boolean`
 
 </td>
 <td>
 
-(`__namedParameters`: [`ValidatorArgsType`](#validatorargstype)) => `boolean`
+`IsNullishT`
+
+</td>
+</tr>
+<tr>
+<td>
+
+`IsOptionalT` _extends_ `boolean`
 
 </td>
 <td>
 
-&hyphen;
-
-</td>
-<td>
-
-[src/validators/minMaxValidators.ts:30](https://github.com/metatyper/metatyper/blob/main/src/validators/minMaxValidators.ts#L30)
+`IsNullishT`
 
 </td>
 </tr>
 </tbody>
 </table>
 
-***
+#### Parameters
+
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+
+`args?`
+
+</td>
+<td>
+
+`Omit`\<[`StringMetaTypeArgs`](#stringmetatypeargs)\<[`HOSTNAME`](#hostname), `IsNullishT`, `IsNullableT`, `IsOptionalT`\>, `"regexp"`\>
+
+</td>
+<td>
+
+[StringMetaTypeArgs](#stringmetatypeargs) controlling min/max length, casing, etc.
+
+</td>
+</tr>
+</tbody>
+</table>
+
+#### Returns
+
+[`HOSTNAME`](#hostname)
+
+#### Example
+
+```ts
+const obj = Meta({ host: HOSTNAME() })
+obj.host = 'not a host' // validation error
+obj.host = 'example.com' // ok
+```
+
+---
 
 ### inspect()
 
 ```ts
-function inspect(value: any): any;
+function inspect(value: any): any
 ```
 
 Defined in: [src/utils/inspect.ts:8](https://github.com/metatyper/metatyper/blob/main/src/utils/inspect.ts#L8)
@@ -1288,12 +1562,15 @@ but aware of meta objects, circular refs, and custom toString implementations.
 
 `any`
 
-***
+---
 
 ### INSTANCE()
 
 ```ts
-function INSTANCE<T, IsNullishT, IsNullableT, IsOptionalT>(subType: Class<T>, args?: InstanceMetaTypeArgs<INSTANCE<T>, IsNullishT, IsNullableT, IsOptionalT>): PrepareMetaType<INSTANCE<T>, IsNullishT, IsNullableT, IsOptionalT>;
+function INSTANCE<T, IsNullishT, IsNullableT, IsOptionalT>(
+    subType: Class<T>,
+    args?: InstanceMetaTypeArgs<INSTANCE<T>, IsNullishT, IsNullableT, IsOptionalT>
+): PrepareMetaType<INSTANCE<T>, IsNullishT, IsNullableT, IsOptionalT>
 ```
 
 Defined in: [src/metatypes/types/instance.ts:92](https://github.com/metatyper/metatyper/blob/main/src/metatypes/types/instance.ts#L92)
@@ -1325,7 +1602,7 @@ Creates a meta type that validates values are instances of the provided class.
 <tr>
 <td>
 
-`IsNullishT` *extends* `boolean`
+`IsNullishT` _extends_ `boolean`
 
 </td>
 <td>
@@ -1337,7 +1614,7 @@ Creates a meta type that validates values are instances of the provided class.
 <tr>
 <td>
 
-`IsNullableT` *extends* `boolean`
+`IsNullableT` _extends_ `boolean`
 
 </td>
 <td>
@@ -1349,7 +1626,7 @@ Creates a meta type that validates values are instances of the provided class.
 <tr>
 <td>
 
-`IsOptionalT` *extends* `boolean`
+`IsOptionalT` _extends_ `boolean`
 
 </td>
 <td>
@@ -1417,11 +1694,11 @@ Class or instance used as the target type.
 
 ```ts
 class A {
-   a = 1
+    a = 1
 }
 
 const obj1 = Meta({
-     a: INSTANCE(A, { nullish: true })
+    a: INSTANCE(A, { nullish: true })
 }) // as { a: A | null | undefined }
 
 obj1.a = new A()
@@ -1429,12 +1706,14 @@ obj1.a = {} // type & validation error
 obj1.a = { a: 1 } // validation error
 ```
 
-***
+---
 
 ### INTEGER()
 
 ```ts
-function INTEGER<IsNullishT, IsNullableT, IsOptionalT>(args?: NumbersMetaTypeArgs<INTEGER, IsNullishT, IsNullableT, IsOptionalT>): PrepareMetaType<INTEGER, IsNullishT, IsNullableT, IsOptionalT>;
+function INTEGER<IsNullishT, IsNullableT, IsOptionalT>(
+    args?: NumbersMetaTypeArgs<INTEGER, IsNullishT, IsNullableT, IsOptionalT>
+): PrepareMetaType<INTEGER, IsNullishT, IsNullableT, IsOptionalT>
 ```
 
 Defined in: [src/metatypes/types/integer.ts:78](https://github.com/metatyper/metatyper/blob/main/src/metatypes/types/integer.ts#L78)
@@ -1454,7 +1733,7 @@ Creates a meta type for integers (numbers coerced/truncated to whole values).
 <tr>
 <td>
 
-`IsNullishT` *extends* `boolean`
+`IsNullishT` _extends_ `boolean`
 
 </td>
 <td>
@@ -1466,7 +1745,7 @@ Creates a meta type for integers (numbers coerced/truncated to whole values).
 <tr>
 <td>
 
-`IsNullableT` *extends* `boolean`
+`IsNullableT` _extends_ `boolean`
 
 </td>
 <td>
@@ -1478,7 +1757,7 @@ Creates a meta type for integers (numbers coerced/truncated to whole values).
 <tr>
 <td>
 
-`IsOptionalT` *extends* `boolean`
+`IsOptionalT` _extends_ `boolean`
 
 </td>
 <td>
@@ -1529,19 +1808,125 @@ Creates a meta type for integers (numbers coerced/truncated to whole values).
 
 ```ts
 const obj1 = Meta({
-     a: INTEGER({ nullish: true })
+    a: INTEGER({ nullish: true })
 }) // as { a: number | null | undefined }
 
 obj1.a = 1
 obj1.a = 1.2 // validation error
 ```
 
-***
+---
+
+### IP()
+
+```ts
+function IP<IsNullishT, IsNullableT, IsOptionalT>(
+    args?: Omit<StringMetaTypeArgs<IP, IsNullishT, IsNullableT, IsOptionalT>, 'regexp'>
+): IP
+```
+
+Defined in: src/metatypes/types/ip.ts:17
+
+Creates an IP meta type (IPv4 or IPv6) with length/regexp/casing options plus standard meta args.
+
+#### Type Parameters
+
+<table>
+<thead>
+<tr>
+<th>Type Parameter</th>
+<th>Default type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+
+`IsNullishT` _extends_ `boolean`
+
+</td>
+<td>
+
+`false`
+
+</td>
+</tr>
+<tr>
+<td>
+
+`IsNullableT` _extends_ `boolean`
+
+</td>
+<td>
+
+`IsNullishT`
+
+</td>
+</tr>
+<tr>
+<td>
+
+`IsOptionalT` _extends_ `boolean`
+
+</td>
+<td>
+
+`IsNullishT`
+
+</td>
+</tr>
+</tbody>
+</table>
+
+#### Parameters
+
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+
+`args?`
+
+</td>
+<td>
+
+`Omit`\<[`StringMetaTypeArgs`](#stringmetatypeargs)\<[`IP`](#ip), `IsNullishT`, `IsNullableT`, `IsOptionalT`\>, `"regexp"`\>
+
+</td>
+<td>
+
+[StringMetaTypeArgs](#stringmetatypeargs) controlling min/max length, casing, etc.
+
+</td>
+</tr>
+</tbody>
+</table>
+
+#### Returns
+
+[`IP`](#ip)
+
+#### Example
+
+```ts
+const obj = Meta({ addr: IP() })
+obj.addr = '999.999.999.999' // validation error
+obj.addr = '192.168.0.1' // ok
+```
+
+---
 
 ### isClass()
 
 ```ts
-function isClass(target: any): boolean;
+function isClass(target: any): boolean
 ```
 
 Defined in: [src/utils/classes.ts:18](https://github.com/metatyper/metatyper/blob/main/src/utils/classes.ts#L18)
@@ -1578,12 +1963,12 @@ Works with raw constructors and meta-object-wrapped classes.
 
 `boolean`
 
-***
+---
 
 ### isDateObject()
 
 ```ts
-function isDateObject(date: any): boolean;
+function isDateObject(date: any): boolean
 ```
 
 Defined in: [src/utils/checks.ts:2](https://github.com/metatyper/metatyper/blob/main/src/utils/checks.ts#L2)
@@ -1619,12 +2004,12 @@ Checks whether the provided value behaves like a `Date` instance.
 
 `boolean`
 
-***
+---
 
 ### isEqual()
 
 ```ts
-function isEqual(a: any, b: any): boolean;
+function isEqual(a: any, b: any): boolean
 ```
 
 Defined in: [src/utils/checks.ts:7](https://github.com/metatyper/metatyper/blob/main/src/utils/checks.ts#L7)
@@ -1672,12 +2057,12 @@ Performs a shallow-to-deep structural equality check (used when comparing litera
 
 `boolean`
 
-***
+---
 
 ### isPlainObject()
 
 ```ts
-function isPlainObject(value: any): false;
+function isPlainObject(value: any): false
 ```
 
 Defined in: [src/utils/deepMap.ts:9](https://github.com/metatyper/metatyper/blob/main/src/utils/deepMap.ts#L9)
@@ -1713,18 +2098,15 @@ Determines whether a value is a plain object/array without meta markers or circu
 
 `false`
 
-***
+---
 
 ### LessValidatorBuilder()
 
 ```ts
-function LessValidatorBuilder(less: any): {
-  name: string;
-  validate: (__namedParameters: ValidatorArgsType) => boolean;
-};
+function LessValidatorBuilder(less: any): ValidatorType
 ```
 
-Defined in: [src/validators/minMaxValidators.ts:40](https://github.com/metatyper/metatyper/blob/main/src/validators/minMaxValidators.ts#L40)
+Defined in: [src/validators/minMaxValidators.ts:46](https://github.com/metatyper/metatyper/blob/main/src/validators/minMaxValidators.ts#L46)
 
 Creates a validator enforcing `value < less`.
 
@@ -1755,76 +2137,17 @@ Creates a validator enforcing `value < less`.
 
 #### Returns
 
-```ts
-{
-  name: string;
-  validate: (__namedParameters: ValidatorArgsType) => boolean;
-}
-```
+[`ValidatorType`](#validatortype)
 
-<table>
-<thead>
-<tr>
-<th>Name</th>
-<th>Type</th>
-<th>Default value</th>
-<th>Defined in</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>
-
-`name`
-
-</td>
-<td>
-
-`string`
-
-</td>
-<td>
-
-`'Less'`
-
-</td>
-<td>
-
-[src/validators/minMaxValidators.ts:41](https://github.com/metatyper/metatyper/blob/main/src/validators/minMaxValidators.ts#L41)
-
-</td>
-</tr>
-<tr>
-<td>
-
-`validate()`
-
-</td>
-<td>
-
-(`__namedParameters`: [`ValidatorArgsType`](#validatorargstype)) => `boolean`
-
-</td>
-<td>
-
-&hyphen;
-
-</td>
-<td>
-
-[src/validators/minMaxValidators.ts:42](https://github.com/metatyper/metatyper/blob/main/src/validators/minMaxValidators.ts#L42)
-
-</td>
-</tr>
-</tbody>
-</table>
-
-***
+---
 
 ### LITERAL()
 
 ```ts
-function LITERAL<T, IsNullishT, IsNullableT, IsOptionalT>(subType: T, args?: MetaTypeArgsType<LITERAL<T>, IsNullishT, IsNullableT, IsOptionalT>): PrepareMetaType<LITERAL<T>, IsNullishT, IsNullableT, IsOptionalT>;
+function LITERAL<T, IsNullishT, IsNullableT, IsOptionalT>(
+    subType: T,
+    args?: MetaTypeArgsType<LITERAL<T>, IsNullishT, IsNullableT, IsOptionalT>
+): PrepareMetaType<LITERAL<T>, IsNullishT, IsNullableT, IsOptionalT>
 ```
 
 Defined in: [src/metatypes/types/literal.ts:34](https://github.com/metatyper/metatyper/blob/main/src/metatypes/types/literal.ts#L34)
@@ -1844,7 +2167,7 @@ Creates a meta type that allows only the provided literal value (with standard m
 <tr>
 <td>
 
-`T` *extends* `string` \| `number` \| `bigint` \| `boolean` \| `symbol`
+`T` _extends_ `string` \| `number` \| `bigint` \| `boolean` \| `symbol`
 
 </td>
 <td>
@@ -1856,7 +2179,7 @@ Creates a meta type that allows only the provided literal value (with standard m
 <tr>
 <td>
 
-`IsNullishT` *extends* `boolean`
+`IsNullishT` _extends_ `boolean`
 
 </td>
 <td>
@@ -1868,7 +2191,7 @@ Creates a meta type that allows only the provided literal value (with standard m
 <tr>
 <td>
 
-`IsNullableT` *extends* `boolean`
+`IsNullableT` _extends_ `boolean`
 
 </td>
 <td>
@@ -1880,7 +2203,7 @@ Creates a meta type that allows only the provided literal value (with standard m
 <tr>
 <td>
 
-`IsOptionalT` *extends* `boolean`
+`IsOptionalT` _extends_ `boolean`
 
 </td>
 <td>
@@ -1952,18 +2275,15 @@ obj.status = 'done'
 obj.status = 'pending' // validation error
 ```
 
-***
+---
 
 ### MaxLengthValidatorBuilder()
 
 ```ts
-function MaxLengthValidatorBuilder(length: number): {
-  name: string;
-  validate: (__namedParameters: ValidatorArgsType) => boolean;
-};
+function MaxLengthValidatorBuilder(maxLength: number): ValidatorType
 ```
 
-Defined in: [src/validators/lengthValidators.ts:28](https://github.com/metatyper/metatyper/blob/main/src/validators/lengthValidators.ts#L28)
+Defined in: [src/validators/lengthValidators.ts:37](https://github.com/metatyper/metatyper/blob/main/src/validators/lengthValidators.ts#L37)
 
 Creates a validator ensuring value length does not exceed `length`.
 
@@ -1980,7 +2300,7 @@ Creates a validator ensuring value length does not exceed `length`.
 <tr>
 <td>
 
-`length`
+`maxLength`
 
 </td>
 <td>
@@ -1994,82 +2314,17 @@ Creates a validator ensuring value length does not exceed `length`.
 
 #### Returns
 
-```ts
-{
-  name: string;
-  validate: (__namedParameters: ValidatorArgsType) => boolean;
-}
-```
+[`ValidatorType`](#validatortype)
 
-<table>
-<thead>
-<tr>
-<th>Name</th>
-<th>Type</th>
-<th>Default value</th>
-<th>Defined in</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>
-
-`name`
-
-</td>
-<td>
-
-`string`
-
-</td>
-<td>
-
-`'MaxLength'`
-
-</td>
-<td>
-
-[src/validators/lengthValidators.ts:29](https://github.com/metatyper/metatyper/blob/main/src/validators/lengthValidators.ts#L29)
-
-</td>
-</tr>
-<tr>
-<td>
-
-`validate()`
-
-</td>
-<td>
-
-(`__namedParameters`: [`ValidatorArgsType`](#validatorargstype)) => `boolean`
-
-</td>
-<td>
-
-&hyphen;
-
-</td>
-<td>
-
-[src/validators/lengthValidators.ts:30](https://github.com/metatyper/metatyper/blob/main/src/validators/lengthValidators.ts#L30)
-
-</td>
-</tr>
-</tbody>
-</table>
-
-***
+---
 
 ### MaxValidatorBuilder()
 
 ```ts
-function MaxValidatorBuilder(max: any): {
-  name: string;
-  validate: (__namedParameters: ValidatorArgsType) => boolean;
-};
+function MaxValidatorBuilder(max: any): ValidatorType
 ```
 
-Defined in: [src/validators/minMaxValidators.ts:16](https://github.com/metatyper/metatyper/blob/main/src/validators/minMaxValidators.ts#L16)
+Defined in: [src/validators/minMaxValidators.ts:18](https://github.com/metatyper/metatyper/blob/main/src/validators/minMaxValidators.ts#L18)
 
 Creates a validator enforcing `value <= max`.
 
@@ -2100,76 +2355,14 @@ Creates a validator enforcing `value <= max`.
 
 #### Returns
 
-```ts
-{
-  name: string;
-  validate: (__namedParameters: ValidatorArgsType) => boolean;
-}
-```
+[`ValidatorType`](#validatortype)
 
-<table>
-<thead>
-<tr>
-<th>Name</th>
-<th>Type</th>
-<th>Default value</th>
-<th>Defined in</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>
-
-`name`
-
-</td>
-<td>
-
-`string`
-
-</td>
-<td>
-
-`'Max'`
-
-</td>
-<td>
-
-[src/validators/minMaxValidators.ts:17](https://github.com/metatyper/metatyper/blob/main/src/validators/minMaxValidators.ts#L17)
-
-</td>
-</tr>
-<tr>
-<td>
-
-`validate()`
-
-</td>
-<td>
-
-(`__namedParameters`: [`ValidatorArgsType`](#validatorargstype)) => `boolean`
-
-</td>
-<td>
-
-&hyphen;
-
-</td>
-<td>
-
-[src/validators/minMaxValidators.ts:18](https://github.com/metatyper/metatyper/blob/main/src/validators/minMaxValidators.ts#L18)
-
-</td>
-</tr>
-</tbody>
-</table>
-
-***
+---
 
 ### Meta()
 
 ```ts
-function Meta<T>(protoObject?: T, metaArgs?: MetaArgsType): Meta<T>;
+function Meta<T>(protoObject?: T, metaArgs?: MetaArgsType): Meta<T>
 ```
 
 Defined in: [src/metaobjects/meta.ts:247](https://github.com/metatyper/metatyper/blob/main/src/metaobjects/meta.ts#L247)
@@ -2188,7 +2381,7 @@ Create a Meta object
 <tr>
 <td>
 
-`T` *extends* `object`
+`T` _extends_ `object`
 
 </td>
 </tr>
@@ -2253,18 +2446,18 @@ A new Meta object
 
 ```ts
 const obj1 = Meta({
-  id: NUMBER({ optional: true }),
-  name: 'John Doe',
-  stars: NUMBER({ default: 0, min: 0 })
+    id: NUMBER({ optional: true }),
+    name: 'John Doe',
+    stars: NUMBER({ default: 0, min: 0 })
 })
 
 obj1.id = 1
 obj1.id = 'str' // will throw an validation error
 
 class MyCls {
-     static someClsProp = STRING({ default: '' })
+    static someClsProp = STRING({ default: '' })
 
-     someInstanceProp = NUMBER({ default: 0 })
+    someInstanceProp = NUMBER({ default: 0 })
 }
 
 const MyMetaCls = Meta(MyCls)
@@ -2283,33 +2476,34 @@ myInstance.someInstanceProp = '2' // will throw an validation error
 The `Meta` function also provides several utility methods.
 These methods are available on the `Meta` object and can be used to interact with meta objects.
 The methods are:
-- `Meta.validate(metaObject, rawObject)` - [MetaValidate](#metavalidate) - Validates a raw object using the meta object (as schema).
-- `Meta.copy(metaObject)` - [MetaCopy](#metacopy) - Creates a copy of a meta object preserving its values, types, prototype and arguments.
-- `Meta.rebuild(metaObject)` - [MetaRebuild](#metarebuild) - Rebuilds a meta object using the same original object and arguments, resetting to initial state.
-- `Meta.isMetaObject(obj)` - [MetaIsMetaObject](#metaismetaobject) - Checks if an object is a meta object.
-- `Meta.isIgnoredProp(propName)` - [MetaIsIgnoredProp](#metaisignoredprop) - Checks if a property is ignored by Meta.
-- `@Meta.Class(metaArgs)` - [MetaClass](#metaclass) - Decorator for transforming a class into a meta class.
-- `@Meta.declare(metaType)` - [MetaDeclare](#metadeclare) - Decorator for declaring meta type information on class properties.
-- `Meta.serialize(metaObject)` - [MetaSerialize](#metaserialize) - Serializes a meta object.
-- `Meta.deserialize(data, protoObject)` - [MetaDeserialize](#metadeserialize) - Deserializes a value into a meta object.
-- `Meta.toJson(metaObject)` - [MetaToJson](#metatojson) - Serializes a meta object into a JSON string.
-- `Meta.fromJson(data, protoObject)` - [MetaFromJson](#metafromjson) - Deserializes a JSON string into a meta object.
-- `Meta.represent(metaObject)` - [MetaRepresent](#metarepresent) - Generates a textual representation of a meta object.
-- `Meta.getProto(metaObject)` - [MetaProto](#metaproto) - Retrieves the prototype of the meta object.
-- `Meta.getMetaArgs(metaObject)` - [MetaGetMetaArgs](#metagetmetaargs) - Retrieves the meta arguments used to create a meta object.
-- `Meta.validationIsActive(metaObject)` - [MetaValidationIsActive](#metavalidationisactive) - Checks if validation is active for the given meta object.
-- `Meta.disableValidation(metaObject)` - [MetaDisableValidation](#metadisablevalidation) - Disables validation for the specified meta object.
-- `Meta.enableValidation(metaObject)` - [MetaEnableValidation](#metaenablevalidation) - Enables validation for the specified meta object.
-- `Meta.serializationIsActive(metaObject)` - [MetaSerializationIsActive](#metaserializationisactive) - Checks if serialization is active for the given meta object.
-- `Meta.disableSerialization(metaObject)` - [MetaDisableSerialization](#metadisableserialization) - Disables serialization for the specified meta object.
-- `Meta.enableSerialization(metaObject)` - [MetaEnableSerialization](#metaenableserialization) - Enables serialization for the specified meta object.
 
-***
+-   `Meta.validate(metaObject, rawObject)` - [MetaValidate](#metavalidate) - Validates a raw object using the meta object (as schema).
+-   `Meta.copy(metaObject)` - [MetaCopy](#metacopy) - Creates a copy of a meta object preserving its values, types, prototype and arguments.
+-   `Meta.rebuild(metaObject)` - [MetaRebuild](#metarebuild) - Rebuilds a meta object using the same original object and arguments, resetting to initial state.
+-   `Meta.isMetaObject(obj)` - [MetaIsMetaObject](#metaismetaobject) - Checks if an object is a meta object.
+-   `Meta.isIgnoredProp(propName)` - [MetaIsIgnoredProp](#metaisignoredprop) - Checks if a property is ignored by Meta.
+-   `@Meta.Class(metaArgs)` - [MetaClass](#metaclass) - Decorator for transforming a class into a meta class.
+-   `@Meta.declare(metaType)` - [MetaDeclare](#metadeclare) - Decorator for declaring meta type information on class properties.
+-   `Meta.serialize(metaObject)` - [MetaSerialize](#metaserialize) - Serializes a meta object.
+-   `Meta.deserialize(data, protoObject)` - [MetaDeserialize](#metadeserialize) - Deserializes a value into a meta object.
+-   `Meta.toJson(metaObject)` - [MetaToJson](#metatojson) - Serializes a meta object into a JSON string.
+-   `Meta.fromJson(data, protoObject)` - [MetaFromJson](#metafromjson) - Deserializes a JSON string into a meta object.
+-   `Meta.represent(metaObject)` - [MetaRepresent](#metarepresent) - Generates a textual representation of a meta object.
+-   `Meta.getProto(metaObject)` - [MetaProto](#metaproto) - Retrieves the prototype of the meta object.
+-   `Meta.getMetaArgs(metaObject)` - [MetaGetMetaArgs](#metagetmetaargs) - Retrieves the meta arguments used to create a meta object.
+-   `Meta.validationIsActive(metaObject)` - [MetaValidationIsActive](#metavalidationisactive) - Checks if validation is active for the given meta object.
+-   `Meta.disableValidation(metaObject)` - [MetaDisableValidation](#metadisablevalidation) - Disables validation for the specified meta object.
+-   `Meta.enableValidation(metaObject)` - [MetaEnableValidation](#metaenablevalidation) - Enables validation for the specified meta object.
+-   `Meta.serializationIsActive(metaObject)` - [MetaSerializationIsActive](#metaserializationisactive) - Checks if serialization is active for the given meta object.
+-   `Meta.disableSerialization(metaObject)` - [MetaDisableSerialization](#metadisableserialization) - Disables serialization for the specified meta object.
+-   `Meta.enableSerialization(metaObject)` - [MetaEnableSerialization](#metaenableserialization) - Enables serialization for the specified meta object.
+
+---
 
 ### MetaClass()
 
 ```ts
-function MetaClass(metaArgs?: MetaArgsType): <T>(cls: T) => any;
+function MetaClass(metaArgs?: MetaArgsType): <T>(cls: T) => any
 ```
 
 Defined in: [src/metaobjects/meta.ts:284](https://github.com/metatyper/metatyper/blob/main/src/metaobjects/meta.ts#L284)
@@ -2370,7 +2564,7 @@ A decorator function that takes a class and returns its meta class equivalent.
 <tr>
 <td>
 
-`T` *extends* (...`args`: `any`[]) => `any`
+`T` _extends_ (...`args`: `any`[]) => `any`
 
 </td>
 </tr>
@@ -2411,8 +2605,8 @@ A decorator function that takes a class and returns its meta class equivalent.
 ```ts
 @Meta.Class({ metaTypesArgs: { optional: true } })
 class User {
-  id = NUMBER()
-  name = STRING({ minLength: 3 })
+    id = NUMBER()
+    name = STRING({ minLength: 3 })
 }
 
 const user = new User()
@@ -2422,14 +2616,16 @@ user.name = 'John' // OK
 user.name = 'Jo' // Throws a validation error
 ```
 
-***
+---
 
 ### MetaCopy()
 
 ```ts
 function MetaCopy<T>(metaObject: T): Required<T> extends Required<{
-  [IsMetaObjectSymbol]?: true;
-}> ? T : Meta<T> | null;
+    [IsMetaObjectSymbol]?: true
+}>
+    ? T
+    : Meta<T> | null
 ```
 
 Defined in: [src/metaobjects/meta.ts:827](https://github.com/metatyper/metatyper/blob/main/src/metaobjects/meta.ts#L827)
@@ -2451,7 +2647,7 @@ If the provided argument is not a meta object, the function returns `null`, indi
 <tr>
 <td>
 
-`T` *extends* `object`
+`T` _extends_ `object`
 
 </td>
 <td>
@@ -2496,8 +2692,8 @@ The meta object to copy.
 
 #### Returns
 
-`Required`\<`T`\> *extends* `Required`\<\{
-  `[IsMetaObjectSymbol]?`: `true`;
+`Required`\<`T`\> _extends_ `Required`\<\{
+`[IsMetaObjectSymbol]?`: `true`;
 \}\> ? `T` : [`Meta`](#meta)\<`T`\> \| `null`
 
 A copy of the meta object if the argument is a meta object, otherwise `null`.
@@ -2506,9 +2702,9 @@ A copy of the meta object if the argument is a meta object, otherwise `null`.
 
 ```ts
 const originalMetaObject = Meta({
-  id: 1,
-  name: 'John Doe',
-  isActive: BOOLEAN({ default: true })
+    id: 1,
+    name: 'John Doe',
+    isActive: BOOLEAN({ default: true })
 })
 
 // Creating a copy of the meta object
@@ -2518,14 +2714,14 @@ console.log(copiedMetaObject)
 // Output: A new meta object with the same properties and values as originalMetaObject
 ```
 
-***
+---
 
 ### MetaDeclare()
 
 #### Call Signature
 
 ```ts
-function MetaDeclare<T, K>(metaType: T[K]): (target: T, propName: K) => void;
+function MetaDeclare<T, K>(metaType: T[K]): (target: T, propName: K) => void
 ```
 
 Defined in: [src/metaobjects/meta.ts:314](https://github.com/metatyper/metatyper/blob/main/src/metaobjects/meta.ts#L314)
@@ -2549,7 +2745,7 @@ based on the provided meta type or meta type arguments.
 <tr>
 <td>
 
-`T` *extends* `object`
+`T` _extends_ `object`
 
 </td>
 <td>
@@ -2561,7 +2757,7 @@ based on the provided meta type or meta type arguments.
 <tr>
 <td>
 
-`K` *extends* `string` \| `number` \| `symbol`
+`K` _extends_ `string` \| `number` \| `symbol`
 
 </td>
 <td>
@@ -2660,15 +2856,17 @@ import { Meta } from 'metatyper'
 
 @Meta.Class()
 class User {
-  @Meta.declare(NUMBER({ min:0, optional:true }))
-  id: number | undefined
+    @Meta.declare(NUMBER({ min: 0, optional: true }))
+    id: number | undefined
 }
 ```
 
 #### Call Signature
 
 ```ts
-function MetaDeclare<T, K, IsNullableT>(metaTypeArgs?: MetaTypeArgsType<T[K], IsNullableT>): (target: T, propName: K) => void;
+function MetaDeclare<T, K, IsNullableT>(
+    metaTypeArgs?: MetaTypeArgsType<T[K], IsNullableT>
+): (target: T, propName: K) => void
 ```
 
 Defined in: [src/metaobjects/meta.ts:346](https://github.com/metatyper/metatyper/blob/main/src/metaobjects/meta.ts#L346)
@@ -2676,7 +2874,7 @@ Defined in: [src/metaobjects/meta.ts:346](https://github.com/metatyper/metatyper
 Decorator for declaring meta type information for class properties.
 
 The `declare` decorator allows you to specify meta type information directly on class properties.
-This facilitates runtime type checking, validation, and serialization/deserialization of property values 
+This facilitates runtime type checking, validation, and serialization/deserialization of property values
 based on the provided meta type or meta type arguments.
 
 ##### Type Parameters
@@ -2691,21 +2889,21 @@ based on the provided meta type or meta type arguments.
 <tr>
 <td>
 
-`T` *extends* `object`
+`T` _extends_ `object`
 
 </td>
 </tr>
 <tr>
 <td>
 
-`K` *extends* `string` \| `number` \| `symbol`
+`K` _extends_ `string` \| `number` \| `symbol`
 
 </td>
 </tr>
 <tr>
 <td>
 
-`IsNullableT` *extends* `boolean`
+`IsNullableT` _extends_ `boolean`
 
 </td>
 </tr>
@@ -2736,8 +2934,8 @@ based on the provided meta type or meta type arguments.
 </td>
 <td>
 
-The meta type arguments to apply to the class property. 
-                      The meta type itself will be reflected from the TypeScript property type using reflect-metadata.
+The meta type arguments to apply to the class property.
+The meta type itself will be reflected from the TypeScript property type using reflect-metadata.
 
 </td>
 </tr>
@@ -2796,6 +2994,7 @@ A decorator function that applies the specified meta type information to the tar
 ##### Example
 
 Reflect metatype from class property type:
+
 ```ts
 import 'reflect-metadata'
 
@@ -2803,22 +3002,21 @@ import { Meta } from 'metatyper'
 
 @Meta.Class()
 class Product {
-
-  @Meta.declare({ min: 0, optional: true })
-  price?: number
-
+    @Meta.declare({ min: 0, optional: true })
+    price?: number
 }
 ```
 
-***
+---
 
 ### MetaDeserialize()
 
 ```ts
 function MetaDeserialize<T>(
-   metaObjectOrProto: T | Meta<T>, 
-   rawObject: object, 
-deserializeArgs?: DeSerializeMetaObjectArgsType): Meta<T>;
+    metaObjectOrProto: T | Meta<T>,
+    rawObject: object,
+    deserializeArgs?: DeSerializeMetaObjectArgsType
+): Meta<T>
 ```
 
 Defined in: [src/metaobjects/meta.ts:776](https://github.com/metatyper/metatyper/blob/main/src/metaobjects/meta.ts#L776)
@@ -2846,7 +3044,7 @@ a new meta object is created using the provided `deserializeArgs.metaArgs` and t
 <tr>
 <td>
 
-`T` *extends* `object`
+`T` _extends_ `object`
 
 </td>
 <td>
@@ -2933,9 +3131,9 @@ The updated or newly created meta object with properties deserialized from the r
 
 ```ts
 const userMeta = Meta({
-  id: NUMBER({ default: 0 }),
-  name: STRING({ default: '' }),
-  isActive: BOOLEAN({ default: true })
+    id: NUMBER({ default: 0 }),
+    name: STRING({ default: '' }),
+    isActive: BOOLEAN({ default: true })
 })
 
 // Deserializing updates into an existing meta object
@@ -2944,16 +3142,16 @@ console.log(updatedUserMeta) // Meta object with updated id and name
 console.log(updatedUserMeta === userMeta) // true
 
 // Creating a new meta object from a raw object
-const newUserMeta = Meta.deserialize({ id: NUMBER(), name: STRING() }, { id: 3, name: "Alice" })
+const newUserMeta = Meta.deserialize({ id: NUMBER(), name: STRING() }, { id: 3, name: 'Alice' })
 console.log(newUserMeta) // New meta object with id and name from rawObject
 ```
 
-***
+---
 
 ### MetaDisableSerialization()
 
 ```ts
-function MetaDisableSerialization(metaObject: object): void;
+function MetaDisableSerialization(metaObject: object): void
 ```
 
 Defined in: [src/metaobjects/meta.ts:595](https://github.com/metatyper/metatyper/blob/main/src/metaobjects/meta.ts#L595)
@@ -3017,12 +3215,12 @@ console.log(Meta.serializationIsActive(metaObject)) // false
 metaObject.id = '123' // No deserialization occurs and it will throw an validation error
 ```
 
-***
+---
 
 ### MetaDisableValidation()
 
 ```ts
-function MetaDisableValidation(metaObject: object): void;
+function MetaDisableValidation(metaObject: object): void
 ```
 
 Defined in: [src/metaobjects/meta.ts:488](https://github.com/metatyper/metatyper/blob/main/src/metaobjects/meta.ts#L488)
@@ -3085,12 +3283,12 @@ console.log(Meta.validationIsActive(metaObject)) // false
 metaObject.id = 'not a number' // No validation error
 ```
 
-***
+---
 
 ### MetaEnableSerialization()
 
 ```ts
-function MetaEnableSerialization(metaObject: object): void;
+function MetaEnableSerialization(metaObject: object): void
 ```
 
 Defined in: [src/metaobjects/meta.ts:631](https://github.com/metatyper/metatyper/blob/main/src/metaobjects/meta.ts#L631)
@@ -3154,12 +3352,12 @@ console.log(Meta.serializationIsActive(metaObject)) // true
 metaObject.id = '123' // Deserialization occurs, converting '123' to number
 ```
 
-***
+---
 
 ### MetaEnableValidation()
 
 ```ts
-function MetaEnableValidation(metaObject: object): void;
+function MetaEnableValidation(metaObject: object): void
 ```
 
 Defined in: [src/metaobjects/meta.ts:524](https://github.com/metatyper/metatyper/blob/main/src/metaobjects/meta.ts#L524)
@@ -3222,18 +3420,19 @@ Meta.enableValidation(metaObject)
 console.log(Meta.validationIsActive(metaObject)) // true
 ```
 
-***
+---
 
 ### MetaFromJson()
 
 ```ts
 function MetaFromJson<T>(
-   metaObjectOrProto: T, 
-   text: string, 
-   deserializeArgs?: DeSerializeMetaObjectArgsType, 
-   jsonParseArgs?: {
-  reviver?: (this: any, key: string, value: any) => any;
-}): Meta<T>;
+    metaObjectOrProto: T,
+    text: string,
+    deserializeArgs?: DeSerializeMetaObjectArgsType,
+    jsonParseArgs?: {
+        reviver?: (this: any, key: string, value: any) => any
+    }
+): Meta<T>
 ```
 
 Defined in: [src/metaobjects/meta.ts:958](https://github.com/metatyper/metatyper/blob/main/src/metaobjects/meta.ts#L958)
@@ -3255,7 +3454,7 @@ based on the provided plain object as schema or an existing meta object.
 <tr>
 <td>
 
-`T` *extends* `object`
+`T` _extends_ `object`
 
 </td>
 <td>
@@ -3376,9 +3575,9 @@ A meta object deserialized from the JSON string.
 
 ```ts
 const userSchema = {
-  id: NUMBER(),
-  name: STRING(),
-  isActive: BOOLEAN({ default: true })
+    id: NUMBER(),
+    name: STRING(),
+    isActive: BOOLEAN({ default: true })
 }
 
 const userJson = '{"id": 1, "name": "John Doe", "isActive": false}'
@@ -3390,12 +3589,12 @@ console.log(user)
 // Output: Meta object with properties { id: 1, name: 'John Doe', isActive: false }
 ```
 
-***
+---
 
 ### MetaGetMetaArgs()
 
 ```ts
-function MetaGetMetaArgs(metaObject: object): MetaArgsType | null;
+function MetaGetMetaArgs(metaObject: object): MetaArgsType | null
 ```
 
 Defined in: [src/metaobjects/meta.ts:1100](https://github.com/metatyper/metatyper/blob/main/src/metaobjects/meta.ts#L1100)
@@ -3445,13 +3644,16 @@ The `MetaArgsType` used to configure the meta object, or `null` if the object is
 #### Example
 
 ```ts
-const user = Meta({
-  id: NUMBER(),
-  name: STRING(),
-}, {
-  name: "UserMetaObject",
-  metaTypesArgs: { optional: true }
-})
+const user = Meta(
+    {
+        id: NUMBER(),
+        name: STRING()
+    },
+    {
+        name: 'UserMetaObject',
+        metaTypesArgs: { optional: true }
+    }
+)
 
 Meta.disableValidation(user)
 
@@ -3467,12 +3669,12 @@ console.log(metaArgs)
 // }
 ```
 
-***
+---
 
 ### MetaIsIgnoredProp()
 
 ```ts
-function MetaIsIgnoredProp(metaObject: object, propName: string | symbol): boolean;
+function MetaIsIgnoredProp(metaObject: object, propName: string | symbol): boolean
 ```
 
 Defined in: [src/metaobjects/meta.ts:415](https://github.com/metatyper/metatyper/blob/main/src/metaobjects/meta.ts#L415)
@@ -3542,12 +3744,12 @@ console.log(Meta.isIgnoredProp(metaObject, 'a')) // true
 console.log(Meta.isIgnoredProp(metaObject, 'prototype')) // true, because built-in
 ```
 
-***
+---
 
 ### MetaProto()
 
 ```ts
-function MetaProto<T>(metaObject: T): Required<T> extends Required<Meta<U>> ? U : T | null;
+function MetaProto<T>(metaObject: T): Required<T> extends Required<Meta<U>> ? U : T | null
 ```
 
 Defined in: [src/metaobjects/meta.ts:865](https://github.com/metatyper/metatyper/blob/main/src/metaobjects/meta.ts#L865)
@@ -3568,7 +3770,7 @@ This function is particularly useful when you need to access the original struct
 <tr>
 <td>
 
-`T` *extends* `object`
+`T` _extends_ `object`
 
 </td>
 <td>
@@ -3613,7 +3815,7 @@ The meta object whose prototype you want to retrieve.
 
 #### Returns
 
-`Required`\<`T`\> *extends* `Required`\<[`Meta`](#meta)\<`U`\>\> ? `U` : `T` \| `null`
+`Required`\<`T`\> _extends_ `Required`\<[`Meta`](#meta)\<`U`\>\> ? `U` : `T` \| `null`
 
 The prototype of the meta object if available, otherwise `null`.
 
@@ -3621,9 +3823,9 @@ The prototype of the meta object if available, otherwise `null`.
 
 ```ts
 const originalObject = {
-  id: 1,
-  name: 'John Doe',
-  isActive: BOOLEAN({ default: true })
+    id: 1,
+    name: 'John Doe',
+    isActive: BOOLEAN({ default: true })
 }
 
 const metaObject = Meta(originalObject)
@@ -3634,20 +3836,25 @@ const protoObj = Meta.proto(metaObject)
 console.log(protoObj === originalObject) // true
 ```
 
-***
+---
 
 ### MetaRebuild()
 
 ```ts
-function MetaRebuild<T>(metaObject: T, metaArgs?: MetaArgsType): Required<T> extends Required<{
-  [IsMetaObjectSymbol]?: true;
-}> ? T : Meta<T> | null;
+function MetaRebuild<T>(
+    metaObject: T,
+    metaArgs?: MetaArgsType
+): Required<T> extends Required<{
+    [IsMetaObjectSymbol]?: true
+}>
+    ? T
+    : Meta<T> | null
 ```
 
 Defined in: [src/metaobjects/meta.ts:906](https://github.com/metatyper/metatyper/blob/main/src/metaobjects/meta.ts#L906)
 
-Rebuilds a meta object using the same original object and arguments that were used to create the meta object. 
-This function is useful for creating a new instance of a meta object with its initial state and configuration, 
+Rebuilds a meta object using the same original object and arguments that were used to create the meta object.
+This function is useful for creating a new instance of a meta object with its initial state and configuration,
 effectively "resetting" it to its original form.
 
 #### Type Parameters
@@ -3663,7 +3870,7 @@ effectively "resetting" it to its original form.
 <tr>
 <td>
 
-`T` *extends* `object`
+`T` _extends_ `object`
 
 </td>
 <td>
@@ -3725,8 +3932,8 @@ additional or overriding meta arguments to apply during the rebuild process.
 
 #### Returns
 
-`Required`\<`T`\> *extends* `Required`\<\{
-  `[IsMetaObjectSymbol]?`: `true`;
+`Required`\<`T`\> _extends_ `Required`\<\{
+`[IsMetaObjectSymbol]?`: `true`;
 \}\> ? `T` : [`Meta`](#meta)\<`T`\> \| `null`
 
 A new meta object, or `null` if the input is not a valid meta object.
@@ -3735,8 +3942,8 @@ A new meta object, or `null` if the input is not a valid meta object.
 
 ```ts
 const originalMetaObject = Meta({
-  id: NUMBER({ default: 1 }),
-  name: STRING({ default: 'John Doe' })
+    id: NUMBER({ default: 1 }),
+    name: STRING({ default: 'John Doe' })
 })
 
 // Modifying the original meta object
@@ -3750,12 +3957,12 @@ console.log(rebuiltMetaObject.id) // 1
 console.log(rebuiltMetaObject.name) // 'John Doe'
 ```
 
-***
+---
 
 ### MetaRepresent()
 
 ```ts
-function MetaRepresent(metaObject: object): string | null;
+function MetaRepresent(metaObject: object): string | null
 ```
 
 Defined in: [src/metaobjects/meta.ts:1052](https://github.com/metatyper/metatyper/blob/main/src/metaobjects/meta.ts#L1052)
@@ -3819,12 +4026,12 @@ console.log(representation)
 // Output: [<meta> object] { id: NUMBER = 0 }
 ```
 
-***
+---
 
 ### MetaSerializationIsActive()
 
 ```ts
-function MetaSerializationIsActive(metaObject: object): boolean;
+function MetaSerializationIsActive(metaObject: object): boolean
 ```
 
 Defined in: [src/metaobjects/meta.ts:558](https://github.com/metatyper/metatyper/blob/main/src/metaobjects/meta.ts#L558)
@@ -3886,12 +4093,15 @@ Meta.disableSerialization(metaObject)
 console.log(Meta.serializationIsActive(metaObject)) // false
 ```
 
-***
+---
 
 ### MetaSerialize()
 
 ```ts
-function MetaSerialize<ResultT, T>(metaObject: T | Meta<T>, serializeArgs?: SerializeMetaObjectArgsType): [ResultT] extends [never] ? { [key in string | number | symbol]: any } : ResultT;
+function MetaSerialize<ResultT, T>(
+    metaObject: T | Meta<T>,
+    serializeArgs?: SerializeMetaObjectArgsType
+): [ResultT] extends [never] ? { [key in string | number | symbol]: any } : ResultT
 ```
 
 Defined in: [src/metaobjects/meta.ts:722](https://github.com/metatyper/metatyper/blob/main/src/metaobjects/meta.ts#L722)
@@ -3914,7 +4124,7 @@ for instance, before sending it over a network or saving it to storage.
 <tr>
 <td>
 
-`ResultT` *extends* `object`
+`ResultT` _extends_ `object`
 
 </td>
 <td>
@@ -3932,7 +4142,7 @@ If not specified, the result will have the same properties as the original meta 
 <tr>
 <td>
 
-`T` *extends* `object`
+`T` _extends_ `object`
 
 </td>
 <td>
@@ -4000,24 +4210,27 @@ arguments to customize the serialization behavior.
 
 #### Returns
 
-\[`ResultT`\] *extends* \[`never`\] ? \{ \[key in string \| number \| symbol\]: any \} : `ResultT`
+\[`ResultT`\] _extends_ \[`never`\] ? \{ \[key in string \| number \| symbol\]: any \} : `ResultT`
 
 A new plain object with properties and values serialized from the meta object.
 
 #### Example
 
 ```ts
-const user = Meta({
-  id: NUMBER(),
-  name: STRING(),
-  registrationDate: DATE({ coercion: true })
-}, {
-  metaTypesArgs: { optional: true }
-})
+const user = Meta(
+    {
+        id: NUMBER(),
+        name: STRING(),
+        registrationDate: DATE({ coercion: true })
+    },
+    {
+        metaTypesArgs: { optional: true }
+    }
+)
 
 user.id = 1
 user.name = 'John Doe'
-user.registrationDate = new Date("2024-01-01")
+user.registrationDate = new Date('2024-01-01')
 
 // Serializing the meta object to a plain object
 const serializedUser = Meta.serialize(user)
@@ -4031,14 +4244,14 @@ console.log(serializedUser)
 // }
 ```
 
-***
+---
 
 ### MetaToJson()
 
 ```ts
 function MetaToJson(
-   metaObject: object, 
-   serializeArgs?: SerializeMetaObjectArgsType, 
+   metaObject: object,
+   serializeArgs?: SerializeMetaObjectArgsType,
    jsonStringifyArgs?: {
   replacer?:   | (this: any, key: string, value: any) => any
      | (string | number)[];
@@ -4123,7 +4336,7 @@ arguments like in `JSON.stringify` (`replacer` and `space`)
 </td>
 <td>
 
- \| (`this`: `any`, `key`: `string`, `value`: `any`) => `any` \| (`string` \| `number`)[]
+\| (`this`: `any`, `key`: `string`, `value`: `any`) => `any` \| (`string` \| `number`)[]
 
 </td>
 <td>
@@ -4162,14 +4375,14 @@ A JSON string representation of the meta object.
 
 ```ts
 const user = Meta({
-  id: NUMBER({ optional: true }),
-  name: STRING({ optional: true }),
-  registrationDate: DATE({ coercion: true, optional: true })
+    id: NUMBER({ optional: true }),
+    name: STRING({ optional: true }),
+    registrationDate: DATE({ coercion: true, optional: true })
 })
 
 user.id = 1
 user.name = 'John Doe'
-user.registrationDate = new Date("2024-01-01")
+user.registrationDate = new Date('2024-01-01')
 
 // Serializing the meta object to a JSON string
 const userJson = Meta.toJson(user, {}, { space: 2 })
@@ -4183,7 +4396,7 @@ console.log(userJson)
 // }
 ```
 
-***
+---
 
 ### MetaType()
 
@@ -4194,18 +4407,19 @@ and exposes validation/serialization helpers.
 #### Remarks
 
 The `MetaType` factory also provides several helper utilities:
-- `MetaType.inspect(metaType)` - [MetaTypeInspect](#metatypeinspect) - Pretty-prints using the implementation stringifier.
-- `MetaType.toString(metaType)` - [MetaTypeToString](#metatypetostring) - Returns the implementation string representation.
-- `MetaType.validate(metaType, value, args)` - [MetaTypeValidate](#metatypevalidate) - Validates a value using the backing implementation.
-- `MetaType.serialize(metaType, value)` - [MetaTypeSerialize](#metatypeserialize) - Serializes a value through the meta type serializers.
-- `MetaType.deserialize(metaType, value)` - [MetaTypeDeserialize](#metatypedeserialize) - Deserializes a raw value through the meta type serializers.
-- `MetaType.isMetaType(obj)` - [MetaTypeIsMetaType](#metatypeismetatype) - Checks whether a value is a runtime meta type wrapper.
-- `MetaType.getMetaTypeImpl(metaType)` - [MetaTypeGetMetaTypeImpl](#metatypegetmetatypeimpl) - Retrieves the bound implementation instance.
+
+-   `MetaType.inspect(metaType)` - [MetaTypeInspect](#metatypeinspect) - Pretty-prints using the implementation stringifier.
+-   `MetaType.toString(metaType)` - [MetaTypeToString](#metatypetostring) - Returns the implementation string representation.
+-   `MetaType.validate(metaType, value, args)` - [MetaTypeValidate](#metatypevalidate) - Validates a value using the backing implementation.
+-   `MetaType.serialize(metaType, value)` - [MetaTypeSerialize](#metatypeserialize) - Serializes a value through the meta type serializers.
+-   `MetaType.deserialize(metaType, value)` - [MetaTypeDeserialize](#metatypedeserialize) - Deserializes a raw value through the meta type serializers.
+-   `MetaType.isMetaType(obj)` - [MetaTypeIsMetaType](#metatypeismetatype) - Checks whether a value is a runtime meta type wrapper.
+-   `MetaType.getMetaTypeImpl(metaType)` - [MetaTypeGetMetaTypeImpl](#metatypegetmetatypeimpl) - Retrieves the bound implementation instance.
 
 #### Call Signature
 
 ```ts
-function MetaType<T, IsNullishT, IsNullableT, IsOptionalT>(metaTypeImpl: MetaTypeImpl, metaTypeArgs?: 
+function MetaType<T, IsNullishT, IsNullableT, IsOptionalT>(metaTypeImpl: MetaTypeImpl, metaTypeArgs?:
   | MetaTypeArgsType<T, IsNullishT, IsNullableT, IsOptionalT>
 | (metaTypeImpl: MetaTypeImpl) => MetaTypeArgsType<T, IsNullishT, IsNullableT, IsOptionalT>): PrepareMetaType<T, IsNullishT, IsNullableT, IsOptionalT>;
 ```
@@ -4237,7 +4451,7 @@ Defined in: [src/metatypes/metatype.ts:40](https://github.com/metatyper/metatype
 <tr>
 <td>
 
-`IsNullishT` *extends* `boolean`
+`IsNullishT` _extends_ `boolean`
 
 </td>
 <td>
@@ -4249,7 +4463,7 @@ Defined in: [src/metatypes/metatype.ts:40](https://github.com/metatyper/metatype
 <tr>
 <td>
 
-`IsNullableT` *extends* `boolean`
+`IsNullableT` _extends_ `boolean`
 
 </td>
 <td>
@@ -4261,7 +4475,7 @@ Defined in: [src/metatypes/metatype.ts:40](https://github.com/metatyper/metatype
 <tr>
 <td>
 
-`IsOptionalT` *extends* `boolean`
+`IsOptionalT` _extends_ `boolean`
 
 </td>
 <td>
@@ -4303,7 +4517,7 @@ Defined in: [src/metatypes/metatype.ts:40](https://github.com/metatyper/metatype
 </td>
 <td>
 
- \| [`MetaTypeArgsType`](#metatypeargstype)\<`T`, `IsNullishT`, `IsNullableT`, `IsOptionalT`\> \| (`metaTypeImpl`: [`MetaTypeImpl`](#metatypeimpl)) => [`MetaTypeArgsType`](#metatypeargstype)\<`T`, `IsNullishT`, `IsNullableT`, `IsOptionalT`\>
+\| [`MetaTypeArgsType`](#metatypeargstype)\<`T`, `IsNullishT`, `IsNullableT`, `IsOptionalT`\> \| (`metaTypeImpl`: [`MetaTypeImpl`](#metatypeimpl)) => [`MetaTypeArgsType`](#metatypeargstype)\<`T`, `IsNullishT`, `IsNullableT`, `IsOptionalT`\>
 
 </td>
 </tr>
@@ -4317,7 +4531,7 @@ Defined in: [src/metatypes/metatype.ts:40](https://github.com/metatyper/metatype
 #### Call Signature
 
 ```ts
-function MetaType<T, IsNullishT, IsNullableT, IsOptionalT>(metaTypeImplCls: StaticClass<typeof MetaTypeImpl>, metaTypeArgs?: 
+function MetaType<T, IsNullishT, IsNullableT, IsOptionalT>(metaTypeImplCls: StaticClass<typeof MetaTypeImpl>, metaTypeArgs?:
   | MetaTypeArgsType<T, IsNullishT, IsNullableT, IsOptionalT>
 | (metaTypeImpl: MetaTypeImpl) => MetaTypeArgsType<T, IsNullishT, IsNullableT, IsOptionalT>): PrepareMetaType<T, IsNullishT, IsNullableT, IsOptionalT>;
 ```
@@ -4349,7 +4563,7 @@ Defined in: [src/metatypes/metatype.ts:54](https://github.com/metatyper/metatype
 <tr>
 <td>
 
-`IsNullishT` *extends* `boolean`
+`IsNullishT` _extends_ `boolean`
 
 </td>
 <td>
@@ -4361,7 +4575,7 @@ Defined in: [src/metatypes/metatype.ts:54](https://github.com/metatyper/metatype
 <tr>
 <td>
 
-`IsNullableT` *extends* `boolean`
+`IsNullableT` _extends_ `boolean`
 
 </td>
 <td>
@@ -4373,7 +4587,7 @@ Defined in: [src/metatypes/metatype.ts:54](https://github.com/metatyper/metatype
 <tr>
 <td>
 
-`IsOptionalT` *extends* `boolean`
+`IsOptionalT` _extends_ `boolean`
 
 </td>
 <td>
@@ -4403,7 +4617,7 @@ Defined in: [src/metatypes/metatype.ts:54](https://github.com/metatyper/metatype
 </td>
 <td>
 
-[`StaticClass`](#staticclass)\<*typeof* [`MetaTypeImpl`](#metatypeimpl)\>
+[`StaticClass`](#staticclass)\<_typeof_ [`MetaTypeImpl`](#metatypeimpl)\>
 
 </td>
 </tr>
@@ -4415,7 +4629,7 @@ Defined in: [src/metatypes/metatype.ts:54](https://github.com/metatyper/metatype
 </td>
 <td>
 
- \| [`MetaTypeArgsType`](#metatypeargstype)\<`T`, `IsNullishT`, `IsNullableT`, `IsOptionalT`\> \| (`metaTypeImpl`: [`MetaTypeImpl`](#metatypeimpl)) => [`MetaTypeArgsType`](#metatypeargstype)\<`T`, `IsNullishT`, `IsNullableT`, `IsOptionalT`\>
+\| [`MetaTypeArgsType`](#metatypeargstype)\<`T`, `IsNullishT`, `IsNullableT`, `IsOptionalT`\> \| (`metaTypeImpl`: [`MetaTypeImpl`](#metatypeimpl)) => [`MetaTypeArgsType`](#metatypeargstype)\<`T`, `IsNullishT`, `IsNullableT`, `IsOptionalT`\>
 
 </td>
 </tr>
@@ -4426,12 +4640,12 @@ Defined in: [src/metatypes/metatype.ts:54](https://github.com/metatyper/metatype
 
 [`PrepareMetaType`](#preparemetatype)\<`T`, `IsNullishT`, `IsNullableT`, `IsOptionalT`\>
 
-***
+---
 
 ### MetaTypeDeserialize()
 
 ```ts
-function MetaTypeDeserialize(this: MetaType<unknown>, value: any): any;
+function MetaTypeDeserialize(this: MetaType<unknown>, value: any): any
 ```
 
 Defined in: [src/metatypes/metatype.ts:173](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatype.ts#L173)
@@ -4479,12 +4693,18 @@ Deserializes a raw value (used when writing/deserialize operations).
 
 `any`
 
-***
+---
 
 ### MetaTypeGetMetaTypeImpl()
 
 ```ts
-function MetaTypeGetMetaTypeImpl<T>(obj: T | null | undefined): T extends MetaType<unknown, Impl> ? Impl extends MetaTypeImpl ? Impl<Impl> : MetaTypeImpl : MetaTypeImpl;
+function MetaTypeGetMetaTypeImpl<T>(
+    obj: T | null | undefined
+): T extends MetaType<unknown, Impl>
+    ? Impl extends MetaTypeImpl
+        ? Impl<Impl>
+        : MetaTypeImpl
+    : MetaTypeImpl
 ```
 
 Defined in: [src/metatypes/metatype.ts:193](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatype.ts#L193)
@@ -4503,7 +4723,7 @@ Retrieves the implementation instance bound to a runtime meta type wrapper.
 <tr>
 <td>
 
-`T` *extends* [`MetaType`](#metatype)\<`unknown`, [`MetaTypeImpl`](#metatypeimpl)\>
+`T` _extends_ [`MetaType`](#metatype)\<`unknown`, [`MetaTypeImpl`](#metatypeimpl)\>
 
 </td>
 </tr>
@@ -4537,16 +4757,16 @@ Retrieves the implementation instance bound to a runtime meta type wrapper.
 
 #### Returns
 
-`T` *extends* [`MetaType`](#metatype)\<`unknown`, `Impl`\> ? `Impl` *extends* [`MetaTypeImpl`](#metatypeimpl) ? `Impl`\<`Impl`\> : [`MetaTypeImpl`](#metatypeimpl) : [`MetaTypeImpl`](#metatypeimpl)
+`T` _extends_ [`MetaType`](#metatype)\<`unknown`, `Impl`\> ? `Impl` _extends_ [`MetaTypeImpl`](#metatypeimpl) ? `Impl`\<`Impl`\> : [`MetaTypeImpl`](#metatypeimpl) : [`MetaTypeImpl`](#metatypeimpl)
 
 The implementation if available, otherwise the base `MetaTypeImpl`.
 
-***
+---
 
 ### MetaTypeInspect()
 
 ```ts
-function MetaTypeInspect(this: MetaType<unknown>): string;
+function MetaTypeInspect(this: MetaType<unknown>): string
 ```
 
 Defined in: [src/metatypes/metatype.ts:124](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatype.ts#L124)
@@ -4582,12 +4802,12 @@ Pretty-print meta types using the underlying implementation stringifier.
 
 `string`
 
-***
+---
 
 ### MetaTypeIsMetaType()
 
 ```ts
-function MetaTypeIsMetaType(obj: any): boolean;
+function MetaTypeIsMetaType(obj: any): boolean
 ```
 
 Defined in: [src/metatypes/metatype.ts:182](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatype.ts#L182)
@@ -4623,12 +4843,12 @@ Type guard to check whether a value is a runtime meta type wrapper.
 
 `boolean`
 
-***
+---
 
 ### MetaTypeSerialize()
 
 ```ts
-function MetaTypeSerialize(this: MetaType<unknown>, value: any): any;
+function MetaTypeSerialize(this: MetaType<unknown>, value: any): any
 ```
 
 Defined in: [src/metatypes/metatype.ts:162](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatype.ts#L162)
@@ -4676,12 +4896,12 @@ Serializes a value using the meta type's serializers (used when reading/serializ
 
 `any`
 
-***
+---
 
 ### MetaTypeToString()
 
 ```ts
-function MetaTypeToString(this: MetaType<unknown>): string;
+function MetaTypeToString(this: MetaType<unknown>): string
 ```
 
 Defined in: [src/metatypes/metatype.ts:131](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatype.ts#L131)
@@ -4715,17 +4935,18 @@ Defined in: [src/metatypes/metatype.ts:131](https://github.com/metatyper/metatyp
 
 `string`
 
-***
+---
 
 ### MetaTypeValidate()
 
 ```ts
 function MetaTypeValidate(
-   this: MetaType<unknown>, 
-   value: any, 
-   args?: {
-  stopAtFirstError?: boolean;
-}): ValidationError | undefined;
+    this: MetaType<unknown>,
+    value: any,
+    args?: {
+        stopAtFirstError?: boolean
+    }
+): ValidationError | undefined
 ```
 
 Defined in: [src/metatypes/metatype.ts:143](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatype.ts#L143)
@@ -4818,15 +5039,16 @@ Optional validation options (currently only `stopAtFirstError`).
 
 [`ValidationError`](#validationerror) \| `undefined`
 
-***
+---
 
 ### MetaValidate()
 
 ```ts
 function MetaValidate(
-   metaObjectOrProto: object, 
-   rawObject: object, 
-   validateArgs?: ValidateMetaObjectArgsType): ValidationError | undefined;
+    metaObjectOrProto: object,
+    rawObject: object,
+    validateArgs?: ValidateMetaObjectArgsType
+): ValidationError | undefined
 ```
 
 Defined in: [src/metaobjects/meta.ts:667](https://github.com/metatyper/metatyper/blob/main/src/metaobjects/meta.ts#L667)
@@ -4908,8 +5130,8 @@ arguments to customize the validation behavior, such as disabling throwing error
 
 ```ts
 const userSchema = {
-  id: NUMBER(),
-  name: STRING({ minLength: 3 })
+    id: NUMBER(),
+    name: STRING({ minLength: 3 })
 }
 
 const validUser = { id: 1, name: 'John Doe' }
@@ -4922,12 +5144,12 @@ const error = Meta.validate(userSchema, invalidUser)
 // error instanceof ValidationError
 ```
 
-***
+---
 
 ### MetaValidationIsActive()
 
 ```ts
-function MetaValidationIsActive(metaObject: object): boolean;
+function MetaValidationIsActive(metaObject: object): boolean
 ```
 
 Defined in: [src/metaobjects/meta.ts:452](https://github.com/metatyper/metatyper/blob/main/src/metaobjects/meta.ts#L452)
@@ -4988,18 +5210,15 @@ Meta.disableValidation(metaObject)
 console.log(Meta.validationIsActive(metaObject)) // false
 ```
 
-***
+---
 
 ### MinLengthValidatorBuilder()
 
 ```ts
-function MinLengthValidatorBuilder(length: number): {
-  name: string;
-  validate: (__namedParameters: ValidatorArgsType) => boolean;
-};
+function MinLengthValidatorBuilder(minLength: number): ValidatorType
 ```
 
-Defined in: [src/validators/lengthValidators.ts:16](https://github.com/metatyper/metatyper/blob/main/src/validators/lengthValidators.ts#L16)
+Defined in: [src/validators/lengthValidators.ts:19](https://github.com/metatyper/metatyper/blob/main/src/validators/lengthValidators.ts#L19)
 
 Creates a validator ensuring value length is at least `length`.
 
@@ -5016,7 +5235,7 @@ Creates a validator ensuring value length is at least `length`.
 <tr>
 <td>
 
-`length`
+`minLength`
 
 </td>
 <td>
@@ -5030,79 +5249,14 @@ Creates a validator ensuring value length is at least `length`.
 
 #### Returns
 
-```ts
-{
-  name: string;
-  validate: (__namedParameters: ValidatorArgsType) => boolean;
-}
-```
+[`ValidatorType`](#validatortype)
 
-<table>
-<thead>
-<tr>
-<th>Name</th>
-<th>Type</th>
-<th>Default value</th>
-<th>Defined in</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>
-
-`name`
-
-</td>
-<td>
-
-`string`
-
-</td>
-<td>
-
-`'MinLength'`
-
-</td>
-<td>
-
-[src/validators/lengthValidators.ts:17](https://github.com/metatyper/metatyper/blob/main/src/validators/lengthValidators.ts#L17)
-
-</td>
-</tr>
-<tr>
-<td>
-
-`validate()`
-
-</td>
-<td>
-
-(`__namedParameters`: [`ValidatorArgsType`](#validatorargstype)) => `boolean`
-
-</td>
-<td>
-
-&hyphen;
-
-</td>
-<td>
-
-[src/validators/lengthValidators.ts:18](https://github.com/metatyper/metatyper/blob/main/src/validators/lengthValidators.ts#L18)
-
-</td>
-</tr>
-</tbody>
-</table>
-
-***
+---
 
 ### MinValidatorBuilder()
 
 ```ts
-function MinValidatorBuilder(min: any): {
-  name: string;
-  validate: (__namedParameters: ValidatorArgsType) => boolean;
-};
+function MinValidatorBuilder(min: any): ValidatorType
 ```
 
 Defined in: [src/validators/minMaxValidators.ts:4](https://github.com/metatyper/metatyper/blob/main/src/validators/minMaxValidators.ts#L4)
@@ -5136,76 +5290,16 @@ Creates a validator enforcing `value >= min`.
 
 #### Returns
 
-```ts
-{
-  name: string;
-  validate: (__namedParameters: ValidatorArgsType) => boolean;
-}
-```
+[`ValidatorType`](#validatortype)
 
-<table>
-<thead>
-<tr>
-<th>Name</th>
-<th>Type</th>
-<th>Default value</th>
-<th>Defined in</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>
-
-`name`
-
-</td>
-<td>
-
-`string`
-
-</td>
-<td>
-
-`'Min'`
-
-</td>
-<td>
-
-[src/validators/minMaxValidators.ts:5](https://github.com/metatyper/metatyper/blob/main/src/validators/minMaxValidators.ts#L5)
-
-</td>
-</tr>
-<tr>
-<td>
-
-`validate()`
-
-</td>
-<td>
-
-(`__namedParameters`: [`ValidatorArgsType`](#validatorargstype)) => `boolean`
-
-</td>
-<td>
-
-&hyphen;
-
-</td>
-<td>
-
-[src/validators/minMaxValidators.ts:6](https://github.com/metatyper/metatyper/blob/main/src/validators/minMaxValidators.ts#L6)
-
-</td>
-</tr>
-</tbody>
-</table>
-
-***
+---
 
 ### NUMBER()
 
 ```ts
-function NUMBER<IsNullishT, IsNullableT, IsOptionalT>(args?: NumbersMetaTypeArgs<NUMBER, IsNullishT, IsNullableT, IsOptionalT>): PrepareMetaType<NUMBER, IsNullishT, IsNullableT, IsOptionalT>;
+function NUMBER<IsNullishT, IsNullableT, IsOptionalT>(
+    args?: NumbersMetaTypeArgs<NUMBER, IsNullishT, IsNullableT, IsOptionalT>
+): PrepareMetaType<NUMBER, IsNullishT, IsNullableT, IsOptionalT>
 ```
 
 Defined in: [src/metatypes/types/number.ts:107](https://github.com/metatyper/metatyper/blob/main/src/metatypes/types/number.ts#L107)
@@ -5225,7 +5319,7 @@ Creates a number meta type (double precision) with optional range constraints.
 <tr>
 <td>
 
-`IsNullishT` *extends* `boolean`
+`IsNullishT` _extends_ `boolean`
 
 </td>
 <td>
@@ -5237,7 +5331,7 @@ Creates a number meta type (double precision) with optional range constraints.
 <tr>
 <td>
 
-`IsNullableT` *extends* `boolean`
+`IsNullableT` _extends_ `boolean`
 
 </td>
 <td>
@@ -5249,7 +5343,7 @@ Creates a number meta type (double precision) with optional range constraints.
 <tr>
 <td>
 
-`IsOptionalT` *extends* `boolean`
+`IsOptionalT` _extends_ `boolean`
 
 </td>
 <td>
@@ -5304,14 +5398,34 @@ obj.score = 1.2
 obj.score = 'str' // validation error
 ```
 
-***
+---
 
 ### OBJECT()
 
 #### Call Signature
 
 ```ts
-function OBJECT<T, RequiredKeysArrayT, IsNullishT, IsNullableT, IsOptionalT, IsFrozenT, PreparedT, ResultT, RArgT>(subType: T, args?: ObjectMetaTypeArgs<RArgT, [...RequiredKeysArrayT[]], IsNullishT, IsNullableT, IsOptionalT, IsFrozenT>): PrepareMetaType<ResultT, IsNullishT, IsNullableT, IsOptionalT>;
+function OBJECT<
+    T,
+    RequiredKeysArrayT,
+    IsNullishT,
+    IsNullableT,
+    IsOptionalT,
+    IsFrozenT,
+    PreparedT,
+    ResultT,
+    RArgT
+>(
+    subType: T,
+    args?: ObjectMetaTypeArgs<
+        RArgT,
+        [...RequiredKeysArrayT[]],
+        IsNullishT,
+        IsNullableT,
+        IsOptionalT,
+        IsFrozenT
+    >
+): PrepareMetaType<ResultT, IsNullishT, IsNullableT, IsOptionalT>
 ```
 
 Defined in: [src/metatypes/types/object.ts:274](https://github.com/metatyper/metatyper/blob/main/src/metatypes/types/object.ts#L274)
@@ -5332,7 +5446,7 @@ every property (record mode).
 <tr>
 <td>
 
-`T` *extends* [`ObjectFlag`](#objectflag)
+`T` _extends_ [`ObjectFlag`](#objectflag)
 
 </td>
 <td>
@@ -5344,7 +5458,7 @@ every property (record mode).
 <tr>
 <td>
 
-`RequiredKeysArrayT` *extends* `string`[]
+`RequiredKeysArrayT` _extends_ `string`[]
 
 </td>
 <td>
@@ -5356,7 +5470,7 @@ every property (record mode).
 <tr>
 <td>
 
-`IsNullishT` *extends* `boolean`
+`IsNullishT` _extends_ `boolean`
 
 </td>
 <td>
@@ -5368,7 +5482,7 @@ every property (record mode).
 <tr>
 <td>
 
-`IsNullableT` *extends* `boolean`
+`IsNullableT` _extends_ `boolean`
 
 </td>
 <td>
@@ -5380,7 +5494,7 @@ every property (record mode).
 <tr>
 <td>
 
-`IsOptionalT` *extends* `boolean`
+`IsOptionalT` _extends_ `boolean`
 
 </td>
 <td>
@@ -5392,7 +5506,7 @@ every property (record mode).
 <tr>
 <td>
 
-`IsFrozenT` *extends* `boolean`
+`IsFrozenT` _extends_ `boolean`
 
 </td>
 <td>
@@ -5409,7 +5523,7 @@ every property (record mode).
 </td>
 <td>
 
-`T` *extends* `Record`\<`string` \| `number` \| `symbol`, `never`\> ? `any` : `T` *extends* [`MetaTypeImpl`](#metatypeimpl) ? `unknown` : `T`
+`T` _extends_ `Record`\<`string` \| `number` \| `symbol`, `never`\> ? `any` : `T` _extends_ [`MetaTypeImpl`](#metatypeimpl) ? `unknown` : `T`
 
 </td>
 </tr>
@@ -5421,7 +5535,7 @@ every property (record mode).
 </td>
 <td>
 
-[`OBJECT`](#object)\<\[`RequiredKeysArrayT`\] *extends* \[`never`\] ? `IsFrozenT` *extends* `true` ? `Readonly`\<`Record`\<`string`, `PreparedT`\>\> : `Record`\<`string`, `PreparedT`\> : `IsFrozenT` *extends* `true` ? `{ readonly [k in string]: PreparedT }` & `Readonly`\<`Record`\<`string`, `PreparedT`\>\> : `{ [k in string]: PreparedT }` & `Record`\<`string`, `PreparedT`\>\>
+[`OBJECT`](#object)\<\[`RequiredKeysArrayT`\] _extends_ \[`never`\] ? `IsFrozenT` _extends_ `true` ? `Readonly`\<`Record`\<`string`, `PreparedT`\>\> : `Record`\<`string`, `PreparedT`\> : `IsFrozenT` _extends_ `true` ? `{ readonly [k in string]: PreparedT }` & `Readonly`\<`Record`\<`string`, `PreparedT`\>\> : `{ [k in string]: PreparedT }` & `Record`\<`string`, `PreparedT`\>\>
 
 </td>
 </tr>
@@ -5520,7 +5634,27 @@ obj2.c = { _someKey: 10 } // type & validation error
 #### Call Signature
 
 ```ts
-function OBJECT<T, RequiredKeysArrayT, IsNullishT, IsNullableT, IsOptionalT, IsFrozenT, PreparedT, ResultT, RArgT>(subType: (metaTypeImpl: ObjectImpl) => T, args?: ObjectMetaTypeArgs<RArgT, [...RequiredKeysArrayT[]], IsNullishT, IsNullableT, IsOptionalT, IsFrozenT>): PrepareMetaType<ResultT, IsNullishT, IsNullableT, IsOptionalT>;
+function OBJECT<
+    T,
+    RequiredKeysArrayT,
+    IsNullishT,
+    IsNullableT,
+    IsOptionalT,
+    IsFrozenT,
+    PreparedT,
+    ResultT,
+    RArgT
+>(
+    subType: (metaTypeImpl: ObjectImpl) => T,
+    args?: ObjectMetaTypeArgs<
+        RArgT,
+        [...RequiredKeysArrayT[]],
+        IsNullishT,
+        IsNullableT,
+        IsOptionalT,
+        IsFrozenT
+    >
+): PrepareMetaType<ResultT, IsNullishT, IsNullableT, IsOptionalT>
 ```
 
 Defined in: [src/metatypes/types/object.ts:306](https://github.com/metatyper/metatyper/blob/main/src/metatypes/types/object.ts#L306)
@@ -5541,7 +5675,7 @@ every property (record mode).
 <tr>
 <td>
 
-`T` *extends* [`ObjectFlag`](#objectflag)
+`T` _extends_ [`ObjectFlag`](#objectflag)
 
 </td>
 <td>
@@ -5553,7 +5687,7 @@ every property (record mode).
 <tr>
 <td>
 
-`RequiredKeysArrayT` *extends* `string`[]
+`RequiredKeysArrayT` _extends_ `string`[]
 
 </td>
 <td>
@@ -5565,7 +5699,7 @@ every property (record mode).
 <tr>
 <td>
 
-`IsNullishT` *extends* `boolean`
+`IsNullishT` _extends_ `boolean`
 
 </td>
 <td>
@@ -5577,7 +5711,7 @@ every property (record mode).
 <tr>
 <td>
 
-`IsNullableT` *extends* `boolean`
+`IsNullableT` _extends_ `boolean`
 
 </td>
 <td>
@@ -5589,7 +5723,7 @@ every property (record mode).
 <tr>
 <td>
 
-`IsOptionalT` *extends* `boolean`
+`IsOptionalT` _extends_ `boolean`
 
 </td>
 <td>
@@ -5601,7 +5735,7 @@ every property (record mode).
 <tr>
 <td>
 
-`IsFrozenT` *extends* `boolean`
+`IsFrozenT` _extends_ `boolean`
 
 </td>
 <td>
@@ -5618,7 +5752,7 @@ every property (record mode).
 </td>
 <td>
 
-`T` *extends* `Record`\<`string` \| `number` \| `symbol`, `never`\> ? `any` : `T` *extends* [`MetaTypeImpl`](#metatypeimpl) ? `unknown` : `T`
+`T` _extends_ `Record`\<`string` \| `number` \| `symbol`, `never`\> ? `any` : `T` _extends_ [`MetaTypeImpl`](#metatypeimpl) ? `unknown` : `T`
 
 </td>
 </tr>
@@ -5630,7 +5764,7 @@ every property (record mode).
 </td>
 <td>
 
-[`OBJECT`](#object)\<\[`RequiredKeysArrayT`\] *extends* \[`never`\] ? `IsFrozenT` *extends* `true` ? `Readonly`\<`Record`\<`string`, `PreparedT`\>\> : `Record`\<`string`, `PreparedT`\> : `IsFrozenT` *extends* `true` ? `{ readonly [k in string]: PreparedT }` & `Readonly`\<`Record`\<`string`, `PreparedT`\>\> : `{ [k in string]: PreparedT }` & `Record`\<`string`, `PreparedT`\>\>
+[`OBJECT`](#object)\<\[`RequiredKeysArrayT`\] _extends_ \[`never`\] ? `IsFrozenT` _extends_ `true` ? `Readonly`\<`Record`\<`string`, `PreparedT`\>\> : `Record`\<`string`, `PreparedT`\> : `IsFrozenT` _extends_ `true` ? `{ readonly [k in string]: PreparedT }` & `Readonly`\<`Record`\<`string`, `PreparedT`\>\> : `{ [k in string]: PreparedT }` & `Record`\<`string`, `PreparedT`\>\>
 
 </td>
 </tr>
@@ -5729,7 +5863,7 @@ obj2.c = { _someKey: 10 } // type & validation error
 #### Call Signature
 
 ```ts
-function OBJECT<T, RequiredKeysArrayT, IsNullishT, IsNullableT, IsOptionalT, IsFrozenT, ResultT, RArgT>(subType: 
+function OBJECT<T, RequiredKeysArrayT, IsNullishT, IsNullableT, IsOptionalT, IsFrozenT, ResultT, RArgT>(subType:
   | MetaTypeImpl
 | (metaTypeImpl: ObjectImpl) => MetaTypeImpl, args?: ObjectMetaTypeArgs<RArgT, [...RequiredKeysArrayT[]], IsNullishT, IsNullableT, IsOptionalT, IsFrozenT>): PrepareMetaType<ResultT, IsNullishT, IsNullableT, IsOptionalT>;
 ```
@@ -5764,7 +5898,7 @@ every property (record mode).
 <tr>
 <td>
 
-`RequiredKeysArrayT` *extends* `string`[]
+`RequiredKeysArrayT` _extends_ `string`[]
 
 </td>
 <td>
@@ -5776,7 +5910,7 @@ every property (record mode).
 <tr>
 <td>
 
-`IsNullishT` *extends* `boolean`
+`IsNullishT` _extends_ `boolean`
 
 </td>
 <td>
@@ -5788,7 +5922,7 @@ every property (record mode).
 <tr>
 <td>
 
-`IsNullableT` *extends* `boolean`
+`IsNullableT` _extends_ `boolean`
 
 </td>
 <td>
@@ -5800,7 +5934,7 @@ every property (record mode).
 <tr>
 <td>
 
-`IsOptionalT` *extends* `boolean`
+`IsOptionalT` _extends_ `boolean`
 
 </td>
 <td>
@@ -5812,7 +5946,7 @@ every property (record mode).
 <tr>
 <td>
 
-`IsFrozenT` *extends* `boolean`
+`IsFrozenT` _extends_ `boolean`
 
 </td>
 <td>
@@ -5829,7 +5963,7 @@ every property (record mode).
 </td>
 <td>
 
-[`OBJECT`](#object)\<\[`RequiredKeysArrayT`\] *extends* \[`never`\] ? `IsFrozenT` *extends* `true` ? `Readonly`\<`Record`\<`string`, `T`\>\> : `Record`\<`string`, `T`\> : `IsFrozenT` *extends* `true` ? `{ readonly [k in string]: T }` & `Readonly`\<`Record`\<`string`, `T`\>\> : `{ [k in string]: T }` & `Record`\<`string`, `T`\>\>
+[`OBJECT`](#object)\<\[`RequiredKeysArrayT`\] _extends_ \[`never`\] ? `IsFrozenT` _extends_ `true` ? `Readonly`\<`Record`\<`string`, `T`\>\> : `Record`\<`string`, `T`\> : `IsFrozenT` _extends_ `true` ? `{ readonly [k in string]: T }` & `Readonly`\<`Record`\<`string`, `T`\>\> : `{ [k in string]: T }` & `Record`\<`string`, `T`\>\>
 
 </td>
 </tr>
@@ -5867,7 +6001,7 @@ every property (record mode).
 </td>
 <td>
 
- \| [`MetaTypeImpl`](#metatypeimpl) \| (`metaTypeImpl`: [`ObjectImpl`](#objectimpl)) => [`MetaTypeImpl`](#metatypeimpl)
+\| [`MetaTypeImpl`](#metatypeimpl) \| (`metaTypeImpl`: [`ObjectImpl`](#objectimpl)) => [`MetaTypeImpl`](#metatypeimpl)
 
 </td>
 <td>
@@ -5949,7 +6083,7 @@ every property (record mode).
 <tr>
 <td>
 
-`T` *extends* [`MetaTypeFlag`](#metatypeflag) \| `null` \| `undefined`
+`T` _extends_ [`MetaTypeFlag`](#metatypeflag) \| `null` \| `undefined`
 
 </td>
 <td>
@@ -5961,7 +6095,7 @@ every property (record mode).
 <tr>
 <td>
 
-`RequiredKeysArrayT` *extends* `string`[]
+`RequiredKeysArrayT` _extends_ `string`[]
 
 </td>
 <td>
@@ -5973,7 +6107,7 @@ every property (record mode).
 <tr>
 <td>
 
-`IsNullishT` *extends* `boolean`
+`IsNullishT` _extends_ `boolean`
 
 </td>
 <td>
@@ -5985,7 +6119,7 @@ every property (record mode).
 <tr>
 <td>
 
-`IsNullableT` *extends* `boolean`
+`IsNullableT` _extends_ `boolean`
 
 </td>
 <td>
@@ -5997,7 +6131,7 @@ every property (record mode).
 <tr>
 <td>
 
-`IsOptionalT` *extends* `boolean`
+`IsOptionalT` _extends_ `boolean`
 
 </td>
 <td>
@@ -6009,7 +6143,7 @@ every property (record mode).
 <tr>
 <td>
 
-`IsFrozenT` *extends* `boolean`
+`IsFrozenT` _extends_ `boolean`
 
 </td>
 <td>
@@ -6026,7 +6160,7 @@ every property (record mode).
 </td>
 <td>
 
-`T` *extends* `Record`\<`string` \| `number` \| `symbol`, `never`\> ? `any` : `T` *extends* [`MetaTypeImpl`](#metatypeimpl) ? `unknown` : `T`
+`T` _extends_ `Record`\<`string` \| `number` \| `symbol`, `never`\> ? `any` : `T` _extends_ [`MetaTypeImpl`](#metatypeimpl) ? `unknown` : `T`
 
 </td>
 </tr>
@@ -6038,7 +6172,7 @@ every property (record mode).
 </td>
 <td>
 
-[`OBJECT`](#object)\<\[`RequiredKeysArrayT`\] *extends* \[`never`\] ? `IsFrozenT` *extends* `true` ? `Readonly`\<`Record`\<`string`, `PreparedT`\>\> : `Record`\<`string`, `PreparedT`\> : `IsFrozenT` *extends* `true` ? `{ readonly [k in string]: PreparedT }` & `Readonly`\<`Record`\<`string`, `PreparedT`\>\> : `{ [k in string]: PreparedT }` & `Record`\<`string`, `PreparedT`\>\>
+[`OBJECT`](#object)\<\[`RequiredKeysArrayT`\] _extends_ \[`never`\] ? `IsFrozenT` _extends_ `true` ? `Readonly`\<`Record`\<`string`, `PreparedT`\>\> : `Record`\<`string`, `PreparedT`\> : `IsFrozenT` _extends_ `true` ? `{ readonly [k in string]: PreparedT }` & `Readonly`\<`Record`\<`string`, `PreparedT`\>\> : `{ [k in string]: PreparedT }` & `Record`\<`string`, `PreparedT`\>\>
 
 </td>
 </tr>
@@ -6158,7 +6292,7 @@ every property (record mode).
 <tr>
 <td>
 
-`T` *extends* `Record`\<`string` \| `number` \| `symbol`, `any`\>
+`T` _extends_ `Record`\<`string` \| `number` \| `symbol`, `any`\>
 
 </td>
 <td>
@@ -6170,7 +6304,7 @@ every property (record mode).
 <tr>
 <td>
 
-`IsNullishT` *extends* `boolean`
+`IsNullishT` _extends_ `boolean`
 
 </td>
 <td>
@@ -6182,7 +6316,7 @@ every property (record mode).
 <tr>
 <td>
 
-`IsNullableT` *extends* `boolean`
+`IsNullableT` _extends_ `boolean`
 
 </td>
 <td>
@@ -6194,7 +6328,7 @@ every property (record mode).
 <tr>
 <td>
 
-`IsOptionalT` *extends* `boolean`
+`IsOptionalT` _extends_ `boolean`
 
 </td>
 <td>
@@ -6206,7 +6340,7 @@ every property (record mode).
 <tr>
 <td>
 
-`IsFrozenT` *extends* `boolean`
+`IsFrozenT` _extends_ `boolean`
 
 </td>
 <td>
@@ -6218,7 +6352,7 @@ every property (record mode).
 <tr>
 <td>
 
-`KeysT` *extends* `string` \| `number` \| `symbol`
+`KeysT` _extends_ `string` \| `number` \| `symbol`
 
 </td>
 <td>
@@ -6230,7 +6364,7 @@ every property (record mode).
 <tr>
 <td>
 
-`RequiredKeysT` *extends* `string` \| `number` \| `symbol`
+`RequiredKeysT` _extends_ `string` \| `number` \| `symbol`
 
 </td>
 <td>
@@ -6242,7 +6376,7 @@ every property (record mode).
 <tr>
 <td>
 
-`OptionalKeysT` *extends* `string` \| `number` \| `symbol`
+`OptionalKeysT` _extends_ `string` \| `number` \| `symbol`
 
 </td>
 <td>
@@ -6259,7 +6393,7 @@ every property (record mode).
 </td>
 <td>
 
-\[`RequiredKeysT`\] *extends* \[`never`\] ? `unknown` : \{ \[k in string \| number \| symbol\]-?: T\[k\] extends MetaTypeImpl ? unknown : T\[k\] \} & \[`OptionalKeysT`\] *extends* \[`never`\] ? `unknown` : \{ \[k in string \| number \| symbol\]?: T\[k\] extends MetaTypeImpl ? unknown : T\[k\] \}
+\[`RequiredKeysT`\] _extends_ \[`never`\] ? `unknown` : \{ \[k in string \| number \| symbol\]-?: T\[k\] extends MetaTypeImpl ? unknown : T\[k\] \} & \[`OptionalKeysT`\] _extends_ \[`never`\] ? `unknown` : \{ \[k in string \| number \| symbol\]?: T\[k\] extends MetaTypeImpl ? unknown : T\[k\] \}
 
 </td>
 </tr>
@@ -6271,7 +6405,7 @@ every property (record mode).
 </td>
 <td>
 
-[`OBJECT`](#object)\<`T` *extends* `any`[] ? `IsFrozenT` *extends* `true` ? \{ readonly \[k in string \| number \| symbol\]: T\<T\>\[k\] extends MetaTypeImpl ? unknown : T\<T\>\[k\] \} : \{ \[k in string \| number \| symbol\]: T\<T\>\[k\] extends MetaTypeImpl ? unknown : T\<T\>\[k\] \} : `IsFrozenT` *extends* `true` ? \{ readonly \[key in string \| number \| symbol\]: ResultObjectT\[key\] \} : \{ \[key in string \| number \| symbol\]: ResultObjectT\[key\] \}\>
+[`OBJECT`](#object)\<`T` _extends_ `any`[] ? `IsFrozenT` _extends_ `true` ? \{ readonly \[k in string \| number \| symbol\]: T\<T\>\[k\] extends MetaTypeImpl ? unknown : T\<T\>\[k\] \} : \{ \[k in string \| number \| symbol\]: T\<T\>\[k\] extends MetaTypeImpl ? unknown : T\<T\>\[k\] \} : `IsFrozenT` _extends_ `true` ? \{ readonly \[key in string \| number \| symbol\]: ResultObjectT\[key\] \} : \{ \[key in string \| number \| symbol\]: ResultObjectT\[key\] \}\>
 
 </td>
 </tr>
@@ -6326,7 +6460,7 @@ Schema object, meta type, or factory describing the object structure.
 </td>
 <td>
 
-[`ObjectMetaTypeArgs`](#objectmetatypeargs)\<`RArgT`, `T` *extends* `any`[] ? `never`[] : `RequiredKeysT`[], `IsNullishT`, `IsNullableT`, `IsOptionalT`, `IsFrozenT`\>
+[`ObjectMetaTypeArgs`](#objectmetatypeargs)\<`RArgT`, `T` _extends_ `any`[] ? `never`[] : `RequiredKeysT`[], `IsNullishT`, `IsNullableT`, `IsOptionalT`, `IsFrozenT`\>
 
 </td>
 <td>
@@ -6367,15 +6501,225 @@ obj2.c = { _someKey: true }
 obj2.c = { _someKey: 10 } // type & validation error
 ```
 
-***
+---
+
+### PASSWORD()
+
+```ts
+function PASSWORD<IsNullishT, IsNullableT, IsOptionalT>(
+    args?: PasswordMetaTypeArgs<PASSWORD, IsNullishT, IsNullableT, IsOptionalT>
+): PASSWORD
+```
+
+Defined in: src/metatypes/types/password.ts:39
+
+Creates a password meta type with configurable character requirements and length.
+
+#### Type Parameters
+
+<table>
+<thead>
+<tr>
+<th>Type Parameter</th>
+<th>Default type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+
+`IsNullishT` _extends_ `boolean`
+
+</td>
+<td>
+
+`false`
+
+</td>
+</tr>
+<tr>
+<td>
+
+`IsNullableT` _extends_ `boolean`
+
+</td>
+<td>
+
+`IsNullishT`
+
+</td>
+</tr>
+<tr>
+<td>
+
+`IsOptionalT` _extends_ `boolean`
+
+</td>
+<td>
+
+`IsNullishT`
+
+</td>
+</tr>
+</tbody>
+</table>
+
+#### Parameters
+
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+
+`args?`
+
+</td>
+<td>
+
+[`PasswordMetaTypeArgs`](#passwordmetatypeargs)\<[`PASSWORD`](#password), `IsNullishT`, `IsNullableT`, `IsOptionalT`\>
+
+</td>
+<td>
+
+[PasswordMetaTypeArgs](#passwordmetatypeargs) controlling character classes and length.
+
+</td>
+</tr>
+</tbody>
+</table>
+
+#### Returns
+
+[`PASSWORD`](#password)
+
+#### Example
+
+```ts
+const obj = Meta({ password: PASSWORD() })
+obj.password = 'short' // validation error (min 6)
+obj.password = 'password' // validation error (no number / special / upper)
+obj.password = 'P@ssw0rd' // ok
+```
+
+---
+
+### PHONE()
+
+```ts
+function PHONE<IsNullishT, IsNullableT, IsOptionalT>(
+    args?: Omit<StringMetaTypeArgs<PHONE, IsNullishT, IsNullableT, IsOptionalT>, 'regexp'>
+): PHONE
+```
+
+Defined in: src/metatypes/types/phone.ts:17
+
+Creates a phone meta type for E.164-like international phone numbers.
+
+#### Type Parameters
+
+<table>
+<thead>
+<tr>
+<th>Type Parameter</th>
+<th>Default type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+
+`IsNullishT` _extends_ `boolean`
+
+</td>
+<td>
+
+`false`
+
+</td>
+</tr>
+<tr>
+<td>
+
+`IsNullableT` _extends_ `boolean`
+
+</td>
+<td>
+
+`IsNullishT`
+
+</td>
+</tr>
+<tr>
+<td>
+
+`IsOptionalT` _extends_ `boolean`
+
+</td>
+<td>
+
+`IsNullishT`
+
+</td>
+</tr>
+</tbody>
+</table>
+
+#### Parameters
+
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+
+`args?`
+
+</td>
+<td>
+
+`Omit`\<[`StringMetaTypeArgs`](#stringmetatypeargs)\<[`PHONE`](#phone), `IsNullishT`, `IsNullableT`, `IsOptionalT`\>, `"regexp"`\>
+
+</td>
+<td>
+
+[StringMetaTypeArgs](#stringmetatypeargs) controlling min/max length, casing, etc.
+
+</td>
+</tr>
+</tbody>
+</table>
+
+#### Returns
+
+[`PHONE`](#phone)
+
+#### Example
+
+```ts
+const obj = Meta({ phone: PHONE() })
+obj.phone = '12345' // validation error
+obj.phone = '+1234567890' // ok
+```
+
+---
 
 ### RegExpValidatorBuilder()
 
 ```ts
-function RegExpValidatorBuilder(regexp: string | RegExp): {
-  name: string;
-  validate: (__namedParameters: ValidatorArgsType) => boolean;
-};
+function RegExpValidatorBuilder(regexp: string | RegExp): ValidatorType
 ```
 
 Defined in: [src/validators/regexpValidator.ts:4](https://github.com/metatyper/metatyper/blob/main/src/validators/regexpValidator.ts#L4)
@@ -6409,79 +6753,20 @@ Creates a validator ensuring string values match the provided regexp.
 
 #### Returns
 
-```ts
-{
-  name: string;
-  validate: (__namedParameters: ValidatorArgsType) => boolean;
-}
-```
+[`ValidatorType`](#validatortype)
 
-<table>
-<thead>
-<tr>
-<th>Name</th>
-<th>Type</th>
-<th>Default value</th>
-<th>Defined in</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>
-
-`name`
-
-</td>
-<td>
-
-`string`
-
-</td>
-<td>
-
-`'RegExp'`
-
-</td>
-<td>
-
-[src/validators/regexpValidator.ts:5](https://github.com/metatyper/metatyper/blob/main/src/validators/regexpValidator.ts#L5)
-
-</td>
-</tr>
-<tr>
-<td>
-
-`validate()`
-
-</td>
-<td>
-
-(`__namedParameters`: [`ValidatorArgsType`](#validatorargstype)) => `boolean`
-
-</td>
-<td>
-
-&hyphen;
-
-</td>
-<td>
-
-[src/validators/regexpValidator.ts:6](https://github.com/metatyper/metatyper/blob/main/src/validators/regexpValidator.ts#L6)
-
-</td>
-</tr>
-</tbody>
-</table>
-
-***
+---
 
 ### ReplaceValuesDeSerializerBuilder()
 
 ```ts
-function ReplaceValuesDeSerializerBuilder(fromValues: any[], toValue: any): {
-  deserialize: (args: DeSerializerArgsType) => any;
-  name: string;
-};
+function ReplaceValuesDeSerializerBuilder(
+    fromValues: any[],
+    toValue: any
+): {
+    deserialize: (args: DeSerializerArgsType) => any
+    name: string
+}
 ```
 
 Defined in: [src/serializers/replaceValues.ts:25](https://github.com/metatyper/metatyper/blob/main/src/serializers/replaceValues.ts#L25)
@@ -6540,8 +6825,8 @@ Replacement value.
 
 ```ts
 {
-  deserialize: (args: DeSerializerArgsType) => any;
-  name: string;
+    deserialize: (args: DeSerializerArgsType) => any
+    name: string
 }
 ```
 
@@ -6602,12 +6887,120 @@ Replacement value.
 </tbody>
 </table>
 
-***
+---
+
+### SLUG()
+
+```ts
+function SLUG<IsNullishT, IsNullableT, IsOptionalT>(
+    args?: Omit<StringMetaTypeArgs<SLUG, IsNullishT, IsNullableT, IsOptionalT>, 'regexp'>
+): SLUG
+```
+
+Defined in: src/metatypes/types/slug.ts:16
+
+Creates a slug meta type (e.g. "my-blog-post-1").
+
+#### Type Parameters
+
+<table>
+<thead>
+<tr>
+<th>Type Parameter</th>
+<th>Default type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+
+`IsNullishT` _extends_ `boolean`
+
+</td>
+<td>
+
+`false`
+
+</td>
+</tr>
+<tr>
+<td>
+
+`IsNullableT` _extends_ `boolean`
+
+</td>
+<td>
+
+`IsNullishT`
+
+</td>
+</tr>
+<tr>
+<td>
+
+`IsOptionalT` _extends_ `boolean`
+
+</td>
+<td>
+
+`IsNullishT`
+
+</td>
+</tr>
+</tbody>
+</table>
+
+#### Parameters
+
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+
+`args?`
+
+</td>
+<td>
+
+`Omit`\<[`StringMetaTypeArgs`](#stringmetatypeargs)\<[`SLUG`](#slug), `IsNullishT`, `IsNullableT`, `IsOptionalT`\>, `"regexp"`\>
+
+</td>
+<td>
+
+[StringMetaTypeArgs](#stringmetatypeargs) controlling min/max length, casing, etc.
+
+</td>
+</tr>
+</tbody>
+</table>
+
+#### Returns
+
+[`SLUG`](#slug)
+
+#### Example
+
+```ts
+const obj = Meta({ slug: SLUG() })
+obj.slug = 'Not A Slug' // validation error
+obj.slug = 'my-blog-post-1' // ok
+```
+
+---
 
 ### STRING()
 
 ```ts
-function STRING<IsNullishT, IsNullableT, IsOptionalT>(args?: StringMetaTypeArgs<STRING, IsNullishT, IsNullableT, IsOptionalT>): PrepareMetaType<STRING, IsNullishT, IsNullableT, IsOptionalT>;
+function STRING<IsNullishT, IsNullableT, IsOptionalT>(
+    args?: StringMetaTypeArgs<STRING, IsNullishT, IsNullableT, IsOptionalT>
+): PrepareMetaType<STRING, IsNullishT, IsNullableT, IsOptionalT>
 ```
 
 Defined in: [src/metatypes/types/string.ts:110](https://github.com/metatyper/metatyper/blob/main/src/metatypes/types/string.ts#L110)
@@ -6627,7 +7020,7 @@ Creates a string meta type with length/regexp/casing options plus standard meta 
 <tr>
 <td>
 
-`IsNullishT` *extends* `boolean`
+`IsNullishT` _extends_ `boolean`
 
 </td>
 <td>
@@ -6639,7 +7032,7 @@ Creates a string meta type with length/regexp/casing options plus standard meta 
 <tr>
 <td>
 
-`IsNullableT` *extends* `boolean`
+`IsNullableT` _extends_ `boolean`
 
 </td>
 <td>
@@ -6651,7 +7044,7 @@ Creates a string meta type with length/regexp/casing options plus standard meta 
 <tr>
 <td>
 
-`IsOptionalT` *extends* `boolean`
+`IsOptionalT` _extends_ `boolean`
 
 </td>
 <td>
@@ -6707,12 +7100,12 @@ obj.name = 1 // validation error
 obj.name = '' // validation error
 ```
 
-***
+---
 
 ### TUPLE()
 
 ```ts
-function TUPLE<T, IsNullishT, IsNullableT, IsOptionalT, IsFrozenT, PreparedT>(types: 
+function TUPLE<T, IsNullishT, IsNullableT, IsOptionalT, IsFrozenT, PreparedT>(types:
   | [...T[]]
 | (metaTypeImpl: TupleImpl) => [...T[]], args?: TupleMetaTypeArgs<TUPLE<IsFrozenT extends true ? Readonly<PreparedT> : PreparedT>, IsNullishT, IsNullableT, IsOptionalT, IsFrozenT>): PrepareMetaType<TUPLE<IsFrozenT extends true ? Readonly<PreparedT> : PreparedT>, IsNullishT, IsNullableT, IsOptionalT>;
 ```
@@ -6734,7 +7127,7 @@ Creates a tuple meta type with a fixed list of item schemas.
 <tr>
 <td>
 
-`T` *extends* `any`[]
+`T` _extends_ `any`[]
 
 </td>
 <td>
@@ -6746,7 +7139,7 @@ Creates a tuple meta type with a fixed list of item schemas.
 <tr>
 <td>
 
-`IsNullishT` *extends* `boolean`
+`IsNullishT` _extends_ `boolean`
 
 </td>
 <td>
@@ -6758,7 +7151,7 @@ Creates a tuple meta type with a fixed list of item schemas.
 <tr>
 <td>
 
-`IsNullableT` *extends* `boolean`
+`IsNullableT` _extends_ `boolean`
 
 </td>
 <td>
@@ -6770,7 +7163,7 @@ Creates a tuple meta type with a fixed list of item schemas.
 <tr>
 <td>
 
-`IsOptionalT` *extends* `boolean`
+`IsOptionalT` _extends_ `boolean`
 
 </td>
 <td>
@@ -6782,7 +7175,7 @@ Creates a tuple meta type with a fixed list of item schemas.
 <tr>
 <td>
 
-`IsFrozenT` *extends* `boolean`
+`IsFrozenT` _extends_ `boolean`
 
 </td>
 <td>
@@ -6825,7 +7218,7 @@ Creates a tuple meta type with a fixed list of item schemas.
 </td>
 <td>
 
- \| \[`...T[]`\] \| (`metaTypeImpl`: [`TupleImpl`](#tupleimpl)) => \[`...T[]`\]
+\| \[`...T[]`\] \| (`metaTypeImpl`: [`TupleImpl`](#tupleimpl)) => \[`...T[]`\]
 
 </td>
 <td>
@@ -6842,7 +7235,7 @@ Array (or factory) describing each position in the tuple.
 </td>
 <td>
 
-[`TupleMetaTypeArgs`](#tuplemetatypeargs)\<[`TUPLE`](#tuple)\<`IsFrozenT` *extends* `true` ? `Readonly`\<`PreparedT`\> : `PreparedT`\>, `IsNullishT`, `IsNullableT`, `IsOptionalT`, `IsFrozenT`\>
+[`TupleMetaTypeArgs`](#tuplemetatypeargs)\<[`TUPLE`](#tuple)\<`IsFrozenT` _extends_ `true` ? `Readonly`\<`PreparedT`\> : `PreparedT`\>, `IsNullishT`, `IsNullableT`, `IsOptionalT`, `IsFrozenT`\>
 
 </td>
 <td>
@@ -6856,13 +7249,13 @@ Array (or factory) describing each position in the tuple.
 
 #### Returns
 
-[`PrepareMetaType`](#preparemetatype)\<[`TUPLE`](#tuple)\<`IsFrozenT` *extends* `true` ? `Readonly`\<`PreparedT`\> : `PreparedT`\>, `IsNullishT`, `IsNullableT`, `IsOptionalT`\>
+[`PrepareMetaType`](#preparemetatype)\<[`TUPLE`](#tuple)\<`IsFrozenT` _extends_ `true` ? `Readonly`\<`PreparedT`\> : `PreparedT`\>, `IsNullishT`, `IsNullableT`, `IsOptionalT`\>
 
 #### Example
 
 ```ts
 const obj1 = Meta({
-     a: TUPLE([1, 'string', BOOLEAN({ nullish: true })], { nullish: true })
+    a: TUPLE([1, 'string', BOOLEAN({ nullish: true })], { nullish: true })
 }) // as { a: [number, string, boolean | null | undefined] | null | undefined }
 
 obj1.a = [1, 'str', true]
@@ -6870,7 +7263,7 @@ obj1.a = [1, true, 'str'] //  type & validation error
 obj1.a = [1] //  type & validation error
 ```
 
-***
+---
 
 ### UNION()
 
@@ -6931,7 +7324,7 @@ Creates a union meta type that accepts any of the provided sub meta types/litera
 <tr>
 <td>
 
-`TArray` *extends* `T`[]
+`TArray` _extends_ `T`[]
 
 </td>
 <td>
@@ -6972,7 +7365,7 @@ Creates a union meta type that accepts any of the provided sub meta types/litera
 </td>
 <td>
 
-`null` *extends* `PreparedT` ? `undefined` *extends* `PreparedT` ? `Exclude`\<`PreparedT`, `null` \| `undefined`\> \| `null` \| `undefined` : `Exclude`\<`PreparedT`, `null` \| `undefined`\> \| `null` : `undefined` *extends* `PreparedT` ? `Exclude`\<`PreparedT`, `null` \| `undefined`\> \| `undefined` : `PreparedT`
+`null` _extends_ `PreparedT` ? `undefined` _extends_ `PreparedT` ? `Exclude`\<`PreparedT`, `null` \| `undefined`\> \| `null` \| `undefined` : `Exclude`\<`PreparedT`, `null` \| `undefined`\> \| `null` : `undefined` _extends_ `PreparedT` ? `Exclude`\<`PreparedT`, `null` \| `undefined`\> \| `undefined` : `PreparedT`
 
 </td>
 </tr>
@@ -7035,7 +7428,7 @@ Standard [MetaTypeArgsType](#metatypeargstype) plus `serializeSubValues` toggle.
 
 ```ts
 const obj1 = Meta({
-     a: UNION([1, 'string', BOOLEAN({ nullish: true })])
+    a: UNION([1, 'string', BOOLEAN({ nullish: true })])
 }) // as { a: number | string | boolean | null | undefined }
 
 obj1.a = 1
@@ -7044,12 +7437,224 @@ obj1.a = true
 obj1.a = {} // type & validation error
 ```
 
+---
+
+### URL()
+
+```ts
+function URL<IsNullishT, IsNullableT, IsOptionalT>(
+    args?: Omit<StringMetaTypeArgs<URL, IsNullishT, IsNullableT, IsOptionalT>, 'regexp'>
+): URL
+```
+
+Defined in: src/metatypes/types/url.ts:17
+
+Creates a URL meta type with length/regexp/casing options plus standard meta args.
+
+#### Type Parameters
+
+<table>
+<thead>
+<tr>
+<th>Type Parameter</th>
+<th>Default type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+
+`IsNullishT` _extends_ `boolean`
+
+</td>
+<td>
+
+`false`
+
+</td>
+</tr>
+<tr>
+<td>
+
+`IsNullableT` _extends_ `boolean`
+
+</td>
+<td>
+
+`IsNullishT`
+
+</td>
+</tr>
+<tr>
+<td>
+
+`IsOptionalT` _extends_ `boolean`
+
+</td>
+<td>
+
+`IsNullishT`
+
+</td>
+</tr>
+</tbody>
+</table>
+
+#### Parameters
+
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+
+`args?`
+
+</td>
+<td>
+
+`Omit`\<[`StringMetaTypeArgs`](#stringmetatypeargs)\<[`URL`](#url), `IsNullishT`, `IsNullableT`, `IsOptionalT`\>, `"regexp"`\>
+
+</td>
+<td>
+
+[StringMetaTypeArgs](#stringmetatypeargs) controlling min/max length, casing, etc.
+
+</td>
+</tr>
+</tbody>
+</table>
+
+#### Returns
+
+[`URL`](#url)
+
+#### Example
+
+```ts
+const obj = Meta({ website: URL() })
+obj.website = 'not-a-url' // validation error
+obj.website = 'https://example.com' // ok
+```
+
+---
+
+### UUID()
+
+```ts
+function UUID<IsNullishT, IsNullableT, IsOptionalT>(
+    args?: Omit<StringMetaTypeArgs<UUID, IsNullishT, IsNullableT, IsOptionalT>, 'regexp'>
+): UUID
+```
+
+Defined in: src/metatypes/types/uuid.ts:16
+
+Creates a UUID (v1–v5) meta type with length/regexp/casing options plus standard meta args.
+
+#### Type Parameters
+
+<table>
+<thead>
+<tr>
+<th>Type Parameter</th>
+<th>Default type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+
+`IsNullishT` _extends_ `boolean`
+
+</td>
+<td>
+
+`false`
+
+</td>
+</tr>
+<tr>
+<td>
+
+`IsNullableT` _extends_ `boolean`
+
+</td>
+<td>
+
+`IsNullishT`
+
+</td>
+</tr>
+<tr>
+<td>
+
+`IsOptionalT` _extends_ `boolean`
+
+</td>
+<td>
+
+`IsNullishT`
+
+</td>
+</tr>
+</tbody>
+</table>
+
+#### Parameters
+
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+
+`args?`
+
+</td>
+<td>
+
+`Omit`\<[`StringMetaTypeArgs`](#stringmetatypeargs)\<[`UUID`](#uuid), `IsNullishT`, `IsNullableT`, `IsOptionalT`\>, `"regexp"`\>
+
+</td>
+<td>
+
+[StringMetaTypeArgs](#stringmetatypeargs) controlling min/max length, casing, etc.
+
+</td>
+</tr>
+</tbody>
+</table>
+
+#### Returns
+
+[`UUID`](#uuid)
+
+#### Example
+
+```ts
+const obj = Meta({ id: UUID() })
+obj.id = 'not-uuid' // validation error
+obj.id = '550e8400-e29b-41d4-a716-446655440000' // ok
+```
+
 ## Type Aliases
 
 ### ANY
 
 ```ts
-type ANY = MetaType<any, AnyImpl>;
+type ANY = MetaType<any, AnyImpl>
 ```
 
 Defined in: [src/metatypes/types/any.ts:23](https://github.com/metatyper/metatyper/blob/main/src/metatypes/types/any.ts#L23)
@@ -7068,12 +7673,12 @@ obj.field = 1
 obj.field = {}
 ```
 
-***
+---
 
 ### ARRAY
 
 ```ts
-type ARRAY<T> = MetaType<T, ArrayImpl>;
+type ARRAY<T> = MetaType<T, ArrayImpl>
 ```
 
 Defined in: [src/metatypes/types/array.ts:217](https://github.com/metatyper/metatyper/blob/main/src/metatypes/types/array.ts#L217)
@@ -7120,12 +7725,12 @@ obj.keys = ['mystring', 1, 2, 3]
 obj.keys = ['mystring', 1, 2, 3 {}] // validation error
 ```
 
-***
+---
 
 ### ArrayMetaTypeArgs
 
 ```ts
-type ArrayMetaTypeArgs<T, IsNullishT, IsNullableT, IsOptionalT, IsFrozenT> = MetaTypeArgsType<T, IsNullishT, IsNullableT, IsOptionalT> & 
+type ArrayMetaTypeArgs<T, IsNullishT, IsNullableT, IsOptionalT, IsFrozenT> = MetaTypeArgsType<T, IsNullishT, IsNullableT, IsOptionalT> &
   | {
   minLength?: never;
   notEmpty?: boolean;
@@ -7266,7 +7871,7 @@ Toggles serialization/deserialization of array items.
 <tr>
 <td>
 
-`IsNullishT` *extends* `boolean`
+`IsNullishT` _extends_ `boolean`
 
 </td>
 <td>
@@ -7278,7 +7883,7 @@ Toggles serialization/deserialization of array items.
 <tr>
 <td>
 
-`IsNullableT` *extends* `boolean`
+`IsNullableT` _extends_ `boolean`
 
 </td>
 <td>
@@ -7290,7 +7895,7 @@ Toggles serialization/deserialization of array items.
 <tr>
 <td>
 
-`IsOptionalT` *extends* `boolean`
+`IsOptionalT` _extends_ `boolean`
 
 </td>
 <td>
@@ -7302,7 +7907,7 @@ Toggles serialization/deserialization of array items.
 <tr>
 <td>
 
-`IsFrozenT` *extends* `boolean`
+`IsFrozenT` _extends_ `boolean`
 
 </td>
 <td>
@@ -7314,12 +7919,12 @@ Toggles serialization/deserialization of array items.
 </tbody>
 </table>
 
-***
+---
 
 ### BIGINT
 
 ```ts
-type BIGINT = MetaType<bigint, BigIntImpl>;
+type BIGINT = MetaType<bigint, BigIntImpl>
 ```
 
 Defined in: [src/metatypes/types/bigint.ts:80](https://github.com/metatyper/metatyper/blob/main/src/metatypes/types/bigint.ts#L80)
@@ -7338,12 +7943,12 @@ obj.amount = 1n
 obj.amount = 1 // validation error
 ```
 
-***
+---
 
 ### BOOLEAN
 
 ```ts
-type BOOLEAN = MetaType<boolean, BooleanImpl>;
+type BOOLEAN = MetaType<boolean, BooleanImpl>
 ```
 
 Defined in: [src/metatypes/types/boolean.ts:61](https://github.com/metatyper/metatyper/blob/main/src/metatypes/types/boolean.ts#L61)
@@ -7362,15 +7967,20 @@ obj.flag = true
 obj.flag = 'true' // validation error
 ```
 
-***
+---
 
 ### BooleanMetaTypeArgs
 
 ```ts
-type BooleanMetaTypeArgs<T, IsNullishT, IsNullableT, IsOptionalT> = MetaTypeArgsType<T, IsNullishT, IsNullableT, IsOptionalT> & {
-  falseValues?: any[];
-  trueValues?: any[];
-};
+type BooleanMetaTypeArgs<T, IsNullishT, IsNullableT, IsOptionalT> = MetaTypeArgsType<
+    T,
+    IsNullishT,
+    IsNullableT,
+    IsOptionalT
+> & {
+    falseValues?: any[]
+    trueValues?: any[]
+}
 ```
 
 Defined in: [src/metatypes/types/boolean.ts:6](https://github.com/metatyper/metatyper/blob/main/src/metatypes/types/boolean.ts#L6)
@@ -7449,7 +8059,7 @@ Values that should be coerced to `true` before validation.
 <tr>
 <td>
 
-`T` *extends* `boolean`
+`T` _extends_ `boolean`
 
 </td>
 <td>
@@ -7461,7 +8071,7 @@ Values that should be coerced to `true` before validation.
 <tr>
 <td>
 
-`IsNullishT` *extends* `boolean`
+`IsNullishT` _extends_ `boolean`
 
 </td>
 <td>
@@ -7473,7 +8083,7 @@ Values that should be coerced to `true` before validation.
 <tr>
 <td>
 
-`IsNullableT` *extends* `boolean`
+`IsNullableT` _extends_ `boolean`
 
 </td>
 <td>
@@ -7485,7 +8095,7 @@ Values that should be coerced to `true` before validation.
 <tr>
 <td>
 
-`IsOptionalT` *extends* `boolean`
+`IsOptionalT` _extends_ `boolean`
 
 </td>
 <td>
@@ -7497,12 +8107,39 @@ Values that should be coerced to `true` before validation.
 </tbody>
 </table>
 
-***
+---
+
+### CARD
+
+```ts
+type CARD = MetaType<string, StringImpl>
+```
+
+Defined in: src/metatypes/types/card.ts:19
+
+Creates a credit card meta type using common brand regexes (Visa, MasterCard, AmEx, etc.).
+
+Uses a pattern adapted from regular-expressions.info:
+https://www.regular-expressions.info/creditcard.html
+
+#### Param
+
+[StringMetaTypeArgs](#stringmetatypeargs) controlling min/max length, casing, etc.
+
+#### Example
+
+```ts
+const obj = Meta({ card: CARD() })
+obj.card = '1234567890123456' // validation error
+obj.card = '4111111111111111' // ok
+```
+
+---
 
 ### Class()
 
 ```ts
-type Class<T> = (...args: any[]) => T extends (...args: any[]) => any ? InstanceType<T> : T;
+type Class<T> = (...args: any[]) => T extends (...args: any[]) => any ? InstanceType<T> : T
 ```
 
 Defined in: [src/utils/classes.ts:5](https://github.com/metatyper/metatyper/blob/main/src/utils/classes.ts#L5)
@@ -7553,14 +8190,14 @@ Defined in: [src/utils/classes.ts:5](https://github.com/metatyper/metatyper/blob
 
 #### Returns
 
-`T` *extends* (...`args`: `any`[]) => `any` ? `InstanceType`\<`T`\> : `T`
+`T` _extends_ (...`args`: `any`[]) => `any` ? `InstanceType`\<`T`\> : `T`
 
-***
+---
 
 ### DATE
 
 ```ts
-type DATE = MetaType<Date, DateImpl>;
+type DATE = MetaType<Date, DateImpl>
 ```
 
 Defined in: [src/metatypes/types/date.ts:124](https://github.com/metatyper/metatyper/blob/main/src/metatypes/types/date.ts#L124)
@@ -7579,18 +8216,18 @@ obj.createdAt = new Date()
 obj.createdAt = 1 // validation error
 ```
 
-***
+---
 
 ### DateMetaTypeArgs
 
 ```ts
-type DateMetaTypeArgs<T, IsNullishT, IsNullableT, IsOptionalT> = MetaTypeArgsType<T, IsNullishT, IsNullableT, IsOptionalT> & 
+type DateMetaTypeArgs<T, IsNullishT, IsNullableT, IsOptionalT> = MetaTypeArgsType<T, IsNullishT, IsNullableT, IsOptionalT> &
   | {
   min?: number | bigint | Date;
 }
   | {
   greater?: number | bigint | Date;
-} & 
+} &
   | {
   max?: number | bigint | Date;
 }
@@ -7628,7 +8265,7 @@ Options for [DATE](#date-1) meta type (range constraints, defaults, etc.).
 <tr>
 <td>
 
-`IsNullishT` *extends* `boolean`
+`IsNullishT` _extends_ `boolean`
 
 </td>
 <td>
@@ -7640,7 +8277,7 @@ Options for [DATE](#date-1) meta type (range constraints, defaults, etc.).
 <tr>
 <td>
 
-`IsNullableT` *extends* `boolean`
+`IsNullableT` _extends_ `boolean`
 
 </td>
 <td>
@@ -7652,7 +8289,7 @@ Options for [DATE](#date-1) meta type (range constraints, defaults, etc.).
 <tr>
 <td>
 
-`IsOptionalT` *extends* `boolean`
+`IsOptionalT` _extends_ `boolean`
 
 </td>
 <td>
@@ -7664,15 +8301,15 @@ Options for [DATE](#date-1) meta type (range constraints, defaults, etc.).
 </tbody>
 </table>
 
-***
+---
 
 ### DeSerializeFuncType()
 
 ```ts
-type DeSerializeFuncType = (deserializeArgs: DeSerializerArgsType) => any;
+type DeSerializeFuncType = (deserializeArgs: DeSerializerArgsType) => any
 ```
 
-Defined in: [src/metatypes/metatypeImpl.ts:140](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L140)
+Defined in: [src/metatypes/metatypeImpl.ts:144](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L144)
 
 Deserializer function signature.
 
@@ -7713,14 +8350,14 @@ The arguments passed to the deserializer.
 
 The deserialized value.
 
-***
+---
 
 ### DeSerializeMetaObjectArgsType
 
 ```ts
 type DeSerializeMetaObjectArgsType = {
-  metaArgs?: MetaArgsType;
-} & Record<string, any>;
+    metaArgs?: MetaArgsType
+} & Record<string, any>
 ```
 
 Defined in: [src/metaobjects/meta.ts:30](https://github.com/metatyper/metatyper/blob/main/src/metaobjects/meta.ts#L30)
@@ -7764,21 +8401,21 @@ Overrides used when schema/proto needs to be wrapped into a meta object before d
 </tbody>
 </table>
 
-***
+---
 
 ### DeSerializeMetaTypeArgsType
 
 ```ts
 type DeSerializeMetaTypeArgsType = {
-  baseObject?: object;
-  place?: DeSerializePlaceType;
-  propName?: string | symbol;
-  targetObject?: object;
-  value: any;
-};
+    baseObject?: object
+    place?: DeSerializePlaceType
+    propName?: string | symbol
+    targetObject?: object
+    value: any
+}
 ```
 
-Defined in: [src/metatypes/metatypeImpl.ts:115](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L115)
+Defined in: [src/metatypes/metatypeImpl.ts:119](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L119)
 
 Arguments passed when deserializing a value via `MetaTypeImpl.deserialize`.
 Subtype of [SerializeMetaTypeArgsType](#serializemetatypeargstype)
@@ -7813,7 +8450,7 @@ Base object storing state.
 </td>
 <td>
 
-[src/metatypes/metatypeImpl.ts:123](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L123)
+[src/metatypes/metatypeImpl.ts:127](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L127)
 
 </td>
 </tr>
@@ -7835,7 +8472,7 @@ Which "place" triggered deserialization (init/set/etc).
 </td>
 <td>
 
-[src/metatypes/metatypeImpl.ts:125](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L125)
+[src/metatypes/metatypeImpl.ts:129](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L129)
 
 </td>
 </tr>
@@ -7857,7 +8494,7 @@ Property that is being assigned (optional).
 </td>
 <td>
 
-[src/metatypes/metatypeImpl.ts:119](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L119)
+[src/metatypes/metatypeImpl.ts:123](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L123)
 
 </td>
 </tr>
@@ -7879,7 +8516,7 @@ Proxy exposed to the user.
 </td>
 <td>
 
-[src/metatypes/metatypeImpl.ts:121](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L121)
+[src/metatypes/metatypeImpl.ts:125](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L125)
 
 </td>
 </tr>
@@ -7901,36 +8538,36 @@ Value to deserialize.
 </td>
 <td>
 
-[src/metatypes/metatypeImpl.ts:117](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L117)
+[src/metatypes/metatypeImpl.ts:121](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L121)
 
 </td>
 </tr>
 </tbody>
 </table>
 
-***
+---
 
 ### DeSerializePlaceType
 
 ```ts
-type DeSerializePlaceType = "init" | "reinit" | "set" | "deserialize" | "unknown";
+type DeSerializePlaceType = 'init' | 'reinit' | 'set' | 'deserialize' | 'unknown'
 ```
 
-Defined in: [src/metatypes/metatypeImpl.ts:149](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L149)
+Defined in: [src/metatypes/metatypeImpl.ts:153](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L153)
 
 Places where deserialization can happen.
 
-***
+---
 
 ### DeSerializerArgsType
 
 ```ts
 type DeSerializerArgsType = DeSerializeMetaTypeArgsType & {
-  metaTypeImpl?: MetaTypeImpl;
-};
+    metaTypeImpl?: MetaTypeImpl
+}
 ```
 
-Defined in: [src/metatypes/metatypeImpl.ts:132](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L132)
+Defined in: [src/metatypes/metatypeImpl.ts:136](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L136)
 
 Deserializer arguments extended with the active implementation reference.
 Subtype of [DeSerializeMetaTypeArgsType](#deserializemetatypeargstype)
@@ -7959,21 +8596,21 @@ Subtype of [DeSerializeMetaTypeArgsType](#deserializemetatypeargstype)
 </td>
 <td>
 
-[src/metatypes/metatypeImpl.ts:133](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L133)
+[src/metatypes/metatypeImpl.ts:137](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L137)
 
 </td>
 </tr>
 </tbody>
 </table>
 
-***
+---
 
 ### DeSerializerErrorArgsType
 
 ```ts
 type DeSerializerErrorArgsType = DeSerializerArgsType & {
-  subError?: Error;
-};
+    subError?: Error
+}
 ```
 
 Defined in: [src/errors/serialization.error.ts:48](https://github.com/metatyper/metatyper/blob/main/src/errors/serialization.error.ts#L48)
@@ -8017,19 +8654,19 @@ Original error raised inside the deserializer, if any.
 </tbody>
 </table>
 
-***
+---
 
 ### DeSerializerType
 
 ```ts
 type DeSerializerType = {
-  deserialize: DeSerializeFuncType;
-  deserializePlaces?: DeSerializePlaceType[] | string[];
-  name?: string;
-};
+    deserialize: DeSerializeFuncType
+    deserializePlaces?: DeSerializePlaceType[] | string[]
+    name?: string
+}
 ```
 
-Defined in: [src/metatypes/metatypeImpl.ts:156](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L156)
+Defined in: [src/metatypes/metatypeImpl.ts:160](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L160)
 
 Deserializer object shape (function + metadata).
 
@@ -8063,7 +8700,7 @@ The function that deserializes the value.
 </td>
 <td>
 
-[src/metatypes/metatypeImpl.ts:157](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L157)
+[src/metatypes/metatypeImpl.ts:161](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L161)
 
 </td>
 </tr>
@@ -8085,7 +8722,7 @@ The places where the deserializer can be triggered.
 </td>
 <td>
 
-[src/metatypes/metatypeImpl.ts:160](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L160)
+[src/metatypes/metatypeImpl.ts:164](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L164)
 
 </td>
 </tr>
@@ -8107,25 +8744,73 @@ The name of the deserializer.
 </td>
 <td>
 
-[src/metatypes/metatypeImpl.ts:159](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L159)
+[src/metatypes/metatypeImpl.ts:163](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L163)
 
 </td>
 </tr>
 </tbody>
 </table>
 
-***
+---
+
+### EMAIL
+
+```ts
+type EMAIL = MetaType<string, StringImpl>
+```
+
+Defined in: src/metatypes/types/email.ts:16
+
+Creates a email meta type with length/regexp/casing options plus standard meta args.
+
+#### Param
+
+[StringMetaTypeArgs](#stringmetatypeargs) controlling min/max length, casing, etc.
+
+#### Example
+
+```ts
+const obj = Meta({ email: EMAIL() })
+obj.email = 'John' // validation error
+obj.email = 'vadzimsharai@gmail.com' // ok
+```
+
+---
+
+### HOSTNAME
+
+```ts
+type HOSTNAME = MetaType<string, StringImpl>
+```
+
+Defined in: src/metatypes/types/hostname.ts:16
+
+Creates a hostname/domain meta type.
+
+#### Param
+
+[StringMetaTypeArgs](#stringmetatypeargs) controlling min/max length, casing, etc.
+
+#### Example
+
+```ts
+const obj = Meta({ host: HOSTNAME() })
+obj.host = 'not a host' // validation error
+obj.host = 'example.com' // ok
+```
+
+---
 
 ### InitialClassPropertyDeclarationInfo
 
 ```ts
 type InitialClassPropertyDeclarationInfo = {
-  descriptor?: PropertyDescriptor;
-  metaTypeArgs?: MetaTypeArgsType;
-  metaTypeImpl?: MetaTypeImpl;
-  propName: string;
-  reflectType: any;
-};
+    descriptor?: PropertyDescriptor
+    metaTypeArgs?: MetaTypeArgsType
+    metaTypeImpl?: MetaTypeImpl
+    propName: string
+    reflectType: any
+}
 ```
 
 Defined in: [src/metaobjects/meta.ts:159](https://github.com/metatyper/metatyper/blob/main/src/metaobjects/meta.ts#L159)
@@ -8257,12 +8942,12 @@ Reflected design type (via reflect-metadata) if available.
 </tbody>
 </table>
 
-***
+---
 
 ### INSTANCE
 
 ```ts
-type INSTANCE<T> = MetaType<T, InstanceImpl>;
+type INSTANCE<T> = MetaType<T, InstanceImpl>
 ```
 
 Defined in: [src/metatypes/types/instance.ts:92](https://github.com/metatyper/metatyper/blob/main/src/metatypes/types/instance.ts#L92)
@@ -8300,11 +8985,11 @@ Class or instance used as the target type.
 
 ```ts
 class A {
-   a = 1
+    a = 1
 }
 
 const obj1 = Meta({
-     a: INSTANCE(A, { nullish: true })
+    a: INSTANCE(A, { nullish: true })
 }) // as { a: A | null | undefined }
 
 obj1.a = new A()
@@ -8312,14 +8997,19 @@ obj1.a = {} // type & validation error
 obj1.a = { a: 1 } // validation error
 ```
 
-***
+---
 
 ### InstanceMetaTypeArgs
 
 ```ts
-type InstanceMetaTypeArgs<T, IsNullishT, IsNullableT, IsOptionalT> = MetaTypeArgsType<T, IsNullishT, IsNullableT, IsOptionalT> & {
-  allowChildren?: boolean;
-};
+type InstanceMetaTypeArgs<T, IsNullishT, IsNullableT, IsOptionalT> = MetaTypeArgsType<
+    T,
+    IsNullishT,
+    IsNullableT,
+    IsOptionalT
+> & {
+    allowChildren?: boolean
+}
 ```
 
 Defined in: [src/metatypes/types/instance.ts:6](https://github.com/metatyper/metatyper/blob/main/src/metatypes/types/instance.ts#L6)
@@ -8388,7 +9078,7 @@ When false, enforces exact constructor match (no subclass instances).
 <tr>
 <td>
 
-`IsNullishT` *extends* `boolean`
+`IsNullishT` _extends_ `boolean`
 
 </td>
 <td>
@@ -8400,7 +9090,7 @@ When false, enforces exact constructor match (no subclass instances).
 <tr>
 <td>
 
-`IsNullableT` *extends* `boolean`
+`IsNullableT` _extends_ `boolean`
 
 </td>
 <td>
@@ -8412,7 +9102,7 @@ When false, enforces exact constructor match (no subclass instances).
 <tr>
 <td>
 
-`IsOptionalT` *extends* `boolean`
+`IsOptionalT` _extends_ `boolean`
 
 </td>
 <td>
@@ -8424,12 +9114,12 @@ When false, enforces exact constructor match (no subclass instances).
 </tbody>
 </table>
 
-***
+---
 
 ### INTEGER
 
 ```ts
-type INTEGER = MetaType<number, IntegerImpl>;
+type INTEGER = MetaType<number, IntegerImpl>
 ```
 
 Defined in: [src/metatypes/types/integer.ts:78](https://github.com/metatyper/metatyper/blob/main/src/metatypes/types/integer.ts#L78)
@@ -8444,21 +9134,45 @@ Creates a meta type for integers (numbers coerced/truncated to whole values).
 
 ```ts
 const obj1 = Meta({
-     a: INTEGER({ nullish: true })
+    a: INTEGER({ nullish: true })
 }) // as { a: number | null | undefined }
 
 obj1.a = 1
 obj1.a = 1.2 // validation error
 ```
 
-***
+---
+
+### IP
+
+```ts
+type IP = MetaType<string, StringImpl>
+```
+
+Defined in: src/metatypes/types/ip.ts:17
+
+Creates an IP meta type (IPv4 or IPv6) with length/regexp/casing options plus standard meta args.
+
+#### Param
+
+[StringMetaTypeArgs](#stringmetatypeargs) controlling min/max length, casing, etc.
+
+#### Example
+
+```ts
+const obj = Meta({ addr: IP() })
+obj.addr = '999.999.999.999' // validation error
+obj.addr = '192.168.0.1' // ok
+```
+
+---
 
 ### LazyContext
 
 ```ts
 type LazyContext = {
-  curImplInLazyProcess?: MetaTypeImpl;
-} & Record<any, any>;
+    curImplInLazyProcess?: MetaTypeImpl
+} & Record<any, any>
 ```
 
 Defined in: [src/metatypes/types/\_lazy.ts:5](https://github.com/metatyper/metatyper/blob/main/src/metatypes/types/_lazy.ts#L5)
@@ -8502,15 +9216,15 @@ Meta type currently being prepared when recursion happens.
 </tbody>
 </table>
 
-***
+---
 
 ### LazyStructuresContext
 
 ```ts
 type LazyStructuresContext = LazyContext & {
-  preparedTypesSet: WeakSet<MetaTypeImpl>;
-  rebuildingMap: WeakMap<MetaTypeImpl, MetaTypeImpl>;
-};
+    preparedTypesSet: WeakSet<MetaTypeImpl>
+    rebuildingMap: WeakMap<MetaTypeImpl, MetaTypeImpl>
+}
 ```
 
 Defined in: [src/metatypes/types/\_structural.ts:8](https://github.com/metatyper/metatyper/blob/main/src/metatypes/types/_structural.ts#L8)
@@ -8563,12 +9277,12 @@ Defined in: [src/metatypes/types/\_structural.ts:8](https://github.com/metatyper
 </tbody>
 </table>
 
-***
+---
 
 ### LITERAL
 
 ```ts
-type LITERAL<T> = MetaType<T, LiteralImpl>;
+type LITERAL<T> = MetaType<T, LiteralImpl>
 ```
 
 Defined in: [src/metatypes/types/literal.ts:34](https://github.com/metatyper/metatyper/blob/main/src/metatypes/types/literal.ts#L34)
@@ -8610,14 +9324,18 @@ obj.status = 'done'
 obj.status = 'pending' // validation error
 ```
 
-***
+---
 
 ### Meta
 
 ```ts
-type Meta<T> = T extends (...args: infer A) => infer R ? (...args: A) => Meta<R> & { [K in keyof T]: T[K] } : T extends Record<any, never> ? object : T & {
-  [IsMetaObjectSymbol]?: true;
-};
+type Meta<T> = T extends (...args: infer A) => infer R
+    ? (...args: A) => Meta<R> & { [K in keyof T]: T[K] }
+    : T extends Record<any, never>
+      ? object
+      : T & {
+            [IsMetaObjectSymbol]?: true
+        }
 ```
 
 Defined in: [src/metaobjects/meta.ts:247](https://github.com/metatyper/metatyper/blob/main/src/metaobjects/meta.ts#L247)
@@ -8690,18 +9408,18 @@ A new Meta object
 
 ```ts
 const obj1 = Meta({
-  id: NUMBER({ optional: true }),
-  name: 'John Doe',
-  stars: NUMBER({ default: 0, min: 0 })
+    id: NUMBER({ optional: true }),
+    name: 'John Doe',
+    stars: NUMBER({ default: 0, min: 0 })
 })
 
 obj1.id = 1
 obj1.id = 'str' // will throw an validation error
 
 class MyCls {
-     static someClsProp = STRING({ default: '' })
+    static someClsProp = STRING({ default: '' })
 
-     someInstanceProp = NUMBER({ default: 0 })
+    someInstanceProp = NUMBER({ default: 0 })
 }
 
 const MyMetaCls = Meta(MyCls)
@@ -8720,28 +9438,29 @@ myInstance.someInstanceProp = '2' // will throw an validation error
 The `Meta` function also provides several utility methods.
 These methods are available on the `Meta` object and can be used to interact with meta objects.
 The methods are:
-- `Meta.validate(metaObject, rawObject)` - [MetaValidate](#metavalidate) - Validates a raw object using the meta object (as schema).
-- `Meta.copy(metaObject)` - [MetaCopy](#metacopy) - Creates a copy of a meta object preserving its values, types, prototype and arguments.
-- `Meta.rebuild(metaObject)` - [MetaRebuild](#metarebuild) - Rebuilds a meta object using the same original object and arguments, resetting to initial state.
-- `Meta.isMetaObject(obj)` - [MetaIsMetaObject](#metaismetaobject) - Checks if an object is a meta object.
-- `Meta.isIgnoredProp(propName)` - [MetaIsIgnoredProp](#metaisignoredprop) - Checks if a property is ignored by Meta.
-- `@Meta.Class(metaArgs)` - [MetaClass](#metaclass) - Decorator for transforming a class into a meta class.
-- `@Meta.declare(metaType)` - [MetaDeclare](#metadeclare) - Decorator for declaring meta type information on class properties.
-- `Meta.serialize(metaObject)` - [MetaSerialize](#metaserialize) - Serializes a meta object.
-- `Meta.deserialize(data, protoObject)` - [MetaDeserialize](#metadeserialize) - Deserializes a value into a meta object.
-- `Meta.toJson(metaObject)` - [MetaToJson](#metatojson) - Serializes a meta object into a JSON string.
-- `Meta.fromJson(data, protoObject)` - [MetaFromJson](#metafromjson) - Deserializes a JSON string into a meta object.
-- `Meta.represent(metaObject)` - [MetaRepresent](#metarepresent) - Generates a textual representation of a meta object.
-- `Meta.getProto(metaObject)` - [MetaProto](#metaproto) - Retrieves the prototype of the meta object.
-- `Meta.getMetaArgs(metaObject)` - [MetaGetMetaArgs](#metagetmetaargs) - Retrieves the meta arguments used to create a meta object.
-- `Meta.validationIsActive(metaObject)` - [MetaValidationIsActive](#metavalidationisactive) - Checks if validation is active for the given meta object.
-- `Meta.disableValidation(metaObject)` - [MetaDisableValidation](#metadisablevalidation) - Disables validation for the specified meta object.
-- `Meta.enableValidation(metaObject)` - [MetaEnableValidation](#metaenablevalidation) - Enables validation for the specified meta object.
-- `Meta.serializationIsActive(metaObject)` - [MetaSerializationIsActive](#metaserializationisactive) - Checks if serialization is active for the given meta object.
-- `Meta.disableSerialization(metaObject)` - [MetaDisableSerialization](#metadisableserialization) - Disables serialization for the specified meta object.
-- `Meta.enableSerialization(metaObject)` - [MetaEnableSerialization](#metaenableserialization) - Enables serialization for the specified meta object.
 
-***
+-   `Meta.validate(metaObject, rawObject)` - [MetaValidate](#metavalidate) - Validates a raw object using the meta object (as schema).
+-   `Meta.copy(metaObject)` - [MetaCopy](#metacopy) - Creates a copy of a meta object preserving its values, types, prototype and arguments.
+-   `Meta.rebuild(metaObject)` - [MetaRebuild](#metarebuild) - Rebuilds a meta object using the same original object and arguments, resetting to initial state.
+-   `Meta.isMetaObject(obj)` - [MetaIsMetaObject](#metaismetaobject) - Checks if an object is a meta object.
+-   `Meta.isIgnoredProp(propName)` - [MetaIsIgnoredProp](#metaisignoredprop) - Checks if a property is ignored by Meta.
+-   `@Meta.Class(metaArgs)` - [MetaClass](#metaclass) - Decorator for transforming a class into a meta class.
+-   `@Meta.declare(metaType)` - [MetaDeclare](#metadeclare) - Decorator for declaring meta type information on class properties.
+-   `Meta.serialize(metaObject)` - [MetaSerialize](#metaserialize) - Serializes a meta object.
+-   `Meta.deserialize(data, protoObject)` - [MetaDeserialize](#metadeserialize) - Deserializes a value into a meta object.
+-   `Meta.toJson(metaObject)` - [MetaToJson](#metatojson) - Serializes a meta object into a JSON string.
+-   `Meta.fromJson(data, protoObject)` - [MetaFromJson](#metafromjson) - Deserializes a JSON string into a meta object.
+-   `Meta.represent(metaObject)` - [MetaRepresent](#metarepresent) - Generates a textual representation of a meta object.
+-   `Meta.getProto(metaObject)` - [MetaProto](#metaproto) - Retrieves the prototype of the meta object.
+-   `Meta.getMetaArgs(metaObject)` - [MetaGetMetaArgs](#metagetmetaargs) - Retrieves the meta arguments used to create a meta object.
+-   `Meta.validationIsActive(metaObject)` - [MetaValidationIsActive](#metavalidationisactive) - Checks if validation is active for the given meta object.
+-   `Meta.disableValidation(metaObject)` - [MetaDisableValidation](#metadisablevalidation) - Disables validation for the specified meta object.
+-   `Meta.enableValidation(metaObject)` - [MetaEnableValidation](#metaenablevalidation) - Enables validation for the specified meta object.
+-   `Meta.serializationIsActive(metaObject)` - [MetaSerializationIsActive](#metaserializationisactive) - Checks if serialization is active for the given meta object.
+-   `Meta.disableSerialization(metaObject)` - [MetaDisableSerialization](#metadisableserialization) - Disables serialization for the specified meta object.
+-   `Meta.enableSerialization(metaObject)` - [MetaEnableSerialization](#metaenableserialization) - Enables serialization for the specified meta object.
+
+---
 
 ### MetaArgsType
 
@@ -8875,8 +9594,8 @@ Arguments that define how a meta object or class is built and behaves.
 </td>
 <td>
 
-  \| (`string` \| `symbol`)[]
-  \| (`propName`: `string` \| `symbol`) => `boolean`
+\| (`string` \| `symbol`)[]
+\| (`propName`: `string` \| `symbol`) => `boolean`
 
 </td>
 <td>
@@ -8944,8 +9663,8 @@ Arguments that define how a meta object or class is built and behaves.
 </td>
 <td>
 
-  \| [`MetaTypeArgsType`](#metatypeargstype)
-  \| (`metaTypeImpl`: [`MetaTypeImpl`](#metatypeimpl)) => [`MetaTypeArgsType`](#metatypeargstype)
+\| [`MetaTypeArgsType`](#metatypeargstype)
+\| (`metaTypeImpl`: [`MetaTypeImpl`](#metatypeimpl)) => [`MetaTypeArgsType`](#metatypeargstype)
 
 </td>
 <td>
@@ -9042,33 +9761,33 @@ Arguments that define how a meta object or class is built and behaves.
 </tbody>
 </table>
 
-***
+---
 
 ### MetaChangeHandlerActionType
 
 ```ts
-type MetaChangeHandlerActionType = "init" | "set" | "delete" | "define" | "deserialize";
+type MetaChangeHandlerActionType = 'init' | 'set' | 'delete' | 'define' | 'deserialize'
 ```
 
 Defined in: [src/metaobjects/meta.ts:36](https://github.com/metatyper/metatyper/blob/main/src/metaobjects/meta.ts#L36)
 
 Lifecycle actions that can trigger a change handler.
 
-***
+---
 
 ### MetaChangeHandlerArgsType
 
 ```ts
 type MetaChangeHandlerArgsType = {
-  action: MetaChangeHandlerActionType;
-  baseObject: object;
-  declaration?: MetaTypeImpl;
-  descriptor?: PropertyDescriptor;
-  prevDeclaration?: MetaTypeImpl;
-  prevDescriptor?: PropertyDescriptor;
-  propName: string | symbol;
-  targetObject: object;
-};
+    action: MetaChangeHandlerActionType
+    baseObject: object
+    declaration?: MetaTypeImpl
+    descriptor?: PropertyDescriptor
+    prevDeclaration?: MetaTypeImpl
+    prevDescriptor?: PropertyDescriptor
+    propName: string | symbol
+    targetObject: object
+}
 ```
 
 Defined in: [src/metaobjects/meta.ts:39](https://github.com/metatyper/metatyper/blob/main/src/metaobjects/meta.ts#L39)
@@ -9266,16 +9985,16 @@ Proxy object exposed to consumers.
 </tbody>
 </table>
 
-***
+---
 
 ### MetaChangeHandlerInfoType
 
 ```ts
 type MetaChangeHandlerInfoType = {
-  actions?: MetaChangeHandlerActionType[];
-  handler: (args: MetaChangeHandlerArgsType) => void;
-  props?: (string | symbol)[];
-};
+    actions?: MetaChangeHandlerActionType[]
+    handler: (args: MetaChangeHandlerArgsType) => void
+    props?: (string | symbol)[]
+}
 ```
 
 Defined in: [src/metaobjects/meta.ts:66](https://github.com/metatyper/metatyper/blob/main/src/metaobjects/meta.ts#L66)
@@ -9363,18 +10082,18 @@ Optional property filter.
 </tbody>
 </table>
 
-***
+---
 
 ### MetaErrorHandlerArgsType
 
 ```ts
 type MetaErrorHandlerArgsType = {
-  baseObject: object;
-  error: Error;
-  errorPlace: MetaErrorHandlerPlaceType;
-  propName?: string | symbol;
-  targetObject: object;
-};
+    baseObject: object
+    error: Error
+    errorPlace: MetaErrorHandlerPlaceType
+    propName?: string | symbol
+    targetObject: object
+}
 ```
 
 Defined in: [src/metaobjects/meta.ts:89](https://github.com/metatyper/metatyper/blob/main/src/metaobjects/meta.ts#L89)
@@ -9506,15 +10225,15 @@ Proxy object exposed to consumers.
 </tbody>
 </table>
 
-***
+---
 
 ### MetaErrorHandlerInfoType
 
 ```ts
 type MetaErrorHandlerInfoType = {
-  handler: (args: MetaErrorHandlerArgsType) => void;
-  places?: MetaErrorHandlerPlaceType[];
-};
+    handler: (args: MetaErrorHandlerArgsType) => void
+    places?: MetaErrorHandlerPlaceType[]
+}
 ```
 
 Defined in: [src/metaobjects/meta.ts:107](https://github.com/metatyper/metatyper/blob/main/src/metaobjects/meta.ts#L107)
@@ -9580,27 +10299,27 @@ Optional place filter.
 </tbody>
 </table>
 
-***
+---
 
 ### MetaErrorHandlerPlaceType
 
 ```ts
-type MetaErrorHandlerPlaceType = 
-  | "init"
-  | "get"
-  | "set"
-  | "define"
-  | "delete"
-  | "validate"
-  | "deserialize"
-  | "serialize";
+type MetaErrorHandlerPlaceType =
+    | 'init'
+    | 'get'
+    | 'set'
+    | 'define'
+    | 'delete'
+    | 'validate'
+    | 'deserialize'
+    | 'serialize'
 ```
 
 Defined in: [src/metaobjects/meta.ts:78](https://github.com/metatyper/metatyper/blob/main/src/metaobjects/meta.ts#L78)
 
 Places where an error handler can be triggered.
 
-***
+---
 
 ### MetaObjectRegistryInfo
 
@@ -9831,7 +10550,7 @@ Registered error handlers.
 </td>
 <td>
 
- \| (`string` \| `symbol`)[] \| (`propName`: `string` \| `symbol`) => `boolean`
+\| (`string` \| `symbol`)[] \| (`propName`: `string` \| `symbol`) => `boolean`
 
 </td>
 <td>
@@ -9919,7 +10638,7 @@ Meta arguments used when building instances of meta classes.
 </td>
 <td>
 
- \| [`MetaTypeArgsType`](#metatypeargstype) \| (`metaTypeImpl`: [`MetaTypeImpl`](#metatypeimpl)) => [`MetaTypeArgsType`](#metatypeargstype)
+\| [`MetaTypeArgsType`](#metatypeargstype) \| (`metaTypeImpl`: [`MetaTypeImpl`](#metatypeimpl)) => [`MetaTypeArgsType`](#metatypeargstype)
 
 </td>
 <td>
@@ -10090,24 +10809,24 @@ Whether validation is active.
 </tbody>
 </table>
 
-***
+---
 
 ### MetaObjectTypeName
 
 ```ts
-type MetaObjectTypeName = "class" | "instance" | "function" | "array" | "object";
+type MetaObjectTypeName = 'class' | 'instance' | 'function' | 'array' | 'object'
 ```
 
 Defined in: [src/metaobjects/registry.ts:14](https://github.com/metatyper/metatyper/blob/main/src/metaobjects/registry.ts#L14)
 
 Classification label used to describe what kind of meta object we are dealing with.
 
-***
+---
 
 ### MetaType
 
 ```ts
-type MetaType<T, ImplT> = T & MetaTypeBase<ImplT>;
+type MetaType<T, ImplT> = T & MetaTypeBase<ImplT>
 ```
 
 Defined in: [src/metatypes/metatype.ts:40](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatype.ts#L40)
@@ -10156,22 +10875,23 @@ and exposes validation/serialization helpers.
 #### Remarks
 
 The `MetaType` factory also provides several helper utilities:
-- `MetaType.inspect(metaType)` - [MetaTypeInspect](#metatypeinspect) - Pretty-prints using the implementation stringifier.
-- `MetaType.toString(metaType)` - [MetaTypeToString](#metatypetostring) - Returns the implementation string representation.
-- `MetaType.validate(metaType, value, args)` - [MetaTypeValidate](#metatypevalidate) - Validates a value using the backing implementation.
-- `MetaType.serialize(metaType, value)` - [MetaTypeSerialize](#metatypeserialize) - Serializes a value through the meta type serializers.
-- `MetaType.deserialize(metaType, value)` - [MetaTypeDeserialize](#metatypedeserialize) - Deserializes a raw value through the meta type serializers.
-- `MetaType.isMetaType(obj)` - [MetaTypeIsMetaType](#metatypeismetatype) - Checks whether a value is a runtime meta type wrapper.
-- `MetaType.getMetaTypeImpl(metaType)` - [MetaTypeGetMetaTypeImpl](#metatypegetmetatypeimpl) - Retrieves the bound implementation instance.
 
-***
+-   `MetaType.inspect(metaType)` - [MetaTypeInspect](#metatypeinspect) - Pretty-prints using the implementation stringifier.
+-   `MetaType.toString(metaType)` - [MetaTypeToString](#metatypetostring) - Returns the implementation string representation.
+-   `MetaType.validate(metaType, value, args)` - [MetaTypeValidate](#metatypevalidate) - Validates a value using the backing implementation.
+-   `MetaType.serialize(metaType, value)` - [MetaTypeSerialize](#metatypeserialize) - Serializes a value through the meta type serializers.
+-   `MetaType.deserialize(metaType, value)` - [MetaTypeDeserialize](#metatypedeserialize) - Deserializes a raw value through the meta type serializers.
+-   `MetaType.isMetaType(obj)` - [MetaTypeIsMetaType](#metatypeismetatype) - Checks whether a value is a runtime meta type wrapper.
+-   `MetaType.getMetaTypeImpl(metaType)` - [MetaTypeGetMetaTypeImpl](#metatypegetmetatypeimpl) - Retrieves the bound implementation instance.
+
+---
 
 ### MetaTypeArgsType
 
 ```ts
 type MetaTypeArgsType<T, IsNullishT, IsNullableT, IsOptionalT> = {
   coercion?: boolean;
-  default?: [IsNullableT] extends [true] ? T | null : 
+  default?: [IsNullableT] extends [true] ? T | null :
      | T
     | (declaration?: MetaTypeImpl) => [IsNullableT] extends [true] ? T | null : T;
   deserializers?: (
@@ -10196,7 +10916,7 @@ type MetaTypeArgsType<T, IsNullishT, IsNullableT, IsOptionalT> = {
 } & Record<string, any>;
 ```
 
-Defined in: [src/metatypes/metatypeImpl.ts:185](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L185)
+Defined in: [src/metatypes/metatypeImpl.ts:189](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L189)
 
 Arguments that describe how a meta type behaves (validators, coercion, defaults, etc.).
 
@@ -10224,7 +10944,7 @@ Arguments that describe how a meta type behaves (validators, coercion, defaults,
 </td>
 <td>
 
-[src/metatypes/metatypeImpl.ts:199](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L199)
+[src/metatypes/metatypeImpl.ts:203](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L203)
 
 </td>
 </tr>
@@ -10236,14 +10956,14 @@ Arguments that describe how a meta type behaves (validators, coercion, defaults,
 </td>
 <td>
 
-\[`IsNullableT`\] *extends* \[`true`\] ? `T` \| `null` : 
-  \| `T`
-  \| (`declaration?`: [`MetaTypeImpl`](#metatypeimpl)) => \[`IsNullableT`\] *extends* \[`true`\] ? `T` \| `null` : `T`
+\[`IsNullableT`\] _extends_ \[`true`\] ? `T` \| `null` :
+\| `T`
+\| (`declaration?`: [`MetaTypeImpl`](#metatypeimpl)) => \[`IsNullableT`\] _extends_ \[`true`\] ? `T` \| `null` : `T`
 
 </td>
 <td>
 
-[src/metatypes/metatypeImpl.ts:193](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L193)
+[src/metatypes/metatypeImpl.ts:197](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L197)
 
 </td>
 </tr>
@@ -10256,13 +10976,13 @@ Arguments that describe how a meta type behaves (validators, coercion, defaults,
 <td>
 
 (
-  \| [`DeSerializerType`](#deserializertype)
-  \| [`DeSerializeFuncType`](#deserializefunctype))[]
+\| [`DeSerializerType`](#deserializertype)
+\| [`DeSerializeFuncType`](#deserializefunctype))[]
 
 </td>
 <td>
 
-[src/metatypes/metatypeImpl.ts:206](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L206)
+[src/metatypes/metatypeImpl.ts:210](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L210)
 
 </td>
 </tr>
@@ -10279,7 +10999,7 @@ Arguments that describe how a meta type behaves (validators, coercion, defaults,
 </td>
 <td>
 
-[src/metatypes/metatypeImpl.ts:191](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L191)
+[src/metatypes/metatypeImpl.ts:195](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L195)
 
 </td>
 </tr>
@@ -10296,7 +11016,7 @@ Arguments that describe how a meta type behaves (validators, coercion, defaults,
 </td>
 <td>
 
-[src/metatypes/metatypeImpl.ts:203](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L203)
+[src/metatypes/metatypeImpl.ts:207](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L207)
 
 </td>
 </tr>
@@ -10313,7 +11033,7 @@ Arguments that describe how a meta type behaves (validators, coercion, defaults,
 </td>
 <td>
 
-[src/metatypes/metatypeImpl.ts:202](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L202)
+[src/metatypes/metatypeImpl.ts:206](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L206)
 
 </td>
 </tr>
@@ -10330,7 +11050,7 @@ Arguments that describe how a meta type behaves (validators, coercion, defaults,
 </td>
 <td>
 
-[src/metatypes/metatypeImpl.ts:201](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L201)
+[src/metatypes/metatypeImpl.ts:205](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L205)
 
 </td>
 </tr>
@@ -10347,7 +11067,7 @@ Arguments that describe how a meta type behaves (validators, coercion, defaults,
 </td>
 <td>
 
-[src/metatypes/metatypeImpl.ts:197](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L197)
+[src/metatypes/metatypeImpl.ts:201](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L201)
 
 </td>
 </tr>
@@ -10364,7 +11084,7 @@ Arguments that describe how a meta type behaves (validators, coercion, defaults,
 </td>
 <td>
 
-[src/metatypes/metatypeImpl.ts:196](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L196)
+[src/metatypes/metatypeImpl.ts:200](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L200)
 
 </td>
 </tr>
@@ -10381,7 +11101,7 @@ Arguments that describe how a meta type behaves (validators, coercion, defaults,
 </td>
 <td>
 
-[src/metatypes/metatypeImpl.ts:198](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L198)
+[src/metatypes/metatypeImpl.ts:202](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L202)
 
 </td>
 </tr>
@@ -10398,7 +11118,7 @@ Arguments that describe how a meta type behaves (validators, coercion, defaults,
 </td>
 <td>
 
-[src/metatypes/metatypeImpl.ts:207](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L207)
+[src/metatypes/metatypeImpl.ts:211](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L211)
 
 </td>
 </tr>
@@ -10411,13 +11131,13 @@ Arguments that describe how a meta type behaves (validators, coercion, defaults,
 <td>
 
 (
-  \| [`SerializerType`](#serializertype)
-  \| [`SerializeFuncType`](#serializefunctype))[]
+\| [`SerializerType`](#serializertype)
+\| [`SerializeFuncType`](#serializefunctype))[]
 
 </td>
 <td>
 
-[src/metatypes/metatypeImpl.ts:205](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L205)
+[src/metatypes/metatypeImpl.ts:209](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L209)
 
 </td>
 </tr>
@@ -10434,7 +11154,7 @@ Arguments that describe how a meta type behaves (validators, coercion, defaults,
 </td>
 <td>
 
-[src/metatypes/metatypeImpl.ts:192](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L192)
+[src/metatypes/metatypeImpl.ts:196](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L196)
 
 </td>
 </tr>
@@ -10451,7 +11171,7 @@ Arguments that describe how a meta type behaves (validators, coercion, defaults,
 </td>
 <td>
 
-[src/metatypes/metatypeImpl.ts:200](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L200)
+[src/metatypes/metatypeImpl.ts:204](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L204)
 
 </td>
 </tr>
@@ -10464,13 +11184,13 @@ Arguments that describe how a meta type behaves (validators, coercion, defaults,
 <td>
 
 (
-  \| [`ValidatorType`](#validatortype)
-  \| [`ValidatorFuncType`](#validatorfunctype))[]
+\| [`ValidatorType`](#validatortype)
+\| [`ValidatorFuncType`](#validatorfunctype))[]
 
 </td>
 <td>
 
-[src/metatypes/metatypeImpl.ts:204](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L204)
+[src/metatypes/metatypeImpl.ts:208](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L208)
 
 </td>
 </tr>
@@ -10502,7 +11222,7 @@ Arguments that describe how a meta type behaves (validators, coercion, defaults,
 <tr>
 <td>
 
-`IsNullishT` *extends* `boolean`
+`IsNullishT` _extends_ `boolean`
 
 </td>
 <td>
@@ -10514,7 +11234,7 @@ Arguments that describe how a meta type behaves (validators, coercion, defaults,
 <tr>
 <td>
 
-`IsNullableT` *extends* `boolean`
+`IsNullableT` _extends_ `boolean`
 
 </td>
 <td>
@@ -10526,7 +11246,7 @@ Arguments that describe how a meta type behaves (validators, coercion, defaults,
 <tr>
 <td>
 
-`IsOptionalT` *extends* `boolean`
+`IsOptionalT` _extends_ `boolean`
 
 </td>
 <td>
@@ -10538,14 +11258,14 @@ Arguments that describe how a meta type behaves (validators, coercion, defaults,
 </tbody>
 </table>
 
-***
+---
 
 ### MetaTypeBase
 
 ```ts
 type MetaTypeBase<ImplT> = {
-  [MetaTypeImplSymbol]?: ImplT | MetaTypeImpl;
-} & MetaTypeFlag;
+    [MetaTypeImplSymbol]?: ImplT | MetaTypeImpl
+} & MetaTypeFlag
 ```
 
 Defined in: [src/metatypes/metatype.ts:16](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatype.ts#L16)
@@ -10608,14 +11328,14 @@ Base shape of any meta type wrapper (stores link to `MetaTypeImpl`).
 </tbody>
 </table>
 
-***
+---
 
 ### MetaTypeFlag
 
 ```ts
 type MetaTypeFlag = {
-  [IsMetaTypeSymbol]?: true;
-};
+    [IsMetaTypeSymbol]?: true
+}
 ```
 
 Defined in: [src/metatypes/metatype.ts:11](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatype.ts#L11)
@@ -10659,12 +11379,12 @@ Describes objects that carry the meta-type marker.
 </tbody>
 </table>
 
-***
+---
 
 ### MetaTypesResolver()
 
 ```ts
-type MetaTypesResolver = (value: any, args?: MetaTypeArgsType) => MetaTypeImpl;
+type MetaTypesResolver = (value: any, args?: MetaTypeArgsType) => MetaTypeImpl
 ```
 
 Defined in: [src/metaobjects/meta.ts:116](https://github.com/metatyper/metatyper/blob/main/src/metaobjects/meta.ts#L116)
@@ -10712,12 +11432,12 @@ Resolves any value into a concrete `MetaTypeImpl`.
 
 [`MetaTypeImpl`](#metatypeimpl)
 
-***
+---
 
 ### NUMBER
 
 ```ts
-type NUMBER = MetaType<number, NumberImpl>;
+type NUMBER = MetaType<number, NumberImpl>
 ```
 
 Defined in: [src/metatypes/types/number.ts:107](https://github.com/metatyper/metatyper/blob/main/src/metatypes/types/number.ts#L107)
@@ -10736,12 +11456,12 @@ obj.score = 1.2
 obj.score = 'str' // validation error
 ```
 
-***
+---
 
 ### NumbersMetaTypeArgs
 
 ```ts
-type NumbersMetaTypeArgs<T, IsNullishT, IsNullableT, IsOptionalT> = MetaTypeArgsType<T, IsNullishT, IsNullableT, IsOptionalT> & 
+type NumbersMetaTypeArgs<T, IsNullishT, IsNullableT, IsOptionalT> = MetaTypeArgsType<T, IsNullishT, IsNullableT, IsOptionalT> &
   | {
   greater?: never;
   min?: number | bigint | Date;
@@ -10749,7 +11469,7 @@ type NumbersMetaTypeArgs<T, IsNullishT, IsNullableT, IsOptionalT> = MetaTypeArgs
   | {
   greater?: number | bigint | Date;
   min?: never;
-} & 
+} &
   | {
   less?: never;
   max?: number | bigint | Date;
@@ -10789,7 +11509,7 @@ Options for numeric meta types (NUMBER/INTEGER/BIGINT reuse this).
 <tr>
 <td>
 
-`IsNullishT` *extends* `boolean`
+`IsNullishT` _extends_ `boolean`
 
 </td>
 <td>
@@ -10801,7 +11521,7 @@ Options for numeric meta types (NUMBER/INTEGER/BIGINT reuse this).
 <tr>
 <td>
 
-`IsNullableT` *extends* `boolean`
+`IsNullableT` _extends_ `boolean`
 
 </td>
 <td>
@@ -10813,7 +11533,7 @@ Options for numeric meta types (NUMBER/INTEGER/BIGINT reuse this).
 <tr>
 <td>
 
-`IsOptionalT` *extends* `boolean`
+`IsOptionalT` _extends_ `boolean`
 
 </td>
 <td>
@@ -10825,12 +11545,12 @@ Options for numeric meta types (NUMBER/INTEGER/BIGINT reuse this).
 </tbody>
 </table>
 
-***
+---
 
 ### OBJECT
 
 ```ts
-type OBJECT<T> = MetaType<T, ObjectImpl> & ObjectFlag;
+type OBJECT<T> = MetaType<T, ObjectImpl> & ObjectFlag
 ```
 
 Defined in: [src/metatypes/types/object.ts:274](https://github.com/metatyper/metatyper/blob/main/src/metatypes/types/object.ts#L274)
@@ -10890,14 +11610,14 @@ obj2.c = { _someKey: true }
 obj2.c = { _someKey: 10 } // type & validation error
 ```
 
-***
+---
 
 ### ObjectFlag
 
 ```ts
 type ObjectFlag = {
-  [IsOBJECT]?: true;
-};
+    [IsOBJECT]?: true
+}
 ```
 
 Defined in: [src/metatypes/types/object.ts:449](https://github.com/metatyper/metatyper/blob/main/src/metatypes/types/object.ts#L449)
@@ -10939,16 +11659,17 @@ Defined in: [src/metatypes/types/object.ts:449](https://github.com/metatyper/met
 </tbody>
 </table>
 
-***
+---
 
 ### ObjectMetaTypeArgs
 
 ```ts
-type ObjectMetaTypeArgs<T, RequiredKeysT, IsNullishT, IsNullableT, IsOptionalT, IsFrozenT> = MetaTypeArgsType<T, IsNullishT, IsNullableT, IsOptionalT> & {
-  freeze?: IsFrozenT;
-  required?: RequiredKeysT;
-  serializeSubValues?: boolean;
-};
+type ObjectMetaTypeArgs<T, RequiredKeysT, IsNullishT, IsNullableT, IsOptionalT, IsFrozenT> =
+    MetaTypeArgsType<T, IsNullishT, IsNullableT, IsOptionalT> & {
+        freeze?: IsFrozenT
+        required?: RequiredKeysT
+        serializeSubValues?: boolean
+    }
 ```
 
 Defined in: [src/metatypes/types/object.ts:16](https://github.com/metatyper/metatyper/blob/main/src/metatypes/types/object.ts#L16)
@@ -11061,7 +11782,7 @@ Enables/disables serialization/deserialization of nested properties.
 <tr>
 <td>
 
-`RequiredKeysT` *extends* keyof `any`[]
+`RequiredKeysT` _extends_ keyof `any`[]
 
 </td>
 <td>
@@ -11073,7 +11794,7 @@ Enables/disables serialization/deserialization of nested properties.
 <tr>
 <td>
 
-`IsNullishT` *extends* `boolean`
+`IsNullishT` _extends_ `boolean`
 
 </td>
 <td>
@@ -11085,7 +11806,7 @@ Enables/disables serialization/deserialization of nested properties.
 <tr>
 <td>
 
-`IsNullableT` *extends* `boolean`
+`IsNullableT` _extends_ `boolean`
 
 </td>
 <td>
@@ -11097,7 +11818,7 @@ Enables/disables serialization/deserialization of nested properties.
 <tr>
 <td>
 
-`IsOptionalT` *extends* `boolean`
+`IsOptionalT` _extends_ `boolean`
 
 </td>
 <td>
@@ -11109,7 +11830,7 @@ Enables/disables serialization/deserialization of nested properties.
 <tr>
 <td>
 
-`IsFrozenT` *extends* `boolean`
+`IsFrozenT` _extends_ `boolean`
 
 </td>
 <td>
@@ -11121,12 +11842,274 @@ Enables/disables serialization/deserialization of nested properties.
 </tbody>
 </table>
 
-***
+---
+
+### PASSWORD
+
+```ts
+type PASSWORD = MetaType<string, StringImpl>
+```
+
+Defined in: src/metatypes/types/password.ts:39
+
+Creates a password meta type with configurable character requirements and length.
+
+#### Param
+
+[PasswordMetaTypeArgs](#passwordmetatypeargs) controlling character classes and length.
+
+#### Example
+
+```ts
+const obj = Meta({ password: PASSWORD() })
+obj.password = 'short' // validation error (min 6)
+obj.password = 'password' // validation error (no number / special / upper)
+obj.password = 'P@ssw0rd' // ok
+```
+
+---
+
+### PasswordMetaTypeArgs
+
+```ts
+type PasswordMetaTypeArgs<T, IsNullishT, IsNullableT, IsOptionalT> = Omit<
+    StringMetaTypeArgs<T, IsNullishT, IsNullableT, IsOptionalT>,
+    'regexp' | 'notEmpty' | 'minLength'
+> & {
+    minLength?: number
+    requireLowercase?: boolean
+    requireNumber?: boolean
+    requireSpecial?: boolean
+    requireUppercase?: boolean
+}
+```
+
+Defined in: src/metatypes/types/password.ts:5
+
+Additional options supported by the `PASSWORD` meta type.
+
+#### Type Declaration
+
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Defined in</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+
+`minLength?`
+
+</td>
+<td>
+
+`number`
+
+</td>
+<td>
+
+&hyphen;
+
+</td>
+<td>
+
+src/metatypes/types/password.ts:14
+
+</td>
+</tr>
+<tr>
+<td>
+
+`requireLowercase?`
+
+</td>
+<td>
+
+`boolean`
+
+</td>
+<td>
+
+Require at least one lowercase letter [a-z] (defaults to true).
+
+</td>
+<td>
+
+src/metatypes/types/password.ts:17
+
+</td>
+</tr>
+<tr>
+<td>
+
+`requireNumber?`
+
+</td>
+<td>
+
+`boolean`
+
+</td>
+<td>
+
+Require at least one digit [0-9] (defaults to true).
+
+</td>
+<td>
+
+src/metatypes/types/password.ts:21
+
+</td>
+</tr>
+<tr>
+<td>
+
+`requireSpecial?`
+
+</td>
+<td>
+
+`boolean`
+
+</td>
+<td>
+
+Require at least one non-alphanumeric character (defaults to true).
+
+</td>
+<td>
+
+src/metatypes/types/password.ts:23
+
+</td>
+</tr>
+<tr>
+<td>
+
+`requireUppercase?`
+
+</td>
+<td>
+
+`boolean`
+
+</td>
+<td>
+
+Require at least one uppercase letter [A-Z] (defaults to true).
+
+</td>
+<td>
+
+src/metatypes/types/password.ts:19
+
+</td>
+</tr>
+</tbody>
+</table>
+
+#### Type Parameters
+
+<table>
+<thead>
+<tr>
+<th>Type Parameter</th>
+<th>Default type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+
+`T`
+
+</td>
+<td>
+
+[`PASSWORD`](#password)
+
+</td>
+</tr>
+<tr>
+<td>
+
+`IsNullishT` _extends_ `boolean`
+
+</td>
+<td>
+
+`boolean`
+
+</td>
+</tr>
+<tr>
+<td>
+
+`IsNullableT` _extends_ `boolean`
+
+</td>
+<td>
+
+`IsNullishT`
+
+</td>
+</tr>
+<tr>
+<td>
+
+`IsOptionalT` _extends_ `boolean`
+
+</td>
+<td>
+
+`IsNullishT`
+
+</td>
+</tr>
+</tbody>
+</table>
+
+---
+
+### PHONE
+
+```ts
+type PHONE = MetaType<string, StringImpl>
+```
+
+Defined in: src/metatypes/types/phone.ts:17
+
+Creates a phone meta type for E.164-like international phone numbers.
+
+#### Param
+
+[StringMetaTypeArgs](#stringmetatypeargs) controlling min/max length, casing, etc.
+
+#### Example
+
+```ts
+const obj = Meta({ phone: PHONE() })
+obj.phone = '12345' // validation error
+obj.phone = '+1234567890' // ok
+```
+
+---
 
 ### PrepareMetaType
 
 ```ts
-type PrepareMetaType<T, IsNullishT, IsNullableT, IsOptionalT> = IsNullableT extends true ? IsOptionalT extends true ? T | null | undefined : T | null : IsOptionalT extends true ? T | undefined : T;
+type PrepareMetaType<T, IsNullishT, IsNullableT, IsOptionalT> = IsNullableT extends true
+    ? IsOptionalT extends true
+        ? T | null | undefined
+        : T | null
+    : IsOptionalT extends true
+      ? T | undefined
+      : T
 ```
 
 Defined in: [src/metatypes/metatype.ts:27](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatype.ts#L27)
@@ -11159,7 +12142,7 @@ Mirrors what `MetaTypeArgsType.nullish/nullable/optional` controls at runtime.
 <tr>
 <td>
 
-`IsNullishT` *extends* `boolean`
+`IsNullishT` _extends_ `boolean`
 
 </td>
 <td>
@@ -11171,7 +12154,7 @@ Mirrors what `MetaTypeArgsType.nullish/nullable/optional` controls at runtime.
 <tr>
 <td>
 
-`IsNullableT` *extends* `boolean`
+`IsNullableT` _extends_ `boolean`
 
 </td>
 <td>
@@ -11183,7 +12166,7 @@ Mirrors what `MetaTypeArgsType.nullish/nullable/optional` controls at runtime.
 <tr>
 <td>
 
-`IsOptionalT` *extends* `boolean`
+`IsOptionalT` _extends_ `boolean`
 
 </td>
 <td>
@@ -11195,15 +12178,15 @@ Mirrors what `MetaTypeArgsType.nullish/nullable/optional` controls at runtime.
 </tbody>
 </table>
 
-***
+---
 
 ### SerializeFuncType()
 
 ```ts
-type SerializeFuncType = (serializeArgs: SerializerArgsType) => any;
+type SerializeFuncType = (serializeArgs: SerializerArgsType) => any
 ```
 
-Defined in: [src/metatypes/metatypeImpl.ts:94](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L94)
+Defined in: [src/metatypes/metatypeImpl.ts:98](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L98)
 
 Serializer function signature.
 
@@ -11244,14 +12227,14 @@ The arguments passed to the serializer.
 
 The serialized value.
 
-***
+---
 
 ### SerializeMetaObjectArgsType
 
 ```ts
 type SerializeMetaObjectArgsType = {
-  metaArgs?: MetaArgsType;
-} & Record<string, any>;
+    metaArgs?: MetaArgsType
+} & Record<string, any>
 ```
 
 Defined in: [src/metaobjects/meta.ts:24](https://github.com/metatyper/metatyper/blob/main/src/metaobjects/meta.ts#L24)
@@ -11295,21 +12278,21 @@ Overrides used when building a meta object from a plain schema before serializat
 </tbody>
 </table>
 
-***
+---
 
 ### SerializeMetaTypeArgsType
 
 ```ts
 type SerializeMetaTypeArgsType = {
-  baseObject?: object;
-  place?: SerializePlaceType;
-  propName?: string | symbol;
-  targetObject?: object;
-  value: any;
-} & Record<string, any>;
+    baseObject?: object
+    place?: SerializePlaceType
+    propName?: string | symbol
+    targetObject?: object
+    value: any
+} & Record<string, any>
 ```
 
-Defined in: [src/metatypes/metatypeImpl.ts:69](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L69)
+Defined in: [src/metatypes/metatypeImpl.ts:73](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L73)
 
 Arguments passed when serializing a value via `MetaTypeImpl.serialize`.
 
@@ -11343,7 +12326,7 @@ Base object storing state.
 </td>
 <td>
 
-[src/metatypes/metatypeImpl.ts:77](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L77)
+[src/metatypes/metatypeImpl.ts:81](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L81)
 
 </td>
 </tr>
@@ -11365,7 +12348,7 @@ Which "place" triggered serialization (get/serialize/etc).
 </td>
 <td>
 
-[src/metatypes/metatypeImpl.ts:79](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L79)
+[src/metatypes/metatypeImpl.ts:83](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L83)
 
 </td>
 </tr>
@@ -11387,7 +12370,7 @@ Property name that triggered serialization (optional).
 </td>
 <td>
 
-[src/metatypes/metatypeImpl.ts:73](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L73)
+[src/metatypes/metatypeImpl.ts:77](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L77)
 
 </td>
 </tr>
@@ -11409,7 +12392,7 @@ Proxy exposed to the user.
 </td>
 <td>
 
-[src/metatypes/metatypeImpl.ts:75](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L75)
+[src/metatypes/metatypeImpl.ts:79](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L79)
 
 </td>
 </tr>
@@ -11431,36 +12414,36 @@ Value to serialize.
 </td>
 <td>
 
-[src/metatypes/metatypeImpl.ts:71](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L71)
+[src/metatypes/metatypeImpl.ts:75](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L75)
 
 </td>
 </tr>
 </tbody>
 </table>
 
-***
+---
 
 ### SerializePlaceType
 
 ```ts
-type SerializePlaceType = "get" | "serialize" | "unknown";
+type SerializePlaceType = 'get' | 'serialize' | 'unknown'
 ```
 
-Defined in: [src/metatypes/metatypeImpl.ts:97](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L97)
+Defined in: [src/metatypes/metatypeImpl.ts:101](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L101)
 
 Places where serialization can be triggered.
 
-***
+---
 
 ### SerializerArgsType
 
 ```ts
 type SerializerArgsType = SerializeMetaTypeArgsType & {
-  metaTypeImpl?: MetaTypeImpl;
-};
+    metaTypeImpl?: MetaTypeImpl
+}
 ```
 
-Defined in: [src/metatypes/metatypeImpl.ts:86](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L86)
+Defined in: [src/metatypes/metatypeImpl.ts:90](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L90)
 
 Serializer arguments extended with the active implementation reference.
 Subtype of [SerializeMetaTypeArgsType](#serializemetatypeargstype)
@@ -11489,21 +12472,21 @@ Subtype of [SerializeMetaTypeArgsType](#serializemetatypeargstype)
 </td>
 <td>
 
-[src/metatypes/metatypeImpl.ts:87](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L87)
+[src/metatypes/metatypeImpl.ts:91](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L91)
 
 </td>
 </tr>
 </tbody>
 </table>
 
-***
+---
 
 ### SerializerErrorArgsType
 
 ```ts
 type SerializerErrorArgsType = SerializerArgsType & {
-  subError?: Error;
-};
+    subError?: Error
+}
 ```
 
 Defined in: [src/errors/serialization.error.ts:14](https://github.com/metatyper/metatyper/blob/main/src/errors/serialization.error.ts#L14)
@@ -11547,19 +12530,19 @@ Original error raised inside the serializer, if any.
 </tbody>
 </table>
 
-***
+---
 
 ### SerializerType
 
 ```ts
 type SerializerType = {
-  name?: string;
-  serialize: SerializeFuncType;
-  serializePlaces?: SerializePlaceType[] | string[];
-};
+    name?: string
+    serialize: SerializeFuncType
+    serializePlaces?: SerializePlaceType[] | string[]
+}
 ```
 
-Defined in: [src/metatypes/metatypeImpl.ts:104](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L104)
+Defined in: [src/metatypes/metatypeImpl.ts:108](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L108)
 
 Serializer object shape (function + metadata).
 
@@ -11593,7 +12576,7 @@ The name of the serializer.
 </td>
 <td>
 
-[src/metatypes/metatypeImpl.ts:107](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L107)
+[src/metatypes/metatypeImpl.ts:111](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L111)
 
 </td>
 </tr>
@@ -11615,7 +12598,7 @@ The function that serializes the value.
 </td>
 <td>
 
-[src/metatypes/metatypeImpl.ts:105](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L105)
+[src/metatypes/metatypeImpl.ts:109](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L109)
 
 </td>
 </tr>
@@ -11637,19 +12620,43 @@ The places where the serializer can be triggered.
 </td>
 <td>
 
-[src/metatypes/metatypeImpl.ts:108](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L108)
+[src/metatypes/metatypeImpl.ts:112](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L112)
 
 </td>
 </tr>
 </tbody>
 </table>
 
-***
+---
+
+### SLUG
+
+```ts
+type SLUG = MetaType<string, StringImpl>
+```
+
+Defined in: src/metatypes/types/slug.ts:16
+
+Creates a slug meta type (e.g. "my-blog-post-1").
+
+#### Param
+
+[StringMetaTypeArgs](#stringmetatypeargs) controlling min/max length, casing, etc.
+
+#### Example
+
+```ts
+const obj = Meta({ slug: SLUG() })
+obj.slug = 'Not A Slug' // validation error
+obj.slug = 'my-blog-post-1' // ok
+```
+
+---
 
 ### StaticClass
 
 ```ts
-type StaticClass<T, StaticT> = Class<T> & StaticT;
+type StaticClass<T, StaticT> = Class<T> & StaticT
 ```
 
 Defined in: [src/utils/classes.ts:9](https://github.com/metatyper/metatyper/blob/main/src/utils/classes.ts#L9)
@@ -11684,19 +12691,19 @@ Defined in: [src/utils/classes.ts:9](https://github.com/metatyper/metatyper/blob
 </td>
 <td>
 
-`T` *extends* (...`args`: `any`[]) => `any` ? `T` : `unknown`
+`T` _extends_ (...`args`: `any`[]) => `any` ? `T` : `unknown`
 
 </td>
 </tr>
 </tbody>
 </table>
 
-***
+---
 
 ### STRING
 
 ```ts
-type STRING = MetaType<string, StringImpl>;
+type STRING = MetaType<string, StringImpl>
 ```
 
 Defined in: [src/metatypes/types/string.ts:110](https://github.com/metatyper/metatyper/blob/main/src/metatypes/types/string.ts#L110)
@@ -11716,12 +12723,12 @@ obj.name = 1 // validation error
 obj.name = '' // validation error
 ```
 
-***
+---
 
 ### StringMetaTypeArgs
 
 ```ts
-type StringMetaTypeArgs<T, IsNullishT, IsNullableT, IsOptionalT> = MetaTypeArgsType<T, IsNullishT, IsNullableT, IsOptionalT> & 
+type StringMetaTypeArgs<T, IsNullishT, IsNullableT, IsOptionalT> = MetaTypeArgsType<T, IsNullishT, IsNullableT, IsOptionalT> &
   | {
   notEmpty?: boolean;
 }
@@ -11867,7 +12874,7 @@ Trims whitespace before validation.
 <tr>
 <td>
 
-`IsNullishT` *extends* `boolean`
+`IsNullishT` _extends_ `boolean`
 
 </td>
 <td>
@@ -11879,7 +12886,7 @@ Trims whitespace before validation.
 <tr>
 <td>
 
-`IsNullableT` *extends* `boolean`
+`IsNullableT` _extends_ `boolean`
 
 </td>
 <td>
@@ -11891,7 +12898,7 @@ Trims whitespace before validation.
 <tr>
 <td>
 
-`IsOptionalT` *extends* `boolean`
+`IsOptionalT` _extends_ `boolean`
 
 </td>
 <td>
@@ -11903,12 +12910,12 @@ Trims whitespace before validation.
 </tbody>
 </table>
 
-***
+---
 
 ### TUPLE
 
 ```ts
-type TUPLE<T> = MetaType<T, TupleImpl>;
+type TUPLE<T> = MetaType<T, TupleImpl>
 ```
 
 Defined in: [src/metatypes/types/tuple.ts:132](https://github.com/metatyper/metatyper/blob/main/src/metatypes/types/tuple.ts#L132)
@@ -11946,7 +12953,7 @@ Array (or factory) describing each position in the tuple.
 
 ```ts
 const obj1 = Meta({
-     a: TUPLE([1, 'string', BOOLEAN({ nullish: true })], { nullish: true })
+    a: TUPLE([1, 'string', BOOLEAN({ nullish: true })], { nullish: true })
 }) // as { a: [number, string, boolean | null | undefined] | null | undefined }
 
 obj1.a = [1, 'str', true]
@@ -11954,15 +12961,20 @@ obj1.a = [1, true, 'str'] //  type & validation error
 obj1.a = [1] //  type & validation error
 ```
 
-***
+---
 
 ### TupleMetaTypeArgs
 
 ```ts
-type TupleMetaTypeArgs<T, IsNullishT, IsNullableT, IsOptionalT, IsFrozenT> = MetaTypeArgsType<T, IsNullishT, IsNullableT, IsOptionalT> & {
-  freeze?: IsFrozenT;
-  serializeSubValues?: boolean;
-};
+type TupleMetaTypeArgs<T, IsNullishT, IsNullableT, IsOptionalT, IsFrozenT> = MetaTypeArgsType<
+    T,
+    IsNullishT,
+    IsNullableT,
+    IsOptionalT
+> & {
+    freeze?: IsFrozenT
+    serializeSubValues?: boolean
+}
 ```
 
 Defined in: [src/metatypes/types/tuple.ts:14](https://github.com/metatyper/metatyper/blob/main/src/metatypes/types/tuple.ts#L14)
@@ -12053,7 +13065,7 @@ Toggles serialization/deserialization of tuple entries.
 <tr>
 <td>
 
-`IsNullishT` *extends* `boolean`
+`IsNullishT` _extends_ `boolean`
 
 </td>
 <td>
@@ -12065,7 +13077,7 @@ Toggles serialization/deserialization of tuple entries.
 <tr>
 <td>
 
-`IsNullableT` *extends* `boolean`
+`IsNullableT` _extends_ `boolean`
 
 </td>
 <td>
@@ -12077,7 +13089,7 @@ Toggles serialization/deserialization of tuple entries.
 <tr>
 <td>
 
-`IsOptionalT` *extends* `boolean`
+`IsOptionalT` _extends_ `boolean`
 
 </td>
 <td>
@@ -12089,7 +13101,7 @@ Toggles serialization/deserialization of tuple entries.
 <tr>
 <td>
 
-`IsFrozenT` *extends* `boolean`
+`IsFrozenT` _extends_ `boolean`
 
 </td>
 <td>
@@ -12101,12 +13113,12 @@ Toggles serialization/deserialization of tuple entries.
 </tbody>
 </table>
 
-***
+---
 
 ### UNION
 
 ```ts
-type UNION<T> = T;
+type UNION<T> = T
 ```
 
 Defined in: [src/metatypes/types/union.ts:109](https://github.com/metatyper/metatyper/blob/main/src/metatypes/types/union.ts#L109)
@@ -12144,7 +13156,7 @@ Standard [MetaTypeArgsType](#metatypeargstype) plus `serializeSubValues` toggle.
 
 ```ts
 const obj1 = Meta({
-     a: UNION([1, 'string', BOOLEAN({ nullish: true })])
+    a: UNION([1, 'string', BOOLEAN({ nullish: true })])
 }) // as { a: number | string | boolean | null | undefined }
 
 obj1.a = 1
@@ -12153,15 +13165,63 @@ obj1.a = true
 obj1.a = {} // type & validation error
 ```
 
-***
+---
+
+### URL
+
+```ts
+type URL = MetaType<string, StringImpl>
+```
+
+Defined in: src/metatypes/types/url.ts:17
+
+Creates a URL meta type with length/regexp/casing options plus standard meta args.
+
+#### Param
+
+[StringMetaTypeArgs](#stringmetatypeargs) controlling min/max length, casing, etc.
+
+#### Example
+
+```ts
+const obj = Meta({ website: URL() })
+obj.website = 'not-a-url' // validation error
+obj.website = 'https://example.com' // ok
+```
+
+---
+
+### UUID
+
+```ts
+type UUID = MetaType<string, StringImpl>
+```
+
+Defined in: src/metatypes/types/uuid.ts:16
+
+Creates a UUID (v1–v5) meta type with length/regexp/casing options plus standard meta args.
+
+#### Param
+
+[StringMetaTypeArgs](#stringmetatypeargs) controlling min/max length, casing, etc.
+
+#### Example
+
+```ts
+const obj = Meta({ id: UUID() })
+obj.id = 'not-uuid' // validation error
+obj.id = '550e8400-e29b-41d4-a716-446655440000' // ok
+```
+
+---
 
 ### ValidateMetaObjectArgsType
 
 ```ts
 type ValidateMetaObjectArgsType = {
-  metaArgs?: MetaArgsType;
-  stopAtFirstError?: boolean;
-} & Record<string, any>;
+    metaArgs?: MetaArgsType
+    stopAtFirstError?: boolean
+} & Record<string, any>
 ```
 
 Defined in: [src/metaobjects/meta.ts:15](https://github.com/metatyper/metatyper/blob/main/src/metaobjects/meta.ts#L15)
@@ -12227,18 +13287,18 @@ When `true`, validation stops at the first issue (default).
 </tbody>
 </table>
 
-***
+---
 
 ### ValidateMetaTypeArgsType
 
 ```ts
 type ValidateMetaTypeArgsType = {
-  baseObject?: object;
-  path?: (string | number | symbol)[];
-  stopAtFirstError?: boolean;
-  targetObject?: object;
-  value: any;
-} & Record<string, any>;
+    baseObject?: object
+    path?: (string | number | symbol)[]
+    stopAtFirstError?: boolean
+    targetObject?: object
+    value: any
+} & Record<string, any>
 ```
 
 Defined in: [src/metatypes/metatypeImpl.ts:19](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L19)
@@ -12297,12 +13357,10 @@ Validation path (used for nested structures).
 **Example**
 
 ```ts
-
 const err = OBJECT(ARRAY(STRING())).validate({ myKey: ['str', 5] })
 const issue = err?.issues[0]
 
 issue.path // ['myKey', 1]
-
 ```
 
 </td>
@@ -12382,14 +13440,14 @@ Value being validated.
 </tbody>
 </table>
 
-***
+---
 
 ### ValidatorArgsType
 
 ```ts
 type ValidatorArgsType = ValidateMetaTypeArgsType & {
-  metaTypeImpl?: MetaTypeImpl;
-};
+    metaTypeImpl?: MetaTypeImpl
+}
 ```
 
 Defined in: [src/metatypes/metatypeImpl.ts:52](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L52)
@@ -12428,16 +13486,16 @@ Subtype of [ValidateMetaTypeArgsType](#validatemetatypeargstype)
 </tbody>
 </table>
 
-***
+---
 
 ### ValidatorErrorArgsType
 
 ```ts
 type ValidatorErrorArgsType = {
-  subError?: Error;
-  validator: ValidatorType;
-  validatorArgs: ValidatorArgsType;
-};
+    subError?: Error
+    validator: ValidatorType
+    validatorArgs: ValidatorArgsType
+}
 ```
 
 Defined in: [src/errors/validation.error.ts:6](https://github.com/metatyper/metatyper/blob/main/src/errors/validation.error.ts#L6)
@@ -12525,12 +13583,12 @@ Context passed to the validator (value, meta type, path, etc.).
 </tbody>
 </table>
 
-***
+---
 
 ### ValidatorFuncType()
 
 ```ts
-type ValidatorFuncType = (validationArgs: ValidatorArgsType) => boolean | Error;
+type ValidatorFuncType = (validationArgs: ValidatorArgsType) => boolean | Error
 ```
 
 Defined in: [src/metatypes/metatypeImpl.ts:60](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L60)
@@ -12574,15 +13632,16 @@ The arguments passed to the validator.
 
 A boolean indicating whether the value is valid, or an error if the value is invalid.
 
-***
+---
 
 ### ValidatorType
 
 ```ts
 type ValidatorType = {
-  name?: string;
-  validate: ValidatorFuncType;
-};
+    context?: Record<string, any>
+    name?: string
+    validate: ValidatorFuncType
+}
 ```
 
 Defined in: [src/metatypes/metatypeImpl.ts:66](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L66)
@@ -12604,6 +13663,28 @@ Validator object shape.
 <tr>
 <td>
 
+<a id="context"></a> `context?`
+
+</td>
+<td>
+
+`Record`\<`string`, `any`\>
+
+</td>
+<td>
+
+&hyphen;
+
+</td>
+<td>
+
+[src/metatypes/metatypeImpl.ts:68](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L68)
+
+</td>
+</tr>
+<tr>
+<td>
+
 <a id="name-20"></a> `name?`
 
 </td>
@@ -12619,7 +13700,7 @@ The name of the validator.
 </td>
 <td>
 
-[src/metatypes/metatypeImpl.ts:66](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L66)
+[src/metatypes/metatypeImpl.ts:67](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L67)
 
 </td>
 </tr>
@@ -12641,7 +13722,7 @@ The function that validates the value.
 </td>
 <td>
 
-[src/metatypes/metatypeImpl.ts:66](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L66)
+[src/metatypes/metatypeImpl.ts:69](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L69)
 
 </td>
 </tr>
@@ -12654,9 +13735,9 @@ The function that validates the value.
 
 ```ts
 const CoercionDeSerializer: {
-  deserialize: (args: DeSerializerArgsType) => any;
-  name: string;
-};
+    deserialize: (args: DeSerializerArgsType) => any
+    name: string
+}
 ```
 
 Defined in: [src/serializers/coercion.ts:13](https://github.com/metatyper/metatyper/blob/main/src/serializers/coercion.ts#L13)
@@ -12722,16 +13803,16 @@ Deserializes values by delegating to the meta type's `castToType` implementation
 </tbody>
 </table>
 
-***
+---
 
 ### CoercionSerializer
 
 ```ts
 const CoercionSerializer: {
-  name: string;
-  serialize: (args: SerializerArgsType) => any;
-  serializePlaces: string[];
-};
+    name: string
+    serialize: (args: SerializerArgsType) => any
+    serializePlaces: string[]
+}
 ```
 
 Defined in: [src/serializers/coercion.ts:4](https://github.com/metatyper/metatyper/blob/main/src/serializers/coercion.ts#L4)
@@ -12819,15 +13900,15 @@ Serializes values by delegating to the meta type's `castToRawValue` implementati
 </tbody>
 </table>
 
-***
+---
 
 ### FreezeObjectDeSerializer
 
 ```ts
 const FreezeObjectDeSerializer: {
-  deserialize: (__namedParameters: DeSerializerArgsType) => any;
-  name: string;
-};
+    deserialize: (__namedParameters: DeSerializerArgsType) => any
+    name: string
+}
 ```
 
 Defined in: [src/serializers/freezeObject.ts:22](https://github.com/metatyper/metatyper/blob/main/src/serializers/freezeObject.ts#L22)
@@ -12893,12 +13974,15 @@ Deserializer that produces a frozen copy of objects/arrays to prevent mutation.
 </tbody>
 </table>
 
-***
+---
 
 ### I()
 
 ```ts
-const I: <T, IsNullishT, IsNullableT, IsOptionalT>(subType: Class<T>, args?: InstanceMetaTypeArgs<INSTANCE<T>, IsNullishT, IsNullableT, IsOptionalT>) => PrepareMetaType<INSTANCE<T>, IsNullishT, IsNullableT, IsOptionalT> = INSTANCE;
+const I: <T, IsNullishT, IsNullableT, IsOptionalT>(
+    subType: Class<T>,
+    args?: InstanceMetaTypeArgs<INSTANCE<T>, IsNullishT, IsNullableT, IsOptionalT>
+) => PrepareMetaType<INSTANCE<T>, IsNullishT, IsNullableT, IsOptionalT> = INSTANCE
 ```
 
 Defined in: [src/metatypes/types/instance.ts:107](https://github.com/metatyper/metatyper/blob/main/src/metatypes/types/instance.ts#L107)
@@ -12930,7 +14014,7 @@ Creates a meta type that validates values are instances of the provided class.
 <tr>
 <td>
 
-`IsNullishT` *extends* `boolean`
+`IsNullishT` _extends_ `boolean`
 
 </td>
 <td>
@@ -12942,7 +14026,7 @@ Creates a meta type that validates values are instances of the provided class.
 <tr>
 <td>
 
-`IsNullableT` *extends* `boolean`
+`IsNullableT` _extends_ `boolean`
 
 </td>
 <td>
@@ -12954,7 +14038,7 @@ Creates a meta type that validates values are instances of the provided class.
 <tr>
 <td>
 
-`IsOptionalT` *extends* `boolean`
+`IsOptionalT` _extends_ `boolean`
 
 </td>
 <td>
@@ -13022,11 +14106,11 @@ Class or instance used as the target type.
 
 ```ts
 class A {
-   a = 1
+    a = 1
 }
 
 const obj1 = Meta({
-     a: INSTANCE(A, { nullish: true })
+    a: INSTANCE(A, { nullish: true })
 }) // as { a: A | null | undefined }
 
 obj1.a = new A()
@@ -13034,46 +14118,46 @@ obj1.a = {} // type & validation error
 obj1.a = { a: 1 } // validation error
 ```
 
-***
+---
 
 ### IsMetaObjectSymbol
 
 ```ts
-const IsMetaObjectSymbol: typeof IsMetaObjectSymbol;
+const IsMetaObjectSymbol: typeof IsMetaObjectSymbol
 ```
 
 Defined in: [src/metaobjects/symbols.ts:1](https://github.com/metatyper/metatyper/blob/main/src/metaobjects/symbols.ts#L1)
 
-***
+---
 
 ### IsMetaTypeSymbol
 
 ```ts
-const IsMetaTypeSymbol: typeof IsMetaTypeSymbol;
+const IsMetaTypeSymbol: typeof IsMetaTypeSymbol
 ```
 
 Defined in: [src/metatypes/metatype.ts:5](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatype.ts#L5)
 
 Symbol flag injected into every runtime meta type wrapper.
 
-***
+---
 
 ### M
 
 ```ts
-const M: typeof Meta = Meta;
+const M: typeof Meta = Meta
 ```
 
 Defined in: [src/metaobjects/meta.ts:257](https://github.com/metatyper/metatyper/blob/main/src/metaobjects/meta.ts#L257)
 
 Alias for the `Meta`
 
-***
+---
 
 ### MetaIsMetaObject()
 
 ```ts
-const MetaIsMetaObject: (metaObject?: object | null) => any;
+const MetaIsMetaObject: (metaObject?: object | null) => any
 ```
 
 Defined in: [src/metaobjects/meta.ts:393](https://github.com/metatyper/metatyper/blob/main/src/metaobjects/meta.ts#L393)
@@ -13126,387 +14210,139 @@ const metaObject = Meta({})
 
 console.log(Meta.isMetaObject(metaObject)) // true
 
-const plainObject = { id: 1, name: "John" }
+const plainObject = { id: 1, name: 'John' }
 console.log(Meta.isMetaObject(plainObject)) // false
 ```
 
-***
+---
 
 ### MetaObjectBaseSymbol
 
 ```ts
-const MetaObjectBaseSymbol: typeof MetaObjectBaseSymbol;
+const MetaObjectBaseSymbol: typeof MetaObjectBaseSymbol
 ```
 
 Defined in: [src/metaobjects/symbols.ts:2](https://github.com/metatyper/metatyper/blob/main/src/metaobjects/symbols.ts#L2)
 
-***
+---
 
 ### MetaObjectBuilderSymbol
 
 ```ts
-const MetaObjectBuilderSymbol: typeof MetaObjectBuilderSymbol;
+const MetaObjectBuilderSymbol: typeof MetaObjectBuilderSymbol
 ```
 
 Defined in: [src/metaobjects/symbols.ts:4](https://github.com/metatyper/metatyper/blob/main/src/metaobjects/symbols.ts#L4)
 
-***
+---
 
 ### MetaObjectInitialClassDeclarationsSymbol
 
 ```ts
-const MetaObjectInitialClassDeclarationsSymbol: typeof MetaObjectInitialClassDeclarationsSymbol;
+const MetaObjectInitialClassDeclarationsSymbol: typeof MetaObjectInitialClassDeclarationsSymbol
 ```
 
 Defined in: [src/metaobjects/symbols.ts:7](https://github.com/metatyper/metatyper/blob/main/src/metaobjects/symbols.ts#L7)
 
-***
+---
 
 ### MetaObjectProtoSymbol
 
 ```ts
-const MetaObjectProtoSymbol: typeof MetaObjectProtoSymbol;
+const MetaObjectProtoSymbol: typeof MetaObjectProtoSymbol
 ```
 
 Defined in: [src/metaobjects/symbols.ts:3](https://github.com/metatyper/metatyper/blob/main/src/metaobjects/symbols.ts#L3)
 
-***
+---
 
 ### MetaObjectRegistryInfoSymbol
 
 ```ts
-const MetaObjectRegistryInfoSymbol: typeof MetaObjectRegistryInfoSymbol;
+const MetaObjectRegistryInfoSymbol: typeof MetaObjectRegistryInfoSymbol
 ```
 
 Defined in: [src/metaobjects/symbols.ts:6](https://github.com/metatyper/metatyper/blob/main/src/metaobjects/symbols.ts#L6)
 
-***
+---
 
 ### MetaObjectRegistrySymbol
 
 ```ts
-const MetaObjectRegistrySymbol: typeof MetaObjectRegistrySymbol;
+const MetaObjectRegistrySymbol: typeof MetaObjectRegistrySymbol
 ```
 
 Defined in: [src/metaobjects/symbols.ts:5](https://github.com/metatyper/metatyper/blob/main/src/metaobjects/symbols.ts#L5)
 
-***
+---
 
 ### MetaTypeImplSymbol
 
 ```ts
-const MetaTypeImplSymbol: typeof MetaTypeImplSymbol;
+const MetaTypeImplSymbol: typeof MetaTypeImplSymbol
 ```
 
 Defined in: [src/metatypes/metatype.ts:8](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatype.ts#L8)
 
 Symbol pointing to the backing `MetaTypeImpl` used by a runtime meta type.
 
-***
+---
 
 ### MetaTypeValidator
 
 ```ts
-const MetaTypeValidator: {
-  name: string;
-  validate: (__namedParameters: ValidatorArgsType) => boolean | Error;
-};
+const MetaTypeValidator: ValidatorType
 ```
 
 Defined in: [src/validators/metaTypeValidator.ts:4](https://github.com/metatyper/metatyper/blob/main/src/validators/metaTypeValidator.ts#L4)
 
 Validator that delegates compatibility checks to the current meta type implementation.
 
-#### Type Declaration
-
-<table>
-<thead>
-<tr>
-<th>Name</th>
-<th>Type</th>
-<th>Default value</th>
-<th>Defined in</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>
-
-<a id="name-24"></a> `name`
-
-</td>
-<td>
-
-`string`
-
-</td>
-<td>
-
-`'MetaType'`
-
-</td>
-<td>
-
-[src/validators/metaTypeValidator.ts:5](https://github.com/metatyper/metatyper/blob/main/src/validators/metaTypeValidator.ts#L5)
-
-</td>
-</tr>
-<tr>
-<td>
-
-<a id="validate-37"></a> `validate()`
-
-</td>
-<td>
-
-(`__namedParameters`: [`ValidatorArgsType`](#validatorargstype)) => `boolean` \| `Error`
-
-</td>
-<td>
-
-&hyphen;
-
-</td>
-<td>
-
-[src/validators/metaTypeValidator.ts:6](https://github.com/metatyper/metatyper/blob/main/src/validators/metaTypeValidator.ts#L6)
-
-</td>
-</tr>
-</tbody>
-</table>
-
-***
+---
 
 ### NotEmptyValidator
 
 ```ts
-const NotEmptyValidator: {
-  name: string;
-  validate: (__namedParameters: ValidatorArgsType) => boolean;
-};
+const NotEmptyValidator: ValidatorType
 ```
 
 Defined in: [src/validators/lengthValidators.ts:4](https://github.com/metatyper/metatyper/blob/main/src/validators/lengthValidators.ts#L4)
 
 Validator ensuring value has a non-zero `length`.
 
-#### Type Declaration
-
-<table>
-<thead>
-<tr>
-<th>Name</th>
-<th>Type</th>
-<th>Default value</th>
-<th>Defined in</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>
-
-<a id="name-25"></a> `name`
-
-</td>
-<td>
-
-`string`
-
-</td>
-<td>
-
-`'NotEmpty'`
-
-</td>
-<td>
-
-[src/validators/lengthValidators.ts:5](https://github.com/metatyper/metatyper/blob/main/src/validators/lengthValidators.ts#L5)
-
-</td>
-</tr>
-<tr>
-<td>
-
-<a id="validate-38"></a> `validate()`
-
-</td>
-<td>
-
-(`__namedParameters`: [`ValidatorArgsType`](#validatorargstype)) => `boolean`
-
-</td>
-<td>
-
-&hyphen;
-
-</td>
-<td>
-
-[src/validators/lengthValidators.ts:6](https://github.com/metatyper/metatyper/blob/main/src/validators/lengthValidators.ts#L6)
-
-</td>
-</tr>
-</tbody>
-</table>
-
-***
+---
 
 ### NullableValidator
 
 ```ts
-const NullableValidator: {
-  name: string;
-  validate: (__namedParameters: ValidatorArgsType) => boolean;
-};
+const NullableValidator: ValidatorType
 ```
 
 Defined in: [src/validators/nullableValidator.ts:4](https://github.com/metatyper/metatyper/blob/main/src/validators/nullableValidator.ts#L4)
 
 Validator that rejects `null` values.
 
-#### Type Declaration
-
-<table>
-<thead>
-<tr>
-<th>Name</th>
-<th>Type</th>
-<th>Default value</th>
-<th>Defined in</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>
-
-<a id="name-26"></a> `name`
-
-</td>
-<td>
-
-`string`
-
-</td>
-<td>
-
-`'Nullable'`
-
-</td>
-<td>
-
-[src/validators/nullableValidator.ts:5](https://github.com/metatyper/metatyper/blob/main/src/validators/nullableValidator.ts#L5)
-
-</td>
-</tr>
-<tr>
-<td>
-
-<a id="validate-39"></a> `validate()`
-
-</td>
-<td>
-
-(`__namedParameters`: [`ValidatorArgsType`](#validatorargstype)) => `boolean`
-
-</td>
-<td>
-
-&hyphen;
-
-</td>
-<td>
-
-[src/validators/nullableValidator.ts:6](https://github.com/metatyper/metatyper/blob/main/src/validators/nullableValidator.ts#L6)
-
-</td>
-</tr>
-</tbody>
-</table>
-
-***
+---
 
 ### OptionalValidator
 
 ```ts
-const OptionalValidator: {
-  name: string;
-  validate: (__namedParameters: ValidatorArgsType) => boolean;
-};
+const OptionalValidator: ValidatorType
 ```
 
 Defined in: [src/validators/optionalValidator.ts:4](https://github.com/metatyper/metatyper/blob/main/src/validators/optionalValidator.ts#L4)
 
 Validator that rejects `undefined` values.
 
-#### Type Declaration
-
-<table>
-<thead>
-<tr>
-<th>Name</th>
-<th>Type</th>
-<th>Default value</th>
-<th>Defined in</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>
-
-<a id="name-27"></a> `name`
-
-</td>
-<td>
-
-`string`
-
-</td>
-<td>
-
-`'Optional'`
-
-</td>
-<td>
-
-[src/validators/optionalValidator.ts:5](https://github.com/metatyper/metatyper/blob/main/src/validators/optionalValidator.ts#L5)
-
-</td>
-</tr>
-<tr>
-<td>
-
-<a id="validate-40"></a> `validate()`
-
-</td>
-<td>
-
-(`__namedParameters`: [`ValidatorArgsType`](#validatorargstype)) => `boolean`
-
-</td>
-<td>
-
-&hyphen;
-
-</td>
-<td>
-
-[src/validators/optionalValidator.ts:6](https://github.com/metatyper/metatyper/blob/main/src/validators/optionalValidator.ts#L6)
-
-</td>
-</tr>
-</tbody>
-</table>
-
-***
+---
 
 ### SubValuesDeSerializer
 
 ```ts
 const SubValuesDeSerializer: {
-  deserialize: (args: DeSerializerArgsType) => any;
-  name: string;
-};
+    deserialize: (args: DeSerializerArgsType) => any
+    name: string
+}
 ```
 
 Defined in: [src/serializers/subValues.ts:18](https://github.com/metatyper/metatyper/blob/main/src/serializers/subValues.ts#L18)
@@ -13550,7 +14386,7 @@ Deserializer counterpart that delegates to `deserializeSubValues` when available
 <tr>
 <td>
 
-<a id="name-28"></a> `name`
+<a id="name-24"></a> `name`
 
 </td>
 <td>
@@ -13572,15 +14408,15 @@ Deserializer counterpart that delegates to `deserializeSubValues` when available
 </tbody>
 </table>
 
-***
+---
 
 ### SubValuesSerializer
 
 ```ts
 const SubValuesSerializer: {
-  name: string;
-  serialize: (args: SerializerArgsType) => any;
-};
+    name: string
+    serialize: (args: SerializerArgsType) => any
+}
 ```
 
 Defined in: [src/serializers/subValues.ts:7](https://github.com/metatyper/metatyper/blob/main/src/serializers/subValues.ts#L7)
@@ -13603,7 +14439,7 @@ Structural meta types override `serializeSubValues` to customize this behavior.
 <tr>
 <td>
 
-<a id="name-29"></a> `name`
+<a id="name-25"></a> `name`
 
 </td>
 <td>
@@ -13647,15 +14483,15 @@ Structural meta types override `serializeSubValues` to customize this behavior.
 </tbody>
 </table>
 
-***
+---
 
 ### ToLowerCaseDeSerializer
 
 ```ts
 const ToLowerCaseDeSerializer: {
-  deserialize: (__namedParameters: DeSerializerArgsType) => any;
-  name: string;
-};
+    deserialize: (__namedParameters: DeSerializerArgsType) => any
+    name: string
+}
 ```
 
 Defined in: [src/serializers/stringCase.ts:4](https://github.com/metatyper/metatyper/blob/main/src/serializers/stringCase.ts#L4)
@@ -13699,7 +14535,7 @@ Deserializer that lowercases string values.
 <tr>
 <td>
 
-<a id="name-30"></a> `name`
+<a id="name-26"></a> `name`
 
 </td>
 <td>
@@ -13721,15 +14557,15 @@ Deserializer that lowercases string values.
 </tbody>
 </table>
 
-***
+---
 
 ### ToUpperCaseDeSerializer
 
 ```ts
 const ToUpperCaseDeSerializer: {
-  deserialize: (__namedParameters: DeSerializerArgsType) => any;
-  name: string;
-};
+    deserialize: (__namedParameters: DeSerializerArgsType) => any
+    name: string
+}
 ```
 
 Defined in: [src/serializers/stringCase.ts:11](https://github.com/metatyper/metatyper/blob/main/src/serializers/stringCase.ts#L11)
@@ -13773,7 +14609,7 @@ Deserializer that uppercases string values.
 <tr>
 <td>
 
-<a id="name-31"></a> `name`
+<a id="name-27"></a> `name`
 
 </td>
 <td>
@@ -13795,15 +14631,15 @@ Deserializer that uppercases string values.
 </tbody>
 </table>
 
-***
+---
 
 ### TrimDeSerializer
 
 ```ts
 const TrimDeSerializer: {
-  deserialize: (__namedParameters: DeSerializerArgsType) => any;
-  name: string;
-};
+    deserialize: (__namedParameters: DeSerializerArgsType) => any
+    name: string
+}
 ```
 
 Defined in: [src/serializers/stringTrim.ts:4](https://github.com/metatyper/metatyper/blob/main/src/serializers/stringTrim.ts#L4)
@@ -13847,7 +14683,7 @@ Deserializer that trims whitespace from string values.
 <tr>
 <td>
 
-<a id="name-32"></a> `name`
+<a id="name-28"></a> `name`
 
 </td>
 <td>
@@ -13879,19 +14715,19 @@ Implementation for the unconstrained `ANY` meta type.
 
 #### Extends
 
-- [`MetaTypeImpl`](#metatypeimpl)
+-   [`MetaTypeImpl`](#metatypeimpl)
 
 #### Constructors
 
 ##### Constructor
 
 ```ts
-new AnyImpl(metaTypeArgs?: 
+new AnyImpl(metaTypeArgs?:
   | MetaTypeArgsType<any, boolean, boolean, boolean>
   | (metaTypeImpl: MetaTypeImpl) => MetaTypeArgsType): AnyImpl;
 ```
 
-Defined in: [src/metatypes/metatypeImpl.ts:300](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L300)
+Defined in: [src/metatypes/metatypeImpl.ts:304](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L304)
 
 Creates a new meta type implementation.
 
@@ -13914,7 +14750,7 @@ Creates a new meta type implementation.
 </td>
 <td>
 
- \| [`MetaTypeArgsType`](#metatypeargstype)\<`any`, `boolean`, `boolean`, `boolean`\> \| (`metaTypeImpl`: [`MetaTypeImpl`](#metatypeimpl)) => [`MetaTypeArgsType`](#metatypeargstype)
+\| [`MetaTypeArgsType`](#metatypeargstype)\<`any`, `boolean`, `boolean`, `boolean`\> \| (`metaTypeImpl`: [`MetaTypeImpl`](#metatypeimpl)) => [`MetaTypeArgsType`](#metatypeargstype)
 
 </td>
 <td>
@@ -13942,7 +14778,7 @@ Arguments or a factory that receives the instance being constructed.
 castToRawValue(serializationArgs: SerializerArgsType): any;
 ```
 
-Defined in: [src/metatypes/metatypeImpl.ts:375](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L375)
+Defined in: [src/metatypes/metatypeImpl.ts:379](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L379)
 
 Hook for structural types to convert values when serializing.
 
@@ -13985,7 +14821,7 @@ Hook for structural types to convert values when serializing.
 castToType(deserializationArgs: DeSerializerArgsType): any;
 ```
 
-Defined in: [src/metatypes/metatypeImpl.ts:370](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L370)
+Defined in: [src/metatypes/metatypeImpl.ts:374](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L374)
 
 Hook for structural types to cast raw values before validation.
 
@@ -14028,7 +14864,7 @@ Hook for structural types to cast raw values before validation.
 deserialize(deserializationArgs: DeSerializeMetaTypeArgsType): any;
 ```
 
-Defined in: [src/metatypes/metatypeImpl.ts:449](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L449)
+Defined in: [src/metatypes/metatypeImpl.ts:453](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L453)
 
 Runs builtin + custom deserializers and returns the final value.
 
@@ -14071,7 +14907,7 @@ Runs builtin + custom deserializers and returns the final value.
 getSubType(): any;
 ```
 
-Defined in: [src/metatypes/metatypeImpl.ts:255](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L255)
+Defined in: [src/metatypes/metatypeImpl.ts:259](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L259)
 
 Returns the prepared subtype definition (arrays/objects can override `prepareSubType`).
 
@@ -14089,7 +14925,7 @@ Returns the prepared subtype definition (arrays/objects can override `prepareSub
 metaTypeValidatorFunc(__namedParameters: ValidatorArgsType): boolean | Error;
 ```
 
-Defined in: [src/metatypes/metatypeImpl.ts:482](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L482)
+Defined in: [src/metatypes/metatypeImpl.ts:486](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L486)
 
 Default validator that asks the implementation whether the value is compatible.
 
@@ -14129,12 +14965,12 @@ Default validator that asks the implementation whether the value is compatible.
 ##### rebuild()
 
 ```ts
-rebuild(metaTypeArgs?: 
+rebuild(metaTypeArgs?:
   | MetaTypeArgsType<any, boolean, boolean, boolean>
   | (metaTypeImpl: MetaTypeImpl) => MetaTypeArgsType): MetaTypeImpl;
 ```
 
-Defined in: [src/metatypes/metatypeImpl.ts:354](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L354)
+Defined in: [src/metatypes/metatypeImpl.ts:358](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L358)
 
 Rebuilds the current implementation with additional/overriding arguments.
 
@@ -14156,7 +14992,7 @@ Rebuilds the current implementation with additional/overriding arguments.
 </td>
 <td>
 
- \| [`MetaTypeArgsType`](#metatypeargstype)\<`any`, `boolean`, `boolean`, `boolean`\> \| (`metaTypeImpl`: [`MetaTypeImpl`](#metatypeimpl)) => [`MetaTypeArgsType`](#metatypeargstype)
+\| [`MetaTypeArgsType`](#metatypeargstype)\<`any`, `boolean`, `boolean`, `boolean`\> \| (`metaTypeImpl`: [`MetaTypeImpl`](#metatypeimpl)) => [`MetaTypeArgsType`](#metatypeargstype)
 
 </td>
 </tr>
@@ -14177,7 +15013,7 @@ Rebuilds the current implementation with additional/overriding arguments.
 serialize(serializationArgs: SerializeMetaTypeArgsType): any;
 ```
 
-Defined in: [src/metatypes/metatypeImpl.ts:398](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L398)
+Defined in: [src/metatypes/metatypeImpl.ts:402](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L402)
 
 Runs builtin + custom serializers and returns the final value.
 
@@ -14220,7 +15056,7 @@ Runs builtin + custom serializers and returns the final value.
 toString(): string;
 ```
 
-Defined in: [src/metatypes/metatypeImpl.ts:361](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L361)
+Defined in: [src/metatypes/metatypeImpl.ts:365](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L365)
 
 String representation displayed in inspectors/logs.
 
@@ -14238,7 +15074,7 @@ String representation displayed in inspectors/logs.
 validate(args: ValidateMetaTypeArgsType): ValidationError | undefined;
 ```
 
-Defined in: [src/metatypes/metatypeImpl.ts:507](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L507)
+Defined in: [src/metatypes/metatypeImpl.ts:511](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L511)
 
 Runs builtin + custom validators and returns a `ValidationError` when something fails.
 
@@ -14278,12 +15114,12 @@ Runs builtin + custom validators and returns a `ValidationError` when something 
 ##### build()
 
 ```ts
-static build<T>(this: (...metaTypeArgs: any) => T, metaTypeArgs?: 
+static build<T>(this: (...metaTypeArgs: any) => T, metaTypeArgs?:
   | MetaTypeArgsType<any, boolean, boolean, boolean>
   | (metaTypeImpl: MetaTypeImpl) => MetaTypeArgsType): T;
 ```
 
-Defined in: [src/metatypes/metatypeImpl.ts:346](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L346)
+Defined in: [src/metatypes/metatypeImpl.ts:350](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L350)
 
 Instantiates the implementation (used by `MetaType` factory helpers).
 
@@ -14299,7 +15135,7 @@ Instantiates the implementation (used by `MetaType` factory helpers).
 <tr>
 <td>
 
-`T` *extends* [`MetaTypeImpl`](#metatypeimpl)
+`T` _extends_ [`MetaTypeImpl`](#metatypeimpl)
 
 </td>
 </tr>
@@ -14336,7 +15172,7 @@ Instantiates the implementation (used by `MetaType` factory helpers).
 </td>
 <td>
 
- \| [`MetaTypeArgsType`](#metatypeargstype)\<`any`, `boolean`, `boolean`, `boolean`\> \| (`metaTypeImpl`: [`MetaTypeImpl`](#metatypeimpl)) => [`MetaTypeArgsType`](#metatypeargstype)
+\| [`MetaTypeArgsType`](#metatypeargstype)\<`any`, `boolean`, `boolean`, `boolean`\> \| (`metaTypeImpl`: [`MetaTypeImpl`](#metatypeimpl)) => [`MetaTypeArgsType`](#metatypeargstype)
 
 </td>
 </tr>
@@ -14354,13 +15190,13 @@ Instantiates the implementation (used by `MetaType` factory helpers).
 ##### combineMetaTypeArgs()
 
 ```ts
-static combineMetaTypeArgs(metaTypeArgs1?: 
+static combineMetaTypeArgs(metaTypeArgs1?:
   | MetaTypeArgsType<any, boolean, boolean, boolean>
   | (metaTypeImpl: MetaTypeImpl) => MetaTypeArgsType
-  | null, metaTypeArgs2?: 
+  | null, metaTypeArgs2?:
   | MetaTypeArgsType<any, boolean, boolean, boolean>
   | (metaTypeImpl: MetaTypeImpl) => MetaTypeArgsType
-  | null): 
+  | null):
   | (metaTypeImpl: MetaTypeImpl) => {
 [key: string]: any;
   coercion?: boolean;
@@ -14411,7 +15247,7 @@ static combineMetaTypeArgs(metaTypeArgs1?:
 };
 ```
 
-Defined in: [src/metatypes/metatypeImpl.ts:592](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L592)
+Defined in: [src/metatypes/metatypeImpl.ts:596](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L596)
 
 Utility that merges two argument objects (or factories).
 
@@ -14433,7 +15269,7 @@ Utility that merges two argument objects (or factories).
 </td>
 <td>
 
- \| [`MetaTypeArgsType`](#metatypeargstype)\<`any`, `boolean`, `boolean`, `boolean`\> \| (`metaTypeImpl`: [`MetaTypeImpl`](#metatypeimpl)) => [`MetaTypeArgsType`](#metatypeargstype) \| `null`
+\| [`MetaTypeArgsType`](#metatypeargstype)\<`any`, `boolean`, `boolean`, `boolean`\> \| (`metaTypeImpl`: [`MetaTypeImpl`](#metatypeimpl)) => [`MetaTypeArgsType`](#metatypeargstype) \| `null`
 
 </td>
 </tr>
@@ -14445,7 +15281,7 @@ Utility that merges two argument objects (or factories).
 </td>
 <td>
 
- \| [`MetaTypeArgsType`](#metatypeargstype)\<`any`, `boolean`, `boolean`, `boolean`\> \| (`metaTypeImpl`: [`MetaTypeImpl`](#metatypeimpl)) => [`MetaTypeArgsType`](#metatypeargstype) \| `null`
+\| [`MetaTypeArgsType`](#metatypeargstype)\<`any`, `boolean`, `boolean`, `boolean`\> \| (`metaTypeImpl`: [`MetaTypeImpl`](#metatypeimpl)) => [`MetaTypeArgsType`](#metatypeargstype) \| `null`
 
 </td>
 </tr>
@@ -14454,53 +15290,53 @@ Utility that merges two argument objects (or factories).
 
 ###### Returns
 
-  \| (`metaTypeImpl`: [`MetaTypeImpl`](#metatypeimpl)) => \{
+\| (`metaTypeImpl`: [`MetaTypeImpl`](#metatypeimpl)) => \{
 \[`key`: `string`\]: `any`;
-  `coercion?`: `boolean`;
-  `default?`: `any`;
-  `deserializers?`: (
-     \| [`DeSerializerType`](#deserializertype)
-    \| [`DeSerializeFuncType`](#deserializefunctype))[];
-  `name?`: `string`;
-  `noBuiltinDeSerializers?`: `boolean`;
-  `noBuiltinSerializers?`: `boolean`;
-  `noBuiltinValidators?`: `boolean`;
-  `nullable?`: `boolean`;
-  `nullish?`: `boolean`;
-  `optional?`: `boolean`;
-  `safe?`: `boolean`;
-  `serializers?`: (
-     \| [`SerializerType`](#serializertype)
-    \| [`SerializeFuncType`](#serializefunctype))[];
-  `subType?`: `any`;
-  `validateType?`: `boolean`;
-  `validators?`: (
-     \| [`ValidatorType`](#validatortype)
-    \| [`ValidatorFuncType`](#validatorfunctype))[];
+`coercion?`: `boolean`;
+`default?`: `any`;
+`deserializers?`: (
+\| [`DeSerializerType`](#deserializertype)
+\| [`DeSerializeFuncType`](#deserializefunctype))[];
+`name?`: `string`;
+`noBuiltinDeSerializers?`: `boolean`;
+`noBuiltinSerializers?`: `boolean`;
+`noBuiltinValidators?`: `boolean`;
+`nullable?`: `boolean`;
+`nullish?`: `boolean`;
+`optional?`: `boolean`;
+`safe?`: `boolean`;
+`serializers?`: (
+\| [`SerializerType`](#serializertype)
+\| [`SerializeFuncType`](#serializefunctype))[];
+`subType?`: `any`;
+`validateType?`: `boolean`;
+`validators?`: (
+\| [`ValidatorType`](#validatortype)
+\| [`ValidatorFuncType`](#validatorfunctype))[];
 \}
-  \| \{
+\| \{
 \[`key`: `string`\]: `any`;
-  `coercion?`: `boolean`;
-  `default?`: `any`;
-  `deserializers?`: (
-     \| [`DeSerializerType`](#deserializertype)
-    \| [`DeSerializeFuncType`](#deserializefunctype))[];
-  `name?`: `string`;
-  `noBuiltinDeSerializers?`: `boolean`;
-  `noBuiltinSerializers?`: `boolean`;
-  `noBuiltinValidators?`: `boolean`;
-  `nullable?`: `boolean`;
-  `nullish?`: `boolean`;
-  `optional?`: `boolean`;
-  `safe?`: `boolean`;
-  `serializers?`: (
-     \| [`SerializerType`](#serializertype)
-    \| [`SerializeFuncType`](#serializefunctype))[];
-  `subType?`: `any`;
-  `validateType?`: `boolean`;
-  `validators?`: (
-     \| [`ValidatorType`](#validatortype)
-    \| [`ValidatorFuncType`](#validatorfunctype))[];
+`coercion?`: `boolean`;
+`default?`: `any`;
+`deserializers?`: (
+\| [`DeSerializerType`](#deserializertype)
+\| [`DeSerializeFuncType`](#deserializefunctype))[];
+`name?`: `string`;
+`noBuiltinDeSerializers?`: `boolean`;
+`noBuiltinSerializers?`: `boolean`;
+`noBuiltinValidators?`: `boolean`;
+`nullable?`: `boolean`;
+`nullish?`: `boolean`;
+`optional?`: `boolean`;
+`safe?`: `boolean`;
+`serializers?`: (
+\| [`SerializerType`](#serializertype)
+\| [`SerializeFuncType`](#serializefunctype))[];
+`subType?`: `any`;
+`validateType?`: `boolean`;
+`validators?`: (
+\| [`ValidatorType`](#validatortype)
+\| [`ValidatorFuncType`](#validatorfunctype))[];
 \}
 
 ###### Inherited from
@@ -14513,7 +15349,7 @@ Utility that merges two argument objects (or factories).
 static getCompatibilityScore(_value: any): number;
 ```
 
-Defined in: [src/metatypes/metatypeImpl.ts:580](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L580)
+Defined in: [src/metatypes/metatypeImpl.ts:584](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L584)
 
 Returns a score describing how compatible a value is with this implementation.
 Higher score wins when resolving meta types dynamically.
@@ -14554,12 +15390,12 @@ Higher score wins when resolving meta types dynamically.
 ##### getMetaType()
 
 ```ts
-static getMetaType(value: any, metaTypeArgs?: 
+static getMetaType(value: any, metaTypeArgs?:
   | MetaTypeArgsType<any, boolean, boolean, boolean>
   | (metaTypeImpl: MetaTypeImpl) => MetaTypeArgsType): MetaType<unknown> | undefined;
 ```
 
-Defined in: [src/metatypes/metatypeImpl.ts:672](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L672)
+Defined in: [src/metatypes/metatypeImpl.ts:676](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L676)
 
 Resolves and wraps an implementation as a runtime meta type (`MetaType` helper).
 
@@ -14593,7 +15429,7 @@ Resolves and wraps an implementation as a runtime meta type (`MetaType` helper).
 </td>
 <td>
 
- \| [`MetaTypeArgsType`](#metatypeargstype)\<`any`, `boolean`, `boolean`, `boolean`\> \| (`metaTypeImpl`: [`MetaTypeImpl`](#metatypeimpl)) => [`MetaTypeArgsType`](#metatypeargstype)
+\| [`MetaTypeArgsType`](#metatypeargstype)\<`any`, `boolean`, `boolean`, `boolean`\> \| (`metaTypeImpl`: [`MetaTypeImpl`](#metatypeimpl)) => [`MetaTypeArgsType`](#metatypeargstype)
 
 </td>
 </tr>
@@ -14611,12 +15447,12 @@ Resolves and wraps an implementation as a runtime meta type (`MetaType` helper).
 ##### getMetaTypeImpl()
 
 ```ts
-static getMetaTypeImpl(value: any, metaTypeArgs?: 
+static getMetaTypeImpl(value: any, metaTypeArgs?:
   | MetaTypeArgsType<any, boolean, boolean, boolean>
   | (metaTypeImpl: MetaTypeImpl) => MetaTypeArgsType): MetaTypeImpl | undefined;
 ```
 
-Defined in: [src/metatypes/metatypeImpl.ts:650](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L650)
+Defined in: [src/metatypes/metatypeImpl.ts:654](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L654)
 
 Resolves an existing implementation instance for the provided value (value can be
 a meta type, `MetaTypeImpl`, plain schema, etc.).
@@ -14651,7 +15487,7 @@ a meta type, `MetaTypeImpl`, plain schema, etc.).
 </td>
 <td>
 
- \| [`MetaTypeArgsType`](#metatypeargstype)\<`any`, `boolean`, `boolean`, `boolean`\> \| (`metaTypeImpl`: [`MetaTypeImpl`](#metatypeimpl)) => [`MetaTypeArgsType`](#metatypeargstype)
+\| [`MetaTypeArgsType`](#metatypeargstype)\<`any`, `boolean`, `boolean`, `boolean`\> \| (`metaTypeImpl`: [`MetaTypeImpl`](#metatypeimpl)) => [`MetaTypeArgsType`](#metatypeargstype)
 
 </td>
 </tr>
@@ -14669,12 +15505,12 @@ a meta type, `MetaTypeImpl`, plain schema, etc.).
 ##### getMetaTypeImplClass()
 
 ```ts
-static getMetaTypeImplClass(value: any): 
+static getMetaTypeImplClass(value: any):
   | StaticClass<typeof MetaTypeImpl>
   | undefined;
 ```
 
-Defined in: [src/metatypes/metatypeImpl.ts:628](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L628)
+Defined in: [src/metatypes/metatypeImpl.ts:632](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L632)
 
 Finds the best registered implementation for the provided value using compatibility score.
 
@@ -14705,8 +15541,8 @@ Finds the best registered implementation for the provided value using compatibil
 
 ###### Returns
 
-  \| [`StaticClass`](#staticclass)\<*typeof* [`MetaTypeImpl`](#metatypeimpl)\>
-  \| `undefined`
+\| [`StaticClass`](#staticclass)\<_typeof_ [`MetaTypeImpl`](#metatypeimpl)\>
+\| `undefined`
 
 ###### Inherited from
 
@@ -14761,7 +15597,7 @@ Checks if the provided value matches the implementation (override in subclasses)
 static registerMetaType(): (type: StaticClass<typeof MetaTypeImpl>) => void;
 ```
 
-Defined in: [src/metatypes/metatypeImpl.ts:585](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L585)
+Defined in: [src/metatypes/metatypeImpl.ts:589](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L589)
 
 Decorator helper that registers an implementation so it can be resolved automatically.
 
@@ -14789,7 +15625,7 @@ Decorator helper that registers an implementation so it can be resolved automati
 </td>
 <td>
 
-[`StaticClass`](#staticclass)\<*typeof* [`MetaTypeImpl`](#metatypeimpl)\>
+[`StaticClass`](#staticclass)\<_typeof_ [`MetaTypeImpl`](#metatypeimpl)\>
 
 </td>
 </tr>
@@ -14846,7 +15682,7 @@ Decorator helper that registers an implementation so it can be resolved automati
 </td>
 <td>
 
-[src/metatypes/metatypeImpl.ts:218](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L218)
+[src/metatypes/metatypeImpl.ts:222](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L222)
 
 </td>
 </tr>
@@ -14878,7 +15714,7 @@ Decorator helper that registers an implementation so it can be resolved automati
 </td>
 <td>
 
-[src/metatypes/metatypeImpl.ts:220](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L220)
+[src/metatypes/metatypeImpl.ts:224](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L224)
 
 </td>
 </tr>
@@ -14910,7 +15746,7 @@ Decorator helper that registers an implementation so it can be resolved automati
 </td>
 <td>
 
-[src/metatypes/metatypeImpl.ts:219](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L219)
+[src/metatypes/metatypeImpl.ts:223](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L223)
 
 </td>
 </tr>
@@ -14942,14 +15778,14 @@ Decorator helper that registers an implementation so it can be resolved automati
 </td>
 <td>
 
-[src/metatypes/metatypeImpl.ts:221](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L221)
+[src/metatypes/metatypeImpl.ts:225](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L225)
 
 </td>
 </tr>
 </tbody>
 </table>
 
-***
+---
 
 ### ArrayImpl
 
@@ -14960,19 +15796,19 @@ Adds automatic handling for nested structures, recursive references and sub-valu
 
 #### Extends
 
-- [`StructuralMetaTypeImpl`](#structuralmetatypeimpl)
+-   [`StructuralMetaTypeImpl`](#structuralmetatypeimpl)
 
 #### Constructors
 
 ##### Constructor
 
 ```ts
-new ArrayImpl(metaTypeArgs?: 
+new ArrayImpl(metaTypeArgs?:
   | MetaTypeArgsType<any, boolean, boolean, boolean>
   | (metaTypeImpl: MetaTypeImpl) => MetaTypeArgsType): ArrayImpl;
 ```
 
-Defined in: [src/metatypes/metatypeImpl.ts:300](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L300)
+Defined in: [src/metatypes/metatypeImpl.ts:304](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L304)
 
 Creates a new meta type implementation.
 
@@ -14995,7 +15831,7 @@ Creates a new meta type implementation.
 </td>
 <td>
 
- \| [`MetaTypeArgsType`](#metatypeargstype)\<`any`, `boolean`, `boolean`, `boolean`\> \| (`metaTypeImpl`: [`MetaTypeImpl`](#metatypeimpl)) => [`MetaTypeArgsType`](#metatypeargstype)
+\| [`MetaTypeArgsType`](#metatypeargstype)\<`any`, `boolean`, `boolean`, `boolean`\> \| (`metaTypeImpl`: [`MetaTypeImpl`](#metatypeimpl)) => [`MetaTypeArgsType`](#metatypeargstype)
 
 </td>
 <td>
@@ -15023,7 +15859,7 @@ Arguments or a factory that receives the instance being constructed.
 castToRawValue(serializationArgs: SerializerArgsType): any;
 ```
 
-Defined in: [src/metatypes/metatypeImpl.ts:375](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L375)
+Defined in: [src/metatypes/metatypeImpl.ts:379](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L379)
 
 Hook for structural types to convert values when serializing.
 
@@ -15066,7 +15902,7 @@ Hook for structural types to convert values when serializing.
 castToType(deserializationArgs: DeSerializerArgsType): any;
 ```
 
-Defined in: [src/metatypes/metatypeImpl.ts:370](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L370)
+Defined in: [src/metatypes/metatypeImpl.ts:374](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L374)
 
 Hook for structural types to cast raw values before validation.
 
@@ -15109,7 +15945,7 @@ Hook for structural types to cast raw values before validation.
 deserialize(deserializationArgs: DeSerializeMetaTypeArgsType): any;
 ```
 
-Defined in: [src/metatypes/metatypeImpl.ts:449](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L449)
+Defined in: [src/metatypes/metatypeImpl.ts:453](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L453)
 
 Runs builtin + custom deserializers and returns the final value.
 
@@ -15247,12 +16083,12 @@ Default validator that asks the implementation whether the value is compatible.
 ##### rebuild()
 
 ```ts
-rebuild(metaTypeArgs?: 
+rebuild(metaTypeArgs?:
   | MetaTypeArgsType<any, boolean, boolean, boolean>
   | (metaTypeImpl: MetaTypeImpl) => MetaTypeArgsType): MetaTypeImpl;
 ```
 
-Defined in: [src/metatypes/metatypeImpl.ts:354](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L354)
+Defined in: [src/metatypes/metatypeImpl.ts:358](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L358)
 
 Rebuilds the current implementation with additional/overriding arguments.
 
@@ -15274,7 +16110,7 @@ Rebuilds the current implementation with additional/overriding arguments.
 </td>
 <td>
 
- \| [`MetaTypeArgsType`](#metatypeargstype)\<`any`, `boolean`, `boolean`, `boolean`\> \| (`metaTypeImpl`: [`MetaTypeImpl`](#metatypeimpl)) => [`MetaTypeArgsType`](#metatypeargstype)
+\| [`MetaTypeArgsType`](#metatypeargstype)\<`any`, `boolean`, `boolean`, `boolean`\> \| (`metaTypeImpl`: [`MetaTypeImpl`](#metatypeimpl)) => [`MetaTypeArgsType`](#metatypeargstype)
 
 </td>
 </tr>
@@ -15295,7 +16131,7 @@ Rebuilds the current implementation with additional/overriding arguments.
 serialize(serializationArgs: SerializeMetaTypeArgsType): any;
 ```
 
-Defined in: [src/metatypes/metatypeImpl.ts:398](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L398)
+Defined in: [src/metatypes/metatypeImpl.ts:402](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L402)
 
 Runs builtin + custom serializers and returns the final value.
 
@@ -15393,7 +16229,7 @@ String representation displayed in inspectors/logs.
 validate(args: ValidateMetaTypeArgsType): ValidationError | undefined;
 ```
 
-Defined in: [src/metatypes/metatypeImpl.ts:507](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L507)
+Defined in: [src/metatypes/metatypeImpl.ts:511](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L511)
 
 Runs builtin + custom validators and returns a `ValidationError` when something fails.
 
@@ -15433,12 +16269,12 @@ Runs builtin + custom validators and returns a `ValidationError` when something 
 ##### build()
 
 ```ts
-static build<T>(this: (...metaTypeArgs: any) => T, metaTypeArgs?: 
+static build<T>(this: (...metaTypeArgs: any) => T, metaTypeArgs?:
   | MetaTypeArgsType<any, boolean, boolean, boolean>
   | (metaTypeImpl: MetaTypeImpl) => MetaTypeArgsType): T;
 ```
 
-Defined in: [src/metatypes/metatypeImpl.ts:346](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L346)
+Defined in: [src/metatypes/metatypeImpl.ts:350](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L350)
 
 Instantiates the implementation (used by `MetaType` factory helpers).
 
@@ -15454,7 +16290,7 @@ Instantiates the implementation (used by `MetaType` factory helpers).
 <tr>
 <td>
 
-`T` *extends* [`MetaTypeImpl`](#metatypeimpl)
+`T` _extends_ [`MetaTypeImpl`](#metatypeimpl)
 
 </td>
 </tr>
@@ -15491,7 +16327,7 @@ Instantiates the implementation (used by `MetaType` factory helpers).
 </td>
 <td>
 
- \| [`MetaTypeArgsType`](#metatypeargstype)\<`any`, `boolean`, `boolean`, `boolean`\> \| (`metaTypeImpl`: [`MetaTypeImpl`](#metatypeimpl)) => [`MetaTypeArgsType`](#metatypeargstype)
+\| [`MetaTypeArgsType`](#metatypeargstype)\<`any`, `boolean`, `boolean`, `boolean`\> \| (`metaTypeImpl`: [`MetaTypeImpl`](#metatypeimpl)) => [`MetaTypeArgsType`](#metatypeargstype)
 
 </td>
 </tr>
@@ -15509,13 +16345,13 @@ Instantiates the implementation (used by `MetaType` factory helpers).
 ##### combineMetaTypeArgs()
 
 ```ts
-static combineMetaTypeArgs(metaTypeArgs1?: 
+static combineMetaTypeArgs(metaTypeArgs1?:
   | MetaTypeArgsType<any, boolean, boolean, boolean>
   | (metaTypeImpl: MetaTypeImpl) => MetaTypeArgsType
-  | null, metaTypeArgs2?: 
+  | null, metaTypeArgs2?:
   | MetaTypeArgsType<any, boolean, boolean, boolean>
   | (metaTypeImpl: MetaTypeImpl) => MetaTypeArgsType
-  | null): 
+  | null):
   | (metaTypeImpl: MetaTypeImpl) => {
 [key: string]: any;
   coercion?: boolean;
@@ -15566,7 +16402,7 @@ static combineMetaTypeArgs(metaTypeArgs1?:
 };
 ```
 
-Defined in: [src/metatypes/metatypeImpl.ts:592](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L592)
+Defined in: [src/metatypes/metatypeImpl.ts:596](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L596)
 
 Utility that merges two argument objects (or factories).
 
@@ -15588,7 +16424,7 @@ Utility that merges two argument objects (or factories).
 </td>
 <td>
 
- \| [`MetaTypeArgsType`](#metatypeargstype)\<`any`, `boolean`, `boolean`, `boolean`\> \| (`metaTypeImpl`: [`MetaTypeImpl`](#metatypeimpl)) => [`MetaTypeArgsType`](#metatypeargstype) \| `null`
+\| [`MetaTypeArgsType`](#metatypeargstype)\<`any`, `boolean`, `boolean`, `boolean`\> \| (`metaTypeImpl`: [`MetaTypeImpl`](#metatypeimpl)) => [`MetaTypeArgsType`](#metatypeargstype) \| `null`
 
 </td>
 </tr>
@@ -15600,7 +16436,7 @@ Utility that merges two argument objects (or factories).
 </td>
 <td>
 
- \| [`MetaTypeArgsType`](#metatypeargstype)\<`any`, `boolean`, `boolean`, `boolean`\> \| (`metaTypeImpl`: [`MetaTypeImpl`](#metatypeimpl)) => [`MetaTypeArgsType`](#metatypeargstype) \| `null`
+\| [`MetaTypeArgsType`](#metatypeargstype)\<`any`, `boolean`, `boolean`, `boolean`\> \| (`metaTypeImpl`: [`MetaTypeImpl`](#metatypeimpl)) => [`MetaTypeArgsType`](#metatypeargstype) \| `null`
 
 </td>
 </tr>
@@ -15609,53 +16445,53 @@ Utility that merges two argument objects (or factories).
 
 ###### Returns
 
-  \| (`metaTypeImpl`: [`MetaTypeImpl`](#metatypeimpl)) => \{
+\| (`metaTypeImpl`: [`MetaTypeImpl`](#metatypeimpl)) => \{
 \[`key`: `string`\]: `any`;
-  `coercion?`: `boolean`;
-  `default?`: `any`;
-  `deserializers?`: (
-     \| [`DeSerializerType`](#deserializertype)
-    \| [`DeSerializeFuncType`](#deserializefunctype))[];
-  `name?`: `string`;
-  `noBuiltinDeSerializers?`: `boolean`;
-  `noBuiltinSerializers?`: `boolean`;
-  `noBuiltinValidators?`: `boolean`;
-  `nullable?`: `boolean`;
-  `nullish?`: `boolean`;
-  `optional?`: `boolean`;
-  `safe?`: `boolean`;
-  `serializers?`: (
-     \| [`SerializerType`](#serializertype)
-    \| [`SerializeFuncType`](#serializefunctype))[];
-  `subType?`: `any`;
-  `validateType?`: `boolean`;
-  `validators?`: (
-     \| [`ValidatorType`](#validatortype)
-    \| [`ValidatorFuncType`](#validatorfunctype))[];
+`coercion?`: `boolean`;
+`default?`: `any`;
+`deserializers?`: (
+\| [`DeSerializerType`](#deserializertype)
+\| [`DeSerializeFuncType`](#deserializefunctype))[];
+`name?`: `string`;
+`noBuiltinDeSerializers?`: `boolean`;
+`noBuiltinSerializers?`: `boolean`;
+`noBuiltinValidators?`: `boolean`;
+`nullable?`: `boolean`;
+`nullish?`: `boolean`;
+`optional?`: `boolean`;
+`safe?`: `boolean`;
+`serializers?`: (
+\| [`SerializerType`](#serializertype)
+\| [`SerializeFuncType`](#serializefunctype))[];
+`subType?`: `any`;
+`validateType?`: `boolean`;
+`validators?`: (
+\| [`ValidatorType`](#validatortype)
+\| [`ValidatorFuncType`](#validatorfunctype))[];
 \}
-  \| \{
+\| \{
 \[`key`: `string`\]: `any`;
-  `coercion?`: `boolean`;
-  `default?`: `any`;
-  `deserializers?`: (
-     \| [`DeSerializerType`](#deserializertype)
-    \| [`DeSerializeFuncType`](#deserializefunctype))[];
-  `name?`: `string`;
-  `noBuiltinDeSerializers?`: `boolean`;
-  `noBuiltinSerializers?`: `boolean`;
-  `noBuiltinValidators?`: `boolean`;
-  `nullable?`: `boolean`;
-  `nullish?`: `boolean`;
-  `optional?`: `boolean`;
-  `safe?`: `boolean`;
-  `serializers?`: (
-     \| [`SerializerType`](#serializertype)
-    \| [`SerializeFuncType`](#serializefunctype))[];
-  `subType?`: `any`;
-  `validateType?`: `boolean`;
-  `validators?`: (
-     \| [`ValidatorType`](#validatortype)
-    \| [`ValidatorFuncType`](#validatorfunctype))[];
+`coercion?`: `boolean`;
+`default?`: `any`;
+`deserializers?`: (
+\| [`DeSerializerType`](#deserializertype)
+\| [`DeSerializeFuncType`](#deserializefunctype))[];
+`name?`: `string`;
+`noBuiltinDeSerializers?`: `boolean`;
+`noBuiltinSerializers?`: `boolean`;
+`noBuiltinValidators?`: `boolean`;
+`nullable?`: `boolean`;
+`nullish?`: `boolean`;
+`optional?`: `boolean`;
+`safe?`: `boolean`;
+`serializers?`: (
+\| [`SerializerType`](#serializertype)
+\| [`SerializeFuncType`](#serializefunctype))[];
+`subType?`: `any`;
+`validateType?`: `boolean`;
+`validators?`: (
+\| [`ValidatorType`](#validatortype)
+\| [`ValidatorFuncType`](#validatorfunctype))[];
 \}
 
 ###### Inherited from
@@ -15709,12 +16545,12 @@ Higher score wins when resolving meta types dynamically.
 ##### getMetaType()
 
 ```ts
-static getMetaType(value: any, metaTypeArgs?: 
+static getMetaType(value: any, metaTypeArgs?:
   | MetaTypeArgsType<any, boolean, boolean, boolean>
   | (metaTypeImpl: MetaTypeImpl) => MetaTypeArgsType): MetaType<unknown> | undefined;
 ```
 
-Defined in: [src/metatypes/metatypeImpl.ts:672](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L672)
+Defined in: [src/metatypes/metatypeImpl.ts:676](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L676)
 
 Resolves and wraps an implementation as a runtime meta type (`MetaType` helper).
 
@@ -15748,7 +16584,7 @@ Resolves and wraps an implementation as a runtime meta type (`MetaType` helper).
 </td>
 <td>
 
- \| [`MetaTypeArgsType`](#metatypeargstype)\<`any`, `boolean`, `boolean`, `boolean`\> \| (`metaTypeImpl`: [`MetaTypeImpl`](#metatypeimpl)) => [`MetaTypeArgsType`](#metatypeargstype)
+\| [`MetaTypeArgsType`](#metatypeargstype)\<`any`, `boolean`, `boolean`, `boolean`\> \| (`metaTypeImpl`: [`MetaTypeImpl`](#metatypeimpl)) => [`MetaTypeArgsType`](#metatypeargstype)
 
 </td>
 </tr>
@@ -15766,12 +16602,12 @@ Resolves and wraps an implementation as a runtime meta type (`MetaType` helper).
 ##### getMetaTypeImpl()
 
 ```ts
-static getMetaTypeImpl(value: any, metaTypeArgs?: 
+static getMetaTypeImpl(value: any, metaTypeArgs?:
   | MetaTypeArgsType<any, boolean, boolean, boolean>
   | (metaTypeImpl: MetaTypeImpl) => MetaTypeArgsType): MetaTypeImpl | undefined;
 ```
 
-Defined in: [src/metatypes/metatypeImpl.ts:650](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L650)
+Defined in: [src/metatypes/metatypeImpl.ts:654](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L654)
 
 Resolves an existing implementation instance for the provided value (value can be
 a meta type, `MetaTypeImpl`, plain schema, etc.).
@@ -15806,7 +16642,7 @@ a meta type, `MetaTypeImpl`, plain schema, etc.).
 </td>
 <td>
 
- \| [`MetaTypeArgsType`](#metatypeargstype)\<`any`, `boolean`, `boolean`, `boolean`\> \| (`metaTypeImpl`: [`MetaTypeImpl`](#metatypeimpl)) => [`MetaTypeArgsType`](#metatypeargstype)
+\| [`MetaTypeArgsType`](#metatypeargstype)\<`any`, `boolean`, `boolean`, `boolean`\> \| (`metaTypeImpl`: [`MetaTypeImpl`](#metatypeimpl)) => [`MetaTypeArgsType`](#metatypeargstype)
 
 </td>
 </tr>
@@ -15824,12 +16660,12 @@ a meta type, `MetaTypeImpl`, plain schema, etc.).
 ##### getMetaTypeImplClass()
 
 ```ts
-static getMetaTypeImplClass(value: any): 
+static getMetaTypeImplClass(value: any):
   | StaticClass<typeof MetaTypeImpl>
   | undefined;
 ```
 
-Defined in: [src/metatypes/metatypeImpl.ts:628](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L628)
+Defined in: [src/metatypes/metatypeImpl.ts:632](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L632)
 
 Finds the best registered implementation for the provided value using compatibility score.
 
@@ -15860,8 +16696,8 @@ Finds the best registered implementation for the provided value using compatibil
 
 ###### Returns
 
-  \| [`StaticClass`](#staticclass)\<*typeof* [`MetaTypeImpl`](#metatypeimpl)\>
-  \| `undefined`
+\| [`StaticClass`](#staticclass)\<_typeof_ [`MetaTypeImpl`](#metatypeimpl)\>
+\| `undefined`
 
 ###### Inherited from
 
@@ -15916,7 +16752,7 @@ Checks if the provided value matches the implementation (override in subclasses)
 static registerMetaType(): (type: StaticClass<typeof MetaTypeImpl>) => void;
 ```
 
-Defined in: [src/metatypes/metatypeImpl.ts:585](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L585)
+Defined in: [src/metatypes/metatypeImpl.ts:589](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L589)
 
 Decorator helper that registers an implementation so it can be resolved automatically.
 
@@ -15944,7 +16780,7 @@ Decorator helper that registers an implementation so it can be resolved automati
 </td>
 <td>
 
-[`StaticClass`](#staticclass)\<*typeof* [`MetaTypeImpl`](#metatypeimpl)\>
+[`StaticClass`](#staticclass)\<_typeof_ [`MetaTypeImpl`](#metatypeimpl)\>
 
 </td>
 </tr>
@@ -16001,7 +16837,7 @@ Decorator helper that registers an implementation so it can be resolved automati
 </td>
 <td>
 
-[src/metatypes/metatypeImpl.ts:218](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L218)
+[src/metatypes/metatypeImpl.ts:222](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L222)
 
 </td>
 </tr>
@@ -16033,7 +16869,7 @@ Decorator helper that registers an implementation so it can be resolved automati
 </td>
 <td>
 
-[src/metatypes/metatypeImpl.ts:220](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L220)
+[src/metatypes/metatypeImpl.ts:224](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L224)
 
 </td>
 </tr>
@@ -16065,7 +16901,7 @@ Decorator helper that registers an implementation so it can be resolved automati
 </td>
 <td>
 
-[src/metatypes/metatypeImpl.ts:219](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L219)
+[src/metatypes/metatypeImpl.ts:223](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L223)
 
 </td>
 </tr>
@@ -16097,14 +16933,14 @@ Decorator helper that registers an implementation so it can be resolved automati
 </td>
 <td>
 
-[src/metatypes/metatypeImpl.ts:221](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L221)
+[src/metatypes/metatypeImpl.ts:225](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L225)
 
 </td>
 </tr>
 </tbody>
 </table>
 
-***
+---
 
 ### BigIntImpl
 
@@ -16115,19 +16951,19 @@ extend this class to provide specific validation, serialization and compatibilit
 
 #### Extends
 
-- [`MetaTypeImpl`](#metatypeimpl)
+-   [`MetaTypeImpl`](#metatypeimpl)
 
 #### Constructors
 
 ##### Constructor
 
 ```ts
-new BigIntImpl(metaTypeArgs?: 
+new BigIntImpl(metaTypeArgs?:
   | MetaTypeArgsType<any, boolean, boolean, boolean>
   | (metaTypeImpl: MetaTypeImpl) => MetaTypeArgsType): BigIntImpl;
 ```
 
-Defined in: [src/metatypes/metatypeImpl.ts:300](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L300)
+Defined in: [src/metatypes/metatypeImpl.ts:304](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L304)
 
 Creates a new meta type implementation.
 
@@ -16150,7 +16986,7 @@ Creates a new meta type implementation.
 </td>
 <td>
 
- \| [`MetaTypeArgsType`](#metatypeargstype)\<`any`, `boolean`, `boolean`, `boolean`\> \| (`metaTypeImpl`: [`MetaTypeImpl`](#metatypeimpl)) => [`MetaTypeArgsType`](#metatypeargstype)
+\| [`MetaTypeArgsType`](#metatypeargstype)\<`any`, `boolean`, `boolean`, `boolean`\> \| (`metaTypeImpl`: [`MetaTypeImpl`](#metatypeimpl)) => [`MetaTypeArgsType`](#metatypeargstype)
 
 </td>
 <td>
@@ -16264,7 +17100,7 @@ Hook for structural types to cast raw values before validation.
 deserialize(deserializationArgs: DeSerializeMetaTypeArgsType): any;
 ```
 
-Defined in: [src/metatypes/metatypeImpl.ts:449](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L449)
+Defined in: [src/metatypes/metatypeImpl.ts:453](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L453)
 
 Runs builtin + custom deserializers and returns the final value.
 
@@ -16307,7 +17143,7 @@ Runs builtin + custom deserializers and returns the final value.
 getSubType(): any;
 ```
 
-Defined in: [src/metatypes/metatypeImpl.ts:255](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L255)
+Defined in: [src/metatypes/metatypeImpl.ts:259](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L259)
 
 Returns the prepared subtype definition (arrays/objects can override `prepareSubType`).
 
@@ -16325,7 +17161,7 @@ Returns the prepared subtype definition (arrays/objects can override `prepareSub
 metaTypeValidatorFunc(__namedParameters: ValidatorArgsType): boolean | Error;
 ```
 
-Defined in: [src/metatypes/metatypeImpl.ts:482](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L482)
+Defined in: [src/metatypes/metatypeImpl.ts:486](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L486)
 
 Default validator that asks the implementation whether the value is compatible.
 
@@ -16365,12 +17201,12 @@ Default validator that asks the implementation whether the value is compatible.
 ##### rebuild()
 
 ```ts
-rebuild(metaTypeArgs?: 
+rebuild(metaTypeArgs?:
   | MetaTypeArgsType<any, boolean, boolean, boolean>
   | (metaTypeImpl: MetaTypeImpl) => MetaTypeArgsType): MetaTypeImpl;
 ```
 
-Defined in: [src/metatypes/metatypeImpl.ts:354](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L354)
+Defined in: [src/metatypes/metatypeImpl.ts:358](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L358)
 
 Rebuilds the current implementation with additional/overriding arguments.
 
@@ -16392,7 +17228,7 @@ Rebuilds the current implementation with additional/overriding arguments.
 </td>
 <td>
 
- \| [`MetaTypeArgsType`](#metatypeargstype)\<`any`, `boolean`, `boolean`, `boolean`\> \| (`metaTypeImpl`: [`MetaTypeImpl`](#metatypeimpl)) => [`MetaTypeArgsType`](#metatypeargstype)
+\| [`MetaTypeArgsType`](#metatypeargstype)\<`any`, `boolean`, `boolean`, `boolean`\> \| (`metaTypeImpl`: [`MetaTypeImpl`](#metatypeimpl)) => [`MetaTypeArgsType`](#metatypeargstype)
 
 </td>
 </tr>
@@ -16413,7 +17249,7 @@ Rebuilds the current implementation with additional/overriding arguments.
 serialize(serializationArgs: SerializeMetaTypeArgsType): any;
 ```
 
-Defined in: [src/metatypes/metatypeImpl.ts:398](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L398)
+Defined in: [src/metatypes/metatypeImpl.ts:402](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L402)
 
 Runs builtin + custom serializers and returns the final value.
 
@@ -16456,7 +17292,7 @@ Runs builtin + custom serializers and returns the final value.
 toString(): string;
 ```
 
-Defined in: [src/metatypes/metatypeImpl.ts:361](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L361)
+Defined in: [src/metatypes/metatypeImpl.ts:365](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L365)
 
 String representation displayed in inspectors/logs.
 
@@ -16474,7 +17310,7 @@ String representation displayed in inspectors/logs.
 validate(args: ValidateMetaTypeArgsType): ValidationError | undefined;
 ```
 
-Defined in: [src/metatypes/metatypeImpl.ts:507](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L507)
+Defined in: [src/metatypes/metatypeImpl.ts:511](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L511)
 
 Runs builtin + custom validators and returns a `ValidationError` when something fails.
 
@@ -16514,12 +17350,12 @@ Runs builtin + custom validators and returns a `ValidationError` when something 
 ##### build()
 
 ```ts
-static build<T>(this: (...metaTypeArgs: any) => T, metaTypeArgs?: 
+static build<T>(this: (...metaTypeArgs: any) => T, metaTypeArgs?:
   | MetaTypeArgsType<any, boolean, boolean, boolean>
   | (metaTypeImpl: MetaTypeImpl) => MetaTypeArgsType): T;
 ```
 
-Defined in: [src/metatypes/metatypeImpl.ts:346](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L346)
+Defined in: [src/metatypes/metatypeImpl.ts:350](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L350)
 
 Instantiates the implementation (used by `MetaType` factory helpers).
 
@@ -16535,7 +17371,7 @@ Instantiates the implementation (used by `MetaType` factory helpers).
 <tr>
 <td>
 
-`T` *extends* [`MetaTypeImpl`](#metatypeimpl)
+`T` _extends_ [`MetaTypeImpl`](#metatypeimpl)
 
 </td>
 </tr>
@@ -16572,7 +17408,7 @@ Instantiates the implementation (used by `MetaType` factory helpers).
 </td>
 <td>
 
- \| [`MetaTypeArgsType`](#metatypeargstype)\<`any`, `boolean`, `boolean`, `boolean`\> \| (`metaTypeImpl`: [`MetaTypeImpl`](#metatypeimpl)) => [`MetaTypeArgsType`](#metatypeargstype)
+\| [`MetaTypeArgsType`](#metatypeargstype)\<`any`, `boolean`, `boolean`, `boolean`\> \| (`metaTypeImpl`: [`MetaTypeImpl`](#metatypeimpl)) => [`MetaTypeArgsType`](#metatypeargstype)
 
 </td>
 </tr>
@@ -16590,13 +17426,13 @@ Instantiates the implementation (used by `MetaType` factory helpers).
 ##### combineMetaTypeArgs()
 
 ```ts
-static combineMetaTypeArgs(metaTypeArgs1?: 
+static combineMetaTypeArgs(metaTypeArgs1?:
   | MetaTypeArgsType<any, boolean, boolean, boolean>
   | (metaTypeImpl: MetaTypeImpl) => MetaTypeArgsType
-  | null, metaTypeArgs2?: 
+  | null, metaTypeArgs2?:
   | MetaTypeArgsType<any, boolean, boolean, boolean>
   | (metaTypeImpl: MetaTypeImpl) => MetaTypeArgsType
-  | null): 
+  | null):
   | (metaTypeImpl: MetaTypeImpl) => {
 [key: string]: any;
   coercion?: boolean;
@@ -16647,7 +17483,7 @@ static combineMetaTypeArgs(metaTypeArgs1?:
 };
 ```
 
-Defined in: [src/metatypes/metatypeImpl.ts:592](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L592)
+Defined in: [src/metatypes/metatypeImpl.ts:596](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L596)
 
 Utility that merges two argument objects (or factories).
 
@@ -16669,7 +17505,7 @@ Utility that merges two argument objects (or factories).
 </td>
 <td>
 
- \| [`MetaTypeArgsType`](#metatypeargstype)\<`any`, `boolean`, `boolean`, `boolean`\> \| (`metaTypeImpl`: [`MetaTypeImpl`](#metatypeimpl)) => [`MetaTypeArgsType`](#metatypeargstype) \| `null`
+\| [`MetaTypeArgsType`](#metatypeargstype)\<`any`, `boolean`, `boolean`, `boolean`\> \| (`metaTypeImpl`: [`MetaTypeImpl`](#metatypeimpl)) => [`MetaTypeArgsType`](#metatypeargstype) \| `null`
 
 </td>
 </tr>
@@ -16681,7 +17517,7 @@ Utility that merges two argument objects (or factories).
 </td>
 <td>
 
- \| [`MetaTypeArgsType`](#metatypeargstype)\<`any`, `boolean`, `boolean`, `boolean`\> \| (`metaTypeImpl`: [`MetaTypeImpl`](#metatypeimpl)) => [`MetaTypeArgsType`](#metatypeargstype) \| `null`
+\| [`MetaTypeArgsType`](#metatypeargstype)\<`any`, `boolean`, `boolean`, `boolean`\> \| (`metaTypeImpl`: [`MetaTypeImpl`](#metatypeimpl)) => [`MetaTypeArgsType`](#metatypeargstype) \| `null`
 
 </td>
 </tr>
@@ -16690,53 +17526,53 @@ Utility that merges two argument objects (or factories).
 
 ###### Returns
 
-  \| (`metaTypeImpl`: [`MetaTypeImpl`](#metatypeimpl)) => \{
+\| (`metaTypeImpl`: [`MetaTypeImpl`](#metatypeimpl)) => \{
 \[`key`: `string`\]: `any`;
-  `coercion?`: `boolean`;
-  `default?`: `any`;
-  `deserializers?`: (
-     \| [`DeSerializerType`](#deserializertype)
-    \| [`DeSerializeFuncType`](#deserializefunctype))[];
-  `name?`: `string`;
-  `noBuiltinDeSerializers?`: `boolean`;
-  `noBuiltinSerializers?`: `boolean`;
-  `noBuiltinValidators?`: `boolean`;
-  `nullable?`: `boolean`;
-  `nullish?`: `boolean`;
-  `optional?`: `boolean`;
-  `safe?`: `boolean`;
-  `serializers?`: (
-     \| [`SerializerType`](#serializertype)
-    \| [`SerializeFuncType`](#serializefunctype))[];
-  `subType?`: `any`;
-  `validateType?`: `boolean`;
-  `validators?`: (
-     \| [`ValidatorType`](#validatortype)
-    \| [`ValidatorFuncType`](#validatorfunctype))[];
+`coercion?`: `boolean`;
+`default?`: `any`;
+`deserializers?`: (
+\| [`DeSerializerType`](#deserializertype)
+\| [`DeSerializeFuncType`](#deserializefunctype))[];
+`name?`: `string`;
+`noBuiltinDeSerializers?`: `boolean`;
+`noBuiltinSerializers?`: `boolean`;
+`noBuiltinValidators?`: `boolean`;
+`nullable?`: `boolean`;
+`nullish?`: `boolean`;
+`optional?`: `boolean`;
+`safe?`: `boolean`;
+`serializers?`: (
+\| [`SerializerType`](#serializertype)
+\| [`SerializeFuncType`](#serializefunctype))[];
+`subType?`: `any`;
+`validateType?`: `boolean`;
+`validators?`: (
+\| [`ValidatorType`](#validatortype)
+\| [`ValidatorFuncType`](#validatorfunctype))[];
 \}
-  \| \{
+\| \{
 \[`key`: `string`\]: `any`;
-  `coercion?`: `boolean`;
-  `default?`: `any`;
-  `deserializers?`: (
-     \| [`DeSerializerType`](#deserializertype)
-    \| [`DeSerializeFuncType`](#deserializefunctype))[];
-  `name?`: `string`;
-  `noBuiltinDeSerializers?`: `boolean`;
-  `noBuiltinSerializers?`: `boolean`;
-  `noBuiltinValidators?`: `boolean`;
-  `nullable?`: `boolean`;
-  `nullish?`: `boolean`;
-  `optional?`: `boolean`;
-  `safe?`: `boolean`;
-  `serializers?`: (
-     \| [`SerializerType`](#serializertype)
-    \| [`SerializeFuncType`](#serializefunctype))[];
-  `subType?`: `any`;
-  `validateType?`: `boolean`;
-  `validators?`: (
-     \| [`ValidatorType`](#validatortype)
-    \| [`ValidatorFuncType`](#validatorfunctype))[];
+`coercion?`: `boolean`;
+`default?`: `any`;
+`deserializers?`: (
+\| [`DeSerializerType`](#deserializertype)
+\| [`DeSerializeFuncType`](#deserializefunctype))[];
+`name?`: `string`;
+`noBuiltinDeSerializers?`: `boolean`;
+`noBuiltinSerializers?`: `boolean`;
+`noBuiltinValidators?`: `boolean`;
+`nullable?`: `boolean`;
+`nullish?`: `boolean`;
+`optional?`: `boolean`;
+`safe?`: `boolean`;
+`serializers?`: (
+\| [`SerializerType`](#serializertype)
+\| [`SerializeFuncType`](#serializefunctype))[];
+`subType?`: `any`;
+`validateType?`: `boolean`;
+`validators?`: (
+\| [`ValidatorType`](#validatortype)
+\| [`ValidatorFuncType`](#validatorfunctype))[];
 \}
 
 ###### Inherited from
@@ -16790,12 +17626,12 @@ Higher score wins when resolving meta types dynamically.
 ##### getMetaType()
 
 ```ts
-static getMetaType(value: any, metaTypeArgs?: 
+static getMetaType(value: any, metaTypeArgs?:
   | MetaTypeArgsType<any, boolean, boolean, boolean>
   | (metaTypeImpl: MetaTypeImpl) => MetaTypeArgsType): MetaType<unknown> | undefined;
 ```
 
-Defined in: [src/metatypes/metatypeImpl.ts:672](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L672)
+Defined in: [src/metatypes/metatypeImpl.ts:676](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L676)
 
 Resolves and wraps an implementation as a runtime meta type (`MetaType` helper).
 
@@ -16829,7 +17665,7 @@ Resolves and wraps an implementation as a runtime meta type (`MetaType` helper).
 </td>
 <td>
 
- \| [`MetaTypeArgsType`](#metatypeargstype)\<`any`, `boolean`, `boolean`, `boolean`\> \| (`metaTypeImpl`: [`MetaTypeImpl`](#metatypeimpl)) => [`MetaTypeArgsType`](#metatypeargstype)
+\| [`MetaTypeArgsType`](#metatypeargstype)\<`any`, `boolean`, `boolean`, `boolean`\> \| (`metaTypeImpl`: [`MetaTypeImpl`](#metatypeimpl)) => [`MetaTypeArgsType`](#metatypeargstype)
 
 </td>
 </tr>
@@ -16847,12 +17683,12 @@ Resolves and wraps an implementation as a runtime meta type (`MetaType` helper).
 ##### getMetaTypeImpl()
 
 ```ts
-static getMetaTypeImpl(value: any, metaTypeArgs?: 
+static getMetaTypeImpl(value: any, metaTypeArgs?:
   | MetaTypeArgsType<any, boolean, boolean, boolean>
   | (metaTypeImpl: MetaTypeImpl) => MetaTypeArgsType): MetaTypeImpl | undefined;
 ```
 
-Defined in: [src/metatypes/metatypeImpl.ts:650](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L650)
+Defined in: [src/metatypes/metatypeImpl.ts:654](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L654)
 
 Resolves an existing implementation instance for the provided value (value can be
 a meta type, `MetaTypeImpl`, plain schema, etc.).
@@ -16887,7 +17723,7 @@ a meta type, `MetaTypeImpl`, plain schema, etc.).
 </td>
 <td>
 
- \| [`MetaTypeArgsType`](#metatypeargstype)\<`any`, `boolean`, `boolean`, `boolean`\> \| (`metaTypeImpl`: [`MetaTypeImpl`](#metatypeimpl)) => [`MetaTypeArgsType`](#metatypeargstype)
+\| [`MetaTypeArgsType`](#metatypeargstype)\<`any`, `boolean`, `boolean`, `boolean`\> \| (`metaTypeImpl`: [`MetaTypeImpl`](#metatypeimpl)) => [`MetaTypeArgsType`](#metatypeargstype)
 
 </td>
 </tr>
@@ -16905,12 +17741,12 @@ a meta type, `MetaTypeImpl`, plain schema, etc.).
 ##### getMetaTypeImplClass()
 
 ```ts
-static getMetaTypeImplClass(value: any): 
+static getMetaTypeImplClass(value: any):
   | StaticClass<typeof MetaTypeImpl>
   | undefined;
 ```
 
-Defined in: [src/metatypes/metatypeImpl.ts:628](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L628)
+Defined in: [src/metatypes/metatypeImpl.ts:632](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L632)
 
 Finds the best registered implementation for the provided value using compatibility score.
 
@@ -16941,8 +17777,8 @@ Finds the best registered implementation for the provided value using compatibil
 
 ###### Returns
 
-  \| [`StaticClass`](#staticclass)\<*typeof* [`MetaTypeImpl`](#metatypeimpl)\>
-  \| `undefined`
+\| [`StaticClass`](#staticclass)\<_typeof_ [`MetaTypeImpl`](#metatypeimpl)\>
+\| `undefined`
 
 ###### Inherited from
 
@@ -16997,7 +17833,7 @@ Checks if the provided value matches the implementation (override in subclasses)
 static registerMetaType(): (type: StaticClass<typeof MetaTypeImpl>) => void;
 ```
 
-Defined in: [src/metatypes/metatypeImpl.ts:585](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L585)
+Defined in: [src/metatypes/metatypeImpl.ts:589](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L589)
 
 Decorator helper that registers an implementation so it can be resolved automatically.
 
@@ -17025,7 +17861,7 @@ Decorator helper that registers an implementation so it can be resolved automati
 </td>
 <td>
 
-[`StaticClass`](#staticclass)\<*typeof* [`MetaTypeImpl`](#metatypeimpl)\>
+[`StaticClass`](#staticclass)\<_typeof_ [`MetaTypeImpl`](#metatypeimpl)\>
 
 </td>
 </tr>
@@ -17082,7 +17918,7 @@ Decorator helper that registers an implementation so it can be resolved automati
 </td>
 <td>
 
-[src/metatypes/metatypeImpl.ts:218](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L218)
+[src/metatypes/metatypeImpl.ts:222](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L222)
 
 </td>
 </tr>
@@ -17114,7 +17950,7 @@ Decorator helper that registers an implementation so it can be resolved automati
 </td>
 <td>
 
-[src/metatypes/metatypeImpl.ts:220](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L220)
+[src/metatypes/metatypeImpl.ts:224](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L224)
 
 </td>
 </tr>
@@ -17146,7 +17982,7 @@ Decorator helper that registers an implementation so it can be resolved automati
 </td>
 <td>
 
-[src/metatypes/metatypeImpl.ts:219](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L219)
+[src/metatypes/metatypeImpl.ts:223](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L223)
 
 </td>
 </tr>
@@ -17178,14 +18014,14 @@ Decorator helper that registers an implementation so it can be resolved automati
 </td>
 <td>
 
-[src/metatypes/metatypeImpl.ts:221](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L221)
+[src/metatypes/metatypeImpl.ts:225](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L225)
 
 </td>
 </tr>
 </tbody>
 </table>
 
-***
+---
 
 ### BooleanImpl
 
@@ -17196,19 +18032,19 @@ extend this class to provide specific validation, serialization and compatibilit
 
 #### Extends
 
-- [`MetaTypeImpl`](#metatypeimpl)
+-   [`MetaTypeImpl`](#metatypeimpl)
 
 #### Constructors
 
 ##### Constructor
 
 ```ts
-new BooleanImpl(metaTypeArgs?: 
+new BooleanImpl(metaTypeArgs?:
   | MetaTypeArgsType<any, boolean, boolean, boolean>
   | (metaTypeImpl: MetaTypeImpl) => MetaTypeArgsType): BooleanImpl;
 ```
 
-Defined in: [src/metatypes/metatypeImpl.ts:300](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L300)
+Defined in: [src/metatypes/metatypeImpl.ts:304](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L304)
 
 Creates a new meta type implementation.
 
@@ -17231,7 +18067,7 @@ Creates a new meta type implementation.
 </td>
 <td>
 
- \| [`MetaTypeArgsType`](#metatypeargstype)\<`any`, `boolean`, `boolean`, `boolean`\> \| (`metaTypeImpl`: [`MetaTypeImpl`](#metatypeimpl)) => [`MetaTypeArgsType`](#metatypeargstype)
+\| [`MetaTypeArgsType`](#metatypeargstype)\<`any`, `boolean`, `boolean`, `boolean`\> \| (`metaTypeImpl`: [`MetaTypeImpl`](#metatypeimpl)) => [`MetaTypeArgsType`](#metatypeargstype)
 
 </td>
 <td>
@@ -17259,7 +18095,7 @@ Arguments or a factory that receives the instance being constructed.
 castToRawValue(serializationArgs: SerializerArgsType): any;
 ```
 
-Defined in: [src/metatypes/metatypeImpl.ts:375](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L375)
+Defined in: [src/metatypes/metatypeImpl.ts:379](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L379)
 
 Hook for structural types to convert values when serializing.
 
@@ -17345,7 +18181,7 @@ Hook for structural types to cast raw values before validation.
 deserialize(deserializationArgs: DeSerializeMetaTypeArgsType): any;
 ```
 
-Defined in: [src/metatypes/metatypeImpl.ts:449](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L449)
+Defined in: [src/metatypes/metatypeImpl.ts:453](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L453)
 
 Runs builtin + custom deserializers and returns the final value.
 
@@ -17388,7 +18224,7 @@ Runs builtin + custom deserializers and returns the final value.
 getSubType(): any;
 ```
 
-Defined in: [src/metatypes/metatypeImpl.ts:255](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L255)
+Defined in: [src/metatypes/metatypeImpl.ts:259](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L259)
 
 Returns the prepared subtype definition (arrays/objects can override `prepareSubType`).
 
@@ -17406,7 +18242,7 @@ Returns the prepared subtype definition (arrays/objects can override `prepareSub
 metaTypeValidatorFunc(__namedParameters: ValidatorArgsType): boolean | Error;
 ```
 
-Defined in: [src/metatypes/metatypeImpl.ts:482](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L482)
+Defined in: [src/metatypes/metatypeImpl.ts:486](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L486)
 
 Default validator that asks the implementation whether the value is compatible.
 
@@ -17446,12 +18282,12 @@ Default validator that asks the implementation whether the value is compatible.
 ##### rebuild()
 
 ```ts
-rebuild(metaTypeArgs?: 
+rebuild(metaTypeArgs?:
   | MetaTypeArgsType<any, boolean, boolean, boolean>
   | (metaTypeImpl: MetaTypeImpl) => MetaTypeArgsType): MetaTypeImpl;
 ```
 
-Defined in: [src/metatypes/metatypeImpl.ts:354](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L354)
+Defined in: [src/metatypes/metatypeImpl.ts:358](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L358)
 
 Rebuilds the current implementation with additional/overriding arguments.
 
@@ -17473,7 +18309,7 @@ Rebuilds the current implementation with additional/overriding arguments.
 </td>
 <td>
 
- \| [`MetaTypeArgsType`](#metatypeargstype)\<`any`, `boolean`, `boolean`, `boolean`\> \| (`metaTypeImpl`: [`MetaTypeImpl`](#metatypeimpl)) => [`MetaTypeArgsType`](#metatypeargstype)
+\| [`MetaTypeArgsType`](#metatypeargstype)\<`any`, `boolean`, `boolean`, `boolean`\> \| (`metaTypeImpl`: [`MetaTypeImpl`](#metatypeimpl)) => [`MetaTypeArgsType`](#metatypeargstype)
 
 </td>
 </tr>
@@ -17494,7 +18330,7 @@ Rebuilds the current implementation with additional/overriding arguments.
 serialize(serializationArgs: SerializeMetaTypeArgsType): any;
 ```
 
-Defined in: [src/metatypes/metatypeImpl.ts:398](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L398)
+Defined in: [src/metatypes/metatypeImpl.ts:402](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L402)
 
 Runs builtin + custom serializers and returns the final value.
 
@@ -17537,7 +18373,7 @@ Runs builtin + custom serializers and returns the final value.
 toString(): string;
 ```
 
-Defined in: [src/metatypes/metatypeImpl.ts:361](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L361)
+Defined in: [src/metatypes/metatypeImpl.ts:365](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L365)
 
 String representation displayed in inspectors/logs.
 
@@ -17555,7 +18391,7 @@ String representation displayed in inspectors/logs.
 validate(args: ValidateMetaTypeArgsType): ValidationError | undefined;
 ```
 
-Defined in: [src/metatypes/metatypeImpl.ts:507](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L507)
+Defined in: [src/metatypes/metatypeImpl.ts:511](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L511)
 
 Runs builtin + custom validators and returns a `ValidationError` when something fails.
 
@@ -17595,12 +18431,12 @@ Runs builtin + custom validators and returns a `ValidationError` when something 
 ##### build()
 
 ```ts
-static build<T>(this: (...metaTypeArgs: any) => T, metaTypeArgs?: 
+static build<T>(this: (...metaTypeArgs: any) => T, metaTypeArgs?:
   | MetaTypeArgsType<any, boolean, boolean, boolean>
   | (metaTypeImpl: MetaTypeImpl) => MetaTypeArgsType): T;
 ```
 
-Defined in: [src/metatypes/metatypeImpl.ts:346](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L346)
+Defined in: [src/metatypes/metatypeImpl.ts:350](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L350)
 
 Instantiates the implementation (used by `MetaType` factory helpers).
 
@@ -17616,7 +18452,7 @@ Instantiates the implementation (used by `MetaType` factory helpers).
 <tr>
 <td>
 
-`T` *extends* [`MetaTypeImpl`](#metatypeimpl)
+`T` _extends_ [`MetaTypeImpl`](#metatypeimpl)
 
 </td>
 </tr>
@@ -17653,7 +18489,7 @@ Instantiates the implementation (used by `MetaType` factory helpers).
 </td>
 <td>
 
- \| [`MetaTypeArgsType`](#metatypeargstype)\<`any`, `boolean`, `boolean`, `boolean`\> \| (`metaTypeImpl`: [`MetaTypeImpl`](#metatypeimpl)) => [`MetaTypeArgsType`](#metatypeargstype)
+\| [`MetaTypeArgsType`](#metatypeargstype)\<`any`, `boolean`, `boolean`, `boolean`\> \| (`metaTypeImpl`: [`MetaTypeImpl`](#metatypeimpl)) => [`MetaTypeArgsType`](#metatypeargstype)
 
 </td>
 </tr>
@@ -17671,13 +18507,13 @@ Instantiates the implementation (used by `MetaType` factory helpers).
 ##### combineMetaTypeArgs()
 
 ```ts
-static combineMetaTypeArgs(metaTypeArgs1?: 
+static combineMetaTypeArgs(metaTypeArgs1?:
   | MetaTypeArgsType<any, boolean, boolean, boolean>
   | (metaTypeImpl: MetaTypeImpl) => MetaTypeArgsType
-  | null, metaTypeArgs2?: 
+  | null, metaTypeArgs2?:
   | MetaTypeArgsType<any, boolean, boolean, boolean>
   | (metaTypeImpl: MetaTypeImpl) => MetaTypeArgsType
-  | null): 
+  | null):
   | (metaTypeImpl: MetaTypeImpl) => {
 [key: string]: any;
   coercion?: boolean;
@@ -17728,7 +18564,7 @@ static combineMetaTypeArgs(metaTypeArgs1?:
 };
 ```
 
-Defined in: [src/metatypes/metatypeImpl.ts:592](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L592)
+Defined in: [src/metatypes/metatypeImpl.ts:596](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L596)
 
 Utility that merges two argument objects (or factories).
 
@@ -17750,7 +18586,7 @@ Utility that merges two argument objects (or factories).
 </td>
 <td>
 
- \| [`MetaTypeArgsType`](#metatypeargstype)\<`any`, `boolean`, `boolean`, `boolean`\> \| (`metaTypeImpl`: [`MetaTypeImpl`](#metatypeimpl)) => [`MetaTypeArgsType`](#metatypeargstype) \| `null`
+\| [`MetaTypeArgsType`](#metatypeargstype)\<`any`, `boolean`, `boolean`, `boolean`\> \| (`metaTypeImpl`: [`MetaTypeImpl`](#metatypeimpl)) => [`MetaTypeArgsType`](#metatypeargstype) \| `null`
 
 </td>
 </tr>
@@ -17762,7 +18598,7 @@ Utility that merges two argument objects (or factories).
 </td>
 <td>
 
- \| [`MetaTypeArgsType`](#metatypeargstype)\<`any`, `boolean`, `boolean`, `boolean`\> \| (`metaTypeImpl`: [`MetaTypeImpl`](#metatypeimpl)) => [`MetaTypeArgsType`](#metatypeargstype) \| `null`
+\| [`MetaTypeArgsType`](#metatypeargstype)\<`any`, `boolean`, `boolean`, `boolean`\> \| (`metaTypeImpl`: [`MetaTypeImpl`](#metatypeimpl)) => [`MetaTypeArgsType`](#metatypeargstype) \| `null`
 
 </td>
 </tr>
@@ -17771,53 +18607,53 @@ Utility that merges two argument objects (or factories).
 
 ###### Returns
 
-  \| (`metaTypeImpl`: [`MetaTypeImpl`](#metatypeimpl)) => \{
+\| (`metaTypeImpl`: [`MetaTypeImpl`](#metatypeimpl)) => \{
 \[`key`: `string`\]: `any`;
-  `coercion?`: `boolean`;
-  `default?`: `any`;
-  `deserializers?`: (
-     \| [`DeSerializerType`](#deserializertype)
-    \| [`DeSerializeFuncType`](#deserializefunctype))[];
-  `name?`: `string`;
-  `noBuiltinDeSerializers?`: `boolean`;
-  `noBuiltinSerializers?`: `boolean`;
-  `noBuiltinValidators?`: `boolean`;
-  `nullable?`: `boolean`;
-  `nullish?`: `boolean`;
-  `optional?`: `boolean`;
-  `safe?`: `boolean`;
-  `serializers?`: (
-     \| [`SerializerType`](#serializertype)
-    \| [`SerializeFuncType`](#serializefunctype))[];
-  `subType?`: `any`;
-  `validateType?`: `boolean`;
-  `validators?`: (
-     \| [`ValidatorType`](#validatortype)
-    \| [`ValidatorFuncType`](#validatorfunctype))[];
+`coercion?`: `boolean`;
+`default?`: `any`;
+`deserializers?`: (
+\| [`DeSerializerType`](#deserializertype)
+\| [`DeSerializeFuncType`](#deserializefunctype))[];
+`name?`: `string`;
+`noBuiltinDeSerializers?`: `boolean`;
+`noBuiltinSerializers?`: `boolean`;
+`noBuiltinValidators?`: `boolean`;
+`nullable?`: `boolean`;
+`nullish?`: `boolean`;
+`optional?`: `boolean`;
+`safe?`: `boolean`;
+`serializers?`: (
+\| [`SerializerType`](#serializertype)
+\| [`SerializeFuncType`](#serializefunctype))[];
+`subType?`: `any`;
+`validateType?`: `boolean`;
+`validators?`: (
+\| [`ValidatorType`](#validatortype)
+\| [`ValidatorFuncType`](#validatorfunctype))[];
 \}
-  \| \{
+\| \{
 \[`key`: `string`\]: `any`;
-  `coercion?`: `boolean`;
-  `default?`: `any`;
-  `deserializers?`: (
-     \| [`DeSerializerType`](#deserializertype)
-    \| [`DeSerializeFuncType`](#deserializefunctype))[];
-  `name?`: `string`;
-  `noBuiltinDeSerializers?`: `boolean`;
-  `noBuiltinSerializers?`: `boolean`;
-  `noBuiltinValidators?`: `boolean`;
-  `nullable?`: `boolean`;
-  `nullish?`: `boolean`;
-  `optional?`: `boolean`;
-  `safe?`: `boolean`;
-  `serializers?`: (
-     \| [`SerializerType`](#serializertype)
-    \| [`SerializeFuncType`](#serializefunctype))[];
-  `subType?`: `any`;
-  `validateType?`: `boolean`;
-  `validators?`: (
-     \| [`ValidatorType`](#validatortype)
-    \| [`ValidatorFuncType`](#validatorfunctype))[];
+`coercion?`: `boolean`;
+`default?`: `any`;
+`deserializers?`: (
+\| [`DeSerializerType`](#deserializertype)
+\| [`DeSerializeFuncType`](#deserializefunctype))[];
+`name?`: `string`;
+`noBuiltinDeSerializers?`: `boolean`;
+`noBuiltinSerializers?`: `boolean`;
+`noBuiltinValidators?`: `boolean`;
+`nullable?`: `boolean`;
+`nullish?`: `boolean`;
+`optional?`: `boolean`;
+`safe?`: `boolean`;
+`serializers?`: (
+\| [`SerializerType`](#serializertype)
+\| [`SerializeFuncType`](#serializefunctype))[];
+`subType?`: `any`;
+`validateType?`: `boolean`;
+`validators?`: (
+\| [`ValidatorType`](#validatortype)
+\| [`ValidatorFuncType`](#validatorfunctype))[];
 \}
 
 ###### Inherited from
@@ -17871,12 +18707,12 @@ Higher score wins when resolving meta types dynamically.
 ##### getMetaType()
 
 ```ts
-static getMetaType(value: any, metaTypeArgs?: 
+static getMetaType(value: any, metaTypeArgs?:
   | MetaTypeArgsType<any, boolean, boolean, boolean>
   | (metaTypeImpl: MetaTypeImpl) => MetaTypeArgsType): MetaType<unknown> | undefined;
 ```
 
-Defined in: [src/metatypes/metatypeImpl.ts:672](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L672)
+Defined in: [src/metatypes/metatypeImpl.ts:676](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L676)
 
 Resolves and wraps an implementation as a runtime meta type (`MetaType` helper).
 
@@ -17910,7 +18746,7 @@ Resolves and wraps an implementation as a runtime meta type (`MetaType` helper).
 </td>
 <td>
 
- \| [`MetaTypeArgsType`](#metatypeargstype)\<`any`, `boolean`, `boolean`, `boolean`\> \| (`metaTypeImpl`: [`MetaTypeImpl`](#metatypeimpl)) => [`MetaTypeArgsType`](#metatypeargstype)
+\| [`MetaTypeArgsType`](#metatypeargstype)\<`any`, `boolean`, `boolean`, `boolean`\> \| (`metaTypeImpl`: [`MetaTypeImpl`](#metatypeimpl)) => [`MetaTypeArgsType`](#metatypeargstype)
 
 </td>
 </tr>
@@ -17928,12 +18764,12 @@ Resolves and wraps an implementation as a runtime meta type (`MetaType` helper).
 ##### getMetaTypeImpl()
 
 ```ts
-static getMetaTypeImpl(value: any, metaTypeArgs?: 
+static getMetaTypeImpl(value: any, metaTypeArgs?:
   | MetaTypeArgsType<any, boolean, boolean, boolean>
   | (metaTypeImpl: MetaTypeImpl) => MetaTypeArgsType): MetaTypeImpl | undefined;
 ```
 
-Defined in: [src/metatypes/metatypeImpl.ts:650](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L650)
+Defined in: [src/metatypes/metatypeImpl.ts:654](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L654)
 
 Resolves an existing implementation instance for the provided value (value can be
 a meta type, `MetaTypeImpl`, plain schema, etc.).
@@ -17968,7 +18804,7 @@ a meta type, `MetaTypeImpl`, plain schema, etc.).
 </td>
 <td>
 
- \| [`MetaTypeArgsType`](#metatypeargstype)\<`any`, `boolean`, `boolean`, `boolean`\> \| (`metaTypeImpl`: [`MetaTypeImpl`](#metatypeimpl)) => [`MetaTypeArgsType`](#metatypeargstype)
+\| [`MetaTypeArgsType`](#metatypeargstype)\<`any`, `boolean`, `boolean`, `boolean`\> \| (`metaTypeImpl`: [`MetaTypeImpl`](#metatypeimpl)) => [`MetaTypeArgsType`](#metatypeargstype)
 
 </td>
 </tr>
@@ -17986,12 +18822,12 @@ a meta type, `MetaTypeImpl`, plain schema, etc.).
 ##### getMetaTypeImplClass()
 
 ```ts
-static getMetaTypeImplClass(value: any): 
+static getMetaTypeImplClass(value: any):
   | StaticClass<typeof MetaTypeImpl>
   | undefined;
 ```
 
-Defined in: [src/metatypes/metatypeImpl.ts:628](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L628)
+Defined in: [src/metatypes/metatypeImpl.ts:632](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L632)
 
 Finds the best registered implementation for the provided value using compatibility score.
 
@@ -18022,8 +18858,8 @@ Finds the best registered implementation for the provided value using compatibil
 
 ###### Returns
 
-  \| [`StaticClass`](#staticclass)\<*typeof* [`MetaTypeImpl`](#metatypeimpl)\>
-  \| `undefined`
+\| [`StaticClass`](#staticclass)\<_typeof_ [`MetaTypeImpl`](#metatypeimpl)\>
+\| `undefined`
 
 ###### Inherited from
 
@@ -18078,7 +18914,7 @@ Checks if the provided value matches the implementation (override in subclasses)
 static registerMetaType(): (type: StaticClass<typeof MetaTypeImpl>) => void;
 ```
 
-Defined in: [src/metatypes/metatypeImpl.ts:585](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L585)
+Defined in: [src/metatypes/metatypeImpl.ts:589](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L589)
 
 Decorator helper that registers an implementation so it can be resolved automatically.
 
@@ -18106,7 +18942,7 @@ Decorator helper that registers an implementation so it can be resolved automati
 </td>
 <td>
 
-[`StaticClass`](#staticclass)\<*typeof* [`MetaTypeImpl`](#metatypeimpl)\>
+[`StaticClass`](#staticclass)\<_typeof_ [`MetaTypeImpl`](#metatypeimpl)\>
 
 </td>
 </tr>
@@ -18163,7 +18999,7 @@ Decorator helper that registers an implementation so it can be resolved automati
 </td>
 <td>
 
-[src/metatypes/metatypeImpl.ts:218](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L218)
+[src/metatypes/metatypeImpl.ts:222](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L222)
 
 </td>
 </tr>
@@ -18195,7 +19031,7 @@ Decorator helper that registers an implementation so it can be resolved automati
 </td>
 <td>
 
-[src/metatypes/metatypeImpl.ts:220](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L220)
+[src/metatypes/metatypeImpl.ts:224](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L224)
 
 </td>
 </tr>
@@ -18227,7 +19063,7 @@ Decorator helper that registers an implementation so it can be resolved automati
 </td>
 <td>
 
-[src/metatypes/metatypeImpl.ts:219](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L219)
+[src/metatypes/metatypeImpl.ts:223](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L223)
 
 </td>
 </tr>
@@ -18259,14 +19095,14 @@ Decorator helper that registers an implementation so it can be resolved automati
 </td>
 <td>
 
-[src/metatypes/metatypeImpl.ts:221](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L221)
+[src/metatypes/metatypeImpl.ts:225](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L225)
 
 </td>
 </tr>
 </tbody>
 </table>
 
-***
+---
 
 ### DateImpl
 
@@ -18277,19 +19113,19 @@ extend this class to provide specific validation, serialization and compatibilit
 
 #### Extends
 
-- [`MetaTypeImpl`](#metatypeimpl)
+-   [`MetaTypeImpl`](#metatypeimpl)
 
 #### Constructors
 
 ##### Constructor
 
 ```ts
-new DateImpl(metaTypeArgs?: 
+new DateImpl(metaTypeArgs?:
   | MetaTypeArgsType<any, boolean, boolean, boolean>
   | (metaTypeImpl: MetaTypeImpl) => MetaTypeArgsType): DateImpl;
 ```
 
-Defined in: [src/metatypes/metatypeImpl.ts:300](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L300)
+Defined in: [src/metatypes/metatypeImpl.ts:304](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L304)
 
 Creates a new meta type implementation.
 
@@ -18312,7 +19148,7 @@ Creates a new meta type implementation.
 </td>
 <td>
 
- \| [`MetaTypeArgsType`](#metatypeargstype)\<`any`, `boolean`, `boolean`, `boolean`\> \| (`metaTypeImpl`: [`MetaTypeImpl`](#metatypeimpl)) => [`MetaTypeArgsType`](#metatypeargstype)
+\| [`MetaTypeArgsType`](#metatypeargstype)\<`any`, `boolean`, `boolean`, `boolean`\> \| (`metaTypeImpl`: [`MetaTypeImpl`](#metatypeimpl)) => [`MetaTypeArgsType`](#metatypeargstype)
 
 </td>
 <td>
@@ -18426,7 +19262,7 @@ Hook for structural types to cast raw values before validation.
 deserialize(deserializationArgs: DeSerializeMetaTypeArgsType): any;
 ```
 
-Defined in: [src/metatypes/metatypeImpl.ts:449](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L449)
+Defined in: [src/metatypes/metatypeImpl.ts:453](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L453)
 
 Runs builtin + custom deserializers and returns the final value.
 
@@ -18469,7 +19305,7 @@ Runs builtin + custom deserializers and returns the final value.
 getSubType(): any;
 ```
 
-Defined in: [src/metatypes/metatypeImpl.ts:255](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L255)
+Defined in: [src/metatypes/metatypeImpl.ts:259](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L259)
 
 Returns the prepared subtype definition (arrays/objects can override `prepareSubType`).
 
@@ -18487,7 +19323,7 @@ Returns the prepared subtype definition (arrays/objects can override `prepareSub
 metaTypeValidatorFunc(__namedParameters: ValidatorArgsType): boolean | Error;
 ```
 
-Defined in: [src/metatypes/metatypeImpl.ts:482](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L482)
+Defined in: [src/metatypes/metatypeImpl.ts:486](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L486)
 
 Default validator that asks the implementation whether the value is compatible.
 
@@ -18527,12 +19363,12 @@ Default validator that asks the implementation whether the value is compatible.
 ##### rebuild()
 
 ```ts
-rebuild(metaTypeArgs?: 
+rebuild(metaTypeArgs?:
   | MetaTypeArgsType<any, boolean, boolean, boolean>
   | (metaTypeImpl: MetaTypeImpl) => MetaTypeArgsType): MetaTypeImpl;
 ```
 
-Defined in: [src/metatypes/metatypeImpl.ts:354](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L354)
+Defined in: [src/metatypes/metatypeImpl.ts:358](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L358)
 
 Rebuilds the current implementation with additional/overriding arguments.
 
@@ -18554,7 +19390,7 @@ Rebuilds the current implementation with additional/overriding arguments.
 </td>
 <td>
 
- \| [`MetaTypeArgsType`](#metatypeargstype)\<`any`, `boolean`, `boolean`, `boolean`\> \| (`metaTypeImpl`: [`MetaTypeImpl`](#metatypeimpl)) => [`MetaTypeArgsType`](#metatypeargstype)
+\| [`MetaTypeArgsType`](#metatypeargstype)\<`any`, `boolean`, `boolean`, `boolean`\> \| (`metaTypeImpl`: [`MetaTypeImpl`](#metatypeimpl)) => [`MetaTypeArgsType`](#metatypeargstype)
 
 </td>
 </tr>
@@ -18575,7 +19411,7 @@ Rebuilds the current implementation with additional/overriding arguments.
 serialize(serializationArgs: SerializeMetaTypeArgsType): any;
 ```
 
-Defined in: [src/metatypes/metatypeImpl.ts:398](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L398)
+Defined in: [src/metatypes/metatypeImpl.ts:402](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L402)
 
 Runs builtin + custom serializers and returns the final value.
 
@@ -18618,7 +19454,7 @@ Runs builtin + custom serializers and returns the final value.
 toString(): string;
 ```
 
-Defined in: [src/metatypes/metatypeImpl.ts:361](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L361)
+Defined in: [src/metatypes/metatypeImpl.ts:365](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L365)
 
 String representation displayed in inspectors/logs.
 
@@ -18636,7 +19472,7 @@ String representation displayed in inspectors/logs.
 validate(args: ValidateMetaTypeArgsType): ValidationError | undefined;
 ```
 
-Defined in: [src/metatypes/metatypeImpl.ts:507](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L507)
+Defined in: [src/metatypes/metatypeImpl.ts:511](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L511)
 
 Runs builtin + custom validators and returns a `ValidationError` when something fails.
 
@@ -18676,12 +19512,12 @@ Runs builtin + custom validators and returns a `ValidationError` when something 
 ##### build()
 
 ```ts
-static build<T>(this: (...metaTypeArgs: any) => T, metaTypeArgs?: 
+static build<T>(this: (...metaTypeArgs: any) => T, metaTypeArgs?:
   | MetaTypeArgsType<any, boolean, boolean, boolean>
   | (metaTypeImpl: MetaTypeImpl) => MetaTypeArgsType): T;
 ```
 
-Defined in: [src/metatypes/metatypeImpl.ts:346](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L346)
+Defined in: [src/metatypes/metatypeImpl.ts:350](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L350)
 
 Instantiates the implementation (used by `MetaType` factory helpers).
 
@@ -18697,7 +19533,7 @@ Instantiates the implementation (used by `MetaType` factory helpers).
 <tr>
 <td>
 
-`T` *extends* [`MetaTypeImpl`](#metatypeimpl)
+`T` _extends_ [`MetaTypeImpl`](#metatypeimpl)
 
 </td>
 </tr>
@@ -18734,7 +19570,7 @@ Instantiates the implementation (used by `MetaType` factory helpers).
 </td>
 <td>
 
- \| [`MetaTypeArgsType`](#metatypeargstype)\<`any`, `boolean`, `boolean`, `boolean`\> \| (`metaTypeImpl`: [`MetaTypeImpl`](#metatypeimpl)) => [`MetaTypeArgsType`](#metatypeargstype)
+\| [`MetaTypeArgsType`](#metatypeargstype)\<`any`, `boolean`, `boolean`, `boolean`\> \| (`metaTypeImpl`: [`MetaTypeImpl`](#metatypeimpl)) => [`MetaTypeArgsType`](#metatypeargstype)
 
 </td>
 </tr>
@@ -18752,13 +19588,13 @@ Instantiates the implementation (used by `MetaType` factory helpers).
 ##### combineMetaTypeArgs()
 
 ```ts
-static combineMetaTypeArgs(metaTypeArgs1?: 
+static combineMetaTypeArgs(metaTypeArgs1?:
   | MetaTypeArgsType<any, boolean, boolean, boolean>
   | (metaTypeImpl: MetaTypeImpl) => MetaTypeArgsType
-  | null, metaTypeArgs2?: 
+  | null, metaTypeArgs2?:
   | MetaTypeArgsType<any, boolean, boolean, boolean>
   | (metaTypeImpl: MetaTypeImpl) => MetaTypeArgsType
-  | null): 
+  | null):
   | (metaTypeImpl: MetaTypeImpl) => {
 [key: string]: any;
   coercion?: boolean;
@@ -18809,7 +19645,7 @@ static combineMetaTypeArgs(metaTypeArgs1?:
 };
 ```
 
-Defined in: [src/metatypes/metatypeImpl.ts:592](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L592)
+Defined in: [src/metatypes/metatypeImpl.ts:596](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L596)
 
 Utility that merges two argument objects (or factories).
 
@@ -18831,7 +19667,7 @@ Utility that merges two argument objects (or factories).
 </td>
 <td>
 
- \| [`MetaTypeArgsType`](#metatypeargstype)\<`any`, `boolean`, `boolean`, `boolean`\> \| (`metaTypeImpl`: [`MetaTypeImpl`](#metatypeimpl)) => [`MetaTypeArgsType`](#metatypeargstype) \| `null`
+\| [`MetaTypeArgsType`](#metatypeargstype)\<`any`, `boolean`, `boolean`, `boolean`\> \| (`metaTypeImpl`: [`MetaTypeImpl`](#metatypeimpl)) => [`MetaTypeArgsType`](#metatypeargstype) \| `null`
 
 </td>
 </tr>
@@ -18843,7 +19679,7 @@ Utility that merges two argument objects (or factories).
 </td>
 <td>
 
- \| [`MetaTypeArgsType`](#metatypeargstype)\<`any`, `boolean`, `boolean`, `boolean`\> \| (`metaTypeImpl`: [`MetaTypeImpl`](#metatypeimpl)) => [`MetaTypeArgsType`](#metatypeargstype) \| `null`
+\| [`MetaTypeArgsType`](#metatypeargstype)\<`any`, `boolean`, `boolean`, `boolean`\> \| (`metaTypeImpl`: [`MetaTypeImpl`](#metatypeimpl)) => [`MetaTypeArgsType`](#metatypeargstype) \| `null`
 
 </td>
 </tr>
@@ -18852,53 +19688,53 @@ Utility that merges two argument objects (or factories).
 
 ###### Returns
 
-  \| (`metaTypeImpl`: [`MetaTypeImpl`](#metatypeimpl)) => \{
+\| (`metaTypeImpl`: [`MetaTypeImpl`](#metatypeimpl)) => \{
 \[`key`: `string`\]: `any`;
-  `coercion?`: `boolean`;
-  `default?`: `any`;
-  `deserializers?`: (
-     \| [`DeSerializerType`](#deserializertype)
-    \| [`DeSerializeFuncType`](#deserializefunctype))[];
-  `name?`: `string`;
-  `noBuiltinDeSerializers?`: `boolean`;
-  `noBuiltinSerializers?`: `boolean`;
-  `noBuiltinValidators?`: `boolean`;
-  `nullable?`: `boolean`;
-  `nullish?`: `boolean`;
-  `optional?`: `boolean`;
-  `safe?`: `boolean`;
-  `serializers?`: (
-     \| [`SerializerType`](#serializertype)
-    \| [`SerializeFuncType`](#serializefunctype))[];
-  `subType?`: `any`;
-  `validateType?`: `boolean`;
-  `validators?`: (
-     \| [`ValidatorType`](#validatortype)
-    \| [`ValidatorFuncType`](#validatorfunctype))[];
+`coercion?`: `boolean`;
+`default?`: `any`;
+`deserializers?`: (
+\| [`DeSerializerType`](#deserializertype)
+\| [`DeSerializeFuncType`](#deserializefunctype))[];
+`name?`: `string`;
+`noBuiltinDeSerializers?`: `boolean`;
+`noBuiltinSerializers?`: `boolean`;
+`noBuiltinValidators?`: `boolean`;
+`nullable?`: `boolean`;
+`nullish?`: `boolean`;
+`optional?`: `boolean`;
+`safe?`: `boolean`;
+`serializers?`: (
+\| [`SerializerType`](#serializertype)
+\| [`SerializeFuncType`](#serializefunctype))[];
+`subType?`: `any`;
+`validateType?`: `boolean`;
+`validators?`: (
+\| [`ValidatorType`](#validatortype)
+\| [`ValidatorFuncType`](#validatorfunctype))[];
 \}
-  \| \{
+\| \{
 \[`key`: `string`\]: `any`;
-  `coercion?`: `boolean`;
-  `default?`: `any`;
-  `deserializers?`: (
-     \| [`DeSerializerType`](#deserializertype)
-    \| [`DeSerializeFuncType`](#deserializefunctype))[];
-  `name?`: `string`;
-  `noBuiltinDeSerializers?`: `boolean`;
-  `noBuiltinSerializers?`: `boolean`;
-  `noBuiltinValidators?`: `boolean`;
-  `nullable?`: `boolean`;
-  `nullish?`: `boolean`;
-  `optional?`: `boolean`;
-  `safe?`: `boolean`;
-  `serializers?`: (
-     \| [`SerializerType`](#serializertype)
-    \| [`SerializeFuncType`](#serializefunctype))[];
-  `subType?`: `any`;
-  `validateType?`: `boolean`;
-  `validators?`: (
-     \| [`ValidatorType`](#validatortype)
-    \| [`ValidatorFuncType`](#validatorfunctype))[];
+`coercion?`: `boolean`;
+`default?`: `any`;
+`deserializers?`: (
+\| [`DeSerializerType`](#deserializertype)
+\| [`DeSerializeFuncType`](#deserializefunctype))[];
+`name?`: `string`;
+`noBuiltinDeSerializers?`: `boolean`;
+`noBuiltinSerializers?`: `boolean`;
+`noBuiltinValidators?`: `boolean`;
+`nullable?`: `boolean`;
+`nullish?`: `boolean`;
+`optional?`: `boolean`;
+`safe?`: `boolean`;
+`serializers?`: (
+\| [`SerializerType`](#serializertype)
+\| [`SerializeFuncType`](#serializefunctype))[];
+`subType?`: `any`;
+`validateType?`: `boolean`;
+`validators?`: (
+\| [`ValidatorType`](#validatortype)
+\| [`ValidatorFuncType`](#validatorfunctype))[];
 \}
 
 ###### Inherited from
@@ -18952,12 +19788,12 @@ Higher score wins when resolving meta types dynamically.
 ##### getMetaType()
 
 ```ts
-static getMetaType(value: any, metaTypeArgs?: 
+static getMetaType(value: any, metaTypeArgs?:
   | MetaTypeArgsType<any, boolean, boolean, boolean>
   | (metaTypeImpl: MetaTypeImpl) => MetaTypeArgsType): MetaType<unknown> | undefined;
 ```
 
-Defined in: [src/metatypes/metatypeImpl.ts:672](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L672)
+Defined in: [src/metatypes/metatypeImpl.ts:676](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L676)
 
 Resolves and wraps an implementation as a runtime meta type (`MetaType` helper).
 
@@ -18991,7 +19827,7 @@ Resolves and wraps an implementation as a runtime meta type (`MetaType` helper).
 </td>
 <td>
 
- \| [`MetaTypeArgsType`](#metatypeargstype)\<`any`, `boolean`, `boolean`, `boolean`\> \| (`metaTypeImpl`: [`MetaTypeImpl`](#metatypeimpl)) => [`MetaTypeArgsType`](#metatypeargstype)
+\| [`MetaTypeArgsType`](#metatypeargstype)\<`any`, `boolean`, `boolean`, `boolean`\> \| (`metaTypeImpl`: [`MetaTypeImpl`](#metatypeimpl)) => [`MetaTypeArgsType`](#metatypeargstype)
 
 </td>
 </tr>
@@ -19009,12 +19845,12 @@ Resolves and wraps an implementation as a runtime meta type (`MetaType` helper).
 ##### getMetaTypeImpl()
 
 ```ts
-static getMetaTypeImpl(value: any, metaTypeArgs?: 
+static getMetaTypeImpl(value: any, metaTypeArgs?:
   | MetaTypeArgsType<any, boolean, boolean, boolean>
   | (metaTypeImpl: MetaTypeImpl) => MetaTypeArgsType): MetaTypeImpl | undefined;
 ```
 
-Defined in: [src/metatypes/metatypeImpl.ts:650](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L650)
+Defined in: [src/metatypes/metatypeImpl.ts:654](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L654)
 
 Resolves an existing implementation instance for the provided value (value can be
 a meta type, `MetaTypeImpl`, plain schema, etc.).
@@ -19049,7 +19885,7 @@ a meta type, `MetaTypeImpl`, plain schema, etc.).
 </td>
 <td>
 
- \| [`MetaTypeArgsType`](#metatypeargstype)\<`any`, `boolean`, `boolean`, `boolean`\> \| (`metaTypeImpl`: [`MetaTypeImpl`](#metatypeimpl)) => [`MetaTypeArgsType`](#metatypeargstype)
+\| [`MetaTypeArgsType`](#metatypeargstype)\<`any`, `boolean`, `boolean`, `boolean`\> \| (`metaTypeImpl`: [`MetaTypeImpl`](#metatypeimpl)) => [`MetaTypeArgsType`](#metatypeargstype)
 
 </td>
 </tr>
@@ -19067,12 +19903,12 @@ a meta type, `MetaTypeImpl`, plain schema, etc.).
 ##### getMetaTypeImplClass()
 
 ```ts
-static getMetaTypeImplClass(value: any): 
+static getMetaTypeImplClass(value: any):
   | StaticClass<typeof MetaTypeImpl>
   | undefined;
 ```
 
-Defined in: [src/metatypes/metatypeImpl.ts:628](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L628)
+Defined in: [src/metatypes/metatypeImpl.ts:632](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L632)
 
 Finds the best registered implementation for the provided value using compatibility score.
 
@@ -19103,8 +19939,8 @@ Finds the best registered implementation for the provided value using compatibil
 
 ###### Returns
 
-  \| [`StaticClass`](#staticclass)\<*typeof* [`MetaTypeImpl`](#metatypeimpl)\>
-  \| `undefined`
+\| [`StaticClass`](#staticclass)\<_typeof_ [`MetaTypeImpl`](#metatypeimpl)\>
+\| `undefined`
 
 ###### Inherited from
 
@@ -19159,7 +19995,7 @@ Checks if the provided value matches the implementation (override in subclasses)
 static registerMetaType(): (type: StaticClass<typeof MetaTypeImpl>) => void;
 ```
 
-Defined in: [src/metatypes/metatypeImpl.ts:585](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L585)
+Defined in: [src/metatypes/metatypeImpl.ts:589](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L589)
 
 Decorator helper that registers an implementation so it can be resolved automatically.
 
@@ -19187,7 +20023,7 @@ Decorator helper that registers an implementation so it can be resolved automati
 </td>
 <td>
 
-[`StaticClass`](#staticclass)\<*typeof* [`MetaTypeImpl`](#metatypeimpl)\>
+[`StaticClass`](#staticclass)\<_typeof_ [`MetaTypeImpl`](#metatypeimpl)\>
 
 </td>
 </tr>
@@ -19244,7 +20080,7 @@ Decorator helper that registers an implementation so it can be resolved automati
 </td>
 <td>
 
-[src/metatypes/metatypeImpl.ts:218](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L218)
+[src/metatypes/metatypeImpl.ts:222](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L222)
 
 </td>
 </tr>
@@ -19276,7 +20112,7 @@ Decorator helper that registers an implementation so it can be resolved automati
 </td>
 <td>
 
-[src/metatypes/metatypeImpl.ts:220](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L220)
+[src/metatypes/metatypeImpl.ts:224](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L224)
 
 </td>
 </tr>
@@ -19308,7 +20144,7 @@ Decorator helper that registers an implementation so it can be resolved automati
 </td>
 <td>
 
-[src/metatypes/metatypeImpl.ts:219](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L219)
+[src/metatypes/metatypeImpl.ts:223](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L223)
 
 </td>
 </tr>
@@ -19340,14 +20176,14 @@ Decorator helper that registers an implementation so it can be resolved automati
 </td>
 <td>
 
-[src/metatypes/metatypeImpl.ts:221](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L221)
+[src/metatypes/metatypeImpl.ts:225](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L225)
 
 </td>
 </tr>
 </tbody>
 </table>
 
-***
+---
 
 ### InstanceImpl
 
@@ -19358,19 +20194,19 @@ extend this class to provide specific validation, serialization and compatibilit
 
 #### Extends
 
-- [`MetaTypeImpl`](#metatypeimpl)
+-   [`MetaTypeImpl`](#metatypeimpl)
 
 #### Constructors
 
 ##### Constructor
 
 ```ts
-new InstanceImpl(metaTypeArgs?: 
+new InstanceImpl(metaTypeArgs?:
   | MetaTypeArgsType<any, boolean, boolean, boolean>
   | (metaTypeImpl: MetaTypeImpl) => MetaTypeArgsType): InstanceImpl;
 ```
 
-Defined in: [src/metatypes/metatypeImpl.ts:300](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L300)
+Defined in: [src/metatypes/metatypeImpl.ts:304](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L304)
 
 Creates a new meta type implementation.
 
@@ -19393,7 +20229,7 @@ Creates a new meta type implementation.
 </td>
 <td>
 
- \| [`MetaTypeArgsType`](#metatypeargstype)\<`any`, `boolean`, `boolean`, `boolean`\> \| (`metaTypeImpl`: [`MetaTypeImpl`](#metatypeimpl)) => [`MetaTypeArgsType`](#metatypeargstype)
+\| [`MetaTypeArgsType`](#metatypeargstype)\<`any`, `boolean`, `boolean`, `boolean`\> \| (`metaTypeImpl`: [`MetaTypeImpl`](#metatypeimpl)) => [`MetaTypeArgsType`](#metatypeargstype)
 
 </td>
 <td>
@@ -19421,7 +20257,7 @@ Arguments or a factory that receives the instance being constructed.
 castToRawValue(serializationArgs: SerializerArgsType): any;
 ```
 
-Defined in: [src/metatypes/metatypeImpl.ts:375](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L375)
+Defined in: [src/metatypes/metatypeImpl.ts:379](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L379)
 
 Hook for structural types to convert values when serializing.
 
@@ -19464,7 +20300,7 @@ Hook for structural types to convert values when serializing.
 castToType(deserializationArgs: DeSerializerArgsType): any;
 ```
 
-Defined in: [src/metatypes/metatypeImpl.ts:370](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L370)
+Defined in: [src/metatypes/metatypeImpl.ts:374](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L374)
 
 Hook for structural types to cast raw values before validation.
 
@@ -19507,7 +20343,7 @@ Hook for structural types to cast raw values before validation.
 deserialize(deserializationArgs: DeSerializeMetaTypeArgsType): any;
 ```
 
-Defined in: [src/metatypes/metatypeImpl.ts:449](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L449)
+Defined in: [src/metatypes/metatypeImpl.ts:453](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L453)
 
 Runs builtin + custom deserializers and returns the final value.
 
@@ -19550,7 +20386,7 @@ Runs builtin + custom deserializers and returns the final value.
 getSubType(): any;
 ```
 
-Defined in: [src/metatypes/metatypeImpl.ts:255](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L255)
+Defined in: [src/metatypes/metatypeImpl.ts:259](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L259)
 
 Returns the prepared subtype definition (arrays/objects can override `prepareSubType`).
 
@@ -19608,12 +20444,12 @@ Default validator that asks the implementation whether the value is compatible.
 ##### rebuild()
 
 ```ts
-rebuild(metaTypeArgs?: 
+rebuild(metaTypeArgs?:
   | MetaTypeArgsType<any, boolean, boolean, boolean>
   | (metaTypeImpl: MetaTypeImpl) => MetaTypeArgsType): MetaTypeImpl;
 ```
 
-Defined in: [src/metatypes/metatypeImpl.ts:354](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L354)
+Defined in: [src/metatypes/metatypeImpl.ts:358](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L358)
 
 Rebuilds the current implementation with additional/overriding arguments.
 
@@ -19635,7 +20471,7 @@ Rebuilds the current implementation with additional/overriding arguments.
 </td>
 <td>
 
- \| [`MetaTypeArgsType`](#metatypeargstype)\<`any`, `boolean`, `boolean`, `boolean`\> \| (`metaTypeImpl`: [`MetaTypeImpl`](#metatypeimpl)) => [`MetaTypeArgsType`](#metatypeargstype)
+\| [`MetaTypeArgsType`](#metatypeargstype)\<`any`, `boolean`, `boolean`, `boolean`\> \| (`metaTypeImpl`: [`MetaTypeImpl`](#metatypeimpl)) => [`MetaTypeArgsType`](#metatypeargstype)
 
 </td>
 </tr>
@@ -19656,7 +20492,7 @@ Rebuilds the current implementation with additional/overriding arguments.
 serialize(serializationArgs: SerializeMetaTypeArgsType): any;
 ```
 
-Defined in: [src/metatypes/metatypeImpl.ts:398](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L398)
+Defined in: [src/metatypes/metatypeImpl.ts:402](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L402)
 
 Runs builtin + custom serializers and returns the final value.
 
@@ -19717,7 +20553,7 @@ String representation displayed in inspectors/logs.
 validate(args: ValidateMetaTypeArgsType): ValidationError | undefined;
 ```
 
-Defined in: [src/metatypes/metatypeImpl.ts:507](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L507)
+Defined in: [src/metatypes/metatypeImpl.ts:511](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L511)
 
 Runs builtin + custom validators and returns a `ValidationError` when something fails.
 
@@ -19757,12 +20593,12 @@ Runs builtin + custom validators and returns a `ValidationError` when something 
 ##### build()
 
 ```ts
-static build<T>(this: (...metaTypeArgs: any) => T, metaTypeArgs?: 
+static build<T>(this: (...metaTypeArgs: any) => T, metaTypeArgs?:
   | MetaTypeArgsType<any, boolean, boolean, boolean>
   | (metaTypeImpl: MetaTypeImpl) => MetaTypeArgsType): T;
 ```
 
-Defined in: [src/metatypes/metatypeImpl.ts:346](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L346)
+Defined in: [src/metatypes/metatypeImpl.ts:350](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L350)
 
 Instantiates the implementation (used by `MetaType` factory helpers).
 
@@ -19778,7 +20614,7 @@ Instantiates the implementation (used by `MetaType` factory helpers).
 <tr>
 <td>
 
-`T` *extends* [`MetaTypeImpl`](#metatypeimpl)
+`T` _extends_ [`MetaTypeImpl`](#metatypeimpl)
 
 </td>
 </tr>
@@ -19815,7 +20651,7 @@ Instantiates the implementation (used by `MetaType` factory helpers).
 </td>
 <td>
 
- \| [`MetaTypeArgsType`](#metatypeargstype)\<`any`, `boolean`, `boolean`, `boolean`\> \| (`metaTypeImpl`: [`MetaTypeImpl`](#metatypeimpl)) => [`MetaTypeArgsType`](#metatypeargstype)
+\| [`MetaTypeArgsType`](#metatypeargstype)\<`any`, `boolean`, `boolean`, `boolean`\> \| (`metaTypeImpl`: [`MetaTypeImpl`](#metatypeimpl)) => [`MetaTypeArgsType`](#metatypeargstype)
 
 </td>
 </tr>
@@ -19833,13 +20669,13 @@ Instantiates the implementation (used by `MetaType` factory helpers).
 ##### combineMetaTypeArgs()
 
 ```ts
-static combineMetaTypeArgs(metaTypeArgs1?: 
+static combineMetaTypeArgs(metaTypeArgs1?:
   | MetaTypeArgsType<any, boolean, boolean, boolean>
   | (metaTypeImpl: MetaTypeImpl) => MetaTypeArgsType
-  | null, metaTypeArgs2?: 
+  | null, metaTypeArgs2?:
   | MetaTypeArgsType<any, boolean, boolean, boolean>
   | (metaTypeImpl: MetaTypeImpl) => MetaTypeArgsType
-  | null): 
+  | null):
   | (metaTypeImpl: MetaTypeImpl) => {
 [key: string]: any;
   coercion?: boolean;
@@ -19890,7 +20726,7 @@ static combineMetaTypeArgs(metaTypeArgs1?:
 };
 ```
 
-Defined in: [src/metatypes/metatypeImpl.ts:592](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L592)
+Defined in: [src/metatypes/metatypeImpl.ts:596](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L596)
 
 Utility that merges two argument objects (or factories).
 
@@ -19912,7 +20748,7 @@ Utility that merges two argument objects (or factories).
 </td>
 <td>
 
- \| [`MetaTypeArgsType`](#metatypeargstype)\<`any`, `boolean`, `boolean`, `boolean`\> \| (`metaTypeImpl`: [`MetaTypeImpl`](#metatypeimpl)) => [`MetaTypeArgsType`](#metatypeargstype) \| `null`
+\| [`MetaTypeArgsType`](#metatypeargstype)\<`any`, `boolean`, `boolean`, `boolean`\> \| (`metaTypeImpl`: [`MetaTypeImpl`](#metatypeimpl)) => [`MetaTypeArgsType`](#metatypeargstype) \| `null`
 
 </td>
 </tr>
@@ -19924,7 +20760,7 @@ Utility that merges two argument objects (or factories).
 </td>
 <td>
 
- \| [`MetaTypeArgsType`](#metatypeargstype)\<`any`, `boolean`, `boolean`, `boolean`\> \| (`metaTypeImpl`: [`MetaTypeImpl`](#metatypeimpl)) => [`MetaTypeArgsType`](#metatypeargstype) \| `null`
+\| [`MetaTypeArgsType`](#metatypeargstype)\<`any`, `boolean`, `boolean`, `boolean`\> \| (`metaTypeImpl`: [`MetaTypeImpl`](#metatypeimpl)) => [`MetaTypeArgsType`](#metatypeargstype) \| `null`
 
 </td>
 </tr>
@@ -19933,53 +20769,53 @@ Utility that merges two argument objects (or factories).
 
 ###### Returns
 
-  \| (`metaTypeImpl`: [`MetaTypeImpl`](#metatypeimpl)) => \{
+\| (`metaTypeImpl`: [`MetaTypeImpl`](#metatypeimpl)) => \{
 \[`key`: `string`\]: `any`;
-  `coercion?`: `boolean`;
-  `default?`: `any`;
-  `deserializers?`: (
-     \| [`DeSerializerType`](#deserializertype)
-    \| [`DeSerializeFuncType`](#deserializefunctype))[];
-  `name?`: `string`;
-  `noBuiltinDeSerializers?`: `boolean`;
-  `noBuiltinSerializers?`: `boolean`;
-  `noBuiltinValidators?`: `boolean`;
-  `nullable?`: `boolean`;
-  `nullish?`: `boolean`;
-  `optional?`: `boolean`;
-  `safe?`: `boolean`;
-  `serializers?`: (
-     \| [`SerializerType`](#serializertype)
-    \| [`SerializeFuncType`](#serializefunctype))[];
-  `subType?`: `any`;
-  `validateType?`: `boolean`;
-  `validators?`: (
-     \| [`ValidatorType`](#validatortype)
-    \| [`ValidatorFuncType`](#validatorfunctype))[];
+`coercion?`: `boolean`;
+`default?`: `any`;
+`deserializers?`: (
+\| [`DeSerializerType`](#deserializertype)
+\| [`DeSerializeFuncType`](#deserializefunctype))[];
+`name?`: `string`;
+`noBuiltinDeSerializers?`: `boolean`;
+`noBuiltinSerializers?`: `boolean`;
+`noBuiltinValidators?`: `boolean`;
+`nullable?`: `boolean`;
+`nullish?`: `boolean`;
+`optional?`: `boolean`;
+`safe?`: `boolean`;
+`serializers?`: (
+\| [`SerializerType`](#serializertype)
+\| [`SerializeFuncType`](#serializefunctype))[];
+`subType?`: `any`;
+`validateType?`: `boolean`;
+`validators?`: (
+\| [`ValidatorType`](#validatortype)
+\| [`ValidatorFuncType`](#validatorfunctype))[];
 \}
-  \| \{
+\| \{
 \[`key`: `string`\]: `any`;
-  `coercion?`: `boolean`;
-  `default?`: `any`;
-  `deserializers?`: (
-     \| [`DeSerializerType`](#deserializertype)
-    \| [`DeSerializeFuncType`](#deserializefunctype))[];
-  `name?`: `string`;
-  `noBuiltinDeSerializers?`: `boolean`;
-  `noBuiltinSerializers?`: `boolean`;
-  `noBuiltinValidators?`: `boolean`;
-  `nullable?`: `boolean`;
-  `nullish?`: `boolean`;
-  `optional?`: `boolean`;
-  `safe?`: `boolean`;
-  `serializers?`: (
-     \| [`SerializerType`](#serializertype)
-    \| [`SerializeFuncType`](#serializefunctype))[];
-  `subType?`: `any`;
-  `validateType?`: `boolean`;
-  `validators?`: (
-     \| [`ValidatorType`](#validatortype)
-    \| [`ValidatorFuncType`](#validatorfunctype))[];
+`coercion?`: `boolean`;
+`default?`: `any`;
+`deserializers?`: (
+\| [`DeSerializerType`](#deserializertype)
+\| [`DeSerializeFuncType`](#deserializefunctype))[];
+`name?`: `string`;
+`noBuiltinDeSerializers?`: `boolean`;
+`noBuiltinSerializers?`: `boolean`;
+`noBuiltinValidators?`: `boolean`;
+`nullable?`: `boolean`;
+`nullish?`: `boolean`;
+`optional?`: `boolean`;
+`safe?`: `boolean`;
+`serializers?`: (
+\| [`SerializerType`](#serializertype)
+\| [`SerializeFuncType`](#serializefunctype))[];
+`subType?`: `any`;
+`validateType?`: `boolean`;
+`validators?`: (
+\| [`ValidatorType`](#validatortype)
+\| [`ValidatorFuncType`](#validatorfunctype))[];
 \}
 
 ###### Inherited from
@@ -20033,12 +20869,12 @@ Higher score wins when resolving meta types dynamically.
 ##### getMetaType()
 
 ```ts
-static getMetaType(value: any, metaTypeArgs?: 
+static getMetaType(value: any, metaTypeArgs?:
   | MetaTypeArgsType<any, boolean, boolean, boolean>
   | (metaTypeImpl: MetaTypeImpl) => MetaTypeArgsType): MetaType<unknown> | undefined;
 ```
 
-Defined in: [src/metatypes/metatypeImpl.ts:672](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L672)
+Defined in: [src/metatypes/metatypeImpl.ts:676](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L676)
 
 Resolves and wraps an implementation as a runtime meta type (`MetaType` helper).
 
@@ -20072,7 +20908,7 @@ Resolves and wraps an implementation as a runtime meta type (`MetaType` helper).
 </td>
 <td>
 
- \| [`MetaTypeArgsType`](#metatypeargstype)\<`any`, `boolean`, `boolean`, `boolean`\> \| (`metaTypeImpl`: [`MetaTypeImpl`](#metatypeimpl)) => [`MetaTypeArgsType`](#metatypeargstype)
+\| [`MetaTypeArgsType`](#metatypeargstype)\<`any`, `boolean`, `boolean`, `boolean`\> \| (`metaTypeImpl`: [`MetaTypeImpl`](#metatypeimpl)) => [`MetaTypeArgsType`](#metatypeargstype)
 
 </td>
 </tr>
@@ -20090,12 +20926,12 @@ Resolves and wraps an implementation as a runtime meta type (`MetaType` helper).
 ##### getMetaTypeImpl()
 
 ```ts
-static getMetaTypeImpl(value: any, metaTypeArgs?: 
+static getMetaTypeImpl(value: any, metaTypeArgs?:
   | MetaTypeArgsType<any, boolean, boolean, boolean>
   | (metaTypeImpl: MetaTypeImpl) => MetaTypeArgsType): MetaTypeImpl | undefined;
 ```
 
-Defined in: [src/metatypes/metatypeImpl.ts:650](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L650)
+Defined in: [src/metatypes/metatypeImpl.ts:654](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L654)
 
 Resolves an existing implementation instance for the provided value (value can be
 a meta type, `MetaTypeImpl`, plain schema, etc.).
@@ -20130,7 +20966,7 @@ a meta type, `MetaTypeImpl`, plain schema, etc.).
 </td>
 <td>
 
- \| [`MetaTypeArgsType`](#metatypeargstype)\<`any`, `boolean`, `boolean`, `boolean`\> \| (`metaTypeImpl`: [`MetaTypeImpl`](#metatypeimpl)) => [`MetaTypeArgsType`](#metatypeargstype)
+\| [`MetaTypeArgsType`](#metatypeargstype)\<`any`, `boolean`, `boolean`, `boolean`\> \| (`metaTypeImpl`: [`MetaTypeImpl`](#metatypeimpl)) => [`MetaTypeArgsType`](#metatypeargstype)
 
 </td>
 </tr>
@@ -20148,12 +20984,12 @@ a meta type, `MetaTypeImpl`, plain schema, etc.).
 ##### getMetaTypeImplClass()
 
 ```ts
-static getMetaTypeImplClass(value: any): 
+static getMetaTypeImplClass(value: any):
   | StaticClass<typeof MetaTypeImpl>
   | undefined;
 ```
 
-Defined in: [src/metatypes/metatypeImpl.ts:628](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L628)
+Defined in: [src/metatypes/metatypeImpl.ts:632](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L632)
 
 Finds the best registered implementation for the provided value using compatibility score.
 
@@ -20184,8 +21020,8 @@ Finds the best registered implementation for the provided value using compatibil
 
 ###### Returns
 
-  \| [`StaticClass`](#staticclass)\<*typeof* [`MetaTypeImpl`](#metatypeimpl)\>
-  \| `undefined`
+\| [`StaticClass`](#staticclass)\<_typeof_ [`MetaTypeImpl`](#metatypeimpl)\>
+\| `undefined`
 
 ###### Inherited from
 
@@ -20240,7 +21076,7 @@ Checks if the provided value matches the implementation (override in subclasses)
 static registerMetaType(): (type: StaticClass<typeof MetaTypeImpl>) => void;
 ```
 
-Defined in: [src/metatypes/metatypeImpl.ts:585](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L585)
+Defined in: [src/metatypes/metatypeImpl.ts:589](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L589)
 
 Decorator helper that registers an implementation so it can be resolved automatically.
 
@@ -20268,7 +21104,7 @@ Decorator helper that registers an implementation so it can be resolved automati
 </td>
 <td>
 
-[`StaticClass`](#staticclass)\<*typeof* [`MetaTypeImpl`](#metatypeimpl)\>
+[`StaticClass`](#staticclass)\<_typeof_ [`MetaTypeImpl`](#metatypeimpl)\>
 
 </td>
 </tr>
@@ -20325,7 +21161,7 @@ Decorator helper that registers an implementation so it can be resolved automati
 </td>
 <td>
 
-[src/metatypes/metatypeImpl.ts:218](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L218)
+[src/metatypes/metatypeImpl.ts:222](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L222)
 
 </td>
 </tr>
@@ -20357,7 +21193,7 @@ Decorator helper that registers an implementation so it can be resolved automati
 </td>
 <td>
 
-[src/metatypes/metatypeImpl.ts:220](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L220)
+[src/metatypes/metatypeImpl.ts:224](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L224)
 
 </td>
 </tr>
@@ -20389,7 +21225,7 @@ Decorator helper that registers an implementation so it can be resolved automati
 </td>
 <td>
 
-[src/metatypes/metatypeImpl.ts:219](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L219)
+[src/metatypes/metatypeImpl.ts:223](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L223)
 
 </td>
 </tr>
@@ -20421,14 +21257,14 @@ Decorator helper that registers an implementation so it can be resolved automati
 </td>
 <td>
 
-[src/metatypes/metatypeImpl.ts:221](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L221)
+[src/metatypes/metatypeImpl.ts:225](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L225)
 
 </td>
 </tr>
 </tbody>
 </table>
 
-***
+---
 
 ### IntegerImpl
 
@@ -20439,19 +21275,19 @@ extend this class to provide specific validation, serialization and compatibilit
 
 #### Extends
 
-- [`MetaTypeImpl`](#metatypeimpl)
+-   [`MetaTypeImpl`](#metatypeimpl)
 
 #### Constructors
 
 ##### Constructor
 
 ```ts
-new IntegerImpl(metaTypeArgs?: 
+new IntegerImpl(metaTypeArgs?:
   | MetaTypeArgsType<any, boolean, boolean, boolean>
   | (metaTypeImpl: MetaTypeImpl) => MetaTypeArgsType): IntegerImpl;
 ```
 
-Defined in: [src/metatypes/metatypeImpl.ts:300](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L300)
+Defined in: [src/metatypes/metatypeImpl.ts:304](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L304)
 
 Creates a new meta type implementation.
 
@@ -20474,7 +21310,7 @@ Creates a new meta type implementation.
 </td>
 <td>
 
- \| [`MetaTypeArgsType`](#metatypeargstype)\<`any`, `boolean`, `boolean`, `boolean`\> \| (`metaTypeImpl`: [`MetaTypeImpl`](#metatypeimpl)) => [`MetaTypeArgsType`](#metatypeargstype)
+\| [`MetaTypeArgsType`](#metatypeargstype)\<`any`, `boolean`, `boolean`, `boolean`\> \| (`metaTypeImpl`: [`MetaTypeImpl`](#metatypeimpl)) => [`MetaTypeArgsType`](#metatypeargstype)
 
 </td>
 <td>
@@ -20502,7 +21338,7 @@ Arguments or a factory that receives the instance being constructed.
 castToRawValue(serializationArgs: SerializerArgsType): any;
 ```
 
-Defined in: [src/metatypes/metatypeImpl.ts:375](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L375)
+Defined in: [src/metatypes/metatypeImpl.ts:379](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L379)
 
 Hook for structural types to convert values when serializing.
 
@@ -20588,7 +21424,7 @@ Hook for structural types to cast raw values before validation.
 deserialize(deserializationArgs: DeSerializeMetaTypeArgsType): any;
 ```
 
-Defined in: [src/metatypes/metatypeImpl.ts:449](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L449)
+Defined in: [src/metatypes/metatypeImpl.ts:453](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L453)
 
 Runs builtin + custom deserializers and returns the final value.
 
@@ -20631,7 +21467,7 @@ Runs builtin + custom deserializers and returns the final value.
 getSubType(): any;
 ```
 
-Defined in: [src/metatypes/metatypeImpl.ts:255](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L255)
+Defined in: [src/metatypes/metatypeImpl.ts:259](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L259)
 
 Returns the prepared subtype definition (arrays/objects can override `prepareSubType`).
 
@@ -20649,7 +21485,7 @@ Returns the prepared subtype definition (arrays/objects can override `prepareSub
 metaTypeValidatorFunc(__namedParameters: ValidatorArgsType): boolean | Error;
 ```
 
-Defined in: [src/metatypes/metatypeImpl.ts:482](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L482)
+Defined in: [src/metatypes/metatypeImpl.ts:486](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L486)
 
 Default validator that asks the implementation whether the value is compatible.
 
@@ -20689,12 +21525,12 @@ Default validator that asks the implementation whether the value is compatible.
 ##### rebuild()
 
 ```ts
-rebuild(metaTypeArgs?: 
+rebuild(metaTypeArgs?:
   | MetaTypeArgsType<any, boolean, boolean, boolean>
   | (metaTypeImpl: MetaTypeImpl) => MetaTypeArgsType): MetaTypeImpl;
 ```
 
-Defined in: [src/metatypes/metatypeImpl.ts:354](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L354)
+Defined in: [src/metatypes/metatypeImpl.ts:358](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L358)
 
 Rebuilds the current implementation with additional/overriding arguments.
 
@@ -20716,7 +21552,7 @@ Rebuilds the current implementation with additional/overriding arguments.
 </td>
 <td>
 
- \| [`MetaTypeArgsType`](#metatypeargstype)\<`any`, `boolean`, `boolean`, `boolean`\> \| (`metaTypeImpl`: [`MetaTypeImpl`](#metatypeimpl)) => [`MetaTypeArgsType`](#metatypeargstype)
+\| [`MetaTypeArgsType`](#metatypeargstype)\<`any`, `boolean`, `boolean`, `boolean`\> \| (`metaTypeImpl`: [`MetaTypeImpl`](#metatypeimpl)) => [`MetaTypeArgsType`](#metatypeargstype)
 
 </td>
 </tr>
@@ -20737,7 +21573,7 @@ Rebuilds the current implementation with additional/overriding arguments.
 serialize(serializationArgs: SerializeMetaTypeArgsType): any;
 ```
 
-Defined in: [src/metatypes/metatypeImpl.ts:398](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L398)
+Defined in: [src/metatypes/metatypeImpl.ts:402](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L402)
 
 Runs builtin + custom serializers and returns the final value.
 
@@ -20780,7 +21616,7 @@ Runs builtin + custom serializers and returns the final value.
 toString(): string;
 ```
 
-Defined in: [src/metatypes/metatypeImpl.ts:361](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L361)
+Defined in: [src/metatypes/metatypeImpl.ts:365](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L365)
 
 String representation displayed in inspectors/logs.
 
@@ -20798,7 +21634,7 @@ String representation displayed in inspectors/logs.
 validate(args: ValidateMetaTypeArgsType): ValidationError | undefined;
 ```
 
-Defined in: [src/metatypes/metatypeImpl.ts:507](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L507)
+Defined in: [src/metatypes/metatypeImpl.ts:511](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L511)
 
 Runs builtin + custom validators and returns a `ValidationError` when something fails.
 
@@ -20838,12 +21674,12 @@ Runs builtin + custom validators and returns a `ValidationError` when something 
 ##### build()
 
 ```ts
-static build<T>(this: (...metaTypeArgs: any) => T, metaTypeArgs?: 
+static build<T>(this: (...metaTypeArgs: any) => T, metaTypeArgs?:
   | MetaTypeArgsType<any, boolean, boolean, boolean>
   | (metaTypeImpl: MetaTypeImpl) => MetaTypeArgsType): T;
 ```
 
-Defined in: [src/metatypes/metatypeImpl.ts:346](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L346)
+Defined in: [src/metatypes/metatypeImpl.ts:350](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L350)
 
 Instantiates the implementation (used by `MetaType` factory helpers).
 
@@ -20859,7 +21695,7 @@ Instantiates the implementation (used by `MetaType` factory helpers).
 <tr>
 <td>
 
-`T` *extends* [`MetaTypeImpl`](#metatypeimpl)
+`T` _extends_ [`MetaTypeImpl`](#metatypeimpl)
 
 </td>
 </tr>
@@ -20896,7 +21732,7 @@ Instantiates the implementation (used by `MetaType` factory helpers).
 </td>
 <td>
 
- \| [`MetaTypeArgsType`](#metatypeargstype)\<`any`, `boolean`, `boolean`, `boolean`\> \| (`metaTypeImpl`: [`MetaTypeImpl`](#metatypeimpl)) => [`MetaTypeArgsType`](#metatypeargstype)
+\| [`MetaTypeArgsType`](#metatypeargstype)\<`any`, `boolean`, `boolean`, `boolean`\> \| (`metaTypeImpl`: [`MetaTypeImpl`](#metatypeimpl)) => [`MetaTypeArgsType`](#metatypeargstype)
 
 </td>
 </tr>
@@ -20914,13 +21750,13 @@ Instantiates the implementation (used by `MetaType` factory helpers).
 ##### combineMetaTypeArgs()
 
 ```ts
-static combineMetaTypeArgs(metaTypeArgs1?: 
+static combineMetaTypeArgs(metaTypeArgs1?:
   | MetaTypeArgsType<any, boolean, boolean, boolean>
   | (metaTypeImpl: MetaTypeImpl) => MetaTypeArgsType
-  | null, metaTypeArgs2?: 
+  | null, metaTypeArgs2?:
   | MetaTypeArgsType<any, boolean, boolean, boolean>
   | (metaTypeImpl: MetaTypeImpl) => MetaTypeArgsType
-  | null): 
+  | null):
   | (metaTypeImpl: MetaTypeImpl) => {
 [key: string]: any;
   coercion?: boolean;
@@ -20971,7 +21807,7 @@ static combineMetaTypeArgs(metaTypeArgs1?:
 };
 ```
 
-Defined in: [src/metatypes/metatypeImpl.ts:592](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L592)
+Defined in: [src/metatypes/metatypeImpl.ts:596](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L596)
 
 Utility that merges two argument objects (or factories).
 
@@ -20993,7 +21829,7 @@ Utility that merges two argument objects (or factories).
 </td>
 <td>
 
- \| [`MetaTypeArgsType`](#metatypeargstype)\<`any`, `boolean`, `boolean`, `boolean`\> \| (`metaTypeImpl`: [`MetaTypeImpl`](#metatypeimpl)) => [`MetaTypeArgsType`](#metatypeargstype) \| `null`
+\| [`MetaTypeArgsType`](#metatypeargstype)\<`any`, `boolean`, `boolean`, `boolean`\> \| (`metaTypeImpl`: [`MetaTypeImpl`](#metatypeimpl)) => [`MetaTypeArgsType`](#metatypeargstype) \| `null`
 
 </td>
 </tr>
@@ -21005,7 +21841,7 @@ Utility that merges two argument objects (or factories).
 </td>
 <td>
 
- \| [`MetaTypeArgsType`](#metatypeargstype)\<`any`, `boolean`, `boolean`, `boolean`\> \| (`metaTypeImpl`: [`MetaTypeImpl`](#metatypeimpl)) => [`MetaTypeArgsType`](#metatypeargstype) \| `null`
+\| [`MetaTypeArgsType`](#metatypeargstype)\<`any`, `boolean`, `boolean`, `boolean`\> \| (`metaTypeImpl`: [`MetaTypeImpl`](#metatypeimpl)) => [`MetaTypeArgsType`](#metatypeargstype) \| `null`
 
 </td>
 </tr>
@@ -21014,53 +21850,53 @@ Utility that merges two argument objects (or factories).
 
 ###### Returns
 
-  \| (`metaTypeImpl`: [`MetaTypeImpl`](#metatypeimpl)) => \{
+\| (`metaTypeImpl`: [`MetaTypeImpl`](#metatypeimpl)) => \{
 \[`key`: `string`\]: `any`;
-  `coercion?`: `boolean`;
-  `default?`: `any`;
-  `deserializers?`: (
-     \| [`DeSerializerType`](#deserializertype)
-    \| [`DeSerializeFuncType`](#deserializefunctype))[];
-  `name?`: `string`;
-  `noBuiltinDeSerializers?`: `boolean`;
-  `noBuiltinSerializers?`: `boolean`;
-  `noBuiltinValidators?`: `boolean`;
-  `nullable?`: `boolean`;
-  `nullish?`: `boolean`;
-  `optional?`: `boolean`;
-  `safe?`: `boolean`;
-  `serializers?`: (
-     \| [`SerializerType`](#serializertype)
-    \| [`SerializeFuncType`](#serializefunctype))[];
-  `subType?`: `any`;
-  `validateType?`: `boolean`;
-  `validators?`: (
-     \| [`ValidatorType`](#validatortype)
-    \| [`ValidatorFuncType`](#validatorfunctype))[];
+`coercion?`: `boolean`;
+`default?`: `any`;
+`deserializers?`: (
+\| [`DeSerializerType`](#deserializertype)
+\| [`DeSerializeFuncType`](#deserializefunctype))[];
+`name?`: `string`;
+`noBuiltinDeSerializers?`: `boolean`;
+`noBuiltinSerializers?`: `boolean`;
+`noBuiltinValidators?`: `boolean`;
+`nullable?`: `boolean`;
+`nullish?`: `boolean`;
+`optional?`: `boolean`;
+`safe?`: `boolean`;
+`serializers?`: (
+\| [`SerializerType`](#serializertype)
+\| [`SerializeFuncType`](#serializefunctype))[];
+`subType?`: `any`;
+`validateType?`: `boolean`;
+`validators?`: (
+\| [`ValidatorType`](#validatortype)
+\| [`ValidatorFuncType`](#validatorfunctype))[];
 \}
-  \| \{
+\| \{
 \[`key`: `string`\]: `any`;
-  `coercion?`: `boolean`;
-  `default?`: `any`;
-  `deserializers?`: (
-     \| [`DeSerializerType`](#deserializertype)
-    \| [`DeSerializeFuncType`](#deserializefunctype))[];
-  `name?`: `string`;
-  `noBuiltinDeSerializers?`: `boolean`;
-  `noBuiltinSerializers?`: `boolean`;
-  `noBuiltinValidators?`: `boolean`;
-  `nullable?`: `boolean`;
-  `nullish?`: `boolean`;
-  `optional?`: `boolean`;
-  `safe?`: `boolean`;
-  `serializers?`: (
-     \| [`SerializerType`](#serializertype)
-    \| [`SerializeFuncType`](#serializefunctype))[];
-  `subType?`: `any`;
-  `validateType?`: `boolean`;
-  `validators?`: (
-     \| [`ValidatorType`](#validatortype)
-    \| [`ValidatorFuncType`](#validatorfunctype))[];
+`coercion?`: `boolean`;
+`default?`: `any`;
+`deserializers?`: (
+\| [`DeSerializerType`](#deserializertype)
+\| [`DeSerializeFuncType`](#deserializefunctype))[];
+`name?`: `string`;
+`noBuiltinDeSerializers?`: `boolean`;
+`noBuiltinSerializers?`: `boolean`;
+`noBuiltinValidators?`: `boolean`;
+`nullable?`: `boolean`;
+`nullish?`: `boolean`;
+`optional?`: `boolean`;
+`safe?`: `boolean`;
+`serializers?`: (
+\| [`SerializerType`](#serializertype)
+\| [`SerializeFuncType`](#serializefunctype))[];
+`subType?`: `any`;
+`validateType?`: `boolean`;
+`validators?`: (
+\| [`ValidatorType`](#validatortype)
+\| [`ValidatorFuncType`](#validatorfunctype))[];
 \}
 
 ###### Inherited from
@@ -21073,7 +21909,7 @@ Utility that merges two argument objects (or factories).
 static getCompatibilityScore(_value: any): number;
 ```
 
-Defined in: [src/metatypes/metatypeImpl.ts:580](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L580)
+Defined in: [src/metatypes/metatypeImpl.ts:584](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L584)
 
 Returns a score describing how compatible a value is with this implementation.
 Higher score wins when resolving meta types dynamically.
@@ -21114,12 +21950,12 @@ Higher score wins when resolving meta types dynamically.
 ##### getMetaType()
 
 ```ts
-static getMetaType(value: any, metaTypeArgs?: 
+static getMetaType(value: any, metaTypeArgs?:
   | MetaTypeArgsType<any, boolean, boolean, boolean>
   | (metaTypeImpl: MetaTypeImpl) => MetaTypeArgsType): MetaType<unknown> | undefined;
 ```
 
-Defined in: [src/metatypes/metatypeImpl.ts:672](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L672)
+Defined in: [src/metatypes/metatypeImpl.ts:676](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L676)
 
 Resolves and wraps an implementation as a runtime meta type (`MetaType` helper).
 
@@ -21153,7 +21989,7 @@ Resolves and wraps an implementation as a runtime meta type (`MetaType` helper).
 </td>
 <td>
 
- \| [`MetaTypeArgsType`](#metatypeargstype)\<`any`, `boolean`, `boolean`, `boolean`\> \| (`metaTypeImpl`: [`MetaTypeImpl`](#metatypeimpl)) => [`MetaTypeArgsType`](#metatypeargstype)
+\| [`MetaTypeArgsType`](#metatypeargstype)\<`any`, `boolean`, `boolean`, `boolean`\> \| (`metaTypeImpl`: [`MetaTypeImpl`](#metatypeimpl)) => [`MetaTypeArgsType`](#metatypeargstype)
 
 </td>
 </tr>
@@ -21171,12 +22007,12 @@ Resolves and wraps an implementation as a runtime meta type (`MetaType` helper).
 ##### getMetaTypeImpl()
 
 ```ts
-static getMetaTypeImpl(value: any, metaTypeArgs?: 
+static getMetaTypeImpl(value: any, metaTypeArgs?:
   | MetaTypeArgsType<any, boolean, boolean, boolean>
   | (metaTypeImpl: MetaTypeImpl) => MetaTypeArgsType): MetaTypeImpl | undefined;
 ```
 
-Defined in: [src/metatypes/metatypeImpl.ts:650](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L650)
+Defined in: [src/metatypes/metatypeImpl.ts:654](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L654)
 
 Resolves an existing implementation instance for the provided value (value can be
 a meta type, `MetaTypeImpl`, plain schema, etc.).
@@ -21211,7 +22047,7 @@ a meta type, `MetaTypeImpl`, plain schema, etc.).
 </td>
 <td>
 
- \| [`MetaTypeArgsType`](#metatypeargstype)\<`any`, `boolean`, `boolean`, `boolean`\> \| (`metaTypeImpl`: [`MetaTypeImpl`](#metatypeimpl)) => [`MetaTypeArgsType`](#metatypeargstype)
+\| [`MetaTypeArgsType`](#metatypeargstype)\<`any`, `boolean`, `boolean`, `boolean`\> \| (`metaTypeImpl`: [`MetaTypeImpl`](#metatypeimpl)) => [`MetaTypeArgsType`](#metatypeargstype)
 
 </td>
 </tr>
@@ -21229,12 +22065,12 @@ a meta type, `MetaTypeImpl`, plain schema, etc.).
 ##### getMetaTypeImplClass()
 
 ```ts
-static getMetaTypeImplClass(value: any): 
+static getMetaTypeImplClass(value: any):
   | StaticClass<typeof MetaTypeImpl>
   | undefined;
 ```
 
-Defined in: [src/metatypes/metatypeImpl.ts:628](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L628)
+Defined in: [src/metatypes/metatypeImpl.ts:632](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L632)
 
 Finds the best registered implementation for the provided value using compatibility score.
 
@@ -21265,8 +22101,8 @@ Finds the best registered implementation for the provided value using compatibil
 
 ###### Returns
 
-  \| [`StaticClass`](#staticclass)\<*typeof* [`MetaTypeImpl`](#metatypeimpl)\>
-  \| `undefined`
+\| [`StaticClass`](#staticclass)\<_typeof_ [`MetaTypeImpl`](#metatypeimpl)\>
+\| `undefined`
 
 ###### Inherited from
 
@@ -21321,7 +22157,7 @@ Checks if the provided value matches the implementation (override in subclasses)
 static registerMetaType(): (type: StaticClass<typeof MetaTypeImpl>) => void;
 ```
 
-Defined in: [src/metatypes/metatypeImpl.ts:585](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L585)
+Defined in: [src/metatypes/metatypeImpl.ts:589](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L589)
 
 Decorator helper that registers an implementation so it can be resolved automatically.
 
@@ -21349,7 +22185,7 @@ Decorator helper that registers an implementation so it can be resolved automati
 </td>
 <td>
 
-[`StaticClass`](#staticclass)\<*typeof* [`MetaTypeImpl`](#metatypeimpl)\>
+[`StaticClass`](#staticclass)\<_typeof_ [`MetaTypeImpl`](#metatypeimpl)\>
 
 </td>
 </tr>
@@ -21406,7 +22242,7 @@ Decorator helper that registers an implementation so it can be resolved automati
 </td>
 <td>
 
-[src/metatypes/metatypeImpl.ts:218](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L218)
+[src/metatypes/metatypeImpl.ts:222](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L222)
 
 </td>
 </tr>
@@ -21438,7 +22274,7 @@ Decorator helper that registers an implementation so it can be resolved automati
 </td>
 <td>
 
-[src/metatypes/metatypeImpl.ts:220](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L220)
+[src/metatypes/metatypeImpl.ts:224](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L224)
 
 </td>
 </tr>
@@ -21470,7 +22306,7 @@ Decorator helper that registers an implementation so it can be resolved automati
 </td>
 <td>
 
-[src/metatypes/metatypeImpl.ts:219](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L219)
+[src/metatypes/metatypeImpl.ts:223](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L223)
 
 </td>
 </tr>
@@ -21502,14 +22338,14 @@ Decorator helper that registers an implementation so it can be resolved automati
 </td>
 <td>
 
-[src/metatypes/metatypeImpl.ts:221](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L221)
+[src/metatypes/metatypeImpl.ts:225](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L225)
 
 </td>
 </tr>
 </tbody>
 </table>
 
-***
+---
 
 ### `abstract` LazyMetaTypeImpl
 
@@ -21520,24 +22356,24 @@ Ensures recursive references are prepared only once and tracks parent builders.
 
 #### Extends
 
-- [`MetaTypeImpl`](#metatypeimpl)
+-   [`MetaTypeImpl`](#metatypeimpl)
 
 #### Extended by
 
-- [`RefImpl`](#refimpl)
-- [`StructuralMetaTypeImpl`](#structuralmetatypeimpl)
+-   [`RefImpl`](#refimpl)
+-   [`StructuralMetaTypeImpl`](#structuralmetatypeimpl)
 
 #### Constructors
 
 ##### Constructor
 
 ```ts
-new LazyMetaTypeImpl(metaTypeArgs?: 
+new LazyMetaTypeImpl(metaTypeArgs?:
   | MetaTypeArgsType<any, boolean, boolean, boolean>
   | (metaTypeImpl: MetaTypeImpl) => MetaTypeArgsType): LazyMetaTypeImpl;
 ```
 
-Defined in: [src/metatypes/metatypeImpl.ts:300](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L300)
+Defined in: [src/metatypes/metatypeImpl.ts:304](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L304)
 
 Creates a new meta type implementation.
 
@@ -21560,7 +22396,7 @@ Creates a new meta type implementation.
 </td>
 <td>
 
- \| [`MetaTypeArgsType`](#metatypeargstype)\<`any`, `boolean`, `boolean`, `boolean`\> \| (`metaTypeImpl`: [`MetaTypeImpl`](#metatypeimpl)) => [`MetaTypeArgsType`](#metatypeargstype)
+\| [`MetaTypeArgsType`](#metatypeargstype)\<`any`, `boolean`, `boolean`, `boolean`\> \| (`metaTypeImpl`: [`MetaTypeImpl`](#metatypeimpl)) => [`MetaTypeArgsType`](#metatypeargstype)
 
 </td>
 <td>
@@ -21588,7 +22424,7 @@ Arguments or a factory that receives the instance being constructed.
 castToRawValue(serializationArgs: SerializerArgsType): any;
 ```
 
-Defined in: [src/metatypes/metatypeImpl.ts:375](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L375)
+Defined in: [src/metatypes/metatypeImpl.ts:379](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L379)
 
 Hook for structural types to convert values when serializing.
 
@@ -21631,7 +22467,7 @@ Hook for structural types to convert values when serializing.
 castToType(deserializationArgs: DeSerializerArgsType): any;
 ```
 
-Defined in: [src/metatypes/metatypeImpl.ts:370](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L370)
+Defined in: [src/metatypes/metatypeImpl.ts:374](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L374)
 
 Hook for structural types to cast raw values before validation.
 
@@ -21674,7 +22510,7 @@ Hook for structural types to cast raw values before validation.
 deserialize(deserializationArgs: DeSerializeMetaTypeArgsType): any;
 ```
 
-Defined in: [src/metatypes/metatypeImpl.ts:449](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L449)
+Defined in: [src/metatypes/metatypeImpl.ts:453](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L453)
 
 Runs builtin + custom deserializers and returns the final value.
 
@@ -21735,7 +22571,7 @@ Resolves (and caches) the prepared subtype, executing lazy factories when needed
 metaTypeValidatorFunc(__namedParameters: ValidatorArgsType): boolean | Error;
 ```
 
-Defined in: [src/metatypes/metatypeImpl.ts:482](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L482)
+Defined in: [src/metatypes/metatypeImpl.ts:486](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L486)
 
 Default validator that asks the implementation whether the value is compatible.
 
@@ -21775,12 +22611,12 @@ Default validator that asks the implementation whether the value is compatible.
 ##### rebuild()
 
 ```ts
-rebuild(metaTypeArgs?: 
+rebuild(metaTypeArgs?:
   | MetaTypeArgsType<any, boolean, boolean, boolean>
   | (metaTypeImpl: MetaTypeImpl) => MetaTypeArgsType): MetaTypeImpl;
 ```
 
-Defined in: [src/metatypes/metatypeImpl.ts:354](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L354)
+Defined in: [src/metatypes/metatypeImpl.ts:358](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L358)
 
 Rebuilds the current implementation with additional/overriding arguments.
 
@@ -21802,7 +22638,7 @@ Rebuilds the current implementation with additional/overriding arguments.
 </td>
 <td>
 
- \| [`MetaTypeArgsType`](#metatypeargstype)\<`any`, `boolean`, `boolean`, `boolean`\> \| (`metaTypeImpl`: [`MetaTypeImpl`](#metatypeimpl)) => [`MetaTypeArgsType`](#metatypeargstype)
+\| [`MetaTypeArgsType`](#metatypeargstype)\<`any`, `boolean`, `boolean`, `boolean`\> \| (`metaTypeImpl`: [`MetaTypeImpl`](#metatypeimpl)) => [`MetaTypeArgsType`](#metatypeargstype)
 
 </td>
 </tr>
@@ -21823,7 +22659,7 @@ Rebuilds the current implementation with additional/overriding arguments.
 serialize(serializationArgs: SerializeMetaTypeArgsType): any;
 ```
 
-Defined in: [src/metatypes/metatypeImpl.ts:398](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L398)
+Defined in: [src/metatypes/metatypeImpl.ts:402](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L402)
 
 Runs builtin + custom serializers and returns the final value.
 
@@ -21866,7 +22702,7 @@ Runs builtin + custom serializers and returns the final value.
 toString(): string;
 ```
 
-Defined in: [src/metatypes/metatypeImpl.ts:361](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L361)
+Defined in: [src/metatypes/metatypeImpl.ts:365](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L365)
 
 String representation displayed in inspectors/logs.
 
@@ -21884,7 +22720,7 @@ String representation displayed in inspectors/logs.
 validate(args: ValidateMetaTypeArgsType): ValidationError | undefined;
 ```
 
-Defined in: [src/metatypes/metatypeImpl.ts:507](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L507)
+Defined in: [src/metatypes/metatypeImpl.ts:511](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L511)
 
 Runs builtin + custom validators and returns a `ValidationError` when something fails.
 
@@ -21924,12 +22760,12 @@ Runs builtin + custom validators and returns a `ValidationError` when something 
 ##### build()
 
 ```ts
-static build<T>(this: (...metaTypeArgs: any) => T, metaTypeArgs?: 
+static build<T>(this: (...metaTypeArgs: any) => T, metaTypeArgs?:
   | MetaTypeArgsType<any, boolean, boolean, boolean>
   | (metaTypeImpl: MetaTypeImpl) => MetaTypeArgsType): T;
 ```
 
-Defined in: [src/metatypes/metatypeImpl.ts:346](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L346)
+Defined in: [src/metatypes/metatypeImpl.ts:350](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L350)
 
 Instantiates the implementation (used by `MetaType` factory helpers).
 
@@ -21945,7 +22781,7 @@ Instantiates the implementation (used by `MetaType` factory helpers).
 <tr>
 <td>
 
-`T` *extends* [`MetaTypeImpl`](#metatypeimpl)
+`T` _extends_ [`MetaTypeImpl`](#metatypeimpl)
 
 </td>
 </tr>
@@ -21982,7 +22818,7 @@ Instantiates the implementation (used by `MetaType` factory helpers).
 </td>
 <td>
 
- \| [`MetaTypeArgsType`](#metatypeargstype)\<`any`, `boolean`, `boolean`, `boolean`\> \| (`metaTypeImpl`: [`MetaTypeImpl`](#metatypeimpl)) => [`MetaTypeArgsType`](#metatypeargstype)
+\| [`MetaTypeArgsType`](#metatypeargstype)\<`any`, `boolean`, `boolean`, `boolean`\> \| (`metaTypeImpl`: [`MetaTypeImpl`](#metatypeimpl)) => [`MetaTypeArgsType`](#metatypeargstype)
 
 </td>
 </tr>
@@ -22000,13 +22836,13 @@ Instantiates the implementation (used by `MetaType` factory helpers).
 ##### combineMetaTypeArgs()
 
 ```ts
-static combineMetaTypeArgs(metaTypeArgs1?: 
+static combineMetaTypeArgs(metaTypeArgs1?:
   | MetaTypeArgsType<any, boolean, boolean, boolean>
   | (metaTypeImpl: MetaTypeImpl) => MetaTypeArgsType
-  | null, metaTypeArgs2?: 
+  | null, metaTypeArgs2?:
   | MetaTypeArgsType<any, boolean, boolean, boolean>
   | (metaTypeImpl: MetaTypeImpl) => MetaTypeArgsType
-  | null): 
+  | null):
   | (metaTypeImpl: MetaTypeImpl) => {
 [key: string]: any;
   coercion?: boolean;
@@ -22057,7 +22893,7 @@ static combineMetaTypeArgs(metaTypeArgs1?:
 };
 ```
 
-Defined in: [src/metatypes/metatypeImpl.ts:592](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L592)
+Defined in: [src/metatypes/metatypeImpl.ts:596](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L596)
 
 Utility that merges two argument objects (or factories).
 
@@ -22079,7 +22915,7 @@ Utility that merges two argument objects (or factories).
 </td>
 <td>
 
- \| [`MetaTypeArgsType`](#metatypeargstype)\<`any`, `boolean`, `boolean`, `boolean`\> \| (`metaTypeImpl`: [`MetaTypeImpl`](#metatypeimpl)) => [`MetaTypeArgsType`](#metatypeargstype) \| `null`
+\| [`MetaTypeArgsType`](#metatypeargstype)\<`any`, `boolean`, `boolean`, `boolean`\> \| (`metaTypeImpl`: [`MetaTypeImpl`](#metatypeimpl)) => [`MetaTypeArgsType`](#metatypeargstype) \| `null`
 
 </td>
 </tr>
@@ -22091,7 +22927,7 @@ Utility that merges two argument objects (or factories).
 </td>
 <td>
 
- \| [`MetaTypeArgsType`](#metatypeargstype)\<`any`, `boolean`, `boolean`, `boolean`\> \| (`metaTypeImpl`: [`MetaTypeImpl`](#metatypeimpl)) => [`MetaTypeArgsType`](#metatypeargstype) \| `null`
+\| [`MetaTypeArgsType`](#metatypeargstype)\<`any`, `boolean`, `boolean`, `boolean`\> \| (`metaTypeImpl`: [`MetaTypeImpl`](#metatypeimpl)) => [`MetaTypeArgsType`](#metatypeargstype) \| `null`
 
 </td>
 </tr>
@@ -22100,53 +22936,53 @@ Utility that merges two argument objects (or factories).
 
 ###### Returns
 
-  \| (`metaTypeImpl`: [`MetaTypeImpl`](#metatypeimpl)) => \{
+\| (`metaTypeImpl`: [`MetaTypeImpl`](#metatypeimpl)) => \{
 \[`key`: `string`\]: `any`;
-  `coercion?`: `boolean`;
-  `default?`: `any`;
-  `deserializers?`: (
-     \| [`DeSerializerType`](#deserializertype)
-    \| [`DeSerializeFuncType`](#deserializefunctype))[];
-  `name?`: `string`;
-  `noBuiltinDeSerializers?`: `boolean`;
-  `noBuiltinSerializers?`: `boolean`;
-  `noBuiltinValidators?`: `boolean`;
-  `nullable?`: `boolean`;
-  `nullish?`: `boolean`;
-  `optional?`: `boolean`;
-  `safe?`: `boolean`;
-  `serializers?`: (
-     \| [`SerializerType`](#serializertype)
-    \| [`SerializeFuncType`](#serializefunctype))[];
-  `subType?`: `any`;
-  `validateType?`: `boolean`;
-  `validators?`: (
-     \| [`ValidatorType`](#validatortype)
-    \| [`ValidatorFuncType`](#validatorfunctype))[];
+`coercion?`: `boolean`;
+`default?`: `any`;
+`deserializers?`: (
+\| [`DeSerializerType`](#deserializertype)
+\| [`DeSerializeFuncType`](#deserializefunctype))[];
+`name?`: `string`;
+`noBuiltinDeSerializers?`: `boolean`;
+`noBuiltinSerializers?`: `boolean`;
+`noBuiltinValidators?`: `boolean`;
+`nullable?`: `boolean`;
+`nullish?`: `boolean`;
+`optional?`: `boolean`;
+`safe?`: `boolean`;
+`serializers?`: (
+\| [`SerializerType`](#serializertype)
+\| [`SerializeFuncType`](#serializefunctype))[];
+`subType?`: `any`;
+`validateType?`: `boolean`;
+`validators?`: (
+\| [`ValidatorType`](#validatortype)
+\| [`ValidatorFuncType`](#validatorfunctype))[];
 \}
-  \| \{
+\| \{
 \[`key`: `string`\]: `any`;
-  `coercion?`: `boolean`;
-  `default?`: `any`;
-  `deserializers?`: (
-     \| [`DeSerializerType`](#deserializertype)
-    \| [`DeSerializeFuncType`](#deserializefunctype))[];
-  `name?`: `string`;
-  `noBuiltinDeSerializers?`: `boolean`;
-  `noBuiltinSerializers?`: `boolean`;
-  `noBuiltinValidators?`: `boolean`;
-  `nullable?`: `boolean`;
-  `nullish?`: `boolean`;
-  `optional?`: `boolean`;
-  `safe?`: `boolean`;
-  `serializers?`: (
-     \| [`SerializerType`](#serializertype)
-    \| [`SerializeFuncType`](#serializefunctype))[];
-  `subType?`: `any`;
-  `validateType?`: `boolean`;
-  `validators?`: (
-     \| [`ValidatorType`](#validatortype)
-    \| [`ValidatorFuncType`](#validatorfunctype))[];
+`coercion?`: `boolean`;
+`default?`: `any`;
+`deserializers?`: (
+\| [`DeSerializerType`](#deserializertype)
+\| [`DeSerializeFuncType`](#deserializefunctype))[];
+`name?`: `string`;
+`noBuiltinDeSerializers?`: `boolean`;
+`noBuiltinSerializers?`: `boolean`;
+`noBuiltinValidators?`: `boolean`;
+`nullable?`: `boolean`;
+`nullish?`: `boolean`;
+`optional?`: `boolean`;
+`safe?`: `boolean`;
+`serializers?`: (
+\| [`SerializerType`](#serializertype)
+\| [`SerializeFuncType`](#serializefunctype))[];
+`subType?`: `any`;
+`validateType?`: `boolean`;
+`validators?`: (
+\| [`ValidatorType`](#validatortype)
+\| [`ValidatorFuncType`](#validatorfunctype))[];
 \}
 
 ###### Inherited from
@@ -22159,7 +22995,7 @@ Utility that merges two argument objects (or factories).
 static getCompatibilityScore(_value: any): number;
 ```
 
-Defined in: [src/metatypes/metatypeImpl.ts:580](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L580)
+Defined in: [src/metatypes/metatypeImpl.ts:584](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L584)
 
 Returns a score describing how compatible a value is with this implementation.
 Higher score wins when resolving meta types dynamically.
@@ -22200,12 +23036,12 @@ Higher score wins when resolving meta types dynamically.
 ##### getMetaType()
 
 ```ts
-static getMetaType(value: any, metaTypeArgs?: 
+static getMetaType(value: any, metaTypeArgs?:
   | MetaTypeArgsType<any, boolean, boolean, boolean>
   | (metaTypeImpl: MetaTypeImpl) => MetaTypeArgsType): MetaType<unknown> | undefined;
 ```
 
-Defined in: [src/metatypes/metatypeImpl.ts:672](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L672)
+Defined in: [src/metatypes/metatypeImpl.ts:676](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L676)
 
 Resolves and wraps an implementation as a runtime meta type (`MetaType` helper).
 
@@ -22239,7 +23075,7 @@ Resolves and wraps an implementation as a runtime meta type (`MetaType` helper).
 </td>
 <td>
 
- \| [`MetaTypeArgsType`](#metatypeargstype)\<`any`, `boolean`, `boolean`, `boolean`\> \| (`metaTypeImpl`: [`MetaTypeImpl`](#metatypeimpl)) => [`MetaTypeArgsType`](#metatypeargstype)
+\| [`MetaTypeArgsType`](#metatypeargstype)\<`any`, `boolean`, `boolean`, `boolean`\> \| (`metaTypeImpl`: [`MetaTypeImpl`](#metatypeimpl)) => [`MetaTypeArgsType`](#metatypeargstype)
 
 </td>
 </tr>
@@ -22257,12 +23093,12 @@ Resolves and wraps an implementation as a runtime meta type (`MetaType` helper).
 ##### getMetaTypeImpl()
 
 ```ts
-static getMetaTypeImpl(value: any, metaTypeArgs?: 
+static getMetaTypeImpl(value: any, metaTypeArgs?:
   | MetaTypeArgsType<any, boolean, boolean, boolean>
   | (metaTypeImpl: MetaTypeImpl) => MetaTypeArgsType): MetaTypeImpl | undefined;
 ```
 
-Defined in: [src/metatypes/metatypeImpl.ts:650](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L650)
+Defined in: [src/metatypes/metatypeImpl.ts:654](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L654)
 
 Resolves an existing implementation instance for the provided value (value can be
 a meta type, `MetaTypeImpl`, plain schema, etc.).
@@ -22297,7 +23133,7 @@ a meta type, `MetaTypeImpl`, plain schema, etc.).
 </td>
 <td>
 
- \| [`MetaTypeArgsType`](#metatypeargstype)\<`any`, `boolean`, `boolean`, `boolean`\> \| (`metaTypeImpl`: [`MetaTypeImpl`](#metatypeimpl)) => [`MetaTypeArgsType`](#metatypeargstype)
+\| [`MetaTypeArgsType`](#metatypeargstype)\<`any`, `boolean`, `boolean`, `boolean`\> \| (`metaTypeImpl`: [`MetaTypeImpl`](#metatypeimpl)) => [`MetaTypeArgsType`](#metatypeargstype)
 
 </td>
 </tr>
@@ -22315,12 +23151,12 @@ a meta type, `MetaTypeImpl`, plain schema, etc.).
 ##### getMetaTypeImplClass()
 
 ```ts
-static getMetaTypeImplClass(value: any): 
+static getMetaTypeImplClass(value: any):
   | StaticClass<typeof MetaTypeImpl>
   | undefined;
 ```
 
-Defined in: [src/metatypes/metatypeImpl.ts:628](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L628)
+Defined in: [src/metatypes/metatypeImpl.ts:632](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L632)
 
 Finds the best registered implementation for the provided value using compatibility score.
 
@@ -22351,8 +23187,8 @@ Finds the best registered implementation for the provided value using compatibil
 
 ###### Returns
 
-  \| [`StaticClass`](#staticclass)\<*typeof* [`MetaTypeImpl`](#metatypeimpl)\>
-  \| `undefined`
+\| [`StaticClass`](#staticclass)\<_typeof_ [`MetaTypeImpl`](#metatypeimpl)\>
+\| `undefined`
 
 ###### Inherited from
 
@@ -22364,7 +23200,7 @@ Finds the best registered implementation for the provided value using compatibil
 static isCompatible(_value: any): boolean;
 ```
 
-Defined in: [src/metatypes/metatypeImpl.ts:572](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L572)
+Defined in: [src/metatypes/metatypeImpl.ts:576](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L576)
 
 Checks if the provided value matches the implementation (override in subclasses).
 
@@ -22407,7 +23243,7 @@ Checks if the provided value matches the implementation (override in subclasses)
 static registerMetaType(): (type: StaticClass<typeof MetaTypeImpl>) => void;
 ```
 
-Defined in: [src/metatypes/metatypeImpl.ts:585](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L585)
+Defined in: [src/metatypes/metatypeImpl.ts:589](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L589)
 
 Decorator helper that registers an implementation so it can be resolved automatically.
 
@@ -22435,7 +23271,7 @@ Decorator helper that registers an implementation so it can be resolved automati
 </td>
 <td>
 
-[`StaticClass`](#staticclass)\<*typeof* [`MetaTypeImpl`](#metatypeimpl)\>
+[`StaticClass`](#staticclass)\<_typeof_ [`MetaTypeImpl`](#metatypeimpl)\>
 
 </td>
 </tr>
@@ -22492,7 +23328,7 @@ Decorator helper that registers an implementation so it can be resolved automati
 </td>
 <td>
 
-[src/metatypes/metatypeImpl.ts:218](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L218)
+[src/metatypes/metatypeImpl.ts:222](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L222)
 
 </td>
 </tr>
@@ -22524,7 +23360,7 @@ Decorator helper that registers an implementation so it can be resolved automati
 </td>
 <td>
 
-[src/metatypes/metatypeImpl.ts:220](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L220)
+[src/metatypes/metatypeImpl.ts:224](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L224)
 
 </td>
 </tr>
@@ -22556,7 +23392,7 @@ Decorator helper that registers an implementation so it can be resolved automati
 </td>
 <td>
 
-[src/metatypes/metatypeImpl.ts:219](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L219)
+[src/metatypes/metatypeImpl.ts:223](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L223)
 
 </td>
 </tr>
@@ -22588,14 +23424,14 @@ Decorator helper that registers an implementation so it can be resolved automati
 </td>
 <td>
 
-[src/metatypes/metatypeImpl.ts:221](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L221)
+[src/metatypes/metatypeImpl.ts:225](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L225)
 
 </td>
 </tr>
 </tbody>
 </table>
 
-***
+---
 
 ### LiteralImpl
 
@@ -22606,19 +23442,19 @@ extend this class to provide specific validation, serialization and compatibilit
 
 #### Extends
 
-- [`MetaTypeImpl`](#metatypeimpl)
+-   [`MetaTypeImpl`](#metatypeimpl)
 
 #### Constructors
 
 ##### Constructor
 
 ```ts
-new LiteralImpl(metaTypeArgs?: 
+new LiteralImpl(metaTypeArgs?:
   | MetaTypeArgsType<any, boolean, boolean, boolean>
   | (metaTypeImpl: MetaTypeImpl) => MetaTypeArgsType): LiteralImpl;
 ```
 
-Defined in: [src/metatypes/metatypeImpl.ts:300](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L300)
+Defined in: [src/metatypes/metatypeImpl.ts:304](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L304)
 
 Creates a new meta type implementation.
 
@@ -22641,7 +23477,7 @@ Creates a new meta type implementation.
 </td>
 <td>
 
- \| [`MetaTypeArgsType`](#metatypeargstype)\<`any`, `boolean`, `boolean`, `boolean`\> \| (`metaTypeImpl`: [`MetaTypeImpl`](#metatypeimpl)) => [`MetaTypeArgsType`](#metatypeargstype)
+\| [`MetaTypeArgsType`](#metatypeargstype)\<`any`, `boolean`, `boolean`, `boolean`\> \| (`metaTypeImpl`: [`MetaTypeImpl`](#metatypeimpl)) => [`MetaTypeArgsType`](#metatypeargstype)
 
 </td>
 <td>
@@ -22669,7 +23505,7 @@ Arguments or a factory that receives the instance being constructed.
 castToRawValue(serializationArgs: SerializerArgsType): any;
 ```
 
-Defined in: [src/metatypes/metatypeImpl.ts:375](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L375)
+Defined in: [src/metatypes/metatypeImpl.ts:379](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L379)
 
 Hook for structural types to convert values when serializing.
 
@@ -22712,7 +23548,7 @@ Hook for structural types to convert values when serializing.
 castToType(deserializationArgs: DeSerializerArgsType): any;
 ```
 
-Defined in: [src/metatypes/metatypeImpl.ts:370](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L370)
+Defined in: [src/metatypes/metatypeImpl.ts:374](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L374)
 
 Hook for structural types to cast raw values before validation.
 
@@ -22755,7 +23591,7 @@ Hook for structural types to cast raw values before validation.
 deserialize(deserializationArgs: DeSerializeMetaTypeArgsType): any;
 ```
 
-Defined in: [src/metatypes/metatypeImpl.ts:449](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L449)
+Defined in: [src/metatypes/metatypeImpl.ts:453](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L453)
 
 Runs builtin + custom deserializers and returns the final value.
 
@@ -22798,7 +23634,7 @@ Runs builtin + custom deserializers and returns the final value.
 getSubType(): any;
 ```
 
-Defined in: [src/metatypes/metatypeImpl.ts:255](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L255)
+Defined in: [src/metatypes/metatypeImpl.ts:259](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L259)
 
 Returns the prepared subtype definition (arrays/objects can override `prepareSubType`).
 
@@ -22856,12 +23692,12 @@ Default validator that asks the implementation whether the value is compatible.
 ##### rebuild()
 
 ```ts
-rebuild(metaTypeArgs?: 
+rebuild(metaTypeArgs?:
   | MetaTypeArgsType<any, boolean, boolean, boolean>
   | (metaTypeImpl: MetaTypeImpl) => MetaTypeArgsType): MetaTypeImpl;
 ```
 
-Defined in: [src/metatypes/metatypeImpl.ts:354](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L354)
+Defined in: [src/metatypes/metatypeImpl.ts:358](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L358)
 
 Rebuilds the current implementation with additional/overriding arguments.
 
@@ -22883,7 +23719,7 @@ Rebuilds the current implementation with additional/overriding arguments.
 </td>
 <td>
 
- \| [`MetaTypeArgsType`](#metatypeargstype)\<`any`, `boolean`, `boolean`, `boolean`\> \| (`metaTypeImpl`: [`MetaTypeImpl`](#metatypeimpl)) => [`MetaTypeArgsType`](#metatypeargstype)
+\| [`MetaTypeArgsType`](#metatypeargstype)\<`any`, `boolean`, `boolean`, `boolean`\> \| (`metaTypeImpl`: [`MetaTypeImpl`](#metatypeimpl)) => [`MetaTypeArgsType`](#metatypeargstype)
 
 </td>
 </tr>
@@ -22904,7 +23740,7 @@ Rebuilds the current implementation with additional/overriding arguments.
 serialize(serializationArgs: SerializeMetaTypeArgsType): any;
 ```
 
-Defined in: [src/metatypes/metatypeImpl.ts:398](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L398)
+Defined in: [src/metatypes/metatypeImpl.ts:402](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L402)
 
 Runs builtin + custom serializers and returns the final value.
 
@@ -22965,7 +23801,7 @@ String representation displayed in inspectors/logs.
 validate(args: ValidateMetaTypeArgsType): ValidationError | undefined;
 ```
 
-Defined in: [src/metatypes/metatypeImpl.ts:507](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L507)
+Defined in: [src/metatypes/metatypeImpl.ts:511](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L511)
 
 Runs builtin + custom validators and returns a `ValidationError` when something fails.
 
@@ -23005,12 +23841,12 @@ Runs builtin + custom validators and returns a `ValidationError` when something 
 ##### build()
 
 ```ts
-static build<T>(this: (...metaTypeArgs: any) => T, metaTypeArgs?: 
+static build<T>(this: (...metaTypeArgs: any) => T, metaTypeArgs?:
   | MetaTypeArgsType<any, boolean, boolean, boolean>
   | (metaTypeImpl: MetaTypeImpl) => MetaTypeArgsType): T;
 ```
 
-Defined in: [src/metatypes/metatypeImpl.ts:346](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L346)
+Defined in: [src/metatypes/metatypeImpl.ts:350](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L350)
 
 Instantiates the implementation (used by `MetaType` factory helpers).
 
@@ -23026,7 +23862,7 @@ Instantiates the implementation (used by `MetaType` factory helpers).
 <tr>
 <td>
 
-`T` *extends* [`MetaTypeImpl`](#metatypeimpl)
+`T` _extends_ [`MetaTypeImpl`](#metatypeimpl)
 
 </td>
 </tr>
@@ -23063,7 +23899,7 @@ Instantiates the implementation (used by `MetaType` factory helpers).
 </td>
 <td>
 
- \| [`MetaTypeArgsType`](#metatypeargstype)\<`any`, `boolean`, `boolean`, `boolean`\> \| (`metaTypeImpl`: [`MetaTypeImpl`](#metatypeimpl)) => [`MetaTypeArgsType`](#metatypeargstype)
+\| [`MetaTypeArgsType`](#metatypeargstype)\<`any`, `boolean`, `boolean`, `boolean`\> \| (`metaTypeImpl`: [`MetaTypeImpl`](#metatypeimpl)) => [`MetaTypeArgsType`](#metatypeargstype)
 
 </td>
 </tr>
@@ -23081,13 +23917,13 @@ Instantiates the implementation (used by `MetaType` factory helpers).
 ##### combineMetaTypeArgs()
 
 ```ts
-static combineMetaTypeArgs(metaTypeArgs1?: 
+static combineMetaTypeArgs(metaTypeArgs1?:
   | MetaTypeArgsType<any, boolean, boolean, boolean>
   | (metaTypeImpl: MetaTypeImpl) => MetaTypeArgsType
-  | null, metaTypeArgs2?: 
+  | null, metaTypeArgs2?:
   | MetaTypeArgsType<any, boolean, boolean, boolean>
   | (metaTypeImpl: MetaTypeImpl) => MetaTypeArgsType
-  | null): 
+  | null):
   | (metaTypeImpl: MetaTypeImpl) => {
 [key: string]: any;
   coercion?: boolean;
@@ -23138,7 +23974,7 @@ static combineMetaTypeArgs(metaTypeArgs1?:
 };
 ```
 
-Defined in: [src/metatypes/metatypeImpl.ts:592](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L592)
+Defined in: [src/metatypes/metatypeImpl.ts:596](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L596)
 
 Utility that merges two argument objects (or factories).
 
@@ -23160,7 +23996,7 @@ Utility that merges two argument objects (or factories).
 </td>
 <td>
 
- \| [`MetaTypeArgsType`](#metatypeargstype)\<`any`, `boolean`, `boolean`, `boolean`\> \| (`metaTypeImpl`: [`MetaTypeImpl`](#metatypeimpl)) => [`MetaTypeArgsType`](#metatypeargstype) \| `null`
+\| [`MetaTypeArgsType`](#metatypeargstype)\<`any`, `boolean`, `boolean`, `boolean`\> \| (`metaTypeImpl`: [`MetaTypeImpl`](#metatypeimpl)) => [`MetaTypeArgsType`](#metatypeargstype) \| `null`
 
 </td>
 </tr>
@@ -23172,7 +24008,7 @@ Utility that merges two argument objects (or factories).
 </td>
 <td>
 
- \| [`MetaTypeArgsType`](#metatypeargstype)\<`any`, `boolean`, `boolean`, `boolean`\> \| (`metaTypeImpl`: [`MetaTypeImpl`](#metatypeimpl)) => [`MetaTypeArgsType`](#metatypeargstype) \| `null`
+\| [`MetaTypeArgsType`](#metatypeargstype)\<`any`, `boolean`, `boolean`, `boolean`\> \| (`metaTypeImpl`: [`MetaTypeImpl`](#metatypeimpl)) => [`MetaTypeArgsType`](#metatypeargstype) \| `null`
 
 </td>
 </tr>
@@ -23181,53 +24017,53 @@ Utility that merges two argument objects (or factories).
 
 ###### Returns
 
-  \| (`metaTypeImpl`: [`MetaTypeImpl`](#metatypeimpl)) => \{
+\| (`metaTypeImpl`: [`MetaTypeImpl`](#metatypeimpl)) => \{
 \[`key`: `string`\]: `any`;
-  `coercion?`: `boolean`;
-  `default?`: `any`;
-  `deserializers?`: (
-     \| [`DeSerializerType`](#deserializertype)
-    \| [`DeSerializeFuncType`](#deserializefunctype))[];
-  `name?`: `string`;
-  `noBuiltinDeSerializers?`: `boolean`;
-  `noBuiltinSerializers?`: `boolean`;
-  `noBuiltinValidators?`: `boolean`;
-  `nullable?`: `boolean`;
-  `nullish?`: `boolean`;
-  `optional?`: `boolean`;
-  `safe?`: `boolean`;
-  `serializers?`: (
-     \| [`SerializerType`](#serializertype)
-    \| [`SerializeFuncType`](#serializefunctype))[];
-  `subType?`: `any`;
-  `validateType?`: `boolean`;
-  `validators?`: (
-     \| [`ValidatorType`](#validatortype)
-    \| [`ValidatorFuncType`](#validatorfunctype))[];
+`coercion?`: `boolean`;
+`default?`: `any`;
+`deserializers?`: (
+\| [`DeSerializerType`](#deserializertype)
+\| [`DeSerializeFuncType`](#deserializefunctype))[];
+`name?`: `string`;
+`noBuiltinDeSerializers?`: `boolean`;
+`noBuiltinSerializers?`: `boolean`;
+`noBuiltinValidators?`: `boolean`;
+`nullable?`: `boolean`;
+`nullish?`: `boolean`;
+`optional?`: `boolean`;
+`safe?`: `boolean`;
+`serializers?`: (
+\| [`SerializerType`](#serializertype)
+\| [`SerializeFuncType`](#serializefunctype))[];
+`subType?`: `any`;
+`validateType?`: `boolean`;
+`validators?`: (
+\| [`ValidatorType`](#validatortype)
+\| [`ValidatorFuncType`](#validatorfunctype))[];
 \}
-  \| \{
+\| \{
 \[`key`: `string`\]: `any`;
-  `coercion?`: `boolean`;
-  `default?`: `any`;
-  `deserializers?`: (
-     \| [`DeSerializerType`](#deserializertype)
-    \| [`DeSerializeFuncType`](#deserializefunctype))[];
-  `name?`: `string`;
-  `noBuiltinDeSerializers?`: `boolean`;
-  `noBuiltinSerializers?`: `boolean`;
-  `noBuiltinValidators?`: `boolean`;
-  `nullable?`: `boolean`;
-  `nullish?`: `boolean`;
-  `optional?`: `boolean`;
-  `safe?`: `boolean`;
-  `serializers?`: (
-     \| [`SerializerType`](#serializertype)
-    \| [`SerializeFuncType`](#serializefunctype))[];
-  `subType?`: `any`;
-  `validateType?`: `boolean`;
-  `validators?`: (
-     \| [`ValidatorType`](#validatortype)
-    \| [`ValidatorFuncType`](#validatorfunctype))[];
+`coercion?`: `boolean`;
+`default?`: `any`;
+`deserializers?`: (
+\| [`DeSerializerType`](#deserializertype)
+\| [`DeSerializeFuncType`](#deserializefunctype))[];
+`name?`: `string`;
+`noBuiltinDeSerializers?`: `boolean`;
+`noBuiltinSerializers?`: `boolean`;
+`noBuiltinValidators?`: `boolean`;
+`nullable?`: `boolean`;
+`nullish?`: `boolean`;
+`optional?`: `boolean`;
+`safe?`: `boolean`;
+`serializers?`: (
+\| [`SerializerType`](#serializertype)
+\| [`SerializeFuncType`](#serializefunctype))[];
+`subType?`: `any`;
+`validateType?`: `boolean`;
+`validators?`: (
+\| [`ValidatorType`](#validatortype)
+\| [`ValidatorFuncType`](#validatorfunctype))[];
 \}
 
 ###### Inherited from
@@ -23240,7 +24076,7 @@ Utility that merges two argument objects (or factories).
 static getCompatibilityScore(_value: any): number;
 ```
 
-Defined in: [src/metatypes/metatypeImpl.ts:580](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L580)
+Defined in: [src/metatypes/metatypeImpl.ts:584](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L584)
 
 Returns a score describing how compatible a value is with this implementation.
 Higher score wins when resolving meta types dynamically.
@@ -23281,12 +24117,12 @@ Higher score wins when resolving meta types dynamically.
 ##### getMetaType()
 
 ```ts
-static getMetaType(value: any, metaTypeArgs?: 
+static getMetaType(value: any, metaTypeArgs?:
   | MetaTypeArgsType<any, boolean, boolean, boolean>
   | (metaTypeImpl: MetaTypeImpl) => MetaTypeArgsType): MetaType<unknown> | undefined;
 ```
 
-Defined in: [src/metatypes/metatypeImpl.ts:672](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L672)
+Defined in: [src/metatypes/metatypeImpl.ts:676](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L676)
 
 Resolves and wraps an implementation as a runtime meta type (`MetaType` helper).
 
@@ -23320,7 +24156,7 @@ Resolves and wraps an implementation as a runtime meta type (`MetaType` helper).
 </td>
 <td>
 
- \| [`MetaTypeArgsType`](#metatypeargstype)\<`any`, `boolean`, `boolean`, `boolean`\> \| (`metaTypeImpl`: [`MetaTypeImpl`](#metatypeimpl)) => [`MetaTypeArgsType`](#metatypeargstype)
+\| [`MetaTypeArgsType`](#metatypeargstype)\<`any`, `boolean`, `boolean`, `boolean`\> \| (`metaTypeImpl`: [`MetaTypeImpl`](#metatypeimpl)) => [`MetaTypeArgsType`](#metatypeargstype)
 
 </td>
 </tr>
@@ -23338,12 +24174,12 @@ Resolves and wraps an implementation as a runtime meta type (`MetaType` helper).
 ##### getMetaTypeImpl()
 
 ```ts
-static getMetaTypeImpl(value: any, metaTypeArgs?: 
+static getMetaTypeImpl(value: any, metaTypeArgs?:
   | MetaTypeArgsType<any, boolean, boolean, boolean>
   | (metaTypeImpl: MetaTypeImpl) => MetaTypeArgsType): MetaTypeImpl | undefined;
 ```
 
-Defined in: [src/metatypes/metatypeImpl.ts:650](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L650)
+Defined in: [src/metatypes/metatypeImpl.ts:654](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L654)
 
 Resolves an existing implementation instance for the provided value (value can be
 a meta type, `MetaTypeImpl`, plain schema, etc.).
@@ -23378,7 +24214,7 @@ a meta type, `MetaTypeImpl`, plain schema, etc.).
 </td>
 <td>
 
- \| [`MetaTypeArgsType`](#metatypeargstype)\<`any`, `boolean`, `boolean`, `boolean`\> \| (`metaTypeImpl`: [`MetaTypeImpl`](#metatypeimpl)) => [`MetaTypeArgsType`](#metatypeargstype)
+\| [`MetaTypeArgsType`](#metatypeargstype)\<`any`, `boolean`, `boolean`, `boolean`\> \| (`metaTypeImpl`: [`MetaTypeImpl`](#metatypeimpl)) => [`MetaTypeArgsType`](#metatypeargstype)
 
 </td>
 </tr>
@@ -23396,12 +24232,12 @@ a meta type, `MetaTypeImpl`, plain schema, etc.).
 ##### getMetaTypeImplClass()
 
 ```ts
-static getMetaTypeImplClass(value: any): 
+static getMetaTypeImplClass(value: any):
   | StaticClass<typeof MetaTypeImpl>
   | undefined;
 ```
 
-Defined in: [src/metatypes/metatypeImpl.ts:628](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L628)
+Defined in: [src/metatypes/metatypeImpl.ts:632](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L632)
 
 Finds the best registered implementation for the provided value using compatibility score.
 
@@ -23432,8 +24268,8 @@ Finds the best registered implementation for the provided value using compatibil
 
 ###### Returns
 
-  \| [`StaticClass`](#staticclass)\<*typeof* [`MetaTypeImpl`](#metatypeimpl)\>
-  \| `undefined`
+\| [`StaticClass`](#staticclass)\<_typeof_ [`MetaTypeImpl`](#metatypeimpl)\>
+\| `undefined`
 
 ###### Inherited from
 
@@ -23488,7 +24324,7 @@ Checks if the provided value matches the implementation (override in subclasses)
 static registerMetaType(): (type: StaticClass<typeof MetaTypeImpl>) => void;
 ```
 
-Defined in: [src/metatypes/metatypeImpl.ts:585](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L585)
+Defined in: [src/metatypes/metatypeImpl.ts:589](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L589)
 
 Decorator helper that registers an implementation so it can be resolved automatically.
 
@@ -23516,7 +24352,7 @@ Decorator helper that registers an implementation so it can be resolved automati
 </td>
 <td>
 
-[`StaticClass`](#staticclass)\<*typeof* [`MetaTypeImpl`](#metatypeimpl)\>
+[`StaticClass`](#staticclass)\<_typeof_ [`MetaTypeImpl`](#metatypeimpl)\>
 
 </td>
 </tr>
@@ -23573,7 +24409,7 @@ Decorator helper that registers an implementation so it can be resolved automati
 </td>
 <td>
 
-[src/metatypes/metatypeImpl.ts:218](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L218)
+[src/metatypes/metatypeImpl.ts:222](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L222)
 
 </td>
 </tr>
@@ -23605,7 +24441,7 @@ Decorator helper that registers an implementation so it can be resolved automati
 </td>
 <td>
 
-[src/metatypes/metatypeImpl.ts:220](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L220)
+[src/metatypes/metatypeImpl.ts:224](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L224)
 
 </td>
 </tr>
@@ -23637,7 +24473,7 @@ Decorator helper that registers an implementation so it can be resolved automati
 </td>
 <td>
 
-[src/metatypes/metatypeImpl.ts:219](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L219)
+[src/metatypes/metatypeImpl.ts:223](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L223)
 
 </td>
 </tr>
@@ -23669,14 +24505,14 @@ Decorator helper that registers an implementation so it can be resolved automati
 </td>
 <td>
 
-[src/metatypes/metatypeImpl.ts:221](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L221)
+[src/metatypes/metatypeImpl.ts:225](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L225)
 
 </td>
 </tr>
 </tbody>
 </table>
 
-***
+---
 
 ### MetaError
 
@@ -23686,13 +24522,13 @@ Base class for all MetaTyper-specific runtime errors.
 
 #### Extends
 
-- `Error`
+-   `Error`
 
 #### Extended by
 
-- [`MetaTypeSerializationError`](#metatypeserializationerror)
-- [`MetaTypeValidatorError`](#metatypevalidatorerror)
-- [`ValidationError`](#validationerror)
+-   [`MetaTypeSerializationError`](#metatypeserializationerror)
+-   [`MetaTypeValidatorError`](#metatypevalidatorerror)
+-   [`ValidationError`](#validationerror)
 
 #### Constructors
 
@@ -23702,7 +24538,7 @@ Base class for all MetaTyper-specific runtime errors.
 new MetaError(message?: string): MetaError;
 ```
 
-Defined in: node\_modules/typescript/lib/lib.es5.d.ts:1082
+Defined in: node_modules/typescript/lib/lib.es5.d.ts:1082
 
 ###### Parameters
 
@@ -23739,7 +24575,7 @@ Defined in: node\_modules/typescript/lib/lib.es5.d.ts:1082
 Error.constructor
 ```
 
-***
+---
 
 ### MetaObjectsBuilder
 
@@ -23854,7 +24690,7 @@ Exposed via `Meta()` helper.
 <tr>
 <td>
 
-`T` *extends* `object`
+`T` _extends_ `object`
 
 </td>
 </tr>
@@ -23925,7 +24761,7 @@ Throws when the provided value is not a meta instance.
 <tr>
 <td>
 
-`T` *extends* `object`
+`T` _extends_ `object`
 
 </td>
 </tr>
@@ -23996,7 +24832,7 @@ Returns `null` when called with a non-meta object.
 <tr>
 <td>
 
-`T` *extends* `object`
+`T` _extends_ `object`
 
 </td>
 </tr>
@@ -24119,7 +24955,7 @@ Overrides the global singleton (mainly for testing/extensibility).
 </tbody>
 </table>
 
-***
+---
 
 ### MetaObjectsHandler
 
@@ -24195,7 +25031,7 @@ Creates a handler bound to a particular builder/registry pair.
 copy<T>(targetObject: T): T | null;
 ```
 
-Defined in: [src/metaobjects/handler.ts:1084](https://github.com/metatyper/metatyper/blob/main/src/metaobjects/handler.ts#L1084)
+Defined in: [src/metaobjects/handler.ts:1097](https://github.com/metatyper/metatyper/blob/main/src/metaobjects/handler.ts#L1097)
 
 ###### Type Parameters
 
@@ -24209,7 +25045,7 @@ Defined in: [src/metaobjects/handler.ts:1084](https://github.com/metatyper/metat
 <tr>
 <td>
 
-`T` *extends* `object`
+`T` _extends_ `object`
 
 </td>
 </tr>
@@ -24298,12 +25134,12 @@ Defined in: [src/metaobjects/handler.ts:285](https://github.com/metatyper/metaty
 
 ```ts
 deserialize(
-   targetObject: Record<keyof any, any>, 
-   rawObject: Record<keyof any, any>, 
+   targetObject: Record<keyof any, any>,
+   rawObject: Record<keyof any, any>,
    deserializeArgs?: DeSerializeMetaObjectArgsType): Record<string | number | symbol, any> | null;
 ```
 
-Defined in: [src/metaobjects/handler.ts:985](https://github.com/metatyper/metatyper/blob/main/src/metaobjects/handler.ts#L985)
+Defined in: [src/metaobjects/handler.ts:991](https://github.com/metatyper/metatyper/blob/main/src/metaobjects/handler.ts#L991)
 
 ###### Parameters
 
@@ -24412,8 +25248,8 @@ Figures out a human-readable name/type used in inspector output.
 
 ```ts
 {
-  name: string;
-  type: MetaObjectTypeName;
+    name: string
+    type: MetaObjectTypeName
 }
 ```
 
@@ -24516,9 +25352,9 @@ Defined in: [src/metaobjects/handler.ts:274](https://github.com/metatyper/metaty
 
 ```ts
 initProp(
-   baseObject: Record<keyof any, any>, 
-   propName: string | symbol, 
-   descriptor?: PropertyDescriptor, 
+   baseObject: Record<keyof any, any>,
+   propName: string | symbol,
+   descriptor?: PropertyDescriptor,
    declaration?: MetaTypeImpl): void;
 ```
 
@@ -24593,8 +25429,8 @@ Defined in: [src/metaobjects/handler.ts:298](https://github.com/metatyper/metaty
 
 ```ts
 isIgnoredProp(
-   baseObject: Record<keyof any, any>, 
-   propName: string | symbol, 
+   baseObject: Record<keyof any, any>,
+   propName: string | symbol,
    registryInfo?: MetaObjectRegistryInfo): boolean;
 ```
 
@@ -24659,12 +25495,12 @@ Checks whether the provided property should be ignored for a particular meta obj
 
 ```ts
 proxyDefineProperty(
-   baseObject: Record<keyof any, any>, 
-   propName: string | symbol, 
+   baseObject: Record<keyof any, any>,
+   propName: string | symbol,
    newDescriptor: PropertyDescriptor): true;
 ```
 
-Defined in: [src/metaobjects/handler.ts:584](https://github.com/metatyper/metatyper/blob/main/src/metaobjects/handler.ts#L584)
+Defined in: [src/metaobjects/handler.ts:587](https://github.com/metatyper/metatyper/blob/main/src/metaobjects/handler.ts#L587)
 
 ###### Parameters
 
@@ -24725,7 +25561,7 @@ Defined in: [src/metaobjects/handler.ts:584](https://github.com/metatyper/metaty
 proxyDeleteProperty(baseObject: Record<keyof any, any>, propName: string | symbol): true;
 ```
 
-Defined in: [src/metaobjects/handler.ts:785](https://github.com/metatyper/metatyper/blob/main/src/metaobjects/handler.ts#L785)
+Defined in: [src/metaobjects/handler.ts:791](https://github.com/metatyper/metatyper/blob/main/src/metaobjects/handler.ts#L791)
 
 ###### Parameters
 
@@ -24774,7 +25610,7 @@ Defined in: [src/metaobjects/handler.ts:785](https://github.com/metatyper/metaty
 proxyGetOwnPropertyDescriptor(targetObject: Record<keyof any, any>, propName: string | symbol): TypedPropertyDescriptor<any> | undefined;
 ```
 
-Defined in: [src/metaobjects/handler.ts:876](https://github.com/metatyper/metatyper/blob/main/src/metaobjects/handler.ts#L876)
+Defined in: [src/metaobjects/handler.ts:882](https://github.com/metatyper/metatyper/blob/main/src/metaobjects/handler.ts#L882)
 
 ###### Parameters
 
@@ -24821,12 +25657,12 @@ Defined in: [src/metaobjects/handler.ts:876](https://github.com/metatyper/metaty
 
 ```ts
 proxyGetValue(
-   baseObject: object, 
-   propName: string | symbol, 
+   baseObject: object,
+   propName: string | symbol,
    targetObject: object): any;
 ```
 
-Defined in: [src/metaobjects/handler.ts:430](https://github.com/metatyper/metatyper/blob/main/src/metaobjects/handler.ts#L430)
+Defined in: [src/metaobjects/handler.ts:433](https://github.com/metatyper/metatyper/blob/main/src/metaobjects/handler.ts#L433)
 
 ###### Parameters
 
@@ -24887,7 +25723,7 @@ Defined in: [src/metaobjects/handler.ts:430](https://github.com/metatyper/metaty
 proxyHas(targetObject: Record<keyof any, any>, propName: string | symbol): boolean;
 ```
 
-Defined in: [src/metaobjects/handler.ts:868](https://github.com/metatyper/metatyper/blob/main/src/metaobjects/handler.ts#L868)
+Defined in: [src/metaobjects/handler.ts:874](https://github.com/metatyper/metatyper/blob/main/src/metaobjects/handler.ts#L874)
 
 ###### Parameters
 
@@ -24936,7 +25772,7 @@ Defined in: [src/metaobjects/handler.ts:868](https://github.com/metatyper/metaty
 proxyOwnKeys(targetObject: Record<keyof any, any>): (string | symbol)[];
 ```
 
-Defined in: [src/metaobjects/handler.ts:872](https://github.com/metatyper/metatyper/blob/main/src/metaobjects/handler.ts#L872)
+Defined in: [src/metaobjects/handler.ts:878](https://github.com/metatyper/metatyper/blob/main/src/metaobjects/handler.ts#L878)
 
 ###### Parameters
 
@@ -24971,13 +25807,13 @@ Defined in: [src/metaobjects/handler.ts:872](https://github.com/metatyper/metaty
 
 ```ts
 proxySetValue(
-   baseObject: object, 
-   propName: string | symbol, 
-   newValue: any, 
+   baseObject: object,
+   propName: string | symbol,
+   newValue: any,
    targetObject: object): true;
 ```
 
-Defined in: [src/metaobjects/handler.ts:493](https://github.com/metatyper/metatyper/blob/main/src/metaobjects/handler.ts#L493)
+Defined in: [src/metaobjects/handler.ts:496](https://github.com/metatyper/metatyper/blob/main/src/metaobjects/handler.ts#L496)
 
 ###### Parameters
 
@@ -25089,7 +25925,7 @@ Builds a readable string representation of a meta object (used in `toString`).
 serialize(targetObject: Record<keyof any, any>, serializeArgs?: SerializeMetaObjectArgsType): Record<string, any> | null;
 ```
 
-Defined in: [src/metaobjects/handler.ts:931](https://github.com/metatyper/metatyper/blob/main/src/metaobjects/handler.ts#L931)
+Defined in: [src/metaobjects/handler.ts:937](https://github.com/metatyper/metatyper/blob/main/src/metaobjects/handler.ts#L937)
 
 ###### Parameters
 
@@ -25136,12 +25972,12 @@ Defined in: [src/metaobjects/handler.ts:931](https://github.com/metatyper/metaty
 
 ```ts
 validate(
-   targetObject: Record<keyof any, any>, 
-   rawObject: Record<keyof any, any>, 
+   targetObject: Record<keyof any, any>,
+   rawObject: Record<keyof any, any>,
    validateArgs?: ValidateMetaObjectArgsType): ValidationError | undefined;
 ```
 
-Defined in: [src/metaobjects/handler.ts:883](https://github.com/metatyper/metatyper/blob/main/src/metaobjects/handler.ts#L883)
+Defined in: [src/metaobjects/handler.ts:889](https://github.com/metatyper/metatyper/blob/main/src/metaobjects/handler.ts#L889)
 
 ###### Parameters
 
@@ -25255,7 +26091,7 @@ Defined in: [src/metaobjects/handler.ts:883](https://github.com/metatyper/metaty
 </tbody>
 </table>
 
-***
+---
 
 ### MetaObjectsRegistry
 
@@ -25280,7 +26116,7 @@ new MetaObjectsRegistry(): MetaObjectsRegistry;
 ##### get()
 
 ```ts
-get(metaObjectOrBaseObject: object): 
+get(metaObjectOrBaseObject: object):
   | {
   autoResolveMetaTypes: boolean;
   baseObject: object;
@@ -25560,8 +26396,8 @@ Registered error handlers.
 </td>
 <td>
 
-  \| (`string` \| `symbol`)[]
-  \| (`propName`: `string` \| `symbol`) => `boolean`
+\| (`string` \| `symbol`)[]
+\| (`propName`: `string` \| `symbol`) => `boolean`
 
 </td>
 <td>
@@ -25649,8 +26485,8 @@ Meta arguments used when building instances of meta classes.
 </td>
 <td>
 
-  \| [`MetaTypeArgsType`](#metatypeargstype)
-  \| (`metaTypeImpl`: [`MetaTypeImpl`](#metatypeimpl)) => [`MetaTypeArgsType`](#metatypeargstype)
+\| [`MetaTypeArgsType`](#metatypeargstype)
+\| (`metaTypeImpl`: [`MetaTypeImpl`](#metatypeimpl)) => [`MetaTypeArgsType`](#metatypeargstype)
 
 </td>
 <td>
@@ -25913,7 +26749,7 @@ Stores registry info for the provided proxy/base object.
 
 `WeakMap`\<`object`, [`MetaObjectRegistryInfo`](#metaobjectregistryinfo)\>
 
-***
+---
 
 ### MetaTypeDeSerializerError
 
@@ -25924,7 +26760,7 @@ Carries the deserializer definition plus context (value, meta type, place).
 
 #### Extends
 
-- [`MetaTypeSerializationError`](#metatypeserializationerror)
+-   [`MetaTypeSerializationError`](#metatypeserializationerror)
 
 #### Constructors
 
@@ -26040,39 +26876,39 @@ Defined in: [src/errors/serialization.error.ts:61](https://github.com/metatyper/
 </tbody>
 </table>
 
-***
+---
 
 ### MetaTypeImpl
 
-Defined in: [src/metatypes/metatypeImpl.ts:214](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L214)
+Defined in: [src/metatypes/metatypeImpl.ts:218](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L218)
 
 Base implementation for runtime meta types. Concrete meta types (STRING, NUMBER, etc.)
 extend this class to provide specific validation, serialization and compatibility logic.
 
 #### Extended by
 
-- [`LazyMetaTypeImpl`](#lazymetatypeimpl)
-- [`AnyImpl`](#anyimpl)
-- [`BigIntImpl`](#bigintimpl)
-- [`BooleanImpl`](#booleanimpl)
-- [`DateImpl`](#dateimpl)
-- [`InstanceImpl`](#instanceimpl)
-- [`IntegerImpl`](#integerimpl)
-- [`LiteralImpl`](#literalimpl)
-- [`NumberImpl`](#numberimpl)
-- [`StringImpl`](#stringimpl)
+-   [`LazyMetaTypeImpl`](#lazymetatypeimpl)
+-   [`AnyImpl`](#anyimpl)
+-   [`BigIntImpl`](#bigintimpl)
+-   [`BooleanImpl`](#booleanimpl)
+-   [`DateImpl`](#dateimpl)
+-   [`InstanceImpl`](#instanceimpl)
+-   [`IntegerImpl`](#integerimpl)
+-   [`LiteralImpl`](#literalimpl)
+-   [`NumberImpl`](#numberimpl)
+-   [`StringImpl`](#stringimpl)
 
 #### Constructors
 
 ##### Constructor
 
 ```ts
-new MetaTypeImpl(metaTypeArgs?: 
+new MetaTypeImpl(metaTypeArgs?:
   | MetaTypeArgsType<any, boolean, boolean, boolean>
   | (metaTypeImpl: MetaTypeImpl) => MetaTypeArgsType): MetaTypeImpl;
 ```
 
-Defined in: [src/metatypes/metatypeImpl.ts:300](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L300)
+Defined in: [src/metatypes/metatypeImpl.ts:304](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L304)
 
 Creates a new meta type implementation.
 
@@ -26095,7 +26931,7 @@ Creates a new meta type implementation.
 </td>
 <td>
 
- \| [`MetaTypeArgsType`](#metatypeargstype)\<`any`, `boolean`, `boolean`, `boolean`\> \| (`metaTypeImpl`: [`MetaTypeImpl`](#metatypeimpl)) => [`MetaTypeArgsType`](#metatypeargstype)
+\| [`MetaTypeArgsType`](#metatypeargstype)\<`any`, `boolean`, `boolean`, `boolean`\> \| (`metaTypeImpl`: [`MetaTypeImpl`](#metatypeimpl)) => [`MetaTypeArgsType`](#metatypeargstype)
 
 </td>
 <td>
@@ -26119,7 +26955,7 @@ Arguments or a factory that receives the instance being constructed.
 castToRawValue(serializationArgs: SerializerArgsType): any;
 ```
 
-Defined in: [src/metatypes/metatypeImpl.ts:375](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L375)
+Defined in: [src/metatypes/metatypeImpl.ts:379](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L379)
 
 Hook for structural types to convert values when serializing.
 
@@ -26158,7 +26994,7 @@ Hook for structural types to convert values when serializing.
 castToType(deserializationArgs: DeSerializerArgsType): any;
 ```
 
-Defined in: [src/metatypes/metatypeImpl.ts:370](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L370)
+Defined in: [src/metatypes/metatypeImpl.ts:374](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L374)
 
 Hook for structural types to cast raw values before validation.
 
@@ -26197,7 +27033,7 @@ Hook for structural types to cast raw values before validation.
 deserialize(deserializationArgs: DeSerializeMetaTypeArgsType): any;
 ```
 
-Defined in: [src/metatypes/metatypeImpl.ts:449](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L449)
+Defined in: [src/metatypes/metatypeImpl.ts:453](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L453)
 
 Runs builtin + custom deserializers and returns the final value.
 
@@ -26236,7 +27072,7 @@ Runs builtin + custom deserializers and returns the final value.
 getSubType(): any;
 ```
 
-Defined in: [src/metatypes/metatypeImpl.ts:255](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L255)
+Defined in: [src/metatypes/metatypeImpl.ts:259](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L259)
 
 Returns the prepared subtype definition (arrays/objects can override `prepareSubType`).
 
@@ -26250,7 +27086,7 @@ Returns the prepared subtype definition (arrays/objects can override `prepareSub
 metaTypeValidatorFunc(__namedParameters: ValidatorArgsType): boolean | Error;
 ```
 
-Defined in: [src/metatypes/metatypeImpl.ts:482](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L482)
+Defined in: [src/metatypes/metatypeImpl.ts:486](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L486)
 
 Default validator that asks the implementation whether the value is compatible.
 
@@ -26286,12 +27122,12 @@ Default validator that asks the implementation whether the value is compatible.
 ##### rebuild()
 
 ```ts
-rebuild(metaTypeArgs?: 
+rebuild(metaTypeArgs?:
   | MetaTypeArgsType<any, boolean, boolean, boolean>
   | (metaTypeImpl: MetaTypeImpl) => MetaTypeArgsType): MetaTypeImpl;
 ```
 
-Defined in: [src/metatypes/metatypeImpl.ts:354](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L354)
+Defined in: [src/metatypes/metatypeImpl.ts:358](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L358)
 
 Rebuilds the current implementation with additional/overriding arguments.
 
@@ -26313,7 +27149,7 @@ Rebuilds the current implementation with additional/overriding arguments.
 </td>
 <td>
 
- \| [`MetaTypeArgsType`](#metatypeargstype)\<`any`, `boolean`, `boolean`, `boolean`\> \| (`metaTypeImpl`: [`MetaTypeImpl`](#metatypeimpl)) => [`MetaTypeArgsType`](#metatypeargstype)
+\| [`MetaTypeArgsType`](#metatypeargstype)\<`any`, `boolean`, `boolean`, `boolean`\> \| (`metaTypeImpl`: [`MetaTypeImpl`](#metatypeimpl)) => [`MetaTypeArgsType`](#metatypeargstype)
 
 </td>
 </tr>
@@ -26330,7 +27166,7 @@ Rebuilds the current implementation with additional/overriding arguments.
 serialize(serializationArgs: SerializeMetaTypeArgsType): any;
 ```
 
-Defined in: [src/metatypes/metatypeImpl.ts:398](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L398)
+Defined in: [src/metatypes/metatypeImpl.ts:402](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L402)
 
 Runs builtin + custom serializers and returns the final value.
 
@@ -26369,7 +27205,7 @@ Runs builtin + custom serializers and returns the final value.
 toString(): string;
 ```
 
-Defined in: [src/metatypes/metatypeImpl.ts:361](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L361)
+Defined in: [src/metatypes/metatypeImpl.ts:365](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L365)
 
 String representation displayed in inspectors/logs.
 
@@ -26383,7 +27219,7 @@ String representation displayed in inspectors/logs.
 validate(args: ValidateMetaTypeArgsType): ValidationError | undefined;
 ```
 
-Defined in: [src/metatypes/metatypeImpl.ts:507](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L507)
+Defined in: [src/metatypes/metatypeImpl.ts:511](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L511)
 
 Runs builtin + custom validators and returns a `ValidationError` when something fails.
 
@@ -26419,12 +27255,12 @@ Runs builtin + custom validators and returns a `ValidationError` when something 
 ##### build()
 
 ```ts
-static build<T>(this: (...metaTypeArgs: any) => T, metaTypeArgs?: 
+static build<T>(this: (...metaTypeArgs: any) => T, metaTypeArgs?:
   | MetaTypeArgsType<any, boolean, boolean, boolean>
   | (metaTypeImpl: MetaTypeImpl) => MetaTypeArgsType): T;
 ```
 
-Defined in: [src/metatypes/metatypeImpl.ts:346](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L346)
+Defined in: [src/metatypes/metatypeImpl.ts:350](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L350)
 
 Instantiates the implementation (used by `MetaType` factory helpers).
 
@@ -26440,7 +27276,7 @@ Instantiates the implementation (used by `MetaType` factory helpers).
 <tr>
 <td>
 
-`T` *extends* [`MetaTypeImpl`](#metatypeimpl)
+`T` _extends_ [`MetaTypeImpl`](#metatypeimpl)
 
 </td>
 </tr>
@@ -26477,7 +27313,7 @@ Instantiates the implementation (used by `MetaType` factory helpers).
 </td>
 <td>
 
- \| [`MetaTypeArgsType`](#metatypeargstype)\<`any`, `boolean`, `boolean`, `boolean`\> \| (`metaTypeImpl`: [`MetaTypeImpl`](#metatypeimpl)) => [`MetaTypeArgsType`](#metatypeargstype)
+\| [`MetaTypeArgsType`](#metatypeargstype)\<`any`, `boolean`, `boolean`, `boolean`\> \| (`metaTypeImpl`: [`MetaTypeImpl`](#metatypeimpl)) => [`MetaTypeArgsType`](#metatypeargstype)
 
 </td>
 </tr>
@@ -26491,13 +27327,13 @@ Instantiates the implementation (used by `MetaType` factory helpers).
 ##### combineMetaTypeArgs()
 
 ```ts
-static combineMetaTypeArgs(metaTypeArgs1?: 
+static combineMetaTypeArgs(metaTypeArgs1?:
   | MetaTypeArgsType<any, boolean, boolean, boolean>
   | (metaTypeImpl: MetaTypeImpl) => MetaTypeArgsType
-  | null, metaTypeArgs2?: 
+  | null, metaTypeArgs2?:
   | MetaTypeArgsType<any, boolean, boolean, boolean>
   | (metaTypeImpl: MetaTypeImpl) => MetaTypeArgsType
-  | null): 
+  | null):
   | (metaTypeImpl: MetaTypeImpl) => {
 [key: string]: any;
   coercion?: boolean;
@@ -26548,7 +27384,7 @@ static combineMetaTypeArgs(metaTypeArgs1?:
 };
 ```
 
-Defined in: [src/metatypes/metatypeImpl.ts:592](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L592)
+Defined in: [src/metatypes/metatypeImpl.ts:596](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L596)
 
 Utility that merges two argument objects (or factories).
 
@@ -26570,7 +27406,7 @@ Utility that merges two argument objects (or factories).
 </td>
 <td>
 
- \| [`MetaTypeArgsType`](#metatypeargstype)\<`any`, `boolean`, `boolean`, `boolean`\> \| (`metaTypeImpl`: [`MetaTypeImpl`](#metatypeimpl)) => [`MetaTypeArgsType`](#metatypeargstype) \| `null`
+\| [`MetaTypeArgsType`](#metatypeargstype)\<`any`, `boolean`, `boolean`, `boolean`\> \| (`metaTypeImpl`: [`MetaTypeImpl`](#metatypeimpl)) => [`MetaTypeArgsType`](#metatypeargstype) \| `null`
 
 </td>
 </tr>
@@ -26582,7 +27418,7 @@ Utility that merges two argument objects (or factories).
 </td>
 <td>
 
- \| [`MetaTypeArgsType`](#metatypeargstype)\<`any`, `boolean`, `boolean`, `boolean`\> \| (`metaTypeImpl`: [`MetaTypeImpl`](#metatypeimpl)) => [`MetaTypeArgsType`](#metatypeargstype) \| `null`
+\| [`MetaTypeArgsType`](#metatypeargstype)\<`any`, `boolean`, `boolean`, `boolean`\> \| (`metaTypeImpl`: [`MetaTypeImpl`](#metatypeimpl)) => [`MetaTypeArgsType`](#metatypeargstype) \| `null`
 
 </td>
 </tr>
@@ -26591,53 +27427,53 @@ Utility that merges two argument objects (or factories).
 
 ###### Returns
 
-  \| (`metaTypeImpl`: [`MetaTypeImpl`](#metatypeimpl)) => \{
+\| (`metaTypeImpl`: [`MetaTypeImpl`](#metatypeimpl)) => \{
 \[`key`: `string`\]: `any`;
-  `coercion?`: `boolean`;
-  `default?`: `any`;
-  `deserializers?`: (
-     \| [`DeSerializerType`](#deserializertype)
-    \| [`DeSerializeFuncType`](#deserializefunctype))[];
-  `name?`: `string`;
-  `noBuiltinDeSerializers?`: `boolean`;
-  `noBuiltinSerializers?`: `boolean`;
-  `noBuiltinValidators?`: `boolean`;
-  `nullable?`: `boolean`;
-  `nullish?`: `boolean`;
-  `optional?`: `boolean`;
-  `safe?`: `boolean`;
-  `serializers?`: (
-     \| [`SerializerType`](#serializertype)
-    \| [`SerializeFuncType`](#serializefunctype))[];
-  `subType?`: `any`;
-  `validateType?`: `boolean`;
-  `validators?`: (
-     \| [`ValidatorType`](#validatortype)
-    \| [`ValidatorFuncType`](#validatorfunctype))[];
+`coercion?`: `boolean`;
+`default?`: `any`;
+`deserializers?`: (
+\| [`DeSerializerType`](#deserializertype)
+\| [`DeSerializeFuncType`](#deserializefunctype))[];
+`name?`: `string`;
+`noBuiltinDeSerializers?`: `boolean`;
+`noBuiltinSerializers?`: `boolean`;
+`noBuiltinValidators?`: `boolean`;
+`nullable?`: `boolean`;
+`nullish?`: `boolean`;
+`optional?`: `boolean`;
+`safe?`: `boolean`;
+`serializers?`: (
+\| [`SerializerType`](#serializertype)
+\| [`SerializeFuncType`](#serializefunctype))[];
+`subType?`: `any`;
+`validateType?`: `boolean`;
+`validators?`: (
+\| [`ValidatorType`](#validatortype)
+\| [`ValidatorFuncType`](#validatorfunctype))[];
 \}
-  \| \{
+\| \{
 \[`key`: `string`\]: `any`;
-  `coercion?`: `boolean`;
-  `default?`: `any`;
-  `deserializers?`: (
-     \| [`DeSerializerType`](#deserializertype)
-    \| [`DeSerializeFuncType`](#deserializefunctype))[];
-  `name?`: `string`;
-  `noBuiltinDeSerializers?`: `boolean`;
-  `noBuiltinSerializers?`: `boolean`;
-  `noBuiltinValidators?`: `boolean`;
-  `nullable?`: `boolean`;
-  `nullish?`: `boolean`;
-  `optional?`: `boolean`;
-  `safe?`: `boolean`;
-  `serializers?`: (
-     \| [`SerializerType`](#serializertype)
-    \| [`SerializeFuncType`](#serializefunctype))[];
-  `subType?`: `any`;
-  `validateType?`: `boolean`;
-  `validators?`: (
-     \| [`ValidatorType`](#validatortype)
-    \| [`ValidatorFuncType`](#validatorfunctype))[];
+`coercion?`: `boolean`;
+`default?`: `any`;
+`deserializers?`: (
+\| [`DeSerializerType`](#deserializertype)
+\| [`DeSerializeFuncType`](#deserializefunctype))[];
+`name?`: `string`;
+`noBuiltinDeSerializers?`: `boolean`;
+`noBuiltinSerializers?`: `boolean`;
+`noBuiltinValidators?`: `boolean`;
+`nullable?`: `boolean`;
+`nullish?`: `boolean`;
+`optional?`: `boolean`;
+`safe?`: `boolean`;
+`serializers?`: (
+\| [`SerializerType`](#serializertype)
+\| [`SerializeFuncType`](#serializefunctype))[];
+`subType?`: `any`;
+`validateType?`: `boolean`;
+`validators?`: (
+\| [`ValidatorType`](#validatortype)
+\| [`ValidatorFuncType`](#validatorfunctype))[];
 \}
 
 ##### getCompatibilityScore()
@@ -26646,7 +27482,7 @@ Utility that merges two argument objects (or factories).
 static getCompatibilityScore(_value: any): number;
 ```
 
-Defined in: [src/metatypes/metatypeImpl.ts:580](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L580)
+Defined in: [src/metatypes/metatypeImpl.ts:584](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L584)
 
 Returns a score describing how compatible a value is with this implementation.
 Higher score wins when resolving meta types dynamically.
@@ -26683,12 +27519,12 @@ Higher score wins when resolving meta types dynamically.
 ##### getMetaType()
 
 ```ts
-static getMetaType(value: any, metaTypeArgs?: 
+static getMetaType(value: any, metaTypeArgs?:
   | MetaTypeArgsType<any, boolean, boolean, boolean>
   | (metaTypeImpl: MetaTypeImpl) => MetaTypeArgsType): MetaType<unknown> | undefined;
 ```
 
-Defined in: [src/metatypes/metatypeImpl.ts:672](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L672)
+Defined in: [src/metatypes/metatypeImpl.ts:676](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L676)
 
 Resolves and wraps an implementation as a runtime meta type (`MetaType` helper).
 
@@ -26722,7 +27558,7 @@ Resolves and wraps an implementation as a runtime meta type (`MetaType` helper).
 </td>
 <td>
 
- \| [`MetaTypeArgsType`](#metatypeargstype)\<`any`, `boolean`, `boolean`, `boolean`\> \| (`metaTypeImpl`: [`MetaTypeImpl`](#metatypeimpl)) => [`MetaTypeArgsType`](#metatypeargstype)
+\| [`MetaTypeArgsType`](#metatypeargstype)\<`any`, `boolean`, `boolean`, `boolean`\> \| (`metaTypeImpl`: [`MetaTypeImpl`](#metatypeimpl)) => [`MetaTypeArgsType`](#metatypeargstype)
 
 </td>
 </tr>
@@ -26736,12 +27572,12 @@ Resolves and wraps an implementation as a runtime meta type (`MetaType` helper).
 ##### getMetaTypeImpl()
 
 ```ts
-static getMetaTypeImpl(value: any, metaTypeArgs?: 
+static getMetaTypeImpl(value: any, metaTypeArgs?:
   | MetaTypeArgsType<any, boolean, boolean, boolean>
   | (metaTypeImpl: MetaTypeImpl) => MetaTypeArgsType): MetaTypeImpl | undefined;
 ```
 
-Defined in: [src/metatypes/metatypeImpl.ts:650](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L650)
+Defined in: [src/metatypes/metatypeImpl.ts:654](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L654)
 
 Resolves an existing implementation instance for the provided value (value can be
 a meta type, `MetaTypeImpl`, plain schema, etc.).
@@ -26776,7 +27612,7 @@ a meta type, `MetaTypeImpl`, plain schema, etc.).
 </td>
 <td>
 
- \| [`MetaTypeArgsType`](#metatypeargstype)\<`any`, `boolean`, `boolean`, `boolean`\> \| (`metaTypeImpl`: [`MetaTypeImpl`](#metatypeimpl)) => [`MetaTypeArgsType`](#metatypeargstype)
+\| [`MetaTypeArgsType`](#metatypeargstype)\<`any`, `boolean`, `boolean`, `boolean`\> \| (`metaTypeImpl`: [`MetaTypeImpl`](#metatypeimpl)) => [`MetaTypeArgsType`](#metatypeargstype)
 
 </td>
 </tr>
@@ -26790,12 +27626,12 @@ a meta type, `MetaTypeImpl`, plain schema, etc.).
 ##### getMetaTypeImplClass()
 
 ```ts
-static getMetaTypeImplClass(value: any): 
+static getMetaTypeImplClass(value: any):
   | StaticClass<typeof MetaTypeImpl>
   | undefined;
 ```
 
-Defined in: [src/metatypes/metatypeImpl.ts:628](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L628)
+Defined in: [src/metatypes/metatypeImpl.ts:632](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L632)
 
 Finds the best registered implementation for the provided value using compatibility score.
 
@@ -26826,8 +27662,8 @@ Finds the best registered implementation for the provided value using compatibil
 
 ###### Returns
 
-  \| [`StaticClass`](#staticclass)\<*typeof* [`MetaTypeImpl`](#metatypeimpl)\>
-  \| `undefined`
+\| [`StaticClass`](#staticclass)\<_typeof_ [`MetaTypeImpl`](#metatypeimpl)\>
+\| `undefined`
 
 ##### isCompatible()
 
@@ -26835,7 +27671,7 @@ Finds the best registered implementation for the provided value using compatibil
 static isCompatible(_value: any): boolean;
 ```
 
-Defined in: [src/metatypes/metatypeImpl.ts:572](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L572)
+Defined in: [src/metatypes/metatypeImpl.ts:576](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L576)
 
 Checks if the provided value matches the implementation (override in subclasses).
 
@@ -26874,7 +27710,7 @@ Checks if the provided value matches the implementation (override in subclasses)
 static registerMetaType(): (type: StaticClass<typeof MetaTypeImpl>) => void;
 ```
 
-Defined in: [src/metatypes/metatypeImpl.ts:585](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L585)
+Defined in: [src/metatypes/metatypeImpl.ts:589](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L589)
 
 Decorator helper that registers an implementation so it can be resolved automatically.
 
@@ -26902,7 +27738,7 @@ Decorator helper that registers an implementation so it can be resolved automati
 </td>
 <td>
 
-[`StaticClass`](#staticclass)\<*typeof* [`MetaTypeImpl`](#metatypeimpl)\>
+[`StaticClass`](#staticclass)\<_typeof_ [`MetaTypeImpl`](#metatypeimpl)\>
 
 </td>
 </tr>
@@ -26949,7 +27785,7 @@ Decorator helper that registers an implementation so it can be resolved automati
 </td>
 <td>
 
-[src/metatypes/metatypeImpl.ts:218](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L218)
+[src/metatypes/metatypeImpl.ts:222](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L222)
 
 </td>
 </tr>
@@ -26976,7 +27812,7 @@ Decorator helper that registers an implementation so it can be resolved automati
 </td>
 <td>
 
-[src/metatypes/metatypeImpl.ts:220](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L220)
+[src/metatypes/metatypeImpl.ts:224](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L224)
 
 </td>
 </tr>
@@ -27003,7 +27839,7 @@ Decorator helper that registers an implementation so it can be resolved automati
 </td>
 <td>
 
-[src/metatypes/metatypeImpl.ts:219](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L219)
+[src/metatypes/metatypeImpl.ts:223](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L223)
 
 </td>
 </tr>
@@ -27030,14 +27866,14 @@ Decorator helper that registers an implementation so it can be resolved automati
 </td>
 <td>
 
-[src/metatypes/metatypeImpl.ts:221](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L221)
+[src/metatypes/metatypeImpl.ts:225](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L225)
 
 </td>
 </tr>
 </tbody>
 </table>
 
-***
+---
 
 ### `abstract` MetaTypeSerializationError
 
@@ -27047,12 +27883,12 @@ Base class for all serialization/deserialization failures emitted by meta types.
 
 #### Extends
 
-- [`MetaError`](#metaerror)
+-   [`MetaError`](#metaerror)
 
 #### Extended by
 
-- [`MetaTypeSerializerError`](#metatypeserializererror)
-- [`MetaTypeDeSerializerError`](#metatypedeserializererror)
+-   [`MetaTypeSerializerError`](#metatypeserializererror)
+-   [`MetaTypeDeSerializerError`](#metatypedeserializererror)
 
 #### Constructors
 
@@ -27062,7 +27898,7 @@ Base class for all serialization/deserialization failures emitted by meta types.
 new MetaTypeSerializationError(message?: string): MetaTypeSerializationError;
 ```
 
-Defined in: node\_modules/typescript/lib/lib.es5.d.ts:1082
+Defined in: node_modules/typescript/lib/lib.es5.d.ts:1082
 
 ###### Parameters
 
@@ -27097,7 +27933,7 @@ Defined in: node\_modules/typescript/lib/lib.es5.d.ts:1082
 
 [`MetaError`](#metaerror).[`constructor`](#constructor-9)
 
-***
+---
 
 ### MetaTypeSerializerError
 
@@ -27108,7 +27944,7 @@ Carries the serializer definition plus context (value, meta type, place).
 
 #### Extends
 
-- [`MetaTypeSerializationError`](#metatypeserializationerror)
+-   [`MetaTypeSerializationError`](#metatypeserializationerror)
 
 #### Constructors
 
@@ -27224,7 +28060,7 @@ Defined in: [src/errors/serialization.error.ts:27](https://github.com/metatyper/
 </tbody>
 </table>
 
-***
+---
 
 ### MetaTypeValidatorError
 
@@ -27235,7 +28071,7 @@ Exposes helpers like `code`, `path`, `value`, and `targetObject`.
 
 #### Extends
 
-- [`MetaError`](#metaerror)
+-   [`MetaError`](#metaerror)
 
 #### Accessors
 
@@ -27427,7 +28263,7 @@ Defined in: [src/errors/validation.error.ts:44](https://github.com/metatyper/met
 </tbody>
 </table>
 
-***
+---
 
 ### NumberImpl
 
@@ -27438,19 +28274,19 @@ extend this class to provide specific validation, serialization and compatibilit
 
 #### Extends
 
-- [`MetaTypeImpl`](#metatypeimpl)
+-   [`MetaTypeImpl`](#metatypeimpl)
 
 #### Constructors
 
 ##### Constructor
 
 ```ts
-new NumberImpl(metaTypeArgs?: 
+new NumberImpl(metaTypeArgs?:
   | MetaTypeArgsType<any, boolean, boolean, boolean>
   | (metaTypeImpl: MetaTypeImpl) => MetaTypeArgsType): NumberImpl;
 ```
 
-Defined in: [src/metatypes/metatypeImpl.ts:300](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L300)
+Defined in: [src/metatypes/metatypeImpl.ts:304](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L304)
 
 Creates a new meta type implementation.
 
@@ -27473,7 +28309,7 @@ Creates a new meta type implementation.
 </td>
 <td>
 
- \| [`MetaTypeArgsType`](#metatypeargstype)\<`any`, `boolean`, `boolean`, `boolean`\> \| (`metaTypeImpl`: [`MetaTypeImpl`](#metatypeimpl)) => [`MetaTypeArgsType`](#metatypeargstype)
+\| [`MetaTypeArgsType`](#metatypeargstype)\<`any`, `boolean`, `boolean`, `boolean`\> \| (`metaTypeImpl`: [`MetaTypeImpl`](#metatypeimpl)) => [`MetaTypeArgsType`](#metatypeargstype)
 
 </td>
 <td>
@@ -27501,7 +28337,7 @@ Arguments or a factory that receives the instance being constructed.
 castToRawValue(serializationArgs: SerializerArgsType): any;
 ```
 
-Defined in: [src/metatypes/metatypeImpl.ts:375](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L375)
+Defined in: [src/metatypes/metatypeImpl.ts:379](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L379)
 
 Hook for structural types to convert values when serializing.
 
@@ -27587,7 +28423,7 @@ Hook for structural types to cast raw values before validation.
 deserialize(deserializationArgs: DeSerializeMetaTypeArgsType): any;
 ```
 
-Defined in: [src/metatypes/metatypeImpl.ts:449](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L449)
+Defined in: [src/metatypes/metatypeImpl.ts:453](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L453)
 
 Runs builtin + custom deserializers and returns the final value.
 
@@ -27630,7 +28466,7 @@ Runs builtin + custom deserializers and returns the final value.
 getSubType(): any;
 ```
 
-Defined in: [src/metatypes/metatypeImpl.ts:255](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L255)
+Defined in: [src/metatypes/metatypeImpl.ts:259](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L259)
 
 Returns the prepared subtype definition (arrays/objects can override `prepareSubType`).
 
@@ -27648,7 +28484,7 @@ Returns the prepared subtype definition (arrays/objects can override `prepareSub
 metaTypeValidatorFunc(__namedParameters: ValidatorArgsType): boolean | Error;
 ```
 
-Defined in: [src/metatypes/metatypeImpl.ts:482](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L482)
+Defined in: [src/metatypes/metatypeImpl.ts:486](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L486)
 
 Default validator that asks the implementation whether the value is compatible.
 
@@ -27688,12 +28524,12 @@ Default validator that asks the implementation whether the value is compatible.
 ##### rebuild()
 
 ```ts
-rebuild(metaTypeArgs?: 
+rebuild(metaTypeArgs?:
   | MetaTypeArgsType<any, boolean, boolean, boolean>
   | (metaTypeImpl: MetaTypeImpl) => MetaTypeArgsType): MetaTypeImpl;
 ```
 
-Defined in: [src/metatypes/metatypeImpl.ts:354](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L354)
+Defined in: [src/metatypes/metatypeImpl.ts:358](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L358)
 
 Rebuilds the current implementation with additional/overriding arguments.
 
@@ -27715,7 +28551,7 @@ Rebuilds the current implementation with additional/overriding arguments.
 </td>
 <td>
 
- \| [`MetaTypeArgsType`](#metatypeargstype)\<`any`, `boolean`, `boolean`, `boolean`\> \| (`metaTypeImpl`: [`MetaTypeImpl`](#metatypeimpl)) => [`MetaTypeArgsType`](#metatypeargstype)
+\| [`MetaTypeArgsType`](#metatypeargstype)\<`any`, `boolean`, `boolean`, `boolean`\> \| (`metaTypeImpl`: [`MetaTypeImpl`](#metatypeimpl)) => [`MetaTypeArgsType`](#metatypeargstype)
 
 </td>
 </tr>
@@ -27736,7 +28572,7 @@ Rebuilds the current implementation with additional/overriding arguments.
 serialize(serializationArgs: SerializeMetaTypeArgsType): any;
 ```
 
-Defined in: [src/metatypes/metatypeImpl.ts:398](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L398)
+Defined in: [src/metatypes/metatypeImpl.ts:402](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L402)
 
 Runs builtin + custom serializers and returns the final value.
 
@@ -27779,7 +28615,7 @@ Runs builtin + custom serializers and returns the final value.
 toString(): string;
 ```
 
-Defined in: [src/metatypes/metatypeImpl.ts:361](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L361)
+Defined in: [src/metatypes/metatypeImpl.ts:365](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L365)
 
 String representation displayed in inspectors/logs.
 
@@ -27797,7 +28633,7 @@ String representation displayed in inspectors/logs.
 validate(args: ValidateMetaTypeArgsType): ValidationError | undefined;
 ```
 
-Defined in: [src/metatypes/metatypeImpl.ts:507](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L507)
+Defined in: [src/metatypes/metatypeImpl.ts:511](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L511)
 
 Runs builtin + custom validators and returns a `ValidationError` when something fails.
 
@@ -27837,12 +28673,12 @@ Runs builtin + custom validators and returns a `ValidationError` when something 
 ##### build()
 
 ```ts
-static build<T>(this: (...metaTypeArgs: any) => T, metaTypeArgs?: 
+static build<T>(this: (...metaTypeArgs: any) => T, metaTypeArgs?:
   | MetaTypeArgsType<any, boolean, boolean, boolean>
   | (metaTypeImpl: MetaTypeImpl) => MetaTypeArgsType): T;
 ```
 
-Defined in: [src/metatypes/metatypeImpl.ts:346](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L346)
+Defined in: [src/metatypes/metatypeImpl.ts:350](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L350)
 
 Instantiates the implementation (used by `MetaType` factory helpers).
 
@@ -27858,7 +28694,7 @@ Instantiates the implementation (used by `MetaType` factory helpers).
 <tr>
 <td>
 
-`T` *extends* [`MetaTypeImpl`](#metatypeimpl)
+`T` _extends_ [`MetaTypeImpl`](#metatypeimpl)
 
 </td>
 </tr>
@@ -27895,7 +28731,7 @@ Instantiates the implementation (used by `MetaType` factory helpers).
 </td>
 <td>
 
- \| [`MetaTypeArgsType`](#metatypeargstype)\<`any`, `boolean`, `boolean`, `boolean`\> \| (`metaTypeImpl`: [`MetaTypeImpl`](#metatypeimpl)) => [`MetaTypeArgsType`](#metatypeargstype)
+\| [`MetaTypeArgsType`](#metatypeargstype)\<`any`, `boolean`, `boolean`, `boolean`\> \| (`metaTypeImpl`: [`MetaTypeImpl`](#metatypeimpl)) => [`MetaTypeArgsType`](#metatypeargstype)
 
 </td>
 </tr>
@@ -27913,13 +28749,13 @@ Instantiates the implementation (used by `MetaType` factory helpers).
 ##### combineMetaTypeArgs()
 
 ```ts
-static combineMetaTypeArgs(metaTypeArgs1?: 
+static combineMetaTypeArgs(metaTypeArgs1?:
   | MetaTypeArgsType<any, boolean, boolean, boolean>
   | (metaTypeImpl: MetaTypeImpl) => MetaTypeArgsType
-  | null, metaTypeArgs2?: 
+  | null, metaTypeArgs2?:
   | MetaTypeArgsType<any, boolean, boolean, boolean>
   | (metaTypeImpl: MetaTypeImpl) => MetaTypeArgsType
-  | null): 
+  | null):
   | (metaTypeImpl: MetaTypeImpl) => {
 [key: string]: any;
   coercion?: boolean;
@@ -27970,7 +28806,7 @@ static combineMetaTypeArgs(metaTypeArgs1?:
 };
 ```
 
-Defined in: [src/metatypes/metatypeImpl.ts:592](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L592)
+Defined in: [src/metatypes/metatypeImpl.ts:596](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L596)
 
 Utility that merges two argument objects (or factories).
 
@@ -27992,7 +28828,7 @@ Utility that merges two argument objects (or factories).
 </td>
 <td>
 
- \| [`MetaTypeArgsType`](#metatypeargstype)\<`any`, `boolean`, `boolean`, `boolean`\> \| (`metaTypeImpl`: [`MetaTypeImpl`](#metatypeimpl)) => [`MetaTypeArgsType`](#metatypeargstype) \| `null`
+\| [`MetaTypeArgsType`](#metatypeargstype)\<`any`, `boolean`, `boolean`, `boolean`\> \| (`metaTypeImpl`: [`MetaTypeImpl`](#metatypeimpl)) => [`MetaTypeArgsType`](#metatypeargstype) \| `null`
 
 </td>
 </tr>
@@ -28004,7 +28840,7 @@ Utility that merges two argument objects (or factories).
 </td>
 <td>
 
- \| [`MetaTypeArgsType`](#metatypeargstype)\<`any`, `boolean`, `boolean`, `boolean`\> \| (`metaTypeImpl`: [`MetaTypeImpl`](#metatypeimpl)) => [`MetaTypeArgsType`](#metatypeargstype) \| `null`
+\| [`MetaTypeArgsType`](#metatypeargstype)\<`any`, `boolean`, `boolean`, `boolean`\> \| (`metaTypeImpl`: [`MetaTypeImpl`](#metatypeimpl)) => [`MetaTypeArgsType`](#metatypeargstype) \| `null`
 
 </td>
 </tr>
@@ -28013,53 +28849,53 @@ Utility that merges two argument objects (or factories).
 
 ###### Returns
 
-  \| (`metaTypeImpl`: [`MetaTypeImpl`](#metatypeimpl)) => \{
+\| (`metaTypeImpl`: [`MetaTypeImpl`](#metatypeimpl)) => \{
 \[`key`: `string`\]: `any`;
-  `coercion?`: `boolean`;
-  `default?`: `any`;
-  `deserializers?`: (
-     \| [`DeSerializerType`](#deserializertype)
-    \| [`DeSerializeFuncType`](#deserializefunctype))[];
-  `name?`: `string`;
-  `noBuiltinDeSerializers?`: `boolean`;
-  `noBuiltinSerializers?`: `boolean`;
-  `noBuiltinValidators?`: `boolean`;
-  `nullable?`: `boolean`;
-  `nullish?`: `boolean`;
-  `optional?`: `boolean`;
-  `safe?`: `boolean`;
-  `serializers?`: (
-     \| [`SerializerType`](#serializertype)
-    \| [`SerializeFuncType`](#serializefunctype))[];
-  `subType?`: `any`;
-  `validateType?`: `boolean`;
-  `validators?`: (
-     \| [`ValidatorType`](#validatortype)
-    \| [`ValidatorFuncType`](#validatorfunctype))[];
+`coercion?`: `boolean`;
+`default?`: `any`;
+`deserializers?`: (
+\| [`DeSerializerType`](#deserializertype)
+\| [`DeSerializeFuncType`](#deserializefunctype))[];
+`name?`: `string`;
+`noBuiltinDeSerializers?`: `boolean`;
+`noBuiltinSerializers?`: `boolean`;
+`noBuiltinValidators?`: `boolean`;
+`nullable?`: `boolean`;
+`nullish?`: `boolean`;
+`optional?`: `boolean`;
+`safe?`: `boolean`;
+`serializers?`: (
+\| [`SerializerType`](#serializertype)
+\| [`SerializeFuncType`](#serializefunctype))[];
+`subType?`: `any`;
+`validateType?`: `boolean`;
+`validators?`: (
+\| [`ValidatorType`](#validatortype)
+\| [`ValidatorFuncType`](#validatorfunctype))[];
 \}
-  \| \{
+\| \{
 \[`key`: `string`\]: `any`;
-  `coercion?`: `boolean`;
-  `default?`: `any`;
-  `deserializers?`: (
-     \| [`DeSerializerType`](#deserializertype)
-    \| [`DeSerializeFuncType`](#deserializefunctype))[];
-  `name?`: `string`;
-  `noBuiltinDeSerializers?`: `boolean`;
-  `noBuiltinSerializers?`: `boolean`;
-  `noBuiltinValidators?`: `boolean`;
-  `nullable?`: `boolean`;
-  `nullish?`: `boolean`;
-  `optional?`: `boolean`;
-  `safe?`: `boolean`;
-  `serializers?`: (
-     \| [`SerializerType`](#serializertype)
-    \| [`SerializeFuncType`](#serializefunctype))[];
-  `subType?`: `any`;
-  `validateType?`: `boolean`;
-  `validators?`: (
-     \| [`ValidatorType`](#validatortype)
-    \| [`ValidatorFuncType`](#validatorfunctype))[];
+`coercion?`: `boolean`;
+`default?`: `any`;
+`deserializers?`: (
+\| [`DeSerializerType`](#deserializertype)
+\| [`DeSerializeFuncType`](#deserializefunctype))[];
+`name?`: `string`;
+`noBuiltinDeSerializers?`: `boolean`;
+`noBuiltinSerializers?`: `boolean`;
+`noBuiltinValidators?`: `boolean`;
+`nullable?`: `boolean`;
+`nullish?`: `boolean`;
+`optional?`: `boolean`;
+`safe?`: `boolean`;
+`serializers?`: (
+\| [`SerializerType`](#serializertype)
+\| [`SerializeFuncType`](#serializefunctype))[];
+`subType?`: `any`;
+`validateType?`: `boolean`;
+`validators?`: (
+\| [`ValidatorType`](#validatortype)
+\| [`ValidatorFuncType`](#validatorfunctype))[];
 \}
 
 ###### Inherited from
@@ -28113,12 +28949,12 @@ Higher score wins when resolving meta types dynamically.
 ##### getMetaType()
 
 ```ts
-static getMetaType(value: any, metaTypeArgs?: 
+static getMetaType(value: any, metaTypeArgs?:
   | MetaTypeArgsType<any, boolean, boolean, boolean>
   | (metaTypeImpl: MetaTypeImpl) => MetaTypeArgsType): MetaType<unknown> | undefined;
 ```
 
-Defined in: [src/metatypes/metatypeImpl.ts:672](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L672)
+Defined in: [src/metatypes/metatypeImpl.ts:676](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L676)
 
 Resolves and wraps an implementation as a runtime meta type (`MetaType` helper).
 
@@ -28152,7 +28988,7 @@ Resolves and wraps an implementation as a runtime meta type (`MetaType` helper).
 </td>
 <td>
 
- \| [`MetaTypeArgsType`](#metatypeargstype)\<`any`, `boolean`, `boolean`, `boolean`\> \| (`metaTypeImpl`: [`MetaTypeImpl`](#metatypeimpl)) => [`MetaTypeArgsType`](#metatypeargstype)
+\| [`MetaTypeArgsType`](#metatypeargstype)\<`any`, `boolean`, `boolean`, `boolean`\> \| (`metaTypeImpl`: [`MetaTypeImpl`](#metatypeimpl)) => [`MetaTypeArgsType`](#metatypeargstype)
 
 </td>
 </tr>
@@ -28170,12 +29006,12 @@ Resolves and wraps an implementation as a runtime meta type (`MetaType` helper).
 ##### getMetaTypeImpl()
 
 ```ts
-static getMetaTypeImpl(value: any, metaTypeArgs?: 
+static getMetaTypeImpl(value: any, metaTypeArgs?:
   | MetaTypeArgsType<any, boolean, boolean, boolean>
   | (metaTypeImpl: MetaTypeImpl) => MetaTypeArgsType): MetaTypeImpl | undefined;
 ```
 
-Defined in: [src/metatypes/metatypeImpl.ts:650](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L650)
+Defined in: [src/metatypes/metatypeImpl.ts:654](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L654)
 
 Resolves an existing implementation instance for the provided value (value can be
 a meta type, `MetaTypeImpl`, plain schema, etc.).
@@ -28210,7 +29046,7 @@ a meta type, `MetaTypeImpl`, plain schema, etc.).
 </td>
 <td>
 
- \| [`MetaTypeArgsType`](#metatypeargstype)\<`any`, `boolean`, `boolean`, `boolean`\> \| (`metaTypeImpl`: [`MetaTypeImpl`](#metatypeimpl)) => [`MetaTypeArgsType`](#metatypeargstype)
+\| [`MetaTypeArgsType`](#metatypeargstype)\<`any`, `boolean`, `boolean`, `boolean`\> \| (`metaTypeImpl`: [`MetaTypeImpl`](#metatypeimpl)) => [`MetaTypeArgsType`](#metatypeargstype)
 
 </td>
 </tr>
@@ -28228,12 +29064,12 @@ a meta type, `MetaTypeImpl`, plain schema, etc.).
 ##### getMetaTypeImplClass()
 
 ```ts
-static getMetaTypeImplClass(value: any): 
+static getMetaTypeImplClass(value: any):
   | StaticClass<typeof MetaTypeImpl>
   | undefined;
 ```
 
-Defined in: [src/metatypes/metatypeImpl.ts:628](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L628)
+Defined in: [src/metatypes/metatypeImpl.ts:632](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L632)
 
 Finds the best registered implementation for the provided value using compatibility score.
 
@@ -28264,8 +29100,8 @@ Finds the best registered implementation for the provided value using compatibil
 
 ###### Returns
 
-  \| [`StaticClass`](#staticclass)\<*typeof* [`MetaTypeImpl`](#metatypeimpl)\>
-  \| `undefined`
+\| [`StaticClass`](#staticclass)\<_typeof_ [`MetaTypeImpl`](#metatypeimpl)\>
+\| `undefined`
 
 ###### Inherited from
 
@@ -28320,7 +29156,7 @@ Checks if the provided value matches the implementation (override in subclasses)
 static registerMetaType(): (type: StaticClass<typeof MetaTypeImpl>) => void;
 ```
 
-Defined in: [src/metatypes/metatypeImpl.ts:585](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L585)
+Defined in: [src/metatypes/metatypeImpl.ts:589](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L589)
 
 Decorator helper that registers an implementation so it can be resolved automatically.
 
@@ -28348,7 +29184,7 @@ Decorator helper that registers an implementation so it can be resolved automati
 </td>
 <td>
 
-[`StaticClass`](#staticclass)\<*typeof* [`MetaTypeImpl`](#metatypeimpl)\>
+[`StaticClass`](#staticclass)\<_typeof_ [`MetaTypeImpl`](#metatypeimpl)\>
 
 </td>
 </tr>
@@ -28405,7 +29241,7 @@ Decorator helper that registers an implementation so it can be resolved automati
 </td>
 <td>
 
-[src/metatypes/metatypeImpl.ts:218](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L218)
+[src/metatypes/metatypeImpl.ts:222](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L222)
 
 </td>
 </tr>
@@ -28437,7 +29273,7 @@ Decorator helper that registers an implementation so it can be resolved automati
 </td>
 <td>
 
-[src/metatypes/metatypeImpl.ts:220](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L220)
+[src/metatypes/metatypeImpl.ts:224](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L224)
 
 </td>
 </tr>
@@ -28469,7 +29305,7 @@ Decorator helper that registers an implementation so it can be resolved automati
 </td>
 <td>
 
-[src/metatypes/metatypeImpl.ts:219](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L219)
+[src/metatypes/metatypeImpl.ts:223](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L223)
 
 </td>
 </tr>
@@ -28501,14 +29337,14 @@ Decorator helper that registers an implementation so it can be resolved automati
 </td>
 <td>
 
-[src/metatypes/metatypeImpl.ts:221](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L221)
+[src/metatypes/metatypeImpl.ts:225](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L225)
 
 </td>
 </tr>
 </tbody>
 </table>
 
-***
+---
 
 ### ObjectImpl
 
@@ -28519,19 +29355,19 @@ Adds automatic handling for nested structures, recursive references and sub-valu
 
 #### Extends
 
-- [`StructuralMetaTypeImpl`](#structuralmetatypeimpl)
+-   [`StructuralMetaTypeImpl`](#structuralmetatypeimpl)
 
 #### Constructors
 
 ##### Constructor
 
 ```ts
-new ObjectImpl(metaTypeArgs?: 
+new ObjectImpl(metaTypeArgs?:
   | MetaTypeArgsType<any, boolean, boolean, boolean>
   | (metaTypeImpl: MetaTypeImpl) => MetaTypeArgsType): ObjectImpl;
 ```
 
-Defined in: [src/metatypes/metatypeImpl.ts:300](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L300)
+Defined in: [src/metatypes/metatypeImpl.ts:304](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L304)
 
 Creates a new meta type implementation.
 
@@ -28554,7 +29390,7 @@ Creates a new meta type implementation.
 </td>
 <td>
 
- \| [`MetaTypeArgsType`](#metatypeargstype)\<`any`, `boolean`, `boolean`, `boolean`\> \| (`metaTypeImpl`: [`MetaTypeImpl`](#metatypeimpl)) => [`MetaTypeArgsType`](#metatypeargstype)
+\| [`MetaTypeArgsType`](#metatypeargstype)\<`any`, `boolean`, `boolean`, `boolean`\> \| (`metaTypeImpl`: [`MetaTypeImpl`](#metatypeimpl)) => [`MetaTypeArgsType`](#metatypeargstype)
 
 </td>
 <td>
@@ -28582,7 +29418,7 @@ Arguments or a factory that receives the instance being constructed.
 castToRawValue(serializationArgs: SerializerArgsType): any;
 ```
 
-Defined in: [src/metatypes/metatypeImpl.ts:375](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L375)
+Defined in: [src/metatypes/metatypeImpl.ts:379](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L379)
 
 Hook for structural types to convert values when serializing.
 
@@ -28625,7 +29461,7 @@ Hook for structural types to convert values when serializing.
 castToType(deserializationArgs: DeSerializerArgsType): any;
 ```
 
-Defined in: [src/metatypes/metatypeImpl.ts:370](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L370)
+Defined in: [src/metatypes/metatypeImpl.ts:374](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L374)
 
 Hook for structural types to cast raw values before validation.
 
@@ -28668,7 +29504,7 @@ Hook for structural types to cast raw values before validation.
 deserialize(deserializationArgs: DeSerializeMetaTypeArgsType): any;
 ```
 
-Defined in: [src/metatypes/metatypeImpl.ts:449](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L449)
+Defined in: [src/metatypes/metatypeImpl.ts:453](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L453)
 
 Runs builtin + custom deserializers and returns the final value.
 
@@ -28806,12 +29642,12 @@ Default validator that asks the implementation whether the value is compatible.
 ##### rebuild()
 
 ```ts
-rebuild(metaTypeArgs?: 
+rebuild(metaTypeArgs?:
   | MetaTypeArgsType<any, boolean, boolean, boolean>
   | (metaTypeImpl: MetaTypeImpl) => MetaTypeArgsType): MetaTypeImpl;
 ```
 
-Defined in: [src/metatypes/metatypeImpl.ts:354](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L354)
+Defined in: [src/metatypes/metatypeImpl.ts:358](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L358)
 
 Rebuilds the current implementation with additional/overriding arguments.
 
@@ -28833,7 +29669,7 @@ Rebuilds the current implementation with additional/overriding arguments.
 </td>
 <td>
 
- \| [`MetaTypeArgsType`](#metatypeargstype)\<`any`, `boolean`, `boolean`, `boolean`\> \| (`metaTypeImpl`: [`MetaTypeImpl`](#metatypeimpl)) => [`MetaTypeArgsType`](#metatypeargstype)
+\| [`MetaTypeArgsType`](#metatypeargstype)\<`any`, `boolean`, `boolean`, `boolean`\> \| (`metaTypeImpl`: [`MetaTypeImpl`](#metatypeimpl)) => [`MetaTypeArgsType`](#metatypeargstype)
 
 </td>
 </tr>
@@ -28854,7 +29690,7 @@ Rebuilds the current implementation with additional/overriding arguments.
 serialize(serializationArgs: SerializeMetaTypeArgsType): any;
 ```
 
-Defined in: [src/metatypes/metatypeImpl.ts:398](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L398)
+Defined in: [src/metatypes/metatypeImpl.ts:402](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L402)
 
 Runs builtin + custom serializers and returns the final value.
 
@@ -28952,7 +29788,7 @@ String representation displayed in inspectors/logs.
 validate(args: ValidateMetaTypeArgsType): ValidationError | undefined;
 ```
 
-Defined in: [src/metatypes/metatypeImpl.ts:507](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L507)
+Defined in: [src/metatypes/metatypeImpl.ts:511](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L511)
 
 Runs builtin + custom validators and returns a `ValidationError` when something fails.
 
@@ -28992,12 +29828,12 @@ Runs builtin + custom validators and returns a `ValidationError` when something 
 ##### build()
 
 ```ts
-static build<T>(this: (...metaTypeArgs: any) => T, metaTypeArgs?: 
+static build<T>(this: (...metaTypeArgs: any) => T, metaTypeArgs?:
   | MetaTypeArgsType<any, boolean, boolean, boolean>
   | (metaTypeImpl: MetaTypeImpl) => MetaTypeArgsType): T;
 ```
 
-Defined in: [src/metatypes/metatypeImpl.ts:346](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L346)
+Defined in: [src/metatypes/metatypeImpl.ts:350](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L350)
 
 Instantiates the implementation (used by `MetaType` factory helpers).
 
@@ -29013,7 +29849,7 @@ Instantiates the implementation (used by `MetaType` factory helpers).
 <tr>
 <td>
 
-`T` *extends* [`MetaTypeImpl`](#metatypeimpl)
+`T` _extends_ [`MetaTypeImpl`](#metatypeimpl)
 
 </td>
 </tr>
@@ -29050,7 +29886,7 @@ Instantiates the implementation (used by `MetaType` factory helpers).
 </td>
 <td>
 
- \| [`MetaTypeArgsType`](#metatypeargstype)\<`any`, `boolean`, `boolean`, `boolean`\> \| (`metaTypeImpl`: [`MetaTypeImpl`](#metatypeimpl)) => [`MetaTypeArgsType`](#metatypeargstype)
+\| [`MetaTypeArgsType`](#metatypeargstype)\<`any`, `boolean`, `boolean`, `boolean`\> \| (`metaTypeImpl`: [`MetaTypeImpl`](#metatypeimpl)) => [`MetaTypeArgsType`](#metatypeargstype)
 
 </td>
 </tr>
@@ -29068,13 +29904,13 @@ Instantiates the implementation (used by `MetaType` factory helpers).
 ##### combineMetaTypeArgs()
 
 ```ts
-static combineMetaTypeArgs(metaTypeArgs1?: 
+static combineMetaTypeArgs(metaTypeArgs1?:
   | MetaTypeArgsType<any, boolean, boolean, boolean>
   | (metaTypeImpl: MetaTypeImpl) => MetaTypeArgsType
-  | null, metaTypeArgs2?: 
+  | null, metaTypeArgs2?:
   | MetaTypeArgsType<any, boolean, boolean, boolean>
   | (metaTypeImpl: MetaTypeImpl) => MetaTypeArgsType
-  | null): 
+  | null):
   | (metaTypeImpl: MetaTypeImpl) => {
 [key: string]: any;
   coercion?: boolean;
@@ -29125,7 +29961,7 @@ static combineMetaTypeArgs(metaTypeArgs1?:
 };
 ```
 
-Defined in: [src/metatypes/metatypeImpl.ts:592](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L592)
+Defined in: [src/metatypes/metatypeImpl.ts:596](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L596)
 
 Utility that merges two argument objects (or factories).
 
@@ -29147,7 +29983,7 @@ Utility that merges two argument objects (or factories).
 </td>
 <td>
 
- \| [`MetaTypeArgsType`](#metatypeargstype)\<`any`, `boolean`, `boolean`, `boolean`\> \| (`metaTypeImpl`: [`MetaTypeImpl`](#metatypeimpl)) => [`MetaTypeArgsType`](#metatypeargstype) \| `null`
+\| [`MetaTypeArgsType`](#metatypeargstype)\<`any`, `boolean`, `boolean`, `boolean`\> \| (`metaTypeImpl`: [`MetaTypeImpl`](#metatypeimpl)) => [`MetaTypeArgsType`](#metatypeargstype) \| `null`
 
 </td>
 </tr>
@@ -29159,7 +29995,7 @@ Utility that merges two argument objects (or factories).
 </td>
 <td>
 
- \| [`MetaTypeArgsType`](#metatypeargstype)\<`any`, `boolean`, `boolean`, `boolean`\> \| (`metaTypeImpl`: [`MetaTypeImpl`](#metatypeimpl)) => [`MetaTypeArgsType`](#metatypeargstype) \| `null`
+\| [`MetaTypeArgsType`](#metatypeargstype)\<`any`, `boolean`, `boolean`, `boolean`\> \| (`metaTypeImpl`: [`MetaTypeImpl`](#metatypeimpl)) => [`MetaTypeArgsType`](#metatypeargstype) \| `null`
 
 </td>
 </tr>
@@ -29168,53 +30004,53 @@ Utility that merges two argument objects (or factories).
 
 ###### Returns
 
-  \| (`metaTypeImpl`: [`MetaTypeImpl`](#metatypeimpl)) => \{
+\| (`metaTypeImpl`: [`MetaTypeImpl`](#metatypeimpl)) => \{
 \[`key`: `string`\]: `any`;
-  `coercion?`: `boolean`;
-  `default?`: `any`;
-  `deserializers?`: (
-     \| [`DeSerializerType`](#deserializertype)
-    \| [`DeSerializeFuncType`](#deserializefunctype))[];
-  `name?`: `string`;
-  `noBuiltinDeSerializers?`: `boolean`;
-  `noBuiltinSerializers?`: `boolean`;
-  `noBuiltinValidators?`: `boolean`;
-  `nullable?`: `boolean`;
-  `nullish?`: `boolean`;
-  `optional?`: `boolean`;
-  `safe?`: `boolean`;
-  `serializers?`: (
-     \| [`SerializerType`](#serializertype)
-    \| [`SerializeFuncType`](#serializefunctype))[];
-  `subType?`: `any`;
-  `validateType?`: `boolean`;
-  `validators?`: (
-     \| [`ValidatorType`](#validatortype)
-    \| [`ValidatorFuncType`](#validatorfunctype))[];
+`coercion?`: `boolean`;
+`default?`: `any`;
+`deserializers?`: (
+\| [`DeSerializerType`](#deserializertype)
+\| [`DeSerializeFuncType`](#deserializefunctype))[];
+`name?`: `string`;
+`noBuiltinDeSerializers?`: `boolean`;
+`noBuiltinSerializers?`: `boolean`;
+`noBuiltinValidators?`: `boolean`;
+`nullable?`: `boolean`;
+`nullish?`: `boolean`;
+`optional?`: `boolean`;
+`safe?`: `boolean`;
+`serializers?`: (
+\| [`SerializerType`](#serializertype)
+\| [`SerializeFuncType`](#serializefunctype))[];
+`subType?`: `any`;
+`validateType?`: `boolean`;
+`validators?`: (
+\| [`ValidatorType`](#validatortype)
+\| [`ValidatorFuncType`](#validatorfunctype))[];
 \}
-  \| \{
+\| \{
 \[`key`: `string`\]: `any`;
-  `coercion?`: `boolean`;
-  `default?`: `any`;
-  `deserializers?`: (
-     \| [`DeSerializerType`](#deserializertype)
-    \| [`DeSerializeFuncType`](#deserializefunctype))[];
-  `name?`: `string`;
-  `noBuiltinDeSerializers?`: `boolean`;
-  `noBuiltinSerializers?`: `boolean`;
-  `noBuiltinValidators?`: `boolean`;
-  `nullable?`: `boolean`;
-  `nullish?`: `boolean`;
-  `optional?`: `boolean`;
-  `safe?`: `boolean`;
-  `serializers?`: (
-     \| [`SerializerType`](#serializertype)
-    \| [`SerializeFuncType`](#serializefunctype))[];
-  `subType?`: `any`;
-  `validateType?`: `boolean`;
-  `validators?`: (
-     \| [`ValidatorType`](#validatortype)
-    \| [`ValidatorFuncType`](#validatorfunctype))[];
+`coercion?`: `boolean`;
+`default?`: `any`;
+`deserializers?`: (
+\| [`DeSerializerType`](#deserializertype)
+\| [`DeSerializeFuncType`](#deserializefunctype))[];
+`name?`: `string`;
+`noBuiltinDeSerializers?`: `boolean`;
+`noBuiltinSerializers?`: `boolean`;
+`noBuiltinValidators?`: `boolean`;
+`nullable?`: `boolean`;
+`nullish?`: `boolean`;
+`optional?`: `boolean`;
+`safe?`: `boolean`;
+`serializers?`: (
+\| [`SerializerType`](#serializertype)
+\| [`SerializeFuncType`](#serializefunctype))[];
+`subType?`: `any`;
+`validateType?`: `boolean`;
+`validators?`: (
+\| [`ValidatorType`](#validatortype)
+\| [`ValidatorFuncType`](#validatorfunctype))[];
 \}
 
 ###### Inherited from
@@ -29268,12 +30104,12 @@ Higher score wins when resolving meta types dynamically.
 ##### getMetaType()
 
 ```ts
-static getMetaType(value: any, metaTypeArgs?: 
+static getMetaType(value: any, metaTypeArgs?:
   | MetaTypeArgsType<any, boolean, boolean, boolean>
   | (metaTypeImpl: MetaTypeImpl) => MetaTypeArgsType): MetaType<unknown> | undefined;
 ```
 
-Defined in: [src/metatypes/metatypeImpl.ts:672](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L672)
+Defined in: [src/metatypes/metatypeImpl.ts:676](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L676)
 
 Resolves and wraps an implementation as a runtime meta type (`MetaType` helper).
 
@@ -29307,7 +30143,7 @@ Resolves and wraps an implementation as a runtime meta type (`MetaType` helper).
 </td>
 <td>
 
- \| [`MetaTypeArgsType`](#metatypeargstype)\<`any`, `boolean`, `boolean`, `boolean`\> \| (`metaTypeImpl`: [`MetaTypeImpl`](#metatypeimpl)) => [`MetaTypeArgsType`](#metatypeargstype)
+\| [`MetaTypeArgsType`](#metatypeargstype)\<`any`, `boolean`, `boolean`, `boolean`\> \| (`metaTypeImpl`: [`MetaTypeImpl`](#metatypeimpl)) => [`MetaTypeArgsType`](#metatypeargstype)
 
 </td>
 </tr>
@@ -29325,12 +30161,12 @@ Resolves and wraps an implementation as a runtime meta type (`MetaType` helper).
 ##### getMetaTypeImpl()
 
 ```ts
-static getMetaTypeImpl(value: any, metaTypeArgs?: 
+static getMetaTypeImpl(value: any, metaTypeArgs?:
   | MetaTypeArgsType<any, boolean, boolean, boolean>
   | (metaTypeImpl: MetaTypeImpl) => MetaTypeArgsType): MetaTypeImpl | undefined;
 ```
 
-Defined in: [src/metatypes/metatypeImpl.ts:650](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L650)
+Defined in: [src/metatypes/metatypeImpl.ts:654](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L654)
 
 Resolves an existing implementation instance for the provided value (value can be
 a meta type, `MetaTypeImpl`, plain schema, etc.).
@@ -29365,7 +30201,7 @@ a meta type, `MetaTypeImpl`, plain schema, etc.).
 </td>
 <td>
 
- \| [`MetaTypeArgsType`](#metatypeargstype)\<`any`, `boolean`, `boolean`, `boolean`\> \| (`metaTypeImpl`: [`MetaTypeImpl`](#metatypeimpl)) => [`MetaTypeArgsType`](#metatypeargstype)
+\| [`MetaTypeArgsType`](#metatypeargstype)\<`any`, `boolean`, `boolean`, `boolean`\> \| (`metaTypeImpl`: [`MetaTypeImpl`](#metatypeimpl)) => [`MetaTypeArgsType`](#metatypeargstype)
 
 </td>
 </tr>
@@ -29383,12 +30219,12 @@ a meta type, `MetaTypeImpl`, plain schema, etc.).
 ##### getMetaTypeImplClass()
 
 ```ts
-static getMetaTypeImplClass(value: any): 
+static getMetaTypeImplClass(value: any):
   | StaticClass<typeof MetaTypeImpl>
   | undefined;
 ```
 
-Defined in: [src/metatypes/metatypeImpl.ts:628](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L628)
+Defined in: [src/metatypes/metatypeImpl.ts:632](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L632)
 
 Finds the best registered implementation for the provided value using compatibility score.
 
@@ -29419,8 +30255,8 @@ Finds the best registered implementation for the provided value using compatibil
 
 ###### Returns
 
-  \| [`StaticClass`](#staticclass)\<*typeof* [`MetaTypeImpl`](#metatypeimpl)\>
-  \| `undefined`
+\| [`StaticClass`](#staticclass)\<_typeof_ [`MetaTypeImpl`](#metatypeimpl)\>
+\| `undefined`
 
 ###### Inherited from
 
@@ -29475,7 +30311,7 @@ Checks if the provided value matches the implementation (override in subclasses)
 static registerMetaType(): (type: StaticClass<typeof MetaTypeImpl>) => void;
 ```
 
-Defined in: [src/metatypes/metatypeImpl.ts:585](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L585)
+Defined in: [src/metatypes/metatypeImpl.ts:589](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L589)
 
 Decorator helper that registers an implementation so it can be resolved automatically.
 
@@ -29503,7 +30339,7 @@ Decorator helper that registers an implementation so it can be resolved automati
 </td>
 <td>
 
-[`StaticClass`](#staticclass)\<*typeof* [`MetaTypeImpl`](#metatypeimpl)\>
+[`StaticClass`](#staticclass)\<_typeof_ [`MetaTypeImpl`](#metatypeimpl)\>
 
 </td>
 </tr>
@@ -29560,7 +30396,7 @@ Decorator helper that registers an implementation so it can be resolved automati
 </td>
 <td>
 
-[src/metatypes/metatypeImpl.ts:218](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L218)
+[src/metatypes/metatypeImpl.ts:222](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L222)
 
 </td>
 </tr>
@@ -29592,7 +30428,7 @@ Decorator helper that registers an implementation so it can be resolved automati
 </td>
 <td>
 
-[src/metatypes/metatypeImpl.ts:220](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L220)
+[src/metatypes/metatypeImpl.ts:224](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L224)
 
 </td>
 </tr>
@@ -29624,7 +30460,7 @@ Decorator helper that registers an implementation so it can be resolved automati
 </td>
 <td>
 
-[src/metatypes/metatypeImpl.ts:219](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L219)
+[src/metatypes/metatypeImpl.ts:223](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L223)
 
 </td>
 </tr>
@@ -29656,14 +30492,14 @@ Decorator helper that registers an implementation so it can be resolved automati
 </td>
 <td>
 
-[src/metatypes/metatypeImpl.ts:221](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L221)
+[src/metatypes/metatypeImpl.ts:225](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L225)
 
 </td>
 </tr>
 </tbody>
 </table>
 
-***
+---
 
 ### RefImpl
 
@@ -29674,19 +30510,19 @@ Simply forwards all operations to the referenced meta type once resolved.
 
 #### Extends
 
-- [`LazyMetaTypeImpl`](#lazymetatypeimpl)
+-   [`LazyMetaTypeImpl`](#lazymetatypeimpl)
 
 #### Constructors
 
 ##### Constructor
 
 ```ts
-new RefImpl(metaTypeArgs?: 
+new RefImpl(metaTypeArgs?:
   | MetaTypeArgsType<any, boolean, boolean, boolean>
   | (metaTypeImpl: MetaTypeImpl) => MetaTypeArgsType): RefImpl;
 ```
 
-Defined in: [src/metatypes/metatypeImpl.ts:300](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L300)
+Defined in: [src/metatypes/metatypeImpl.ts:304](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L304)
 
 Creates a new meta type implementation.
 
@@ -29709,7 +30545,7 @@ Creates a new meta type implementation.
 </td>
 <td>
 
- \| [`MetaTypeArgsType`](#metatypeargstype)\<`any`, `boolean`, `boolean`, `boolean`\> \| (`metaTypeImpl`: [`MetaTypeImpl`](#metatypeimpl)) => [`MetaTypeArgsType`](#metatypeargstype)
+\| [`MetaTypeArgsType`](#metatypeargstype)\<`any`, `boolean`, `boolean`, `boolean`\> \| (`metaTypeImpl`: [`MetaTypeImpl`](#metatypeimpl)) => [`MetaTypeArgsType`](#metatypeargstype)
 
 </td>
 <td>
@@ -29737,7 +30573,7 @@ Arguments or a factory that receives the instance being constructed.
 castToRawValue(serializationArgs: SerializerArgsType): any;
 ```
 
-Defined in: [src/metatypes/metatypeImpl.ts:375](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L375)
+Defined in: [src/metatypes/metatypeImpl.ts:379](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L379)
 
 Hook for structural types to convert values when serializing.
 
@@ -29780,7 +30616,7 @@ Hook for structural types to convert values when serializing.
 castToType(deserializationArgs: DeSerializerArgsType): any;
 ```
 
-Defined in: [src/metatypes/metatypeImpl.ts:370](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L370)
+Defined in: [src/metatypes/metatypeImpl.ts:374](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L374)
 
 Hook for structural types to cast raw values before validation.
 
@@ -29884,7 +30720,7 @@ Returns the resolved meta type implementation that this ref points to.
 metaTypeValidatorFunc(__namedParameters: ValidatorArgsType): boolean | Error;
 ```
 
-Defined in: [src/metatypes/metatypeImpl.ts:482](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L482)
+Defined in: [src/metatypes/metatypeImpl.ts:486](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L486)
 
 Default validator that asks the implementation whether the value is compatible.
 
@@ -29924,12 +30760,12 @@ Default validator that asks the implementation whether the value is compatible.
 ##### rebuild()
 
 ```ts
-rebuild(metaTypeArgs?: 
+rebuild(metaTypeArgs?:
   | MetaTypeArgsType<any, boolean, boolean, boolean>
   | (metaTypeImpl: MetaTypeImpl) => MetaTypeArgsType): MetaTypeImpl;
 ```
 
-Defined in: [src/metatypes/metatypeImpl.ts:354](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L354)
+Defined in: [src/metatypes/metatypeImpl.ts:358](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L358)
 
 Rebuilds the current implementation with additional/overriding arguments.
 
@@ -29951,7 +30787,7 @@ Rebuilds the current implementation with additional/overriding arguments.
 </td>
 <td>
 
- \| [`MetaTypeArgsType`](#metatypeargstype)\<`any`, `boolean`, `boolean`, `boolean`\> \| (`metaTypeImpl`: [`MetaTypeImpl`](#metatypeimpl)) => [`MetaTypeArgsType`](#metatypeargstype)
+\| [`MetaTypeArgsType`](#metatypeargstype)\<`any`, `boolean`, `boolean`, `boolean`\> \| (`metaTypeImpl`: [`MetaTypeImpl`](#metatypeimpl)) => [`MetaTypeArgsType`](#metatypeargstype)
 
 </td>
 </tr>
@@ -30073,12 +30909,12 @@ Forwards validation to the referenced meta type (skips when value is `undefined`
 ##### build()
 
 ```ts
-static build<T>(this: (...metaTypeArgs: any) => T, metaTypeArgs?: 
+static build<T>(this: (...metaTypeArgs: any) => T, metaTypeArgs?:
   | MetaTypeArgsType<any, boolean, boolean, boolean>
   | (metaTypeImpl: MetaTypeImpl) => MetaTypeArgsType): T;
 ```
 
-Defined in: [src/metatypes/metatypeImpl.ts:346](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L346)
+Defined in: [src/metatypes/metatypeImpl.ts:350](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L350)
 
 Instantiates the implementation (used by `MetaType` factory helpers).
 
@@ -30094,7 +30930,7 @@ Instantiates the implementation (used by `MetaType` factory helpers).
 <tr>
 <td>
 
-`T` *extends* [`MetaTypeImpl`](#metatypeimpl)
+`T` _extends_ [`MetaTypeImpl`](#metatypeimpl)
 
 </td>
 </tr>
@@ -30131,7 +30967,7 @@ Instantiates the implementation (used by `MetaType` factory helpers).
 </td>
 <td>
 
- \| [`MetaTypeArgsType`](#metatypeargstype)\<`any`, `boolean`, `boolean`, `boolean`\> \| (`metaTypeImpl`: [`MetaTypeImpl`](#metatypeimpl)) => [`MetaTypeArgsType`](#metatypeargstype)
+\| [`MetaTypeArgsType`](#metatypeargstype)\<`any`, `boolean`, `boolean`, `boolean`\> \| (`metaTypeImpl`: [`MetaTypeImpl`](#metatypeimpl)) => [`MetaTypeArgsType`](#metatypeargstype)
 
 </td>
 </tr>
@@ -30149,13 +30985,13 @@ Instantiates the implementation (used by `MetaType` factory helpers).
 ##### combineMetaTypeArgs()
 
 ```ts
-static combineMetaTypeArgs(metaTypeArgs1?: 
+static combineMetaTypeArgs(metaTypeArgs1?:
   | MetaTypeArgsType<any, boolean, boolean, boolean>
   | (metaTypeImpl: MetaTypeImpl) => MetaTypeArgsType
-  | null, metaTypeArgs2?: 
+  | null, metaTypeArgs2?:
   | MetaTypeArgsType<any, boolean, boolean, boolean>
   | (metaTypeImpl: MetaTypeImpl) => MetaTypeArgsType
-  | null): 
+  | null):
   | (metaTypeImpl: MetaTypeImpl) => {
 [key: string]: any;
   coercion?: boolean;
@@ -30206,7 +31042,7 @@ static combineMetaTypeArgs(metaTypeArgs1?:
 };
 ```
 
-Defined in: [src/metatypes/metatypeImpl.ts:592](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L592)
+Defined in: [src/metatypes/metatypeImpl.ts:596](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L596)
 
 Utility that merges two argument objects (or factories).
 
@@ -30228,7 +31064,7 @@ Utility that merges two argument objects (or factories).
 </td>
 <td>
 
- \| [`MetaTypeArgsType`](#metatypeargstype)\<`any`, `boolean`, `boolean`, `boolean`\> \| (`metaTypeImpl`: [`MetaTypeImpl`](#metatypeimpl)) => [`MetaTypeArgsType`](#metatypeargstype) \| `null`
+\| [`MetaTypeArgsType`](#metatypeargstype)\<`any`, `boolean`, `boolean`, `boolean`\> \| (`metaTypeImpl`: [`MetaTypeImpl`](#metatypeimpl)) => [`MetaTypeArgsType`](#metatypeargstype) \| `null`
 
 </td>
 </tr>
@@ -30240,7 +31076,7 @@ Utility that merges two argument objects (or factories).
 </td>
 <td>
 
- \| [`MetaTypeArgsType`](#metatypeargstype)\<`any`, `boolean`, `boolean`, `boolean`\> \| (`metaTypeImpl`: [`MetaTypeImpl`](#metatypeimpl)) => [`MetaTypeArgsType`](#metatypeargstype) \| `null`
+\| [`MetaTypeArgsType`](#metatypeargstype)\<`any`, `boolean`, `boolean`, `boolean`\> \| (`metaTypeImpl`: [`MetaTypeImpl`](#metatypeimpl)) => [`MetaTypeArgsType`](#metatypeargstype) \| `null`
 
 </td>
 </tr>
@@ -30249,53 +31085,53 @@ Utility that merges two argument objects (or factories).
 
 ###### Returns
 
-  \| (`metaTypeImpl`: [`MetaTypeImpl`](#metatypeimpl)) => \{
+\| (`metaTypeImpl`: [`MetaTypeImpl`](#metatypeimpl)) => \{
 \[`key`: `string`\]: `any`;
-  `coercion?`: `boolean`;
-  `default?`: `any`;
-  `deserializers?`: (
-     \| [`DeSerializerType`](#deserializertype)
-    \| [`DeSerializeFuncType`](#deserializefunctype))[];
-  `name?`: `string`;
-  `noBuiltinDeSerializers?`: `boolean`;
-  `noBuiltinSerializers?`: `boolean`;
-  `noBuiltinValidators?`: `boolean`;
-  `nullable?`: `boolean`;
-  `nullish?`: `boolean`;
-  `optional?`: `boolean`;
-  `safe?`: `boolean`;
-  `serializers?`: (
-     \| [`SerializerType`](#serializertype)
-    \| [`SerializeFuncType`](#serializefunctype))[];
-  `subType?`: `any`;
-  `validateType?`: `boolean`;
-  `validators?`: (
-     \| [`ValidatorType`](#validatortype)
-    \| [`ValidatorFuncType`](#validatorfunctype))[];
+`coercion?`: `boolean`;
+`default?`: `any`;
+`deserializers?`: (
+\| [`DeSerializerType`](#deserializertype)
+\| [`DeSerializeFuncType`](#deserializefunctype))[];
+`name?`: `string`;
+`noBuiltinDeSerializers?`: `boolean`;
+`noBuiltinSerializers?`: `boolean`;
+`noBuiltinValidators?`: `boolean`;
+`nullable?`: `boolean`;
+`nullish?`: `boolean`;
+`optional?`: `boolean`;
+`safe?`: `boolean`;
+`serializers?`: (
+\| [`SerializerType`](#serializertype)
+\| [`SerializeFuncType`](#serializefunctype))[];
+`subType?`: `any`;
+`validateType?`: `boolean`;
+`validators?`: (
+\| [`ValidatorType`](#validatortype)
+\| [`ValidatorFuncType`](#validatorfunctype))[];
 \}
-  \| \{
+\| \{
 \[`key`: `string`\]: `any`;
-  `coercion?`: `boolean`;
-  `default?`: `any`;
-  `deserializers?`: (
-     \| [`DeSerializerType`](#deserializertype)
-    \| [`DeSerializeFuncType`](#deserializefunctype))[];
-  `name?`: `string`;
-  `noBuiltinDeSerializers?`: `boolean`;
-  `noBuiltinSerializers?`: `boolean`;
-  `noBuiltinValidators?`: `boolean`;
-  `nullable?`: `boolean`;
-  `nullish?`: `boolean`;
-  `optional?`: `boolean`;
-  `safe?`: `boolean`;
-  `serializers?`: (
-     \| [`SerializerType`](#serializertype)
-    \| [`SerializeFuncType`](#serializefunctype))[];
-  `subType?`: `any`;
-  `validateType?`: `boolean`;
-  `validators?`: (
-     \| [`ValidatorType`](#validatortype)
-    \| [`ValidatorFuncType`](#validatorfunctype))[];
+`coercion?`: `boolean`;
+`default?`: `any`;
+`deserializers?`: (
+\| [`DeSerializerType`](#deserializertype)
+\| [`DeSerializeFuncType`](#deserializefunctype))[];
+`name?`: `string`;
+`noBuiltinDeSerializers?`: `boolean`;
+`noBuiltinSerializers?`: `boolean`;
+`noBuiltinValidators?`: `boolean`;
+`nullable?`: `boolean`;
+`nullish?`: `boolean`;
+`optional?`: `boolean`;
+`safe?`: `boolean`;
+`serializers?`: (
+\| [`SerializerType`](#serializertype)
+\| [`SerializeFuncType`](#serializefunctype))[];
+`subType?`: `any`;
+`validateType?`: `boolean`;
+`validators?`: (
+\| [`ValidatorType`](#validatortype)
+\| [`ValidatorFuncType`](#validatorfunctype))[];
 \}
 
 ###### Inherited from
@@ -30308,7 +31144,7 @@ Utility that merges two argument objects (or factories).
 static getCompatibilityScore(_value: any): number;
 ```
 
-Defined in: [src/metatypes/metatypeImpl.ts:580](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L580)
+Defined in: [src/metatypes/metatypeImpl.ts:584](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L584)
 
 Returns a score describing how compatible a value is with this implementation.
 Higher score wins when resolving meta types dynamically.
@@ -30349,12 +31185,12 @@ Higher score wins when resolving meta types dynamically.
 ##### getMetaType()
 
 ```ts
-static getMetaType(value: any, metaTypeArgs?: 
+static getMetaType(value: any, metaTypeArgs?:
   | MetaTypeArgsType<any, boolean, boolean, boolean>
   | (metaTypeImpl: MetaTypeImpl) => MetaTypeArgsType): MetaType<unknown> | undefined;
 ```
 
-Defined in: [src/metatypes/metatypeImpl.ts:672](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L672)
+Defined in: [src/metatypes/metatypeImpl.ts:676](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L676)
 
 Resolves and wraps an implementation as a runtime meta type (`MetaType` helper).
 
@@ -30388,7 +31224,7 @@ Resolves and wraps an implementation as a runtime meta type (`MetaType` helper).
 </td>
 <td>
 
- \| [`MetaTypeArgsType`](#metatypeargstype)\<`any`, `boolean`, `boolean`, `boolean`\> \| (`metaTypeImpl`: [`MetaTypeImpl`](#metatypeimpl)) => [`MetaTypeArgsType`](#metatypeargstype)
+\| [`MetaTypeArgsType`](#metatypeargstype)\<`any`, `boolean`, `boolean`, `boolean`\> \| (`metaTypeImpl`: [`MetaTypeImpl`](#metatypeimpl)) => [`MetaTypeArgsType`](#metatypeargstype)
 
 </td>
 </tr>
@@ -30406,12 +31242,12 @@ Resolves and wraps an implementation as a runtime meta type (`MetaType` helper).
 ##### getMetaTypeImpl()
 
 ```ts
-static getMetaTypeImpl(value: any, metaTypeArgs?: 
+static getMetaTypeImpl(value: any, metaTypeArgs?:
   | MetaTypeArgsType<any, boolean, boolean, boolean>
   | (metaTypeImpl: MetaTypeImpl) => MetaTypeArgsType): MetaTypeImpl | undefined;
 ```
 
-Defined in: [src/metatypes/metatypeImpl.ts:650](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L650)
+Defined in: [src/metatypes/metatypeImpl.ts:654](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L654)
 
 Resolves an existing implementation instance for the provided value (value can be
 a meta type, `MetaTypeImpl`, plain schema, etc.).
@@ -30446,7 +31282,7 @@ a meta type, `MetaTypeImpl`, plain schema, etc.).
 </td>
 <td>
 
- \| [`MetaTypeArgsType`](#metatypeargstype)\<`any`, `boolean`, `boolean`, `boolean`\> \| (`metaTypeImpl`: [`MetaTypeImpl`](#metatypeimpl)) => [`MetaTypeArgsType`](#metatypeargstype)
+\| [`MetaTypeArgsType`](#metatypeargstype)\<`any`, `boolean`, `boolean`, `boolean`\> \| (`metaTypeImpl`: [`MetaTypeImpl`](#metatypeimpl)) => [`MetaTypeArgsType`](#metatypeargstype)
 
 </td>
 </tr>
@@ -30464,12 +31300,12 @@ a meta type, `MetaTypeImpl`, plain schema, etc.).
 ##### getMetaTypeImplClass()
 
 ```ts
-static getMetaTypeImplClass(value: any): 
+static getMetaTypeImplClass(value: any):
   | StaticClass<typeof MetaTypeImpl>
   | undefined;
 ```
 
-Defined in: [src/metatypes/metatypeImpl.ts:628](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L628)
+Defined in: [src/metatypes/metatypeImpl.ts:632](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L632)
 
 Finds the best registered implementation for the provided value using compatibility score.
 
@@ -30500,8 +31336,8 @@ Finds the best registered implementation for the provided value using compatibil
 
 ###### Returns
 
-  \| [`StaticClass`](#staticclass)\<*typeof* [`MetaTypeImpl`](#metatypeimpl)\>
-  \| `undefined`
+\| [`StaticClass`](#staticclass)\<_typeof_ [`MetaTypeImpl`](#metatypeimpl)\>
+\| `undefined`
 
 ###### Inherited from
 
@@ -30513,7 +31349,7 @@ Finds the best registered implementation for the provided value using compatibil
 static isCompatible(_value: any): boolean;
 ```
 
-Defined in: [src/metatypes/metatypeImpl.ts:572](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L572)
+Defined in: [src/metatypes/metatypeImpl.ts:576](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L576)
 
 Checks if the provided value matches the implementation (override in subclasses).
 
@@ -30556,7 +31392,7 @@ Checks if the provided value matches the implementation (override in subclasses)
 static registerMetaType(): (type: StaticClass<typeof MetaTypeImpl>) => void;
 ```
 
-Defined in: [src/metatypes/metatypeImpl.ts:585](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L585)
+Defined in: [src/metatypes/metatypeImpl.ts:589](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L589)
 
 Decorator helper that registers an implementation so it can be resolved automatically.
 
@@ -30584,7 +31420,7 @@ Decorator helper that registers an implementation so it can be resolved automati
 </td>
 <td>
 
-[`StaticClass`](#staticclass)\<*typeof* [`MetaTypeImpl`](#metatypeimpl)\>
+[`StaticClass`](#staticclass)\<_typeof_ [`MetaTypeImpl`](#metatypeimpl)\>
 
 </td>
 </tr>
@@ -30641,7 +31477,7 @@ Decorator helper that registers an implementation so it can be resolved automati
 </td>
 <td>
 
-[src/metatypes/metatypeImpl.ts:218](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L218)
+[src/metatypes/metatypeImpl.ts:222](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L222)
 
 </td>
 </tr>
@@ -30673,7 +31509,7 @@ Decorator helper that registers an implementation so it can be resolved automati
 </td>
 <td>
 
-[src/metatypes/metatypeImpl.ts:220](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L220)
+[src/metatypes/metatypeImpl.ts:224](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L224)
 
 </td>
 </tr>
@@ -30705,7 +31541,7 @@ Decorator helper that registers an implementation so it can be resolved automati
 </td>
 <td>
 
-[src/metatypes/metatypeImpl.ts:219](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L219)
+[src/metatypes/metatypeImpl.ts:223](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L223)
 
 </td>
 </tr>
@@ -30737,14 +31573,14 @@ Decorator helper that registers an implementation so it can be resolved automati
 </td>
 <td>
 
-[src/metatypes/metatypeImpl.ts:221](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L221)
+[src/metatypes/metatypeImpl.ts:225](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L225)
 
 </td>
 </tr>
 </tbody>
 </table>
 
-***
+---
 
 ### StringImpl
 
@@ -30755,19 +31591,19 @@ extend this class to provide specific validation, serialization and compatibilit
 
 #### Extends
 
-- [`MetaTypeImpl`](#metatypeimpl)
+-   [`MetaTypeImpl`](#metatypeimpl)
 
 #### Constructors
 
 ##### Constructor
 
 ```ts
-new StringImpl(metaTypeArgs?: 
+new StringImpl(metaTypeArgs?:
   | MetaTypeArgsType<any, boolean, boolean, boolean>
   | (metaTypeImpl: MetaTypeImpl) => MetaTypeArgsType): StringImpl;
 ```
 
-Defined in: [src/metatypes/metatypeImpl.ts:300](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L300)
+Defined in: [src/metatypes/metatypeImpl.ts:304](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L304)
 
 Creates a new meta type implementation.
 
@@ -30790,7 +31626,7 @@ Creates a new meta type implementation.
 </td>
 <td>
 
- \| [`MetaTypeArgsType`](#metatypeargstype)\<`any`, `boolean`, `boolean`, `boolean`\> \| (`metaTypeImpl`: [`MetaTypeImpl`](#metatypeimpl)) => [`MetaTypeArgsType`](#metatypeargstype)
+\| [`MetaTypeArgsType`](#metatypeargstype)\<`any`, `boolean`, `boolean`, `boolean`\> \| (`metaTypeImpl`: [`MetaTypeImpl`](#metatypeimpl)) => [`MetaTypeArgsType`](#metatypeargstype)
 
 </td>
 <td>
@@ -30818,7 +31654,7 @@ Arguments or a factory that receives the instance being constructed.
 castToRawValue(serializationArgs: SerializerArgsType): any;
 ```
 
-Defined in: [src/metatypes/metatypeImpl.ts:375](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L375)
+Defined in: [src/metatypes/metatypeImpl.ts:379](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L379)
 
 Hook for structural types to convert values when serializing.
 
@@ -30904,7 +31740,7 @@ Hook for structural types to cast raw values before validation.
 deserialize(deserializationArgs: DeSerializeMetaTypeArgsType): any;
 ```
 
-Defined in: [src/metatypes/metatypeImpl.ts:449](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L449)
+Defined in: [src/metatypes/metatypeImpl.ts:453](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L453)
 
 Runs builtin + custom deserializers and returns the final value.
 
@@ -30947,7 +31783,7 @@ Runs builtin + custom deserializers and returns the final value.
 getSubType(): any;
 ```
 
-Defined in: [src/metatypes/metatypeImpl.ts:255](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L255)
+Defined in: [src/metatypes/metatypeImpl.ts:259](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L259)
 
 Returns the prepared subtype definition (arrays/objects can override `prepareSubType`).
 
@@ -30965,7 +31801,7 @@ Returns the prepared subtype definition (arrays/objects can override `prepareSub
 metaTypeValidatorFunc(__namedParameters: ValidatorArgsType): boolean | Error;
 ```
 
-Defined in: [src/metatypes/metatypeImpl.ts:482](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L482)
+Defined in: [src/metatypes/metatypeImpl.ts:486](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L486)
 
 Default validator that asks the implementation whether the value is compatible.
 
@@ -31005,12 +31841,12 @@ Default validator that asks the implementation whether the value is compatible.
 ##### rebuild()
 
 ```ts
-rebuild(metaTypeArgs?: 
+rebuild(metaTypeArgs?:
   | MetaTypeArgsType<any, boolean, boolean, boolean>
   | (metaTypeImpl: MetaTypeImpl) => MetaTypeArgsType): MetaTypeImpl;
 ```
 
-Defined in: [src/metatypes/metatypeImpl.ts:354](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L354)
+Defined in: [src/metatypes/metatypeImpl.ts:358](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L358)
 
 Rebuilds the current implementation with additional/overriding arguments.
 
@@ -31032,7 +31868,7 @@ Rebuilds the current implementation with additional/overriding arguments.
 </td>
 <td>
 
- \| [`MetaTypeArgsType`](#metatypeargstype)\<`any`, `boolean`, `boolean`, `boolean`\> \| (`metaTypeImpl`: [`MetaTypeImpl`](#metatypeimpl)) => [`MetaTypeArgsType`](#metatypeargstype)
+\| [`MetaTypeArgsType`](#metatypeargstype)\<`any`, `boolean`, `boolean`, `boolean`\> \| (`metaTypeImpl`: [`MetaTypeImpl`](#metatypeimpl)) => [`MetaTypeArgsType`](#metatypeargstype)
 
 </td>
 </tr>
@@ -31053,7 +31889,7 @@ Rebuilds the current implementation with additional/overriding arguments.
 serialize(serializationArgs: SerializeMetaTypeArgsType): any;
 ```
 
-Defined in: [src/metatypes/metatypeImpl.ts:398](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L398)
+Defined in: [src/metatypes/metatypeImpl.ts:402](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L402)
 
 Runs builtin + custom serializers and returns the final value.
 
@@ -31096,7 +31932,7 @@ Runs builtin + custom serializers and returns the final value.
 toString(): string;
 ```
 
-Defined in: [src/metatypes/metatypeImpl.ts:361](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L361)
+Defined in: [src/metatypes/metatypeImpl.ts:365](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L365)
 
 String representation displayed in inspectors/logs.
 
@@ -31114,7 +31950,7 @@ String representation displayed in inspectors/logs.
 validate(args: ValidateMetaTypeArgsType): ValidationError | undefined;
 ```
 
-Defined in: [src/metatypes/metatypeImpl.ts:507](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L507)
+Defined in: [src/metatypes/metatypeImpl.ts:511](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L511)
 
 Runs builtin + custom validators and returns a `ValidationError` when something fails.
 
@@ -31154,12 +31990,12 @@ Runs builtin + custom validators and returns a `ValidationError` when something 
 ##### build()
 
 ```ts
-static build<T>(this: (...metaTypeArgs: any) => T, metaTypeArgs?: 
+static build<T>(this: (...metaTypeArgs: any) => T, metaTypeArgs?:
   | MetaTypeArgsType<any, boolean, boolean, boolean>
   | (metaTypeImpl: MetaTypeImpl) => MetaTypeArgsType): T;
 ```
 
-Defined in: [src/metatypes/metatypeImpl.ts:346](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L346)
+Defined in: [src/metatypes/metatypeImpl.ts:350](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L350)
 
 Instantiates the implementation (used by `MetaType` factory helpers).
 
@@ -31175,7 +32011,7 @@ Instantiates the implementation (used by `MetaType` factory helpers).
 <tr>
 <td>
 
-`T` *extends* [`MetaTypeImpl`](#metatypeimpl)
+`T` _extends_ [`MetaTypeImpl`](#metatypeimpl)
 
 </td>
 </tr>
@@ -31212,7 +32048,7 @@ Instantiates the implementation (used by `MetaType` factory helpers).
 </td>
 <td>
 
- \| [`MetaTypeArgsType`](#metatypeargstype)\<`any`, `boolean`, `boolean`, `boolean`\> \| (`metaTypeImpl`: [`MetaTypeImpl`](#metatypeimpl)) => [`MetaTypeArgsType`](#metatypeargstype)
+\| [`MetaTypeArgsType`](#metatypeargstype)\<`any`, `boolean`, `boolean`, `boolean`\> \| (`metaTypeImpl`: [`MetaTypeImpl`](#metatypeimpl)) => [`MetaTypeArgsType`](#metatypeargstype)
 
 </td>
 </tr>
@@ -31230,13 +32066,13 @@ Instantiates the implementation (used by `MetaType` factory helpers).
 ##### combineMetaTypeArgs()
 
 ```ts
-static combineMetaTypeArgs(metaTypeArgs1?: 
+static combineMetaTypeArgs(metaTypeArgs1?:
   | MetaTypeArgsType<any, boolean, boolean, boolean>
   | (metaTypeImpl: MetaTypeImpl) => MetaTypeArgsType
-  | null, metaTypeArgs2?: 
+  | null, metaTypeArgs2?:
   | MetaTypeArgsType<any, boolean, boolean, boolean>
   | (metaTypeImpl: MetaTypeImpl) => MetaTypeArgsType
-  | null): 
+  | null):
   | (metaTypeImpl: MetaTypeImpl) => {
 [key: string]: any;
   coercion?: boolean;
@@ -31287,7 +32123,7 @@ static combineMetaTypeArgs(metaTypeArgs1?:
 };
 ```
 
-Defined in: [src/metatypes/metatypeImpl.ts:592](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L592)
+Defined in: [src/metatypes/metatypeImpl.ts:596](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L596)
 
 Utility that merges two argument objects (or factories).
 
@@ -31309,7 +32145,7 @@ Utility that merges two argument objects (or factories).
 </td>
 <td>
 
- \| [`MetaTypeArgsType`](#metatypeargstype)\<`any`, `boolean`, `boolean`, `boolean`\> \| (`metaTypeImpl`: [`MetaTypeImpl`](#metatypeimpl)) => [`MetaTypeArgsType`](#metatypeargstype) \| `null`
+\| [`MetaTypeArgsType`](#metatypeargstype)\<`any`, `boolean`, `boolean`, `boolean`\> \| (`metaTypeImpl`: [`MetaTypeImpl`](#metatypeimpl)) => [`MetaTypeArgsType`](#metatypeargstype) \| `null`
 
 </td>
 </tr>
@@ -31321,7 +32157,7 @@ Utility that merges two argument objects (or factories).
 </td>
 <td>
 
- \| [`MetaTypeArgsType`](#metatypeargstype)\<`any`, `boolean`, `boolean`, `boolean`\> \| (`metaTypeImpl`: [`MetaTypeImpl`](#metatypeimpl)) => [`MetaTypeArgsType`](#metatypeargstype) \| `null`
+\| [`MetaTypeArgsType`](#metatypeargstype)\<`any`, `boolean`, `boolean`, `boolean`\> \| (`metaTypeImpl`: [`MetaTypeImpl`](#metatypeimpl)) => [`MetaTypeArgsType`](#metatypeargstype) \| `null`
 
 </td>
 </tr>
@@ -31330,53 +32166,53 @@ Utility that merges two argument objects (or factories).
 
 ###### Returns
 
-  \| (`metaTypeImpl`: [`MetaTypeImpl`](#metatypeimpl)) => \{
+\| (`metaTypeImpl`: [`MetaTypeImpl`](#metatypeimpl)) => \{
 \[`key`: `string`\]: `any`;
-  `coercion?`: `boolean`;
-  `default?`: `any`;
-  `deserializers?`: (
-     \| [`DeSerializerType`](#deserializertype)
-    \| [`DeSerializeFuncType`](#deserializefunctype))[];
-  `name?`: `string`;
-  `noBuiltinDeSerializers?`: `boolean`;
-  `noBuiltinSerializers?`: `boolean`;
-  `noBuiltinValidators?`: `boolean`;
-  `nullable?`: `boolean`;
-  `nullish?`: `boolean`;
-  `optional?`: `boolean`;
-  `safe?`: `boolean`;
-  `serializers?`: (
-     \| [`SerializerType`](#serializertype)
-    \| [`SerializeFuncType`](#serializefunctype))[];
-  `subType?`: `any`;
-  `validateType?`: `boolean`;
-  `validators?`: (
-     \| [`ValidatorType`](#validatortype)
-    \| [`ValidatorFuncType`](#validatorfunctype))[];
+`coercion?`: `boolean`;
+`default?`: `any`;
+`deserializers?`: (
+\| [`DeSerializerType`](#deserializertype)
+\| [`DeSerializeFuncType`](#deserializefunctype))[];
+`name?`: `string`;
+`noBuiltinDeSerializers?`: `boolean`;
+`noBuiltinSerializers?`: `boolean`;
+`noBuiltinValidators?`: `boolean`;
+`nullable?`: `boolean`;
+`nullish?`: `boolean`;
+`optional?`: `boolean`;
+`safe?`: `boolean`;
+`serializers?`: (
+\| [`SerializerType`](#serializertype)
+\| [`SerializeFuncType`](#serializefunctype))[];
+`subType?`: `any`;
+`validateType?`: `boolean`;
+`validators?`: (
+\| [`ValidatorType`](#validatortype)
+\| [`ValidatorFuncType`](#validatorfunctype))[];
 \}
-  \| \{
+\| \{
 \[`key`: `string`\]: `any`;
-  `coercion?`: `boolean`;
-  `default?`: `any`;
-  `deserializers?`: (
-     \| [`DeSerializerType`](#deserializertype)
-    \| [`DeSerializeFuncType`](#deserializefunctype))[];
-  `name?`: `string`;
-  `noBuiltinDeSerializers?`: `boolean`;
-  `noBuiltinSerializers?`: `boolean`;
-  `noBuiltinValidators?`: `boolean`;
-  `nullable?`: `boolean`;
-  `nullish?`: `boolean`;
-  `optional?`: `boolean`;
-  `safe?`: `boolean`;
-  `serializers?`: (
-     \| [`SerializerType`](#serializertype)
-    \| [`SerializeFuncType`](#serializefunctype))[];
-  `subType?`: `any`;
-  `validateType?`: `boolean`;
-  `validators?`: (
-     \| [`ValidatorType`](#validatortype)
-    \| [`ValidatorFuncType`](#validatorfunctype))[];
+`coercion?`: `boolean`;
+`default?`: `any`;
+`deserializers?`: (
+\| [`DeSerializerType`](#deserializertype)
+\| [`DeSerializeFuncType`](#deserializefunctype))[];
+`name?`: `string`;
+`noBuiltinDeSerializers?`: `boolean`;
+`noBuiltinSerializers?`: `boolean`;
+`noBuiltinValidators?`: `boolean`;
+`nullable?`: `boolean`;
+`nullish?`: `boolean`;
+`optional?`: `boolean`;
+`safe?`: `boolean`;
+`serializers?`: (
+\| [`SerializerType`](#serializertype)
+\| [`SerializeFuncType`](#serializefunctype))[];
+`subType?`: `any`;
+`validateType?`: `boolean`;
+`validators?`: (
+\| [`ValidatorType`](#validatortype)
+\| [`ValidatorFuncType`](#validatorfunctype))[];
 \}
 
 ###### Inherited from
@@ -31430,12 +32266,12 @@ Higher score wins when resolving meta types dynamically.
 ##### getMetaType()
 
 ```ts
-static getMetaType(value: any, metaTypeArgs?: 
+static getMetaType(value: any, metaTypeArgs?:
   | MetaTypeArgsType<any, boolean, boolean, boolean>
   | (metaTypeImpl: MetaTypeImpl) => MetaTypeArgsType): MetaType<unknown> | undefined;
 ```
 
-Defined in: [src/metatypes/metatypeImpl.ts:672](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L672)
+Defined in: [src/metatypes/metatypeImpl.ts:676](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L676)
 
 Resolves and wraps an implementation as a runtime meta type (`MetaType` helper).
 
@@ -31469,7 +32305,7 @@ Resolves and wraps an implementation as a runtime meta type (`MetaType` helper).
 </td>
 <td>
 
- \| [`MetaTypeArgsType`](#metatypeargstype)\<`any`, `boolean`, `boolean`, `boolean`\> \| (`metaTypeImpl`: [`MetaTypeImpl`](#metatypeimpl)) => [`MetaTypeArgsType`](#metatypeargstype)
+\| [`MetaTypeArgsType`](#metatypeargstype)\<`any`, `boolean`, `boolean`, `boolean`\> \| (`metaTypeImpl`: [`MetaTypeImpl`](#metatypeimpl)) => [`MetaTypeArgsType`](#metatypeargstype)
 
 </td>
 </tr>
@@ -31487,12 +32323,12 @@ Resolves and wraps an implementation as a runtime meta type (`MetaType` helper).
 ##### getMetaTypeImpl()
 
 ```ts
-static getMetaTypeImpl(value: any, metaTypeArgs?: 
+static getMetaTypeImpl(value: any, metaTypeArgs?:
   | MetaTypeArgsType<any, boolean, boolean, boolean>
   | (metaTypeImpl: MetaTypeImpl) => MetaTypeArgsType): MetaTypeImpl | undefined;
 ```
 
-Defined in: [src/metatypes/metatypeImpl.ts:650](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L650)
+Defined in: [src/metatypes/metatypeImpl.ts:654](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L654)
 
 Resolves an existing implementation instance for the provided value (value can be
 a meta type, `MetaTypeImpl`, plain schema, etc.).
@@ -31527,7 +32363,7 @@ a meta type, `MetaTypeImpl`, plain schema, etc.).
 </td>
 <td>
 
- \| [`MetaTypeArgsType`](#metatypeargstype)\<`any`, `boolean`, `boolean`, `boolean`\> \| (`metaTypeImpl`: [`MetaTypeImpl`](#metatypeimpl)) => [`MetaTypeArgsType`](#metatypeargstype)
+\| [`MetaTypeArgsType`](#metatypeargstype)\<`any`, `boolean`, `boolean`, `boolean`\> \| (`metaTypeImpl`: [`MetaTypeImpl`](#metatypeimpl)) => [`MetaTypeArgsType`](#metatypeargstype)
 
 </td>
 </tr>
@@ -31545,12 +32381,12 @@ a meta type, `MetaTypeImpl`, plain schema, etc.).
 ##### getMetaTypeImplClass()
 
 ```ts
-static getMetaTypeImplClass(value: any): 
+static getMetaTypeImplClass(value: any):
   | StaticClass<typeof MetaTypeImpl>
   | undefined;
 ```
 
-Defined in: [src/metatypes/metatypeImpl.ts:628](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L628)
+Defined in: [src/metatypes/metatypeImpl.ts:632](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L632)
 
 Finds the best registered implementation for the provided value using compatibility score.
 
@@ -31581,8 +32417,8 @@ Finds the best registered implementation for the provided value using compatibil
 
 ###### Returns
 
-  \| [`StaticClass`](#staticclass)\<*typeof* [`MetaTypeImpl`](#metatypeimpl)\>
-  \| `undefined`
+\| [`StaticClass`](#staticclass)\<_typeof_ [`MetaTypeImpl`](#metatypeimpl)\>
+\| `undefined`
 
 ###### Inherited from
 
@@ -31637,7 +32473,7 @@ Checks if the provided value matches the implementation (override in subclasses)
 static registerMetaType(): (type: StaticClass<typeof MetaTypeImpl>) => void;
 ```
 
-Defined in: [src/metatypes/metatypeImpl.ts:585](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L585)
+Defined in: [src/metatypes/metatypeImpl.ts:589](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L589)
 
 Decorator helper that registers an implementation so it can be resolved automatically.
 
@@ -31665,7 +32501,7 @@ Decorator helper that registers an implementation so it can be resolved automati
 </td>
 <td>
 
-[`StaticClass`](#staticclass)\<*typeof* [`MetaTypeImpl`](#metatypeimpl)\>
+[`StaticClass`](#staticclass)\<_typeof_ [`MetaTypeImpl`](#metatypeimpl)\>
 
 </td>
 </tr>
@@ -31722,7 +32558,7 @@ Decorator helper that registers an implementation so it can be resolved automati
 </td>
 <td>
 
-[src/metatypes/metatypeImpl.ts:218](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L218)
+[src/metatypes/metatypeImpl.ts:222](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L222)
 
 </td>
 </tr>
@@ -31754,7 +32590,7 @@ Decorator helper that registers an implementation so it can be resolved automati
 </td>
 <td>
 
-[src/metatypes/metatypeImpl.ts:220](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L220)
+[src/metatypes/metatypeImpl.ts:224](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L224)
 
 </td>
 </tr>
@@ -31786,7 +32622,7 @@ Decorator helper that registers an implementation so it can be resolved automati
 </td>
 <td>
 
-[src/metatypes/metatypeImpl.ts:219](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L219)
+[src/metatypes/metatypeImpl.ts:223](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L223)
 
 </td>
 </tr>
@@ -31818,14 +32654,14 @@ Decorator helper that registers an implementation so it can be resolved automati
 </td>
 <td>
 
-[src/metatypes/metatypeImpl.ts:221](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L221)
+[src/metatypes/metatypeImpl.ts:225](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L225)
 
 </td>
 </tr>
 </tbody>
 </table>
 
-***
+---
 
 ### `abstract` StructuralMetaTypeImpl
 
@@ -31836,26 +32672,26 @@ Adds automatic handling for nested structures, recursive references and sub-valu
 
 #### Extends
 
-- [`LazyMetaTypeImpl`](#lazymetatypeimpl)
+-   [`LazyMetaTypeImpl`](#lazymetatypeimpl)
 
 #### Extended by
 
-- [`ArrayImpl`](#arrayimpl)
-- [`ObjectImpl`](#objectimpl)
-- [`TupleImpl`](#tupleimpl)
-- [`UnionImpl`](#unionimpl)
+-   [`ArrayImpl`](#arrayimpl)
+-   [`ObjectImpl`](#objectimpl)
+-   [`TupleImpl`](#tupleimpl)
+-   [`UnionImpl`](#unionimpl)
 
 #### Constructors
 
 ##### Constructor
 
 ```ts
-new StructuralMetaTypeImpl(metaTypeArgs?: 
+new StructuralMetaTypeImpl(metaTypeArgs?:
   | MetaTypeArgsType<any, boolean, boolean, boolean>
   | (metaTypeImpl: MetaTypeImpl) => MetaTypeArgsType): StructuralMetaTypeImpl;
 ```
 
-Defined in: [src/metatypes/metatypeImpl.ts:300](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L300)
+Defined in: [src/metatypes/metatypeImpl.ts:304](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L304)
 
 Creates a new meta type implementation.
 
@@ -31878,7 +32714,7 @@ Creates a new meta type implementation.
 </td>
 <td>
 
- \| [`MetaTypeArgsType`](#metatypeargstype)\<`any`, `boolean`, `boolean`, `boolean`\> \| (`metaTypeImpl`: [`MetaTypeImpl`](#metatypeimpl)) => [`MetaTypeArgsType`](#metatypeargstype)
+\| [`MetaTypeArgsType`](#metatypeargstype)\<`any`, `boolean`, `boolean`, `boolean`\> \| (`metaTypeImpl`: [`MetaTypeImpl`](#metatypeimpl)) => [`MetaTypeArgsType`](#metatypeargstype)
 
 </td>
 <td>
@@ -31906,7 +32742,7 @@ Arguments or a factory that receives the instance being constructed.
 castToRawValue(serializationArgs: SerializerArgsType): any;
 ```
 
-Defined in: [src/metatypes/metatypeImpl.ts:375](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L375)
+Defined in: [src/metatypes/metatypeImpl.ts:379](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L379)
 
 Hook for structural types to convert values when serializing.
 
@@ -31949,7 +32785,7 @@ Hook for structural types to convert values when serializing.
 castToType(deserializationArgs: DeSerializerArgsType): any;
 ```
 
-Defined in: [src/metatypes/metatypeImpl.ts:370](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L370)
+Defined in: [src/metatypes/metatypeImpl.ts:374](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L374)
 
 Hook for structural types to cast raw values before validation.
 
@@ -31992,7 +32828,7 @@ Hook for structural types to cast raw values before validation.
 deserialize(deserializationArgs: DeSerializeMetaTypeArgsType): any;
 ```
 
-Defined in: [src/metatypes/metatypeImpl.ts:449](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L449)
+Defined in: [src/metatypes/metatypeImpl.ts:453](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L453)
 
 Runs builtin + custom deserializers and returns the final value.
 
@@ -32053,7 +32889,7 @@ Resolves (and caches) the prepared subtype, executing lazy factories when needed
 metaTypeValidatorFunc(__namedParameters: ValidatorArgsType): boolean | Error;
 ```
 
-Defined in: [src/metatypes/metatypeImpl.ts:482](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L482)
+Defined in: [src/metatypes/metatypeImpl.ts:486](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L486)
 
 Default validator that asks the implementation whether the value is compatible.
 
@@ -32093,12 +32929,12 @@ Default validator that asks the implementation whether the value is compatible.
 ##### rebuild()
 
 ```ts
-rebuild(metaTypeArgs?: 
+rebuild(metaTypeArgs?:
   | MetaTypeArgsType<any, boolean, boolean, boolean>
   | (metaTypeImpl: MetaTypeImpl) => MetaTypeArgsType): MetaTypeImpl;
 ```
 
-Defined in: [src/metatypes/metatypeImpl.ts:354](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L354)
+Defined in: [src/metatypes/metatypeImpl.ts:358](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L358)
 
 Rebuilds the current implementation with additional/overriding arguments.
 
@@ -32120,7 +32956,7 @@ Rebuilds the current implementation with additional/overriding arguments.
 </td>
 <td>
 
- \| [`MetaTypeArgsType`](#metatypeargstype)\<`any`, `boolean`, `boolean`, `boolean`\> \| (`metaTypeImpl`: [`MetaTypeImpl`](#metatypeimpl)) => [`MetaTypeArgsType`](#metatypeargstype)
+\| [`MetaTypeArgsType`](#metatypeargstype)\<`any`, `boolean`, `boolean`, `boolean`\> \| (`metaTypeImpl`: [`MetaTypeImpl`](#metatypeimpl)) => [`MetaTypeArgsType`](#metatypeargstype)
 
 </td>
 </tr>
@@ -32141,7 +32977,7 @@ Rebuilds the current implementation with additional/overriding arguments.
 serialize(serializationArgs: SerializeMetaTypeArgsType): any;
 ```
 
-Defined in: [src/metatypes/metatypeImpl.ts:398](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L398)
+Defined in: [src/metatypes/metatypeImpl.ts:402](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L402)
 
 Runs builtin + custom serializers and returns the final value.
 
@@ -32202,7 +33038,7 @@ String representation displayed in inspectors/logs.
 validate(args: ValidateMetaTypeArgsType): ValidationError | undefined;
 ```
 
-Defined in: [src/metatypes/metatypeImpl.ts:507](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L507)
+Defined in: [src/metatypes/metatypeImpl.ts:511](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L511)
 
 Runs builtin + custom validators and returns a `ValidationError` when something fails.
 
@@ -32242,12 +33078,12 @@ Runs builtin + custom validators and returns a `ValidationError` when something 
 ##### build()
 
 ```ts
-static build<T>(this: (...metaTypeArgs: any) => T, metaTypeArgs?: 
+static build<T>(this: (...metaTypeArgs: any) => T, metaTypeArgs?:
   | MetaTypeArgsType<any, boolean, boolean, boolean>
   | (metaTypeImpl: MetaTypeImpl) => MetaTypeArgsType): T;
 ```
 
-Defined in: [src/metatypes/metatypeImpl.ts:346](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L346)
+Defined in: [src/metatypes/metatypeImpl.ts:350](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L350)
 
 Instantiates the implementation (used by `MetaType` factory helpers).
 
@@ -32263,7 +33099,7 @@ Instantiates the implementation (used by `MetaType` factory helpers).
 <tr>
 <td>
 
-`T` *extends* [`MetaTypeImpl`](#metatypeimpl)
+`T` _extends_ [`MetaTypeImpl`](#metatypeimpl)
 
 </td>
 </tr>
@@ -32300,7 +33136,7 @@ Instantiates the implementation (used by `MetaType` factory helpers).
 </td>
 <td>
 
- \| [`MetaTypeArgsType`](#metatypeargstype)\<`any`, `boolean`, `boolean`, `boolean`\> \| (`metaTypeImpl`: [`MetaTypeImpl`](#metatypeimpl)) => [`MetaTypeArgsType`](#metatypeargstype)
+\| [`MetaTypeArgsType`](#metatypeargstype)\<`any`, `boolean`, `boolean`, `boolean`\> \| (`metaTypeImpl`: [`MetaTypeImpl`](#metatypeimpl)) => [`MetaTypeArgsType`](#metatypeargstype)
 
 </td>
 </tr>
@@ -32318,13 +33154,13 @@ Instantiates the implementation (used by `MetaType` factory helpers).
 ##### combineMetaTypeArgs()
 
 ```ts
-static combineMetaTypeArgs(metaTypeArgs1?: 
+static combineMetaTypeArgs(metaTypeArgs1?:
   | MetaTypeArgsType<any, boolean, boolean, boolean>
   | (metaTypeImpl: MetaTypeImpl) => MetaTypeArgsType
-  | null, metaTypeArgs2?: 
+  | null, metaTypeArgs2?:
   | MetaTypeArgsType<any, boolean, boolean, boolean>
   | (metaTypeImpl: MetaTypeImpl) => MetaTypeArgsType
-  | null): 
+  | null):
   | (metaTypeImpl: MetaTypeImpl) => {
 [key: string]: any;
   coercion?: boolean;
@@ -32375,7 +33211,7 @@ static combineMetaTypeArgs(metaTypeArgs1?:
 };
 ```
 
-Defined in: [src/metatypes/metatypeImpl.ts:592](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L592)
+Defined in: [src/metatypes/metatypeImpl.ts:596](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L596)
 
 Utility that merges two argument objects (or factories).
 
@@ -32397,7 +33233,7 @@ Utility that merges two argument objects (or factories).
 </td>
 <td>
 
- \| [`MetaTypeArgsType`](#metatypeargstype)\<`any`, `boolean`, `boolean`, `boolean`\> \| (`metaTypeImpl`: [`MetaTypeImpl`](#metatypeimpl)) => [`MetaTypeArgsType`](#metatypeargstype) \| `null`
+\| [`MetaTypeArgsType`](#metatypeargstype)\<`any`, `boolean`, `boolean`, `boolean`\> \| (`metaTypeImpl`: [`MetaTypeImpl`](#metatypeimpl)) => [`MetaTypeArgsType`](#metatypeargstype) \| `null`
 
 </td>
 </tr>
@@ -32409,7 +33245,7 @@ Utility that merges two argument objects (or factories).
 </td>
 <td>
 
- \| [`MetaTypeArgsType`](#metatypeargstype)\<`any`, `boolean`, `boolean`, `boolean`\> \| (`metaTypeImpl`: [`MetaTypeImpl`](#metatypeimpl)) => [`MetaTypeArgsType`](#metatypeargstype) \| `null`
+\| [`MetaTypeArgsType`](#metatypeargstype)\<`any`, `boolean`, `boolean`, `boolean`\> \| (`metaTypeImpl`: [`MetaTypeImpl`](#metatypeimpl)) => [`MetaTypeArgsType`](#metatypeargstype) \| `null`
 
 </td>
 </tr>
@@ -32418,53 +33254,53 @@ Utility that merges two argument objects (or factories).
 
 ###### Returns
 
-  \| (`metaTypeImpl`: [`MetaTypeImpl`](#metatypeimpl)) => \{
+\| (`metaTypeImpl`: [`MetaTypeImpl`](#metatypeimpl)) => \{
 \[`key`: `string`\]: `any`;
-  `coercion?`: `boolean`;
-  `default?`: `any`;
-  `deserializers?`: (
-     \| [`DeSerializerType`](#deserializertype)
-    \| [`DeSerializeFuncType`](#deserializefunctype))[];
-  `name?`: `string`;
-  `noBuiltinDeSerializers?`: `boolean`;
-  `noBuiltinSerializers?`: `boolean`;
-  `noBuiltinValidators?`: `boolean`;
-  `nullable?`: `boolean`;
-  `nullish?`: `boolean`;
-  `optional?`: `boolean`;
-  `safe?`: `boolean`;
-  `serializers?`: (
-     \| [`SerializerType`](#serializertype)
-    \| [`SerializeFuncType`](#serializefunctype))[];
-  `subType?`: `any`;
-  `validateType?`: `boolean`;
-  `validators?`: (
-     \| [`ValidatorType`](#validatortype)
-    \| [`ValidatorFuncType`](#validatorfunctype))[];
+`coercion?`: `boolean`;
+`default?`: `any`;
+`deserializers?`: (
+\| [`DeSerializerType`](#deserializertype)
+\| [`DeSerializeFuncType`](#deserializefunctype))[];
+`name?`: `string`;
+`noBuiltinDeSerializers?`: `boolean`;
+`noBuiltinSerializers?`: `boolean`;
+`noBuiltinValidators?`: `boolean`;
+`nullable?`: `boolean`;
+`nullish?`: `boolean`;
+`optional?`: `boolean`;
+`safe?`: `boolean`;
+`serializers?`: (
+\| [`SerializerType`](#serializertype)
+\| [`SerializeFuncType`](#serializefunctype))[];
+`subType?`: `any`;
+`validateType?`: `boolean`;
+`validators?`: (
+\| [`ValidatorType`](#validatortype)
+\| [`ValidatorFuncType`](#validatorfunctype))[];
 \}
-  \| \{
+\| \{
 \[`key`: `string`\]: `any`;
-  `coercion?`: `boolean`;
-  `default?`: `any`;
-  `deserializers?`: (
-     \| [`DeSerializerType`](#deserializertype)
-    \| [`DeSerializeFuncType`](#deserializefunctype))[];
-  `name?`: `string`;
-  `noBuiltinDeSerializers?`: `boolean`;
-  `noBuiltinSerializers?`: `boolean`;
-  `noBuiltinValidators?`: `boolean`;
-  `nullable?`: `boolean`;
-  `nullish?`: `boolean`;
-  `optional?`: `boolean`;
-  `safe?`: `boolean`;
-  `serializers?`: (
-     \| [`SerializerType`](#serializertype)
-    \| [`SerializeFuncType`](#serializefunctype))[];
-  `subType?`: `any`;
-  `validateType?`: `boolean`;
-  `validators?`: (
-     \| [`ValidatorType`](#validatortype)
-    \| [`ValidatorFuncType`](#validatorfunctype))[];
+`coercion?`: `boolean`;
+`default?`: `any`;
+`deserializers?`: (
+\| [`DeSerializerType`](#deserializertype)
+\| [`DeSerializeFuncType`](#deserializefunctype))[];
+`name?`: `string`;
+`noBuiltinDeSerializers?`: `boolean`;
+`noBuiltinSerializers?`: `boolean`;
+`noBuiltinValidators?`: `boolean`;
+`nullable?`: `boolean`;
+`nullish?`: `boolean`;
+`optional?`: `boolean`;
+`safe?`: `boolean`;
+`serializers?`: (
+\| [`SerializerType`](#serializertype)
+\| [`SerializeFuncType`](#serializefunctype))[];
+`subType?`: `any`;
+`validateType?`: `boolean`;
+`validators?`: (
+\| [`ValidatorType`](#validatortype)
+\| [`ValidatorFuncType`](#validatorfunctype))[];
 \}
 
 ###### Inherited from
@@ -32477,7 +33313,7 @@ Utility that merges two argument objects (or factories).
 static getCompatibilityScore(_value: any): number;
 ```
 
-Defined in: [src/metatypes/metatypeImpl.ts:580](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L580)
+Defined in: [src/metatypes/metatypeImpl.ts:584](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L584)
 
 Returns a score describing how compatible a value is with this implementation.
 Higher score wins when resolving meta types dynamically.
@@ -32518,12 +33354,12 @@ Higher score wins when resolving meta types dynamically.
 ##### getMetaType()
 
 ```ts
-static getMetaType(value: any, metaTypeArgs?: 
+static getMetaType(value: any, metaTypeArgs?:
   | MetaTypeArgsType<any, boolean, boolean, boolean>
   | (metaTypeImpl: MetaTypeImpl) => MetaTypeArgsType): MetaType<unknown> | undefined;
 ```
 
-Defined in: [src/metatypes/metatypeImpl.ts:672](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L672)
+Defined in: [src/metatypes/metatypeImpl.ts:676](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L676)
 
 Resolves and wraps an implementation as a runtime meta type (`MetaType` helper).
 
@@ -32557,7 +33393,7 @@ Resolves and wraps an implementation as a runtime meta type (`MetaType` helper).
 </td>
 <td>
 
- \| [`MetaTypeArgsType`](#metatypeargstype)\<`any`, `boolean`, `boolean`, `boolean`\> \| (`metaTypeImpl`: [`MetaTypeImpl`](#metatypeimpl)) => [`MetaTypeArgsType`](#metatypeargstype)
+\| [`MetaTypeArgsType`](#metatypeargstype)\<`any`, `boolean`, `boolean`, `boolean`\> \| (`metaTypeImpl`: [`MetaTypeImpl`](#metatypeimpl)) => [`MetaTypeArgsType`](#metatypeargstype)
 
 </td>
 </tr>
@@ -32575,12 +33411,12 @@ Resolves and wraps an implementation as a runtime meta type (`MetaType` helper).
 ##### getMetaTypeImpl()
 
 ```ts
-static getMetaTypeImpl(value: any, metaTypeArgs?: 
+static getMetaTypeImpl(value: any, metaTypeArgs?:
   | MetaTypeArgsType<any, boolean, boolean, boolean>
   | (metaTypeImpl: MetaTypeImpl) => MetaTypeArgsType): MetaTypeImpl | undefined;
 ```
 
-Defined in: [src/metatypes/metatypeImpl.ts:650](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L650)
+Defined in: [src/metatypes/metatypeImpl.ts:654](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L654)
 
 Resolves an existing implementation instance for the provided value (value can be
 a meta type, `MetaTypeImpl`, plain schema, etc.).
@@ -32615,7 +33451,7 @@ a meta type, `MetaTypeImpl`, plain schema, etc.).
 </td>
 <td>
 
- \| [`MetaTypeArgsType`](#metatypeargstype)\<`any`, `boolean`, `boolean`, `boolean`\> \| (`metaTypeImpl`: [`MetaTypeImpl`](#metatypeimpl)) => [`MetaTypeArgsType`](#metatypeargstype)
+\| [`MetaTypeArgsType`](#metatypeargstype)\<`any`, `boolean`, `boolean`, `boolean`\> \| (`metaTypeImpl`: [`MetaTypeImpl`](#metatypeimpl)) => [`MetaTypeArgsType`](#metatypeargstype)
 
 </td>
 </tr>
@@ -32633,12 +33469,12 @@ a meta type, `MetaTypeImpl`, plain schema, etc.).
 ##### getMetaTypeImplClass()
 
 ```ts
-static getMetaTypeImplClass(value: any): 
+static getMetaTypeImplClass(value: any):
   | StaticClass<typeof MetaTypeImpl>
   | undefined;
 ```
 
-Defined in: [src/metatypes/metatypeImpl.ts:628](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L628)
+Defined in: [src/metatypes/metatypeImpl.ts:632](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L632)
 
 Finds the best registered implementation for the provided value using compatibility score.
 
@@ -32669,8 +33505,8 @@ Finds the best registered implementation for the provided value using compatibil
 
 ###### Returns
 
-  \| [`StaticClass`](#staticclass)\<*typeof* [`MetaTypeImpl`](#metatypeimpl)\>
-  \| `undefined`
+\| [`StaticClass`](#staticclass)\<_typeof_ [`MetaTypeImpl`](#metatypeimpl)\>
+\| `undefined`
 
 ###### Inherited from
 
@@ -32682,7 +33518,7 @@ Finds the best registered implementation for the provided value using compatibil
 static isCompatible(_value: any): boolean;
 ```
 
-Defined in: [src/metatypes/metatypeImpl.ts:572](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L572)
+Defined in: [src/metatypes/metatypeImpl.ts:576](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L576)
 
 Checks if the provided value matches the implementation (override in subclasses).
 
@@ -32725,7 +33561,7 @@ Checks if the provided value matches the implementation (override in subclasses)
 static registerMetaType(): (type: StaticClass<typeof MetaTypeImpl>) => void;
 ```
 
-Defined in: [src/metatypes/metatypeImpl.ts:585](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L585)
+Defined in: [src/metatypes/metatypeImpl.ts:589](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L589)
 
 Decorator helper that registers an implementation so it can be resolved automatically.
 
@@ -32753,7 +33589,7 @@ Decorator helper that registers an implementation so it can be resolved automati
 </td>
 <td>
 
-[`StaticClass`](#staticclass)\<*typeof* [`MetaTypeImpl`](#metatypeimpl)\>
+[`StaticClass`](#staticclass)\<_typeof_ [`MetaTypeImpl`](#metatypeimpl)\>
 
 </td>
 </tr>
@@ -32810,7 +33646,7 @@ Decorator helper that registers an implementation so it can be resolved automati
 </td>
 <td>
 
-[src/metatypes/metatypeImpl.ts:218](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L218)
+[src/metatypes/metatypeImpl.ts:222](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L222)
 
 </td>
 </tr>
@@ -32842,7 +33678,7 @@ Decorator helper that registers an implementation so it can be resolved automati
 </td>
 <td>
 
-[src/metatypes/metatypeImpl.ts:220](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L220)
+[src/metatypes/metatypeImpl.ts:224](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L224)
 
 </td>
 </tr>
@@ -32874,7 +33710,7 @@ Decorator helper that registers an implementation so it can be resolved automati
 </td>
 <td>
 
-[src/metatypes/metatypeImpl.ts:219](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L219)
+[src/metatypes/metatypeImpl.ts:223](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L223)
 
 </td>
 </tr>
@@ -32906,14 +33742,14 @@ Decorator helper that registers an implementation so it can be resolved automati
 </td>
 <td>
 
-[src/metatypes/metatypeImpl.ts:221](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L221)
+[src/metatypes/metatypeImpl.ts:225](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L225)
 
 </td>
 </tr>
 </tbody>
 </table>
 
-***
+---
 
 ### TupleImpl
 
@@ -32924,19 +33760,19 @@ Adds automatic handling for nested structures, recursive references and sub-valu
 
 #### Extends
 
-- [`StructuralMetaTypeImpl`](#structuralmetatypeimpl)
+-   [`StructuralMetaTypeImpl`](#structuralmetatypeimpl)
 
 #### Constructors
 
 ##### Constructor
 
 ```ts
-new TupleImpl(metaTypeArgs?: 
+new TupleImpl(metaTypeArgs?:
   | MetaTypeArgsType<any, boolean, boolean, boolean>
   | (metaTypeImpl: MetaTypeImpl) => MetaTypeArgsType): TupleImpl;
 ```
 
-Defined in: [src/metatypes/metatypeImpl.ts:300](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L300)
+Defined in: [src/metatypes/metatypeImpl.ts:304](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L304)
 
 Creates a new meta type implementation.
 
@@ -32959,7 +33795,7 @@ Creates a new meta type implementation.
 </td>
 <td>
 
- \| [`MetaTypeArgsType`](#metatypeargstype)\<`any`, `boolean`, `boolean`, `boolean`\> \| (`metaTypeImpl`: [`MetaTypeImpl`](#metatypeimpl)) => [`MetaTypeArgsType`](#metatypeargstype)
+\| [`MetaTypeArgsType`](#metatypeargstype)\<`any`, `boolean`, `boolean`, `boolean`\> \| (`metaTypeImpl`: [`MetaTypeImpl`](#metatypeimpl)) => [`MetaTypeArgsType`](#metatypeargstype)
 
 </td>
 <td>
@@ -32987,7 +33823,7 @@ Arguments or a factory that receives the instance being constructed.
 castToRawValue(serializationArgs: SerializerArgsType): any;
 ```
 
-Defined in: [src/metatypes/metatypeImpl.ts:375](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L375)
+Defined in: [src/metatypes/metatypeImpl.ts:379](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L379)
 
 Hook for structural types to convert values when serializing.
 
@@ -33030,7 +33866,7 @@ Hook for structural types to convert values when serializing.
 castToType(deserializationArgs: DeSerializerArgsType): any;
 ```
 
-Defined in: [src/metatypes/metatypeImpl.ts:370](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L370)
+Defined in: [src/metatypes/metatypeImpl.ts:374](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L374)
 
 Hook for structural types to cast raw values before validation.
 
@@ -33073,7 +33909,7 @@ Hook for structural types to cast raw values before validation.
 deserialize(deserializationArgs: DeSerializeMetaTypeArgsType): any;
 ```
 
-Defined in: [src/metatypes/metatypeImpl.ts:449](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L449)
+Defined in: [src/metatypes/metatypeImpl.ts:453](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L453)
 
 Runs builtin + custom deserializers and returns the final value.
 
@@ -33211,12 +34047,12 @@ Default validator that asks the implementation whether the value is compatible.
 ##### rebuild()
 
 ```ts
-rebuild(metaTypeArgs?: 
+rebuild(metaTypeArgs?:
   | MetaTypeArgsType<any, boolean, boolean, boolean>
   | (metaTypeImpl: MetaTypeImpl) => MetaTypeArgsType): MetaTypeImpl;
 ```
 
-Defined in: [src/metatypes/metatypeImpl.ts:354](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L354)
+Defined in: [src/metatypes/metatypeImpl.ts:358](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L358)
 
 Rebuilds the current implementation with additional/overriding arguments.
 
@@ -33238,7 +34074,7 @@ Rebuilds the current implementation with additional/overriding arguments.
 </td>
 <td>
 
- \| [`MetaTypeArgsType`](#metatypeargstype)\<`any`, `boolean`, `boolean`, `boolean`\> \| (`metaTypeImpl`: [`MetaTypeImpl`](#metatypeimpl)) => [`MetaTypeArgsType`](#metatypeargstype)
+\| [`MetaTypeArgsType`](#metatypeargstype)\<`any`, `boolean`, `boolean`, `boolean`\> \| (`metaTypeImpl`: [`MetaTypeImpl`](#metatypeimpl)) => [`MetaTypeArgsType`](#metatypeargstype)
 
 </td>
 </tr>
@@ -33259,7 +34095,7 @@ Rebuilds the current implementation with additional/overriding arguments.
 serialize(serializationArgs: SerializeMetaTypeArgsType): any;
 ```
 
-Defined in: [src/metatypes/metatypeImpl.ts:398](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L398)
+Defined in: [src/metatypes/metatypeImpl.ts:402](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L402)
 
 Runs builtin + custom serializers and returns the final value.
 
@@ -33357,7 +34193,7 @@ String representation displayed in inspectors/logs.
 validate(args: ValidateMetaTypeArgsType): ValidationError | undefined;
 ```
 
-Defined in: [src/metatypes/metatypeImpl.ts:507](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L507)
+Defined in: [src/metatypes/metatypeImpl.ts:511](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L511)
 
 Runs builtin + custom validators and returns a `ValidationError` when something fails.
 
@@ -33397,12 +34233,12 @@ Runs builtin + custom validators and returns a `ValidationError` when something 
 ##### build()
 
 ```ts
-static build<T>(this: (...metaTypeArgs: any) => T, metaTypeArgs?: 
+static build<T>(this: (...metaTypeArgs: any) => T, metaTypeArgs?:
   | MetaTypeArgsType<any, boolean, boolean, boolean>
   | (metaTypeImpl: MetaTypeImpl) => MetaTypeArgsType): T;
 ```
 
-Defined in: [src/metatypes/metatypeImpl.ts:346](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L346)
+Defined in: [src/metatypes/metatypeImpl.ts:350](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L350)
 
 Instantiates the implementation (used by `MetaType` factory helpers).
 
@@ -33418,7 +34254,7 @@ Instantiates the implementation (used by `MetaType` factory helpers).
 <tr>
 <td>
 
-`T` *extends* [`MetaTypeImpl`](#metatypeimpl)
+`T` _extends_ [`MetaTypeImpl`](#metatypeimpl)
 
 </td>
 </tr>
@@ -33455,7 +34291,7 @@ Instantiates the implementation (used by `MetaType` factory helpers).
 </td>
 <td>
 
- \| [`MetaTypeArgsType`](#metatypeargstype)\<`any`, `boolean`, `boolean`, `boolean`\> \| (`metaTypeImpl`: [`MetaTypeImpl`](#metatypeimpl)) => [`MetaTypeArgsType`](#metatypeargstype)
+\| [`MetaTypeArgsType`](#metatypeargstype)\<`any`, `boolean`, `boolean`, `boolean`\> \| (`metaTypeImpl`: [`MetaTypeImpl`](#metatypeimpl)) => [`MetaTypeArgsType`](#metatypeargstype)
 
 </td>
 </tr>
@@ -33473,13 +34309,13 @@ Instantiates the implementation (used by `MetaType` factory helpers).
 ##### combineMetaTypeArgs()
 
 ```ts
-static combineMetaTypeArgs(metaTypeArgs1?: 
+static combineMetaTypeArgs(metaTypeArgs1?:
   | MetaTypeArgsType<any, boolean, boolean, boolean>
   | (metaTypeImpl: MetaTypeImpl) => MetaTypeArgsType
-  | null, metaTypeArgs2?: 
+  | null, metaTypeArgs2?:
   | MetaTypeArgsType<any, boolean, boolean, boolean>
   | (metaTypeImpl: MetaTypeImpl) => MetaTypeArgsType
-  | null): 
+  | null):
   | (metaTypeImpl: MetaTypeImpl) => {
 [key: string]: any;
   coercion?: boolean;
@@ -33530,7 +34366,7 @@ static combineMetaTypeArgs(metaTypeArgs1?:
 };
 ```
 
-Defined in: [src/metatypes/metatypeImpl.ts:592](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L592)
+Defined in: [src/metatypes/metatypeImpl.ts:596](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L596)
 
 Utility that merges two argument objects (or factories).
 
@@ -33552,7 +34388,7 @@ Utility that merges two argument objects (or factories).
 </td>
 <td>
 
- \| [`MetaTypeArgsType`](#metatypeargstype)\<`any`, `boolean`, `boolean`, `boolean`\> \| (`metaTypeImpl`: [`MetaTypeImpl`](#metatypeimpl)) => [`MetaTypeArgsType`](#metatypeargstype) \| `null`
+\| [`MetaTypeArgsType`](#metatypeargstype)\<`any`, `boolean`, `boolean`, `boolean`\> \| (`metaTypeImpl`: [`MetaTypeImpl`](#metatypeimpl)) => [`MetaTypeArgsType`](#metatypeargstype) \| `null`
 
 </td>
 </tr>
@@ -33564,7 +34400,7 @@ Utility that merges two argument objects (or factories).
 </td>
 <td>
 
- \| [`MetaTypeArgsType`](#metatypeargstype)\<`any`, `boolean`, `boolean`, `boolean`\> \| (`metaTypeImpl`: [`MetaTypeImpl`](#metatypeimpl)) => [`MetaTypeArgsType`](#metatypeargstype) \| `null`
+\| [`MetaTypeArgsType`](#metatypeargstype)\<`any`, `boolean`, `boolean`, `boolean`\> \| (`metaTypeImpl`: [`MetaTypeImpl`](#metatypeimpl)) => [`MetaTypeArgsType`](#metatypeargstype) \| `null`
 
 </td>
 </tr>
@@ -33573,53 +34409,53 @@ Utility that merges two argument objects (or factories).
 
 ###### Returns
 
-  \| (`metaTypeImpl`: [`MetaTypeImpl`](#metatypeimpl)) => \{
+\| (`metaTypeImpl`: [`MetaTypeImpl`](#metatypeimpl)) => \{
 \[`key`: `string`\]: `any`;
-  `coercion?`: `boolean`;
-  `default?`: `any`;
-  `deserializers?`: (
-     \| [`DeSerializerType`](#deserializertype)
-    \| [`DeSerializeFuncType`](#deserializefunctype))[];
-  `name?`: `string`;
-  `noBuiltinDeSerializers?`: `boolean`;
-  `noBuiltinSerializers?`: `boolean`;
-  `noBuiltinValidators?`: `boolean`;
-  `nullable?`: `boolean`;
-  `nullish?`: `boolean`;
-  `optional?`: `boolean`;
-  `safe?`: `boolean`;
-  `serializers?`: (
-     \| [`SerializerType`](#serializertype)
-    \| [`SerializeFuncType`](#serializefunctype))[];
-  `subType?`: `any`;
-  `validateType?`: `boolean`;
-  `validators?`: (
-     \| [`ValidatorType`](#validatortype)
-    \| [`ValidatorFuncType`](#validatorfunctype))[];
+`coercion?`: `boolean`;
+`default?`: `any`;
+`deserializers?`: (
+\| [`DeSerializerType`](#deserializertype)
+\| [`DeSerializeFuncType`](#deserializefunctype))[];
+`name?`: `string`;
+`noBuiltinDeSerializers?`: `boolean`;
+`noBuiltinSerializers?`: `boolean`;
+`noBuiltinValidators?`: `boolean`;
+`nullable?`: `boolean`;
+`nullish?`: `boolean`;
+`optional?`: `boolean`;
+`safe?`: `boolean`;
+`serializers?`: (
+\| [`SerializerType`](#serializertype)
+\| [`SerializeFuncType`](#serializefunctype))[];
+`subType?`: `any`;
+`validateType?`: `boolean`;
+`validators?`: (
+\| [`ValidatorType`](#validatortype)
+\| [`ValidatorFuncType`](#validatorfunctype))[];
 \}
-  \| \{
+\| \{
 \[`key`: `string`\]: `any`;
-  `coercion?`: `boolean`;
-  `default?`: `any`;
-  `deserializers?`: (
-     \| [`DeSerializerType`](#deserializertype)
-    \| [`DeSerializeFuncType`](#deserializefunctype))[];
-  `name?`: `string`;
-  `noBuiltinDeSerializers?`: `boolean`;
-  `noBuiltinSerializers?`: `boolean`;
-  `noBuiltinValidators?`: `boolean`;
-  `nullable?`: `boolean`;
-  `nullish?`: `boolean`;
-  `optional?`: `boolean`;
-  `safe?`: `boolean`;
-  `serializers?`: (
-     \| [`SerializerType`](#serializertype)
-    \| [`SerializeFuncType`](#serializefunctype))[];
-  `subType?`: `any`;
-  `validateType?`: `boolean`;
-  `validators?`: (
-     \| [`ValidatorType`](#validatortype)
-    \| [`ValidatorFuncType`](#validatorfunctype))[];
+`coercion?`: `boolean`;
+`default?`: `any`;
+`deserializers?`: (
+\| [`DeSerializerType`](#deserializertype)
+\| [`DeSerializeFuncType`](#deserializefunctype))[];
+`name?`: `string`;
+`noBuiltinDeSerializers?`: `boolean`;
+`noBuiltinSerializers?`: `boolean`;
+`noBuiltinValidators?`: `boolean`;
+`nullable?`: `boolean`;
+`nullish?`: `boolean`;
+`optional?`: `boolean`;
+`safe?`: `boolean`;
+`serializers?`: (
+\| [`SerializerType`](#serializertype)
+\| [`SerializeFuncType`](#serializefunctype))[];
+`subType?`: `any`;
+`validateType?`: `boolean`;
+`validators?`: (
+\| [`ValidatorType`](#validatortype)
+\| [`ValidatorFuncType`](#validatorfunctype))[];
 \}
 
 ###### Inherited from
@@ -33632,7 +34468,7 @@ Utility that merges two argument objects (or factories).
 static getCompatibilityScore(_value: any): number;
 ```
 
-Defined in: [src/metatypes/metatypeImpl.ts:580](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L580)
+Defined in: [src/metatypes/metatypeImpl.ts:584](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L584)
 
 Returns a score describing how compatible a value is with this implementation.
 Higher score wins when resolving meta types dynamically.
@@ -33673,12 +34509,12 @@ Higher score wins when resolving meta types dynamically.
 ##### getMetaType()
 
 ```ts
-static getMetaType(value: any, metaTypeArgs?: 
+static getMetaType(value: any, metaTypeArgs?:
   | MetaTypeArgsType<any, boolean, boolean, boolean>
   | (metaTypeImpl: MetaTypeImpl) => MetaTypeArgsType): MetaType<unknown> | undefined;
 ```
 
-Defined in: [src/metatypes/metatypeImpl.ts:672](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L672)
+Defined in: [src/metatypes/metatypeImpl.ts:676](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L676)
 
 Resolves and wraps an implementation as a runtime meta type (`MetaType` helper).
 
@@ -33712,7 +34548,7 @@ Resolves and wraps an implementation as a runtime meta type (`MetaType` helper).
 </td>
 <td>
 
- \| [`MetaTypeArgsType`](#metatypeargstype)\<`any`, `boolean`, `boolean`, `boolean`\> \| (`metaTypeImpl`: [`MetaTypeImpl`](#metatypeimpl)) => [`MetaTypeArgsType`](#metatypeargstype)
+\| [`MetaTypeArgsType`](#metatypeargstype)\<`any`, `boolean`, `boolean`, `boolean`\> \| (`metaTypeImpl`: [`MetaTypeImpl`](#metatypeimpl)) => [`MetaTypeArgsType`](#metatypeargstype)
 
 </td>
 </tr>
@@ -33730,12 +34566,12 @@ Resolves and wraps an implementation as a runtime meta type (`MetaType` helper).
 ##### getMetaTypeImpl()
 
 ```ts
-static getMetaTypeImpl(value: any, metaTypeArgs?: 
+static getMetaTypeImpl(value: any, metaTypeArgs?:
   | MetaTypeArgsType<any, boolean, boolean, boolean>
   | (metaTypeImpl: MetaTypeImpl) => MetaTypeArgsType): MetaTypeImpl | undefined;
 ```
 
-Defined in: [src/metatypes/metatypeImpl.ts:650](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L650)
+Defined in: [src/metatypes/metatypeImpl.ts:654](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L654)
 
 Resolves an existing implementation instance for the provided value (value can be
 a meta type, `MetaTypeImpl`, plain schema, etc.).
@@ -33770,7 +34606,7 @@ a meta type, `MetaTypeImpl`, plain schema, etc.).
 </td>
 <td>
 
- \| [`MetaTypeArgsType`](#metatypeargstype)\<`any`, `boolean`, `boolean`, `boolean`\> \| (`metaTypeImpl`: [`MetaTypeImpl`](#metatypeimpl)) => [`MetaTypeArgsType`](#metatypeargstype)
+\| [`MetaTypeArgsType`](#metatypeargstype)\<`any`, `boolean`, `boolean`, `boolean`\> \| (`metaTypeImpl`: [`MetaTypeImpl`](#metatypeimpl)) => [`MetaTypeArgsType`](#metatypeargstype)
 
 </td>
 </tr>
@@ -33788,12 +34624,12 @@ a meta type, `MetaTypeImpl`, plain schema, etc.).
 ##### getMetaTypeImplClass()
 
 ```ts
-static getMetaTypeImplClass(value: any): 
+static getMetaTypeImplClass(value: any):
   | StaticClass<typeof MetaTypeImpl>
   | undefined;
 ```
 
-Defined in: [src/metatypes/metatypeImpl.ts:628](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L628)
+Defined in: [src/metatypes/metatypeImpl.ts:632](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L632)
 
 Finds the best registered implementation for the provided value using compatibility score.
 
@@ -33824,8 +34660,8 @@ Finds the best registered implementation for the provided value using compatibil
 
 ###### Returns
 
-  \| [`StaticClass`](#staticclass)\<*typeof* [`MetaTypeImpl`](#metatypeimpl)\>
-  \| `undefined`
+\| [`StaticClass`](#staticclass)\<_typeof_ [`MetaTypeImpl`](#metatypeimpl)\>
+\| `undefined`
 
 ###### Inherited from
 
@@ -33880,7 +34716,7 @@ Checks if the provided value matches the implementation (override in subclasses)
 static registerMetaType(): (type: StaticClass<typeof MetaTypeImpl>) => void;
 ```
 
-Defined in: [src/metatypes/metatypeImpl.ts:585](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L585)
+Defined in: [src/metatypes/metatypeImpl.ts:589](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L589)
 
 Decorator helper that registers an implementation so it can be resolved automatically.
 
@@ -33908,7 +34744,7 @@ Decorator helper that registers an implementation so it can be resolved automati
 </td>
 <td>
 
-[`StaticClass`](#staticclass)\<*typeof* [`MetaTypeImpl`](#metatypeimpl)\>
+[`StaticClass`](#staticclass)\<_typeof_ [`MetaTypeImpl`](#metatypeimpl)\>
 
 </td>
 </tr>
@@ -33965,7 +34801,7 @@ Decorator helper that registers an implementation so it can be resolved automati
 </td>
 <td>
 
-[src/metatypes/metatypeImpl.ts:218](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L218)
+[src/metatypes/metatypeImpl.ts:222](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L222)
 
 </td>
 </tr>
@@ -33997,7 +34833,7 @@ Decorator helper that registers an implementation so it can be resolved automati
 </td>
 <td>
 
-[src/metatypes/metatypeImpl.ts:220](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L220)
+[src/metatypes/metatypeImpl.ts:224](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L224)
 
 </td>
 </tr>
@@ -34029,7 +34865,7 @@ Decorator helper that registers an implementation so it can be resolved automati
 </td>
 <td>
 
-[src/metatypes/metatypeImpl.ts:219](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L219)
+[src/metatypes/metatypeImpl.ts:223](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L223)
 
 </td>
 </tr>
@@ -34061,14 +34897,14 @@ Decorator helper that registers an implementation so it can be resolved automati
 </td>
 <td>
 
-[src/metatypes/metatypeImpl.ts:221](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L221)
+[src/metatypes/metatypeImpl.ts:225](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L225)
 
 </td>
 </tr>
 </tbody>
 </table>
 
-***
+---
 
 ### UnionImpl
 
@@ -34079,19 +34915,19 @@ Adds automatic handling for nested structures, recursive references and sub-valu
 
 #### Extends
 
-- [`StructuralMetaTypeImpl`](#structuralmetatypeimpl)
+-   [`StructuralMetaTypeImpl`](#structuralmetatypeimpl)
 
 #### Constructors
 
 ##### Constructor
 
 ```ts
-new UnionImpl(metaTypeArgs?: 
+new UnionImpl(metaTypeArgs?:
   | MetaTypeArgsType<any, boolean, boolean, boolean>
   | (metaTypeImpl: MetaTypeImpl) => MetaTypeArgsType): UnionImpl;
 ```
 
-Defined in: [src/metatypes/metatypeImpl.ts:300](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L300)
+Defined in: [src/metatypes/metatypeImpl.ts:304](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L304)
 
 Creates a new meta type implementation.
 
@@ -34114,7 +34950,7 @@ Creates a new meta type implementation.
 </td>
 <td>
 
- \| [`MetaTypeArgsType`](#metatypeargstype)\<`any`, `boolean`, `boolean`, `boolean`\> \| (`metaTypeImpl`: [`MetaTypeImpl`](#metatypeimpl)) => [`MetaTypeArgsType`](#metatypeargstype)
+\| [`MetaTypeArgsType`](#metatypeargstype)\<`any`, `boolean`, `boolean`, `boolean`\> \| (`metaTypeImpl`: [`MetaTypeImpl`](#metatypeimpl)) => [`MetaTypeArgsType`](#metatypeargstype)
 
 </td>
 <td>
@@ -34142,7 +34978,7 @@ Arguments or a factory that receives the instance being constructed.
 castToRawValue(serializationArgs: SerializerArgsType): any;
 ```
 
-Defined in: [src/metatypes/metatypeImpl.ts:375](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L375)
+Defined in: [src/metatypes/metatypeImpl.ts:379](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L379)
 
 Hook for structural types to convert values when serializing.
 
@@ -34185,7 +35021,7 @@ Hook for structural types to convert values when serializing.
 castToType(deserializationArgs: DeSerializerArgsType): any;
 ```
 
-Defined in: [src/metatypes/metatypeImpl.ts:370](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L370)
+Defined in: [src/metatypes/metatypeImpl.ts:374](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L374)
 
 Hook for structural types to cast raw values before validation.
 
@@ -34228,7 +35064,7 @@ Hook for structural types to cast raw values before validation.
 deserialize(deserializationArgs: DeSerializeMetaTypeArgsType): any;
 ```
 
-Defined in: [src/metatypes/metatypeImpl.ts:449](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L449)
+Defined in: [src/metatypes/metatypeImpl.ts:453](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L453)
 
 Runs builtin + custom deserializers and returns the final value.
 
@@ -34366,12 +35202,12 @@ Default validator that asks the implementation whether the value is compatible.
 ##### rebuild()
 
 ```ts
-rebuild(metaTypeArgs?: 
+rebuild(metaTypeArgs?:
   | MetaTypeArgsType<any, boolean, boolean, boolean>
   | (metaTypeImpl: MetaTypeImpl) => MetaTypeArgsType): MetaTypeImpl;
 ```
 
-Defined in: [src/metatypes/metatypeImpl.ts:354](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L354)
+Defined in: [src/metatypes/metatypeImpl.ts:358](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L358)
 
 Rebuilds the current implementation with additional/overriding arguments.
 
@@ -34393,7 +35229,7 @@ Rebuilds the current implementation with additional/overriding arguments.
 </td>
 <td>
 
- \| [`MetaTypeArgsType`](#metatypeargstype)\<`any`, `boolean`, `boolean`, `boolean`\> \| (`metaTypeImpl`: [`MetaTypeImpl`](#metatypeimpl)) => [`MetaTypeArgsType`](#metatypeargstype)
+\| [`MetaTypeArgsType`](#metatypeargstype)\<`any`, `boolean`, `boolean`, `boolean`\> \| (`metaTypeImpl`: [`MetaTypeImpl`](#metatypeimpl)) => [`MetaTypeArgsType`](#metatypeargstype)
 
 </td>
 </tr>
@@ -34414,7 +35250,7 @@ Rebuilds the current implementation with additional/overriding arguments.
 serialize(serializationArgs: SerializeMetaTypeArgsType): any;
 ```
 
-Defined in: [src/metatypes/metatypeImpl.ts:398](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L398)
+Defined in: [src/metatypes/metatypeImpl.ts:402](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L402)
 
 Runs builtin + custom serializers and returns the final value.
 
@@ -34512,7 +35348,7 @@ String representation displayed in inspectors/logs.
 validate(args: ValidateMetaTypeArgsType): ValidationError | undefined;
 ```
 
-Defined in: [src/metatypes/metatypeImpl.ts:507](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L507)
+Defined in: [src/metatypes/metatypeImpl.ts:511](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L511)
 
 Runs builtin + custom validators and returns a `ValidationError` when something fails.
 
@@ -34552,12 +35388,12 @@ Runs builtin + custom validators and returns a `ValidationError` when something 
 ##### build()
 
 ```ts
-static build<T>(this: (...metaTypeArgs: any) => T, metaTypeArgs?: 
+static build<T>(this: (...metaTypeArgs: any) => T, metaTypeArgs?:
   | MetaTypeArgsType<any, boolean, boolean, boolean>
   | (metaTypeImpl: MetaTypeImpl) => MetaTypeArgsType): T;
 ```
 
-Defined in: [src/metatypes/metatypeImpl.ts:346](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L346)
+Defined in: [src/metatypes/metatypeImpl.ts:350](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L350)
 
 Instantiates the implementation (used by `MetaType` factory helpers).
 
@@ -34573,7 +35409,7 @@ Instantiates the implementation (used by `MetaType` factory helpers).
 <tr>
 <td>
 
-`T` *extends* [`MetaTypeImpl`](#metatypeimpl)
+`T` _extends_ [`MetaTypeImpl`](#metatypeimpl)
 
 </td>
 </tr>
@@ -34610,7 +35446,7 @@ Instantiates the implementation (used by `MetaType` factory helpers).
 </td>
 <td>
 
- \| [`MetaTypeArgsType`](#metatypeargstype)\<`any`, `boolean`, `boolean`, `boolean`\> \| (`metaTypeImpl`: [`MetaTypeImpl`](#metatypeimpl)) => [`MetaTypeArgsType`](#metatypeargstype)
+\| [`MetaTypeArgsType`](#metatypeargstype)\<`any`, `boolean`, `boolean`, `boolean`\> \| (`metaTypeImpl`: [`MetaTypeImpl`](#metatypeimpl)) => [`MetaTypeArgsType`](#metatypeargstype)
 
 </td>
 </tr>
@@ -34628,13 +35464,13 @@ Instantiates the implementation (used by `MetaType` factory helpers).
 ##### combineMetaTypeArgs()
 
 ```ts
-static combineMetaTypeArgs(metaTypeArgs1?: 
+static combineMetaTypeArgs(metaTypeArgs1?:
   | MetaTypeArgsType<any, boolean, boolean, boolean>
   | (metaTypeImpl: MetaTypeImpl) => MetaTypeArgsType
-  | null, metaTypeArgs2?: 
+  | null, metaTypeArgs2?:
   | MetaTypeArgsType<any, boolean, boolean, boolean>
   | (metaTypeImpl: MetaTypeImpl) => MetaTypeArgsType
-  | null): 
+  | null):
   | (metaTypeImpl: MetaTypeImpl) => {
 [key: string]: any;
   coercion?: boolean;
@@ -34685,7 +35521,7 @@ static combineMetaTypeArgs(metaTypeArgs1?:
 };
 ```
 
-Defined in: [src/metatypes/metatypeImpl.ts:592](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L592)
+Defined in: [src/metatypes/metatypeImpl.ts:596](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L596)
 
 Utility that merges two argument objects (or factories).
 
@@ -34707,7 +35543,7 @@ Utility that merges two argument objects (or factories).
 </td>
 <td>
 
- \| [`MetaTypeArgsType`](#metatypeargstype)\<`any`, `boolean`, `boolean`, `boolean`\> \| (`metaTypeImpl`: [`MetaTypeImpl`](#metatypeimpl)) => [`MetaTypeArgsType`](#metatypeargstype) \| `null`
+\| [`MetaTypeArgsType`](#metatypeargstype)\<`any`, `boolean`, `boolean`, `boolean`\> \| (`metaTypeImpl`: [`MetaTypeImpl`](#metatypeimpl)) => [`MetaTypeArgsType`](#metatypeargstype) \| `null`
 
 </td>
 </tr>
@@ -34719,7 +35555,7 @@ Utility that merges two argument objects (or factories).
 </td>
 <td>
 
- \| [`MetaTypeArgsType`](#metatypeargstype)\<`any`, `boolean`, `boolean`, `boolean`\> \| (`metaTypeImpl`: [`MetaTypeImpl`](#metatypeimpl)) => [`MetaTypeArgsType`](#metatypeargstype) \| `null`
+\| [`MetaTypeArgsType`](#metatypeargstype)\<`any`, `boolean`, `boolean`, `boolean`\> \| (`metaTypeImpl`: [`MetaTypeImpl`](#metatypeimpl)) => [`MetaTypeArgsType`](#metatypeargstype) \| `null`
 
 </td>
 </tr>
@@ -34728,53 +35564,53 @@ Utility that merges two argument objects (or factories).
 
 ###### Returns
 
-  \| (`metaTypeImpl`: [`MetaTypeImpl`](#metatypeimpl)) => \{
+\| (`metaTypeImpl`: [`MetaTypeImpl`](#metatypeimpl)) => \{
 \[`key`: `string`\]: `any`;
-  `coercion?`: `boolean`;
-  `default?`: `any`;
-  `deserializers?`: (
-     \| [`DeSerializerType`](#deserializertype)
-    \| [`DeSerializeFuncType`](#deserializefunctype))[];
-  `name?`: `string`;
-  `noBuiltinDeSerializers?`: `boolean`;
-  `noBuiltinSerializers?`: `boolean`;
-  `noBuiltinValidators?`: `boolean`;
-  `nullable?`: `boolean`;
-  `nullish?`: `boolean`;
-  `optional?`: `boolean`;
-  `safe?`: `boolean`;
-  `serializers?`: (
-     \| [`SerializerType`](#serializertype)
-    \| [`SerializeFuncType`](#serializefunctype))[];
-  `subType?`: `any`;
-  `validateType?`: `boolean`;
-  `validators?`: (
-     \| [`ValidatorType`](#validatortype)
-    \| [`ValidatorFuncType`](#validatorfunctype))[];
+`coercion?`: `boolean`;
+`default?`: `any`;
+`deserializers?`: (
+\| [`DeSerializerType`](#deserializertype)
+\| [`DeSerializeFuncType`](#deserializefunctype))[];
+`name?`: `string`;
+`noBuiltinDeSerializers?`: `boolean`;
+`noBuiltinSerializers?`: `boolean`;
+`noBuiltinValidators?`: `boolean`;
+`nullable?`: `boolean`;
+`nullish?`: `boolean`;
+`optional?`: `boolean`;
+`safe?`: `boolean`;
+`serializers?`: (
+\| [`SerializerType`](#serializertype)
+\| [`SerializeFuncType`](#serializefunctype))[];
+`subType?`: `any`;
+`validateType?`: `boolean`;
+`validators?`: (
+\| [`ValidatorType`](#validatortype)
+\| [`ValidatorFuncType`](#validatorfunctype))[];
 \}
-  \| \{
+\| \{
 \[`key`: `string`\]: `any`;
-  `coercion?`: `boolean`;
-  `default?`: `any`;
-  `deserializers?`: (
-     \| [`DeSerializerType`](#deserializertype)
-    \| [`DeSerializeFuncType`](#deserializefunctype))[];
-  `name?`: `string`;
-  `noBuiltinDeSerializers?`: `boolean`;
-  `noBuiltinSerializers?`: `boolean`;
-  `noBuiltinValidators?`: `boolean`;
-  `nullable?`: `boolean`;
-  `nullish?`: `boolean`;
-  `optional?`: `boolean`;
-  `safe?`: `boolean`;
-  `serializers?`: (
-     \| [`SerializerType`](#serializertype)
-    \| [`SerializeFuncType`](#serializefunctype))[];
-  `subType?`: `any`;
-  `validateType?`: `boolean`;
-  `validators?`: (
-     \| [`ValidatorType`](#validatortype)
-    \| [`ValidatorFuncType`](#validatorfunctype))[];
+`coercion?`: `boolean`;
+`default?`: `any`;
+`deserializers?`: (
+\| [`DeSerializerType`](#deserializertype)
+\| [`DeSerializeFuncType`](#deserializefunctype))[];
+`name?`: `string`;
+`noBuiltinDeSerializers?`: `boolean`;
+`noBuiltinSerializers?`: `boolean`;
+`noBuiltinValidators?`: `boolean`;
+`nullable?`: `boolean`;
+`nullish?`: `boolean`;
+`optional?`: `boolean`;
+`safe?`: `boolean`;
+`serializers?`: (
+\| [`SerializerType`](#serializertype)
+\| [`SerializeFuncType`](#serializefunctype))[];
+`subType?`: `any`;
+`validateType?`: `boolean`;
+`validators?`: (
+\| [`ValidatorType`](#validatortype)
+\| [`ValidatorFuncType`](#validatorfunctype))[];
 \}
 
 ###### Inherited from
@@ -34787,7 +35623,7 @@ Utility that merges two argument objects (or factories).
 static getCompatibilityScore(_value: any): number;
 ```
 
-Defined in: [src/metatypes/metatypeImpl.ts:580](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L580)
+Defined in: [src/metatypes/metatypeImpl.ts:584](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L584)
 
 Returns a score describing how compatible a value is with this implementation.
 Higher score wins when resolving meta types dynamically.
@@ -34828,12 +35664,12 @@ Higher score wins when resolving meta types dynamically.
 ##### getMetaType()
 
 ```ts
-static getMetaType(value: any, metaTypeArgs?: 
+static getMetaType(value: any, metaTypeArgs?:
   | MetaTypeArgsType<any, boolean, boolean, boolean>
   | (metaTypeImpl: MetaTypeImpl) => MetaTypeArgsType): MetaType<unknown> | undefined;
 ```
 
-Defined in: [src/metatypes/metatypeImpl.ts:672](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L672)
+Defined in: [src/metatypes/metatypeImpl.ts:676](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L676)
 
 Resolves and wraps an implementation as a runtime meta type (`MetaType` helper).
 
@@ -34867,7 +35703,7 @@ Resolves and wraps an implementation as a runtime meta type (`MetaType` helper).
 </td>
 <td>
 
- \| [`MetaTypeArgsType`](#metatypeargstype)\<`any`, `boolean`, `boolean`, `boolean`\> \| (`metaTypeImpl`: [`MetaTypeImpl`](#metatypeimpl)) => [`MetaTypeArgsType`](#metatypeargstype)
+\| [`MetaTypeArgsType`](#metatypeargstype)\<`any`, `boolean`, `boolean`, `boolean`\> \| (`metaTypeImpl`: [`MetaTypeImpl`](#metatypeimpl)) => [`MetaTypeArgsType`](#metatypeargstype)
 
 </td>
 </tr>
@@ -34885,12 +35721,12 @@ Resolves and wraps an implementation as a runtime meta type (`MetaType` helper).
 ##### getMetaTypeImpl()
 
 ```ts
-static getMetaTypeImpl(value: any, metaTypeArgs?: 
+static getMetaTypeImpl(value: any, metaTypeArgs?:
   | MetaTypeArgsType<any, boolean, boolean, boolean>
   | (metaTypeImpl: MetaTypeImpl) => MetaTypeArgsType): MetaTypeImpl | undefined;
 ```
 
-Defined in: [src/metatypes/metatypeImpl.ts:650](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L650)
+Defined in: [src/metatypes/metatypeImpl.ts:654](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L654)
 
 Resolves an existing implementation instance for the provided value (value can be
 a meta type, `MetaTypeImpl`, plain schema, etc.).
@@ -34925,7 +35761,7 @@ a meta type, `MetaTypeImpl`, plain schema, etc.).
 </td>
 <td>
 
- \| [`MetaTypeArgsType`](#metatypeargstype)\<`any`, `boolean`, `boolean`, `boolean`\> \| (`metaTypeImpl`: [`MetaTypeImpl`](#metatypeimpl)) => [`MetaTypeArgsType`](#metatypeargstype)
+\| [`MetaTypeArgsType`](#metatypeargstype)\<`any`, `boolean`, `boolean`, `boolean`\> \| (`metaTypeImpl`: [`MetaTypeImpl`](#metatypeimpl)) => [`MetaTypeArgsType`](#metatypeargstype)
 
 </td>
 </tr>
@@ -34943,12 +35779,12 @@ a meta type, `MetaTypeImpl`, plain schema, etc.).
 ##### getMetaTypeImplClass()
 
 ```ts
-static getMetaTypeImplClass(value: any): 
+static getMetaTypeImplClass(value: any):
   | StaticClass<typeof MetaTypeImpl>
   | undefined;
 ```
 
-Defined in: [src/metatypes/metatypeImpl.ts:628](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L628)
+Defined in: [src/metatypes/metatypeImpl.ts:632](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L632)
 
 Finds the best registered implementation for the provided value using compatibility score.
 
@@ -34979,8 +35815,8 @@ Finds the best registered implementation for the provided value using compatibil
 
 ###### Returns
 
-  \| [`StaticClass`](#staticclass)\<*typeof* [`MetaTypeImpl`](#metatypeimpl)\>
-  \| `undefined`
+\| [`StaticClass`](#staticclass)\<_typeof_ [`MetaTypeImpl`](#metatypeimpl)\>
+\| `undefined`
 
 ###### Inherited from
 
@@ -35035,7 +35871,7 @@ Checks if the provided value matches the implementation (override in subclasses)
 static registerMetaType(): (type: StaticClass<typeof MetaTypeImpl>) => void;
 ```
 
-Defined in: [src/metatypes/metatypeImpl.ts:585](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L585)
+Defined in: [src/metatypes/metatypeImpl.ts:589](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L589)
 
 Decorator helper that registers an implementation so it can be resolved automatically.
 
@@ -35063,7 +35899,7 @@ Decorator helper that registers an implementation so it can be resolved automati
 </td>
 <td>
 
-[`StaticClass`](#staticclass)\<*typeof* [`MetaTypeImpl`](#metatypeimpl)\>
+[`StaticClass`](#staticclass)\<_typeof_ [`MetaTypeImpl`](#metatypeimpl)\>
 
 </td>
 </tr>
@@ -35120,7 +35956,7 @@ Decorator helper that registers an implementation so it can be resolved automati
 </td>
 <td>
 
-[src/metatypes/metatypeImpl.ts:218](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L218)
+[src/metatypes/metatypeImpl.ts:222](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L222)
 
 </td>
 </tr>
@@ -35152,7 +35988,7 @@ Decorator helper that registers an implementation so it can be resolved automati
 </td>
 <td>
 
-[src/metatypes/metatypeImpl.ts:220](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L220)
+[src/metatypes/metatypeImpl.ts:224](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L224)
 
 </td>
 </tr>
@@ -35184,7 +36020,7 @@ Decorator helper that registers an implementation so it can be resolved automati
 </td>
 <td>
 
-[src/metatypes/metatypeImpl.ts:219](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L219)
+[src/metatypes/metatypeImpl.ts:223](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L223)
 
 </td>
 </tr>
@@ -35216,14 +36052,14 @@ Decorator helper that registers an implementation so it can be resolved automati
 </td>
 <td>
 
-[src/metatypes/metatypeImpl.ts:221](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L221)
+[src/metatypes/metatypeImpl.ts:225](https://github.com/metatyper/metatyper/blob/main/src/metatypes/metatypeImpl.ts#L225)
 
 </td>
 </tr>
 </tbody>
 </table>
 
-***
+---
 
 ### ValidationError
 
@@ -35233,7 +36069,7 @@ General validation error. Contains a list of validation issues (list of [MetaTyp
 
 #### Extends
 
-- [`MetaError`](#metaerror)
+-   [`MetaError`](#metaerror)
 
 #### Constructors
 
