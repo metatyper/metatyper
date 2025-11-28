@@ -63,7 +63,11 @@ export type ValidatorFuncType = (validationArgs: ValidatorArgsType) => boolean |
  * @property name - The name of the validator.
  * @property validate - The function that validates the value.
  */
-export type ValidatorType = { name?: string; validate: ValidatorFuncType }
+export type ValidatorType = {
+    name?: string
+    context?: Record<string, any>
+    validate: ValidatorFuncType
+}
 
 /** Arguments passed when serializing a value via `MetaTypeImpl.serialize`. */
 export type SerializeMetaTypeArgsType = {

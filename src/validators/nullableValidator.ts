@@ -1,4 +1,4 @@
-import { ValidatorArgsType } from '../metatypes'
+import { ValidatorArgsType, type ValidatorType } from '../metatypes'
 
 /** Validator that rejects `null` values. */
 export const NullableValidator = {
@@ -10,4 +10,4 @@ export const NullableValidator = {
 
         return true
     }
-}
+} as ValidatorType

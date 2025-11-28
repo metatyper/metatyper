@@ -1,4 +1,4 @@
-import { ValidatorArgsType } from '../metatypes'
+import { ValidatorArgsType, type ValidatorType } from '../metatypes'
 
 /** Validator that rejects `undefined` values. */
 export const OptionalValidator = {
@@ -10,4 +10,4 @@ export const OptionalValidator = {
 
         return true
     }
-}
+} as ValidatorType

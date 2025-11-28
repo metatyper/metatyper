@@ -1,49 +1,57 @@
-import { ValidatorArgsType } from '../metatypes'
+import { ValidatorArgsType, type ValidatorType } from '../metatypes'
 
 /** Creates a validator enforcing `value >= min`. */
-export const MinValidatorBuilder = (min: any) => ({
-    name: 'Min',
-    validate: ({ value }: ValidatorArgsType) => {
-        if (value == null) {
-            return true
-        }
+export const MinValidatorBuilder = (min: any) =>
+    ({
+        name: 'Min',
+        context: { min },
+        validate: ({ value }: ValidatorArgsType) => {
+            if (value == null) {
+                return true
+            }
 
-        return value >= min
-    }
-})
+            return value >= min
+        }
+    }) as ValidatorType
 
 /** Creates a validator enforcing `value <= max`. */
-export const MaxValidatorBuilder = (max: any) => ({
-    name: 'Max',
-    validate: ({ value }: ValidatorArgsType) => {
-        if (value == null) {
-            return true
-        }
+export const MaxValidatorBuilder = (max: any) =>
+    ({
+        name: 'Max',
+        context: { max },
+        validate: ({ value }: ValidatorArgsType) => {
+            if (value == null) {
+                return true
+            }
 
-        return value <= max
-    }
-})
+            return value <= max
+        }
+    }) as ValidatorType
 
 /** Creates a validator enforcing `value > greater`. */
-export const GreaterValidatorBuilder = (greater: any) => ({
-    name: 'Greater',
-    validate: ({ value }: ValidatorArgsType) => {
-        if (value == null) {
-            return true
-        }
+export const GreaterValidatorBuilder = (greater: any) =>
+    ({
+        name: 'Greater',
+        context: { greater },
+        validate: ({ value }: ValidatorArgsType) => {
+            if (value == null) {
+                return true
+            }
 
-        return value > greater
-    }
-})
+            return value > greater
+        }
+    }) as ValidatorType
 
 /** Creates a validator enforcing `value < less`. */
-export const LessValidatorBuilder = (less: any) => ({
-    name: 'Less',
-    validate: ({ value }: ValidatorArgsType) => {
-        if (value == null) {
-            return true
-        }
+export const LessValidatorBuilder = (less: any) =>
+    ({
+        name: 'Less',
+        context: { less },
+        validate: ({ value }: ValidatorArgsType) => {
+            if (value == null) {
+                return true
+            }
 
-        return value < less
-    }
-})
+            return value < less
+        }
+    }) as ValidatorType
