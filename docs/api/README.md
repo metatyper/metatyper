@@ -808,7 +808,7 @@ function CARD<IsNullishT, IsNullableT, IsOptionalT>(
 ): CARD
 ```
 
-Defined in: src/metatypes/types/card.ts:19
+Defined in: [src/metatypes/types/card.ts:19](https://github.com/metatyper/metatyper/blob/main/src/metatypes/types/card.ts#L19)
 
 Creates a credit card meta type using common brand regexes (Visa, MasterCard, AmEx, etc.).
 
@@ -1224,7 +1224,7 @@ function EMAIL<IsNullishT, IsNullableT, IsOptionalT>(
 ): EMAIL
 ```
 
-Defined in: src/metatypes/types/email.ts:16
+Defined in: [src/metatypes/types/email.ts:16](https://github.com/metatyper/metatyper/blob/main/src/metatypes/types/email.ts#L16)
 
 Creates a email meta type with length/regexp/casing options plus standard meta args.
 
@@ -1424,7 +1424,7 @@ function HOSTNAME<IsNullishT, IsNullableT, IsOptionalT>(
 ): HOSTNAME
 ```
 
-Defined in: src/metatypes/types/hostname.ts:16
+Defined in: [src/metatypes/types/hostname.ts:16](https://github.com/metatyper/metatyper/blob/main/src/metatypes/types/hostname.ts#L16)
 
 Creates a hostname/domain meta type.
 
@@ -1825,7 +1825,7 @@ function IP<IsNullishT, IsNullableT, IsOptionalT>(
 ): IP
 ```
 
-Defined in: src/metatypes/types/ip.ts:17
+Defined in: [src/metatypes/types/ip.ts:17](https://github.com/metatyper/metatyper/blob/main/src/metatypes/types/ip.ts#L17)
 
 Creates an IP meta type (IPv4 or IPv6) with length/regexp/casing options plus standard meta args.
 
@@ -6511,7 +6511,7 @@ function PASSWORD<IsNullishT, IsNullableT, IsOptionalT>(
 ): PASSWORD
 ```
 
-Defined in: src/metatypes/types/password.ts:39
+Defined in: [src/metatypes/types/password.ts:39](https://github.com/metatyper/metatyper/blob/main/src/metatypes/types/password.ts#L39)
 
 Creates a password meta type with configurable character requirements and length.
 
@@ -6618,7 +6618,7 @@ function PHONE<IsNullishT, IsNullableT, IsOptionalT>(
 ): PHONE
 ```
 
-Defined in: src/metatypes/types/phone.ts:17
+Defined in: [src/metatypes/types/phone.ts:17](https://github.com/metatyper/metatyper/blob/main/src/metatypes/types/phone.ts#L17)
 
 Creates a phone meta type for E.164-like international phone numbers.
 
@@ -6897,7 +6897,7 @@ function SLUG<IsNullishT, IsNullableT, IsOptionalT>(
 ): SLUG
 ```
 
-Defined in: src/metatypes/types/slug.ts:16
+Defined in: [src/metatypes/types/slug.ts:16](https://github.com/metatyper/metatyper/blob/main/src/metatypes/types/slug.ts#L16)
 
 Creates a slug meta type (e.g. "my-blog-post-1").
 
@@ -7447,7 +7447,7 @@ function URL<IsNullishT, IsNullableT, IsOptionalT>(
 ): URL
 ```
 
-Defined in: src/metatypes/types/url.ts:17
+Defined in: [src/metatypes/types/url.ts:17](https://github.com/metatyper/metatyper/blob/main/src/metatypes/types/url.ts#L17)
 
 Creates a URL meta type with length/regexp/casing options plus standard meta args.
 
@@ -7553,7 +7553,7 @@ function UUID<IsNullishT, IsNullableT, IsOptionalT>(
 ): UUID
 ```
 
-Defined in: src/metatypes/types/uuid.ts:16
+Defined in: [src/metatypes/types/uuid.ts:16](https://github.com/metatyper/metatyper/blob/main/src/metatypes/types/uuid.ts#L16)
 
 Creates a UUID (v1–v5) meta type with length/regexp/casing options plus standard meta args.
 
@@ -8115,7 +8115,7 @@ Values that should be coerced to `true` before validation.
 type CARD = MetaType<string, StringImpl>
 ```
 
-Defined in: src/metatypes/types/card.ts:19
+Defined in: [src/metatypes/types/card.ts:19](https://github.com/metatyper/metatyper/blob/main/src/metatypes/types/card.ts#L19)
 
 Creates a credit card meta type using common brand regexes (Visa, MasterCard, AmEx, etc.).
 
@@ -8759,7 +8759,7 @@ The name of the deserializer.
 type EMAIL = MetaType<string, StringImpl>
 ```
 
-Defined in: src/metatypes/types/email.ts:16
+Defined in: [src/metatypes/types/email.ts:16](https://github.com/metatyper/metatyper/blob/main/src/metatypes/types/email.ts#L16)
 
 Creates a email meta type with length/regexp/casing options plus standard meta args.
 
@@ -8783,7 +8783,7 @@ obj.email = 'vadzimsharai@gmail.com' // ok
 type HOSTNAME = MetaType<string, StringImpl>
 ```
 
-Defined in: src/metatypes/types/hostname.ts:16
+Defined in: [src/metatypes/types/hostname.ts:16](https://github.com/metatyper/metatyper/blob/main/src/metatypes/types/hostname.ts#L16)
 
 Creates a hostname/domain meta type.
 
@@ -9149,7 +9149,7 @@ obj1.a = 1.2 // validation error
 type IP = MetaType<string, StringImpl>
 ```
 
-Defined in: src/metatypes/types/ip.ts:17
+Defined in: [src/metatypes/types/ip.ts:17](https://github.com/metatyper/metatyper/blob/main/src/metatypes/types/ip.ts#L17)
 
 Creates an IP meta type (IPv4 or IPv6) with length/regexp/casing options plus standard meta args.
 
@@ -11850,7 +11850,7 @@ Enables/disables serialization/deserialization of nested properties.
 type PASSWORD = MetaType<string, StringImpl>
 ```
 
-Defined in: src/metatypes/types/password.ts:39
+Defined in: [src/metatypes/types/password.ts:39](https://github.com/metatyper/metatyper/blob/main/src/metatypes/types/password.ts#L39)
 
 Creates a password meta type with configurable character requirements and length.
 
@@ -11884,7 +11884,7 @@ type PasswordMetaTypeArgs<T, IsNullishT, IsNullableT, IsOptionalT> = Omit<
 }
 ```
 
-Defined in: src/metatypes/types/password.ts:5
+Defined in: [src/metatypes/types/password.ts:5](https://github.com/metatyper/metatyper/blob/main/src/metatypes/types/password.ts#L5)
 
 Additional options supported by the `PASSWORD` meta type.
 
@@ -11918,7 +11918,7 @@ Additional options supported by the `PASSWORD` meta type.
 </td>
 <td>
 
-src/metatypes/types/password.ts:14
+[src/metatypes/types/password.ts:14](https://github.com/metatyper/metatyper/blob/main/src/metatypes/types/password.ts#L14)
 
 </td>
 </tr>
@@ -11940,7 +11940,7 @@ Require at least one lowercase letter [a-z] (defaults to true).
 </td>
 <td>
 
-src/metatypes/types/password.ts:17
+[src/metatypes/types/password.ts:17](https://github.com/metatyper/metatyper/blob/main/src/metatypes/types/password.ts#L17)
 
 </td>
 </tr>
@@ -11962,7 +11962,7 @@ Require at least one digit [0-9] (defaults to true).
 </td>
 <td>
 
-src/metatypes/types/password.ts:21
+[src/metatypes/types/password.ts:21](https://github.com/metatyper/metatyper/blob/main/src/metatypes/types/password.ts#L21)
 
 </td>
 </tr>
@@ -11984,7 +11984,7 @@ Require at least one non-alphanumeric character (defaults to true).
 </td>
 <td>
 
-src/metatypes/types/password.ts:23
+[src/metatypes/types/password.ts:23](https://github.com/metatyper/metatyper/blob/main/src/metatypes/types/password.ts#L23)
 
 </td>
 </tr>
@@ -12006,7 +12006,7 @@ Require at least one uppercase letter [A-Z] (defaults to true).
 </td>
 <td>
 
-src/metatypes/types/password.ts:19
+[src/metatypes/types/password.ts:19](https://github.com/metatyper/metatyper/blob/main/src/metatypes/types/password.ts#L19)
 
 </td>
 </tr>
@@ -12082,7 +12082,7 @@ src/metatypes/types/password.ts:19
 type PHONE = MetaType<string, StringImpl>
 ```
 
-Defined in: src/metatypes/types/phone.ts:17
+Defined in: [src/metatypes/types/phone.ts:17](https://github.com/metatyper/metatyper/blob/main/src/metatypes/types/phone.ts#L17)
 
 Creates a phone meta type for E.164-like international phone numbers.
 
@@ -12635,7 +12635,7 @@ The places where the serializer can be triggered.
 type SLUG = MetaType<string, StringImpl>
 ```
 
-Defined in: src/metatypes/types/slug.ts:16
+Defined in: [src/metatypes/types/slug.ts:16](https://github.com/metatyper/metatyper/blob/main/src/metatypes/types/slug.ts#L16)
 
 Creates a slug meta type (e.g. "my-blog-post-1").
 
@@ -13173,7 +13173,7 @@ obj1.a = {} // type & validation error
 type URL = MetaType<string, StringImpl>
 ```
 
-Defined in: src/metatypes/types/url.ts:17
+Defined in: [src/metatypes/types/url.ts:17](https://github.com/metatyper/metatyper/blob/main/src/metatypes/types/url.ts#L17)
 
 Creates a URL meta type with length/regexp/casing options plus standard meta args.
 
@@ -13197,7 +13197,7 @@ obj.website = 'https://example.com' // ok
 type UUID = MetaType<string, StringImpl>
 ```
 
-Defined in: src/metatypes/types/uuid.ts:16
+Defined in: [src/metatypes/types/uuid.ts:16](https://github.com/metatyper/metatyper/blob/main/src/metatypes/types/uuid.ts#L16)
 
 Creates a UUID (v1–v5) meta type with length/regexp/casing options plus standard meta args.
 
