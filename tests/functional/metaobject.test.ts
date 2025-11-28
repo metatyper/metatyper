@@ -22,7 +22,10 @@ import {
     NumberImpl,
     STRING,
     StringImpl,
-    getDescriptorValue
+    getDescriptorValue,
+    MetaTypeValidatorError,
+    MetaType,
+    MetaErrorHandlerPlaceType
 } from '../../src'
 
 describe('Meta objects', () => {
@@ -855,12 +858,23 @@ describe('Meta objects', () => {
         const handler = jest.fn()
         const customError = new Error('err')
 
-        const places: any = ['init', 'validate']
+        const places: MetaErrorHandlerPlaceType[] = ['init', 'validate']
+
+        const ANumberMetaType = NUMBER({
+            nullish: true,
+            deserializers: [({ value }) => value ?? null]
+        })
+        const BNumberMetaType = NUMBER({
+            nullish: true,
+            min: 2,
+            max: 0,
+            safe: false
+        })
 
         const metaObject = Meta(
             {
-                a: NUMBER({ nullish: true, deserializers: [({ value }) => value ?? null] }),
-                b: NUMBER({ nullish: true, deserializers: [({ value }) => value ?? null] })
+                a: ANumberMetaType,
+                b: BNumberMetaType
             },
             {
                 errorHandlers: [
@@ -886,15 +900,33 @@ describe('Meta objects', () => {
 
         expect(handler.mock.calls).toEqual([])
 
-        places.push('set')
+        places.push('define')
 
         expect(() => {
             metaObject['a'] = '1' as any
         }).toThrow(ValidationError)
 
-        expect(JSON.stringify(handler.mock.calls)).toBe(
-            '[[{"error":{"issues":[{"validator":{"name":"MetaType"},"validatorArgs":{"value":"1","targetObject":{"a":null,"b":null},"path":["a"],"metaTypeImpl":{"id":"0","name":"NUMBER"}}}]},"propName":"a","targetObject":{"a":null,"b":null},"baseObject":{"a":null,"b":null},"errorPlace":"set"}]]'
-        )
+        expect(handler.mock.calls).toEqual([
+            [
+                {
+                    error: new ValidationError([
+                        new MetaTypeValidatorError({
+                            validator: { name: 'MetaType' } as any,
+                            validatorArgs: {
+                                value: '1',
+                                targetObject: metaObject,
+                                path: ['a'],
+                                metaTypeImpl: MetaType.getMetaTypeImpl(ANumberMetaType)
+                            }
+                        })
+                    ]),
+                    propName: 'a',
+                    targetObject: metaObject,
+                    baseObject: metaObject,
+                    errorPlace: 'define'
+                }
+            ]
+        ])
 
         const validationError = Meta.validate(metaObject, {
             a: '1'
@@ -902,9 +934,42 @@ describe('Meta objects', () => {
 
         expect(validationError).toBeInstanceOf(ValidationError)
 
-        expect(JSON.stringify(handler.mock.calls)).toBe(
-            '[[{"error":{"issues":[{"validator":{"name":"MetaType"},"validatorArgs":{"value":"1","targetObject":{"a":null,"b":null},"path":["a"],"metaTypeImpl":{"id":"0","name":"NUMBER"}}}]},"propName":"a","targetObject":{"a":null,"b":null},"baseObject":{"a":null,"b":null},"errorPlace":"set"}]]'
-        )
+        expect(handler.mock.calls).toHaveLength(1)
+
+        expect(() => {
+            metaObject['b'] = 1
+        }).not.toThrow(ValidationError)
+
+        expect(handler.mock.calls).toHaveLength(2)
+        expect(handler.mock.calls[1]).toEqual([
+            {
+                error: new ValidationError([
+                    new MetaTypeValidatorError({
+                        validator: { name: 'Min', context: { min: 2 } } as any,
+                        validatorArgs: {
+                            value: 1,
+                            path: ['b'],
+                            metaTypeImpl: MetaType.getMetaTypeImpl(BNumberMetaType)
+                        }
+                    }),
+                    new MetaTypeValidatorError({
+                        validator: { name: 'Max', context: { max: 0 } } as any,
+                        validatorArgs: {
+                            value: 1,
+                            path: ['b'],
+                            metaTypeImpl: MetaType.getMetaTypeImpl(BNumberMetaType)
+                        }
+                    })
+                ]),
+                propName: 'b',
+                targetObject: {
+                    a: null,
+                    b: 1
+                },
+                baseObject: metaObject,
+                errorPlace: 'define'
+            }
+        ])
     })
 
     test('ignore props as func', () => {

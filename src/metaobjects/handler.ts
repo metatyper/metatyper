@@ -363,11 +363,14 @@ export class MetaObjectsHandler {
                 }
 
                 if (registryInfo.validationIsActive) {
+                    const metaTypeSafe = metaObjectSafe && declaration.metaTypeArgs.safe
+
                     const error = declaration.validate({
                         value: descriptor.value,
                         path: [propName],
                         baseObject,
-                        targetObject: baseObject
+                        targetObject: baseObject,
+                        ...(!metaTypeSafe ? { stopAtFirstError: false } : {})
                     })
 
                     if (error) {
@@ -379,7 +382,7 @@ export class MetaObjectsHandler {
                             errorPlace: 'init'
                         })
 
-                        if (declaration.metaTypeArgs.safe && metaObjectSafe) {
+                        if (metaTypeSafe) {
                             throw error
                         }
                     }
@@ -676,14 +679,17 @@ export class MetaObjectsHandler {
                     }
 
                     if (registryInfo.validationIsActive) {
+                        const metaTypeSafe = metaObjectSafe && declaration.metaTypeArgs.safe
+
                         const error = declaration.validate({
                             value: newValue,
                             path: [propName],
-                            targetObject: baseObject
+                            targetObject: baseObject,
+                            ...(!metaTypeSafe ? { stopAtFirstError: false } : {})
                         })
 
                         if (error) {
-                            if (declaration.metaTypeArgs.safe && metaObjectSafe) {
+                            if (metaTypeSafe) {
                                 throw error
                             } else {
                                 this.emitErrorEvent({
@@ -1027,7 +1033,14 @@ export class MetaObjectsHandler {
                 }
 
                 if (validationIsActive) {
-                    const error = declaration.validate({ value, path: [propName], targetObject })
+                    const metaTypeSafe = metaObjectSafe && declaration.metaTypeArgs.safe
+
+                    const error = declaration.validate({
+                        value,
+                        path: [propName],
+                        targetObject,
+                        ...(!metaTypeSafe ? { stopAtFirstError: false } : {})
+                    })
 
                     if (error) {
                         this.emitErrorEvent({
@@ -1038,7 +1051,7 @@ export class MetaObjectsHandler {
                             errorPlace: 'deserialize'
                         })
 
-                        if (declaration.metaTypeArgs.safe && metaObjectSafe) {
+                        if (metaTypeSafe) {
                             throw error
                         }
                     }
