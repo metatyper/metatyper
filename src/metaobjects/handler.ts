@@ -1068,7 +1068,7 @@ export class MetaObjectsHandler {
             const prevDescriptor = prevDescriptors[propName]
 
             try {
-                Reflect.set(targetObject, propName, value)
+                Reflect.set(baseObject, propName, value)
 
                 this.emitChangeEvent({
                     action: 'deserialize',
