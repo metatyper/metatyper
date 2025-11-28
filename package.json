@@ -53,19 +53,19 @@
   "lint-staged": {
     "src/*.ts": [
       "eslint --cache --fix",
-      "prettier --ignore-unknown --write"
+      "prettier --ignore-unknown --write {src,tests}/**/*.ts"
     ],
-    "*.md": [
-      "prettier --ignore-unknown --write"
+    "/README.md": [
+      "prettier --ignore-unknown --write README.md"
     ]
   },
   "scripts": {
     "prepare:husky": "husky && sh .husky/pre-commit",
-    "prepare:typedoc": "typedoc",
+    "prepare:typedoc": "typedoc && prettier --ignore-unknown --write docs/api/**/*.md",
     "prepare": "yarn prepare:husky",
     "sandbox": "jest ./tests/sandbox.test.ts",
     "lint": "eslint {src,tests}/**/*.ts",
-    "lint:fix": "yarn lint --fix && prettier --write {src,tests}/**/*.{ts,md}",
+    "lint:fix": "yarn lint --fix && prettier --ignore-unknown --write {src,tests}/**/*.ts",
     "test:types": "tsc --noEmit --project  ./tsconfig.json",
     "test:jest": "jest",
     "test:coverage": "jest --coverage",

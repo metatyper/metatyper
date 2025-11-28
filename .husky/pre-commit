@@ -3,4 +3,4 @@ yarn lint-staged
 yarn test:prepare
 yarn test
 
-npx typedoc
+yarn prepare:typedoc
