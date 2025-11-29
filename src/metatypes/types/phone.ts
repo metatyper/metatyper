@@ -18,13 +18,13 @@ export function PHONE<
     IsNullishT extends boolean = false,
     IsNullableT extends boolean = IsNullishT,
     IsOptionalT extends boolean = IsNullishT
->(args?: Omit<StringMetaTypeArgs<PHONE, IsNullishT, IsNullableT, IsOptionalT>, 'regexp'>): PHONE {
+>(args?: StringMetaTypeArgs<PHONE, IsNullishT, IsNullableT, IsOptionalT>) {
     return MetaType(StringImpl, {
-        regexp: /^\+[1-9]\d{1,14}$/,
+        regexp: args?.regexp || /^\+[1-9]\d{1,14}$/,
         trim: true,
         ...(args ?? {}),
         ...(args?.coercion
-            ? { deserializers: [PhoneNumberDeSerializer, ...(args?.serializers ?? [])] }
+            ? { deserializers: [PhoneNumberDeSerializer, ...(args?.deserializers ?? [])] }
             : {})
     })
 }

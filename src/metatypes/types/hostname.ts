@@ -17,12 +17,12 @@ export function HOSTNAME<
     IsNullishT extends boolean = false,
     IsNullableT extends boolean = IsNullishT,
     IsOptionalT extends boolean = IsNullishT
->(
-    args?: Omit<StringMetaTypeArgs<HOSTNAME, IsNullishT, IsNullableT, IsOptionalT>, 'regexp'>
-): HOSTNAME {
+>(args?: StringMetaTypeArgs<HOSTNAME, IsNullishT, IsNullableT, IsOptionalT>) {
     return MetaType(StringImpl, {
         // Simplified hostname / domain name (no protocol, no path)
-        regexp: /^(?=.{1,253}$)(?!-)[A-Za-z0-9-]{1,63}(?<!-)(\.(?!-)[A-Za-z0-9-]{1,63}(?<!-))*$/u,
+        regexp:
+            args?.regexp ||
+            /^(?=.{1,253}$)(?!-)[A-Za-z0-9-]{1,63}(?<!-)(\.(?!-)[A-Za-z0-9-]{1,63}(?<!-))*$/u,
         trim: true,
         ...(args ?? {})
     })

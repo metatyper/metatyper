@@ -17,10 +17,12 @@ export function UUID<
     IsNullishT extends boolean = false,
     IsNullableT extends boolean = IsNullishT,
     IsOptionalT extends boolean = IsNullishT
->(args?: Omit<StringMetaTypeArgs<UUID, IsNullishT, IsNullableT, IsOptionalT>, 'regexp'>): UUID {
+>(args?: StringMetaTypeArgs<UUID, IsNullishT, IsNullableT, IsOptionalT>) {
     return MetaType(StringImpl, {
         // Generic v1–v5 UUID (8-4-4-4-12)
-        regexp: /^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i,
+        regexp:
+            args?.regexp ||
+            /^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i,
         trim: true,
         toCase: 'lower',
         ...(args ?? {})

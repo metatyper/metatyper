@@ -8,12 +8,7 @@ export type PasswordMetaTypeArgs<
     IsNullishT extends boolean = boolean,
     IsNullableT extends boolean = IsNullishT,
     IsOptionalT extends boolean = IsNullishT
-> = Omit<
-    StringMetaTypeArgs<T, IsNullishT, IsNullableT, IsOptionalT>,
-    'regexp' | 'notEmpty' | 'minLength'
-> & {
-    minLength?: number
-
+> = StringMetaTypeArgs<T, IsNullishT, IsNullableT, IsOptionalT> & {
     /** Require at least one lowercase letter [a-z] (defaults to true). */
     requireLowercase?: boolean
     /** Require at least one uppercase letter [A-Z] (defaults to true). */
@@ -43,7 +38,7 @@ export function PASSWORD<
     IsNullishT extends boolean = false,
     IsNullableT extends boolean = IsNullishT,
     IsOptionalT extends boolean = IsNullishT
->(args?: PasswordMetaTypeArgs<PASSWORD, IsNullishT, IsNullableT, IsOptionalT>): PASSWORD {
+>(args?: PasswordMetaTypeArgs<PASSWORD, IsNullishT, IsNullableT, IsOptionalT>) {
     const {
         minLength: minLengthArg,
         requireLowercase,

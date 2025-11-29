@@ -18,9 +18,9 @@ export function URL<
     IsNullishT extends boolean = false,
     IsNullableT extends boolean = IsNullishT,
     IsOptionalT extends boolean = IsNullishT
->(args?: Omit<StringMetaTypeArgs<URL, IsNullishT, IsNullableT, IsOptionalT>, 'regexp'>): URL {
+>(args?: StringMetaTypeArgs<URL, IsNullishT, IsNullableT, IsOptionalT>) {
     return MetaType(StringImpl, {
-        regexp: new RegExp(urlPattern, 'i'),
+        regexp: args?.regexp || new RegExp(urlPattern, 'i'),
         trim: true,
         ...(args ?? {})
     })

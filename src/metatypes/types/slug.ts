@@ -17,10 +17,10 @@ export function SLUG<
     IsNullishT extends boolean = false,
     IsNullableT extends boolean = IsNullishT,
     IsOptionalT extends boolean = IsNullishT
->(args?: Omit<StringMetaTypeArgs<SLUG, IsNullishT, IsNullableT, IsOptionalT>, 'regexp'>): SLUG {
+>(args?: StringMetaTypeArgs<SLUG, IsNullishT, IsNullableT, IsOptionalT>) {
     return MetaType(StringImpl, {
         // Lowercase letters, digits and dashes
-        regexp: /^[a-z0-9]+(?:-[a-z0-9]+)*$/,
+        regexp: args?.regexp || /^[a-z0-9]+(?:-[a-z0-9]+)*$/,
         trim: true,
         ...(args ?? {})
     })

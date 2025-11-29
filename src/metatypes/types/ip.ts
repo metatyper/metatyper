@@ -18,9 +18,9 @@ export function IP<
     IsNullishT extends boolean = false,
     IsNullableT extends boolean = IsNullishT,
     IsOptionalT extends boolean = IsNullishT
->(args?: Omit<StringMetaTypeArgs<IP, IsNullishT, IsNullableT, IsOptionalT>, 'regexp'>): IP {
+>(args?: StringMetaTypeArgs<IP, IsNullishT, IsNullableT, IsOptionalT>) {
     return MetaType(StringImpl, {
-        regexp: new RegExp(ipv4OrIpv6Pattern, 'i'),
+        regexp: args?.regexp || new RegExp(ipv4OrIpv6Pattern, 'i'),
         trim: true,
         ...(args ?? {})
     })

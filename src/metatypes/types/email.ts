@@ -17,10 +17,10 @@ export function EMAIL<
     IsNullishT extends boolean = false,
     IsNullableT extends boolean = IsNullishT,
     IsOptionalT extends boolean = IsNullishT
->(args?: Omit<StringMetaTypeArgs<EMAIL, IsNullishT, IsNullableT, IsOptionalT>, 'regexp'>): EMAIL {
+>(args?: StringMetaTypeArgs<EMAIL, IsNullishT, IsNullableT, IsOptionalT>) {
     return MetaType(StringImpl, {
         // https://www.regular-expressions.info/email.html
-        regexp: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+        regexp: args?.regexp || /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
         trim: true,
         ...(args ?? {})
     })
