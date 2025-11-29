@@ -804,8 +804,8 @@ obj.flag = 'true' // validation error
 
 ```ts
 function CARD<IsNullishT, IsNullableT, IsOptionalT>(
-    args?: Omit<StringMetaTypeArgs<CARD, IsNullishT, IsNullableT, IsOptionalT>, 'regexp'>
-): CARD
+    args?: StringMetaTypeArgs<CARD, IsNullishT, IsNullableT, IsOptionalT>
+): PrepareMetaType<CARD, IsNullishT, IsNullableT, IsOptionalT>
 ```
 
 Defined in: [src/metatypes/types/card.ts:19](https://github.com/metatyper/metatyper/blob/main/src/metatypes/types/card.ts#L19)
@@ -883,7 +883,7 @@ https://www.regular-expressions.info/creditcard.html
 </td>
 <td>
 
-`Omit`\<[`StringMetaTypeArgs`](#stringmetatypeargs)\<[`CARD`](#card), `IsNullishT`, `IsNullableT`, `IsOptionalT`\>, `"regexp"`\>
+[`StringMetaTypeArgs`](#stringmetatypeargs)\<[`CARD`](#card), `IsNullishT`, `IsNullableT`, `IsOptionalT`\>
 
 </td>
 <td>
@@ -897,7 +897,7 @@ https://www.regular-expressions.info/creditcard.html
 
 #### Returns
 
-[`CARD`](#card)
+[`PrepareMetaType`](#preparemetatype)\<[`CARD`](#card), `IsNullishT`, `IsNullableT`, `IsOptionalT`\>
 
 #### Example
 
@@ -1220,8 +1220,8 @@ Static value or factory invoked with [DeSerializerArgsType](#deserializerargstyp
 
 ```ts
 function EMAIL<IsNullishT, IsNullableT, IsOptionalT>(
-    args?: Omit<StringMetaTypeArgs<EMAIL, IsNullishT, IsNullableT, IsOptionalT>, 'regexp'>
-): EMAIL
+    args?: StringMetaTypeArgs<EMAIL, IsNullishT, IsNullableT, IsOptionalT>
+): PrepareMetaType<EMAIL, IsNullishT, IsNullableT, IsOptionalT>
 ```
 
 Defined in: [src/metatypes/types/email.ts:16](https://github.com/metatyper/metatyper/blob/main/src/metatypes/types/email.ts#L16)
@@ -1296,7 +1296,7 @@ Creates a email meta type with length/regexp/casing options plus standard meta a
 </td>
 <td>
 
-`Omit`\<[`StringMetaTypeArgs`](#stringmetatypeargs)\<[`EMAIL`](#email), `IsNullishT`, `IsNullableT`, `IsOptionalT`\>, `"regexp"`\>
+[`StringMetaTypeArgs`](#stringmetatypeargs)\<[`EMAIL`](#email), `IsNullishT`, `IsNullableT`, `IsOptionalT`\>
 
 </td>
 <td>
@@ -1310,7 +1310,7 @@ Creates a email meta type with length/regexp/casing options plus standard meta a
 
 #### Returns
 
-[`EMAIL`](#email)
+[`PrepareMetaType`](#preparemetatype)\<[`EMAIL`](#email), `IsNullishT`, `IsNullableT`, `IsOptionalT`\>
 
 #### Example
 
@@ -1420,8 +1420,8 @@ Creates a validator enforcing `value > greater`.
 
 ```ts
 function HOSTNAME<IsNullishT, IsNullableT, IsOptionalT>(
-    args?: Omit<StringMetaTypeArgs<HOSTNAME, IsNullishT, IsNullableT, IsOptionalT>, 'regexp'>
-): HOSTNAME
+    args?: StringMetaTypeArgs<HOSTNAME, IsNullishT, IsNullableT, IsOptionalT>
+): PrepareMetaType<HOSTNAME, IsNullishT, IsNullableT, IsOptionalT>
 ```
 
 Defined in: [src/metatypes/types/hostname.ts:16](https://github.com/metatyper/metatyper/blob/main/src/metatypes/types/hostname.ts#L16)
@@ -1496,7 +1496,7 @@ Creates a hostname/domain meta type.
 </td>
 <td>
 
-`Omit`\<[`StringMetaTypeArgs`](#stringmetatypeargs)\<[`HOSTNAME`](#hostname), `IsNullishT`, `IsNullableT`, `IsOptionalT`\>, `"regexp"`\>
+[`StringMetaTypeArgs`](#stringmetatypeargs)\<[`HOSTNAME`](#hostname), `IsNullishT`, `IsNullableT`, `IsOptionalT`\>
 
 </td>
 <td>
@@ -1510,7 +1510,7 @@ Creates a hostname/domain meta type.
 
 #### Returns
 
-[`HOSTNAME`](#hostname)
+[`PrepareMetaType`](#preparemetatype)\<[`HOSTNAME`](#hostname), `IsNullishT`, `IsNullableT`, `IsOptionalT`\>
 
 #### Example
 
@@ -1821,8 +1821,8 @@ obj1.a = 1.2 // validation error
 
 ```ts
 function IP<IsNullishT, IsNullableT, IsOptionalT>(
-    args?: Omit<StringMetaTypeArgs<IP, IsNullishT, IsNullableT, IsOptionalT>, 'regexp'>
-): IP
+    args?: StringMetaTypeArgs<IP, IsNullishT, IsNullableT, IsOptionalT>
+): PrepareMetaType<IP, IsNullishT, IsNullableT, IsOptionalT>
 ```
 
 Defined in: [src/metatypes/types/ip.ts:17](https://github.com/metatyper/metatyper/blob/main/src/metatypes/types/ip.ts#L17)
@@ -1897,7 +1897,7 @@ Creates an IP meta type (IPv4 or IPv6) with length/regexp/casing options plus st
 </td>
 <td>
 
-`Omit`\<[`StringMetaTypeArgs`](#stringmetatypeargs)\<[`IP`](#ip), `IsNullishT`, `IsNullableT`, `IsOptionalT`\>, `"regexp"`\>
+[`StringMetaTypeArgs`](#stringmetatypeargs)\<[`IP`](#ip), `IsNullishT`, `IsNullableT`, `IsOptionalT`\>
 
 </td>
 <td>
@@ -1911,7 +1911,7 @@ Creates an IP meta type (IPv4 or IPv6) with length/regexp/casing options plus st
 
 #### Returns
 
-[`IP`](#ip)
+[`PrepareMetaType`](#preparemetatype)\<[`IP`](#ip), `IsNullishT`, `IsNullableT`, `IsOptionalT`\>
 
 #### Example
 
@@ -6508,10 +6508,10 @@ obj2.c = { _someKey: 10 } // type & validation error
 ```ts
 function PASSWORD<IsNullishT, IsNullableT, IsOptionalT>(
     args?: PasswordMetaTypeArgs<PASSWORD, IsNullishT, IsNullableT, IsOptionalT>
-): PASSWORD
+): PrepareMetaType<PASSWORD, IsNullishT, IsNullableT, IsOptionalT>
 ```
 
-Defined in: [src/metatypes/types/password.ts:39](https://github.com/metatyper/metatyper/blob/main/src/metatypes/types/password.ts#L39)
+Defined in: [src/metatypes/types/password.ts:37](https://github.com/metatyper/metatyper/blob/main/src/metatypes/types/password.ts#L37)
 
 Creates a password meta type with configurable character requirements and length.
 
@@ -6597,7 +6597,7 @@ Creates a password meta type with configurable character requirements and length
 
 #### Returns
 
-[`PASSWORD`](#password)
+[`PrepareMetaType`](#preparemetatype)\<[`PASSWORD`](#password), `IsNullishT`, `IsNullableT`, `IsOptionalT`\>
 
 #### Example
 
@@ -6614,8 +6614,8 @@ obj.password = 'P@ssw0rd' // ok
 
 ```ts
 function PHONE<IsNullishT, IsNullableT, IsOptionalT>(
-    args?: Omit<StringMetaTypeArgs<PHONE, IsNullishT, IsNullableT, IsOptionalT>, 'regexp'>
-): PHONE
+    args?: StringMetaTypeArgs<PHONE, IsNullishT, IsNullableT, IsOptionalT>
+): PrepareMetaType<PHONE, IsNullishT, IsNullableT, IsOptionalT>
 ```
 
 Defined in: [src/metatypes/types/phone.ts:17](https://github.com/metatyper/metatyper/blob/main/src/metatypes/types/phone.ts#L17)
@@ -6690,7 +6690,7 @@ Creates a phone meta type for E.164-like international phone numbers.
 </td>
 <td>
 
-`Omit`\<[`StringMetaTypeArgs`](#stringmetatypeargs)\<[`PHONE`](#phone), `IsNullishT`, `IsNullableT`, `IsOptionalT`\>, `"regexp"`\>
+[`StringMetaTypeArgs`](#stringmetatypeargs)\<[`PHONE`](#phone), `IsNullishT`, `IsNullableT`, `IsOptionalT`\>
 
 </td>
 <td>
@@ -6704,7 +6704,7 @@ Creates a phone meta type for E.164-like international phone numbers.
 
 #### Returns
 
-[`PHONE`](#phone)
+[`PrepareMetaType`](#preparemetatype)\<[`PHONE`](#phone), `IsNullishT`, `IsNullableT`, `IsOptionalT`\>
 
 #### Example
 
@@ -6893,8 +6893,8 @@ Replacement value.
 
 ```ts
 function SLUG<IsNullishT, IsNullableT, IsOptionalT>(
-    args?: Omit<StringMetaTypeArgs<SLUG, IsNullishT, IsNullableT, IsOptionalT>, 'regexp'>
-): SLUG
+    args?: StringMetaTypeArgs<SLUG, IsNullishT, IsNullableT, IsOptionalT>
+): PrepareMetaType<SLUG, IsNullishT, IsNullableT, IsOptionalT>
 ```
 
 Defined in: [src/metatypes/types/slug.ts:16](https://github.com/metatyper/metatyper/blob/main/src/metatypes/types/slug.ts#L16)
@@ -6969,7 +6969,7 @@ Creates a slug meta type (e.g. "my-blog-post-1").
 </td>
 <td>
 
-`Omit`\<[`StringMetaTypeArgs`](#stringmetatypeargs)\<[`SLUG`](#slug), `IsNullishT`, `IsNullableT`, `IsOptionalT`\>, `"regexp"`\>
+[`StringMetaTypeArgs`](#stringmetatypeargs)\<[`SLUG`](#slug), `IsNullishT`, `IsNullableT`, `IsOptionalT`\>
 
 </td>
 <td>
@@ -6983,7 +6983,7 @@ Creates a slug meta type (e.g. "my-blog-post-1").
 
 #### Returns
 
-[`SLUG`](#slug)
+[`PrepareMetaType`](#preparemetatype)\<[`SLUG`](#slug), `IsNullishT`, `IsNullableT`, `IsOptionalT`\>
 
 #### Example
 
@@ -7443,8 +7443,8 @@ obj1.a = {} // type & validation error
 
 ```ts
 function URL<IsNullishT, IsNullableT, IsOptionalT>(
-    args?: Omit<StringMetaTypeArgs<URL, IsNullishT, IsNullableT, IsOptionalT>, 'regexp'>
-): URL
+    args?: StringMetaTypeArgs<URL, IsNullishT, IsNullableT, IsOptionalT>
+): PrepareMetaType<URL, IsNullishT, IsNullableT, IsOptionalT>
 ```
 
 Defined in: [src/metatypes/types/url.ts:17](https://github.com/metatyper/metatyper/blob/main/src/metatypes/types/url.ts#L17)
@@ -7519,7 +7519,7 @@ Creates a URL meta type with length/regexp/casing options plus standard meta arg
 </td>
 <td>
 
-`Omit`\<[`StringMetaTypeArgs`](#stringmetatypeargs)\<[`URL`](#url), `IsNullishT`, `IsNullableT`, `IsOptionalT`\>, `"regexp"`\>
+[`StringMetaTypeArgs`](#stringmetatypeargs)\<[`URL`](#url), `IsNullishT`, `IsNullableT`, `IsOptionalT`\>
 
 </td>
 <td>
@@ -7533,7 +7533,7 @@ Creates a URL meta type with length/regexp/casing options plus standard meta arg
 
 #### Returns
 
-[`URL`](#url)
+[`PrepareMetaType`](#preparemetatype)\<[`URL`](#url), `IsNullishT`, `IsNullableT`, `IsOptionalT`\>
 
 #### Example
 
@@ -7549,8 +7549,8 @@ obj.website = 'https://example.com' // ok
 
 ```ts
 function UUID<IsNullishT, IsNullableT, IsOptionalT>(
-    args?: Omit<StringMetaTypeArgs<UUID, IsNullishT, IsNullableT, IsOptionalT>, 'regexp'>
-): UUID
+    args?: StringMetaTypeArgs<UUID, IsNullishT, IsNullableT, IsOptionalT>
+): PrepareMetaType<UUID, IsNullishT, IsNullableT, IsOptionalT>
 ```
 
 Defined in: [src/metatypes/types/uuid.ts:16](https://github.com/metatyper/metatyper/blob/main/src/metatypes/types/uuid.ts#L16)
@@ -7625,7 +7625,7 @@ Creates a UUID (v1–v5) meta type with length/regexp/casing options plus standa
 </td>
 <td>
 
-`Omit`\<[`StringMetaTypeArgs`](#stringmetatypeargs)\<[`UUID`](#uuid), `IsNullishT`, `IsNullableT`, `IsOptionalT`\>, `"regexp"`\>
+[`StringMetaTypeArgs`](#stringmetatypeargs)\<[`UUID`](#uuid), `IsNullishT`, `IsNullableT`, `IsOptionalT`\>
 
 </td>
 <td>
@@ -7639,7 +7639,7 @@ Creates a UUID (v1–v5) meta type with length/regexp/casing options plus standa
 
 #### Returns
 
-[`UUID`](#uuid)
+[`PrepareMetaType`](#preparemetatype)\<[`UUID`](#uuid), `IsNullishT`, `IsNullableT`, `IsOptionalT`\>
 
 #### Example
 
@@ -11850,7 +11850,7 @@ Enables/disables serialization/deserialization of nested properties.
 type PASSWORD = MetaType<string, StringImpl>
 ```
 
-Defined in: [src/metatypes/types/password.ts:39](https://github.com/metatyper/metatyper/blob/main/src/metatypes/types/password.ts#L39)
+Defined in: [src/metatypes/types/password.ts:37](https://github.com/metatyper/metatyper/blob/main/src/metatypes/types/password.ts#L37)
 
 Creates a password meta type with configurable character requirements and length.
 
@@ -11872,11 +11872,13 @@ obj.password = 'P@ssw0rd' // ok
 ### PasswordMetaTypeArgs
 
 ```ts
-type PasswordMetaTypeArgs<T, IsNullishT, IsNullableT, IsOptionalT> = Omit<
-    StringMetaTypeArgs<T, IsNullishT, IsNullableT, IsOptionalT>,
-    'regexp' | 'notEmpty' | 'minLength'
+type PasswordMetaTypeArgs<T, IsNullishT, IsNullableT, IsOptionalT> = StringMetaTypeArgs<
+    T,
+    IsNullishT,
+    IsNullableT,
+    IsOptionalT
 > & {
-    minLength?: number
+    confirmField?: string
     requireLowercase?: boolean
     requireNumber?: boolean
     requireSpecial?: boolean
@@ -11884,7 +11886,7 @@ type PasswordMetaTypeArgs<T, IsNullishT, IsNullableT, IsOptionalT> = Omit<
 }
 ```
 
-Defined in: [src/metatypes/types/password.ts:5](https://github.com/metatyper/metatyper/blob/main/src/metatypes/types/password.ts#L5)
+Defined in: [src/metatypes/types/password.ts:6](https://github.com/metatyper/metatyper/blob/main/src/metatypes/types/password.ts#L6)
 
 Additional options supported by the `PASSWORD` meta type.
 
@@ -11903,22 +11905,22 @@ Additional options supported by the `PASSWORD` meta type.
 <tr>
 <td>
 
-`minLength?`
+`confirmField?`
 
 </td>
 <td>
 
-`number`
+`string`
 
 </td>
 <td>
 
-&hyphen;
+The name of the field that is used to confirm the password.
 
 </td>
 <td>
 
-[src/metatypes/types/password.ts:14](https://github.com/metatyper/metatyper/blob/main/src/metatypes/types/password.ts#L14)
+[src/metatypes/types/password.ts:21](https://github.com/metatyper/metatyper/blob/main/src/metatypes/types/password.ts#L21)
 
 </td>
 </tr>
@@ -11940,7 +11942,7 @@ Require at least one lowercase letter [a-z] (defaults to true).
 </td>
 <td>
 
-[src/metatypes/types/password.ts:17](https://github.com/metatyper/metatyper/blob/main/src/metatypes/types/password.ts#L17)
+[src/metatypes/types/password.ts:13](https://github.com/metatyper/metatyper/blob/main/src/metatypes/types/password.ts#L13)
 
 </td>
 </tr>
@@ -11962,7 +11964,7 @@ Require at least one digit [0-9] (defaults to true).
 </td>
 <td>
 
-[src/metatypes/types/password.ts:21](https://github.com/metatyper/metatyper/blob/main/src/metatypes/types/password.ts#L21)
+[src/metatypes/types/password.ts:17](https://github.com/metatyper/metatyper/blob/main/src/metatypes/types/password.ts#L17)
 
 </td>
 </tr>
@@ -11984,7 +11986,7 @@ Require at least one non-alphanumeric character (defaults to true).
 </td>
 <td>
 
-[src/metatypes/types/password.ts:23](https://github.com/metatyper/metatyper/blob/main/src/metatypes/types/password.ts#L23)
+[src/metatypes/types/password.ts:19](https://github.com/metatyper/metatyper/blob/main/src/metatypes/types/password.ts#L19)
 
 </td>
 </tr>
@@ -12006,7 +12008,7 @@ Require at least one uppercase letter [A-Z] (defaults to true).
 </td>
 <td>
 
-[src/metatypes/types/password.ts:19](https://github.com/metatyper/metatyper/blob/main/src/metatypes/types/password.ts#L19)
+[src/metatypes/types/password.ts:15](https://github.com/metatyper/metatyper/blob/main/src/metatypes/types/password.ts#L15)
 
 </td>
 </tr>
@@ -13293,10 +13295,10 @@ When `true`, validation stops at the first issue (default).
 
 ```ts
 type ValidateMetaTypeArgsType = {
-    baseObject?: object
+    baseObject?: Record<keyof any, any>
     path?: (string | number | symbol)[]
     stopAtFirstError?: boolean
-    targetObject?: object
+    targetObject?: Record<keyof any, any>
     value: any
 } & Record<string, any>
 ```
@@ -13325,7 +13327,7 @@ Arguments passed to `MetaTypeImpl.validate`.
 </td>
 <td>
 
-`object`
+`Record`\<keyof `any`, `any`\>
 
 </td>
 <td>
@@ -13401,7 +13403,7 @@ If `false`, all errors will be collected and returned as issues in a [Validation
 </td>
 <td>
 
-`object`
+`Record`\<keyof `any`, `any`\>
 
 </td>
 <td>
@@ -28112,7 +28114,7 @@ Path to the property within the validated object.
 ###### Get Signature
 
 ```ts
-get targetObject(): object | undefined;
+get targetObject(): Record<string | number | symbol, any> | undefined;
 ```
 
 Defined in: [src/errors/validation.error.ts:40](https://github.com/metatyper/metatyper/blob/main/src/errors/validation.error.ts#L40)
@@ -28121,7 +28123,7 @@ Meta object instance that was being validated.
 
 ###### Returns
 
-`object` \| `undefined`
+`Record`\<`string` \| `number` \| `symbol`, `any`\> \| `undefined`
 
 ##### value
 

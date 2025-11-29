@@ -1528,23 +1528,50 @@ obj.phone = '+1234567890' // ok
 
 Signature: [`PASSWORD()`](docs/api/README.md#password)
 
+The `PASSWORD` meta type is a specialized `STRING` with additional password‑oriented rules.
+It accepts all standard `StringMetaTypeArgs` (such as `nullable`, `optional`, `default`,
+`regexp`, `minLength`, `maxLength`, `trim`, `toCase`, etc.) plus the following options:
+
+- `minLength?: number` – minimum password length (defaults to `6` if not provided).
+
+- `requireLowercase?: boolean` – require at least one lowercase letter `[a-z]`
+  (defaults to `true`, set to `false` to disable this check).
+
+- `requireUppercase?: boolean` – require at least one uppercase letter `[A-Z]`
+  (defaults to `true`, set to `false` to disable this check).
+
+- `requireNumber?: boolean` – require at least one digit `[0-9]`
+  (defaults to `true`, set to `false` to disable this check).
+
+- `requireSpecial?: boolean` – require at least one non‑alphanumeric character
+  (defaults to `true`, set to `false` to disable this check).
+
+- `confirmField?: string` – when set, adds a validator that checks the value is equal
+  to the value of the field with this name in the same object (useful for
+  `"password"` / `"confirmPassword"` forms).
+
 ```typescript
 import { Meta, PASSWORD } from 'metatyper'
 
 const obj = Meta({
     password: PASSWORD({
-        // PasswordMetaTypeArgs
         minLength: 8,
         requireLowercase: true,
         requireUppercase: true,
         requireNumber: true,
         requireSpecial: true
+    }),
+    confirmPassword: PASSWORD({
+        confirmField: 'password'
     })
-}) // as { password: string }
+}) // as { password: string; confirmPassword: string }
 
-obj.password = 'short' // validation error (too short)
-obj.password = 'password' // validation error (no number / special / upper)
-obj.password = 'P@ssw0rd' // ok
+obj.password = 'short'           // validation error (too short)
+obj.password = 'password'        // validation error (no number / special / upper)
+obj.password = 'P@ssw0rd'        // ok (meets complexity rules)
+
+obj.confirmPassword = 'P@ss'     // validation error (does not match password)
+obj.confirmPassword = 'P@ssw0rd' // ok (matches password)
 ```
 
 &nbsp;
