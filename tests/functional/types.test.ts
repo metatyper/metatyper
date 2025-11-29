@@ -607,11 +607,125 @@ describe('Meta types', () => {
             RegExpValidatorBuilder('some regex').name
         ])
 
-        // validation behaviour
+        // validation behaviour with default args
 
         expect(metaTypeImpl.validate({ value: 'P@ssw0rd' })).toBeUndefined()
         expect(metaTypeImpl.validate({ value: 'short' })).toBeInstanceOf(ValidationError)
         expect(metaTypeImpl.validate({ value: 'password' })).toBeInstanceOf(ValidationError)
+
+        // confirm password validator behaviour
+
+        const confirmMetaType = PASSWORD({
+            nullable: false,
+            coercion: true,
+            confirmField: 'confirmPassword'
+        })
+        const confirmMetaTypeImpl = MetaType.getMetaTypeImpl(confirmMetaType) as StringImpl
+
+        // custom validators should include ConfirmPassword
+        const customValidatorsNames = (confirmMetaTypeImpl['metaTypeArgs'] as any).validators.map(
+            (v: any) => v.name
+        )
+
+        expect(customValidatorsNames).toContain('ConfirmPassword')
+
+        expect(
+            confirmMetaTypeImpl.validate({
+                value: 'P@ssw0rd',
+                targetObject: { confirmPassword: 'P@ssw0rd' }
+            })
+        ).toBeUndefined()
+
+        expect(
+            confirmMetaTypeImpl.validate({
+                value: 'P@ssw0rd',
+                targetObject: { confirmPassword: 'OtherP@ss1' }
+            })
+        ).toBeInstanceOf(ValidationError)
+
+        const metaObj = Meta({
+            password: PASSWORD({
+                default: '',
+                minLength: 0
+            }),
+            confirmPassword: PASSWORD({
+                default: '',
+                minLength: 0,
+                confirmField: 'password'
+            })
+        })
+
+        metaObj.password = 'P@ssw0rd'
+        metaObj.confirmPassword = 'P@ssw0rd'
+
+        expect(() => (metaObj.confirmPassword = 'OtherP@ss1')).toThrow(ValidationError)
+
+        // different combinations of PASSWORD args
+
+        const relaxedMetaType = PASSWORD({
+            nullable: false,
+            coercion: true,
+            minLength: 3,
+            requireLowercase: false,
+            requireUppercase: false,
+            requireNumber: false,
+            requireSpecial: false
+        })
+        const relaxedMetaTypeImpl = MetaType.getMetaTypeImpl(relaxedMetaType) as StringImpl
+
+        // only minLength should be validated when all "require*" flags are false
+        expect(relaxedMetaTypeImpl.validate({ value: 'abc' })).toBeUndefined()
+        expect(relaxedMetaTypeImpl.validate({ value: 'AB3' })).toBeUndefined()
+        expect(relaxedMetaTypeImpl.validate({ value: '123' })).toBeUndefined()
+        expect(relaxedMetaTypeImpl.validate({ value: 'ab' })).toBeInstanceOf(ValidationError)
+
+        const lowercaseNotRequiredMetaType = PASSWORD({
+            nullable: false,
+            coercion: true,
+            requireLowercase: false
+        })
+        const lowercaseNotRequiredImpl = MetaType.getMetaTypeImpl(
+            lowercaseNotRequiredMetaType
+        ) as StringImpl
+
+        // should be valid even without lowercase when requireLowercase is false
+        expect(lowercaseNotRequiredImpl.validate({ value: 'P@SSW0RD' })).toBeUndefined()
+
+        const uppercaseNotRequiredMetaType = PASSWORD({
+            nullable: false,
+            coercion: true,
+            requireUppercase: false
+        })
+        const uppercaseNotRequiredImpl = MetaType.getMetaTypeImpl(
+            uppercaseNotRequiredMetaType
+        ) as StringImpl
+
+        // should be valid even without uppercase when requireUppercase is false
+        expect(uppercaseNotRequiredImpl.validate({ value: 'p@ssw0rd' })).toBeUndefined()
+
+        const numberNotRequiredMetaType = PASSWORD({
+            nullable: false,
+            coercion: true,
+            requireNumber: false
+        })
+        const numberNotRequiredImpl = MetaType.getMetaTypeImpl(
+            numberNotRequiredMetaType
+        ) as StringImpl
+
+        // should be valid even without number when requireNumber is false
+        expect(numberNotRequiredImpl.validate({ value: 'P@ssword' })).toBeUndefined()
+
+        const specialNotRequiredMetaType = PASSWORD({
+            nullable: false,
+            coercion: true,
+            requireSpecial: false
+        })
+        const specialNotRequiredImpl = MetaType.getMetaTypeImpl(
+            specialNotRequiredMetaType
+        ) as StringImpl
+
+        // should be valid even without special character when requireSpecial is false
+        expect(specialNotRequiredImpl.validate({ value: 'Passw0rd' })).toBeUndefined()
     })
 
     test('NUMBER', () => {

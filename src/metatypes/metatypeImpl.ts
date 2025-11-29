@@ -34,10 +34,10 @@ export type ValidateMetaTypeArgsType = {
     path?: (string | number | symbol)[]
 
     /** Original proxy exposed to the user. */
-    targetObject?: object
+    targetObject?: Record<keyof any, any>
 
     /** Base object that stores state (not proxy). */
-    baseObject?: object
+    baseObject?: Record<keyof any, any>
 
     /** Stops on first error when `true` (default).
      * If `false`, all errors will be collected and returned as issues in a {@link ValidationError}.

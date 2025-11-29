@@ -1,3 +1,4 @@
+import { ConfirmPasswordValidatorBuilder } from '../../validators/confirmPasswordValidator'
 import { MetaType } from '../metatype'
 import { StringImpl, type StringMetaTypeArgs } from './string'
 
@@ -21,6 +22,8 @@ export type PasswordMetaTypeArgs<
     requireNumber?: boolean
     /** Require at least one non-alphanumeric character (defaults to true). */
     requireSpecial?: boolean
+    /** The name of the field that is used to confirm the password. */
+    confirmField?: string
 }
 
 /**
@@ -47,6 +50,8 @@ export function PASSWORD<
         requireUppercase,
         requireNumber,
         requireSpecial,
+        confirmField,
+        validators,
         ...rest
     } = args ?? {}
 
@@ -71,10 +76,17 @@ export function PASSWORD<
 
     const regexp = new RegExp(pattern)
 
+    const resultValidators = [...(validators ?? [])]
+
+    if (confirmField) {
+        resultValidators.push(ConfirmPasswordValidatorBuilder(confirmField))
+    }
+
     return MetaType(StringImpl, {
         regexp,
         minLength,
         trim: true,
+        validators: resultValidators,
         ...rest
     })
 }
