@@ -856,16 +856,14 @@ describe('Meta objects', () => {
 
     test('meta object error event', () => {
         const handler = jest.fn()
-        const customError = new Error('err')
 
-        const places: MetaErrorHandlerPlaceType[] = ['init', 'validate']
+        const places: MetaErrorHandlerPlaceType[] = ['init']
 
         const ANumberMetaType = NUMBER({
             nullish: true,
             deserializers: [({ value }) => value ?? null]
         })
         const BNumberMetaType = NUMBER({
-            nullish: true,
             min: 2,
             max: 0,
             safe: false
@@ -881,10 +879,6 @@ describe('Meta objects', () => {
                     {
                         handler: (args) => {
                             handler(args)
-
-                            if (args.errorPlace === 'validate') {
-                                throw customError
-                            }
                         },
                         places
                     }
@@ -892,13 +886,32 @@ describe('Meta objects', () => {
             }
         )
 
-        expect(handler.mock.calls).toEqual([])
+        expect(handler.mock.calls).toHaveLength(1)
+        expect(handler.mock.calls[0]).toEqual([
+            {
+                error: new ValidationError([
+                    new MetaTypeValidatorError({
+                        validator: { name: 'Optional' } as any,
+                        validatorArgs: {
+                            value: undefined,
+                            targetObject: metaObject,
+                            path: ['b'],
+                            metaTypeImpl: MetaType.getMetaTypeImpl(BNumberMetaType)
+                        }
+                    })
+                ]),
+                propName: 'b',
+                targetObject: metaObject,
+                baseObject: metaObject,
+                errorPlace: 'init'
+            }
+        ])
 
         expect(() => {
             metaObject['a'] = '1' as any
         }).toThrow(ValidationError)
 
-        expect(handler.mock.calls).toEqual([])
+        expect(handler.mock.calls).toHaveLength(1)
 
         places.push('define')
 
@@ -906,26 +919,25 @@ describe('Meta objects', () => {
             metaObject['a'] = '1' as any
         }).toThrow(ValidationError)
 
-        expect(handler.mock.calls).toEqual([
-            [
-                {
-                    error: new ValidationError([
-                        new MetaTypeValidatorError({
-                            validator: { name: 'MetaType' } as any,
-                            validatorArgs: {
-                                value: '1',
-                                targetObject: metaObject,
-                                path: ['a'],
-                                metaTypeImpl: MetaType.getMetaTypeImpl(ANumberMetaType)
-                            }
-                        })
-                    ]),
-                    propName: 'a',
-                    targetObject: metaObject,
-                    baseObject: metaObject,
-                    errorPlace: 'define'
-                }
-            ]
+        expect(handler.mock.calls).toHaveLength(2)
+        expect(handler.mock.calls[1]).toEqual([
+            {
+                error: new ValidationError([
+                    new MetaTypeValidatorError({
+                        validator: { name: 'MetaType' } as any,
+                        validatorArgs: {
+                            value: '1',
+                            targetObject: metaObject,
+                            path: ['a'],
+                            metaTypeImpl: MetaType.getMetaTypeImpl(ANumberMetaType)
+                        }
+                    })
+                ]),
+                propName: 'a',
+                targetObject: metaObject,
+                baseObject: metaObject,
+                errorPlace: 'define'
+            }
         ])
 
         const validationError = Meta.validate(metaObject, {
@@ -934,14 +946,14 @@ describe('Meta objects', () => {
 
         expect(validationError).toBeInstanceOf(ValidationError)
 
-        expect(handler.mock.calls).toHaveLength(1)
+        expect(handler.mock.calls).toHaveLength(2)
 
         expect(() => {
             metaObject['b'] = 1
         }).not.toThrow(ValidationError)
 
-        expect(handler.mock.calls).toHaveLength(2)
-        expect(handler.mock.calls[1]).toEqual([
+        expect(handler.mock.calls).toHaveLength(3)
+        expect(handler.mock.calls[2]).toEqual([
             {
                 error: new ValidationError([
                     new MetaTypeValidatorError({
@@ -1147,12 +1159,11 @@ describe('Meta objects', () => {
 
         const errorHandler = jest.fn()
         const metaObject = Meta(
-            { a: DATE({ safe: false }) },
+            { a: DATE({ safe: false, optional: true }) },
             {
                 errorHandlers: [
                     {
-                        handler: errorHandler,
-                        places: ['validate']
+                        handler: errorHandler
                     }
                 ]
             }

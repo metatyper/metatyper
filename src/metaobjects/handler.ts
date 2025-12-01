@@ -299,7 +299,8 @@ export class MetaObjectsHandler {
         baseObject: Record<keyof any, any>,
         propName: string | symbol,
         descriptor?: PropertyDescriptor,
-        declaration?: MetaTypeImpl
+        declaration?: MetaTypeImpl,
+        initialValue?: any
     ) {
         try {
             if (this.isIgnoredProp(baseObject, propName)) {
@@ -312,7 +313,7 @@ export class MetaObjectsHandler {
 
             if (!descriptor) {
                 descriptor = {
-                    value: undefined,
+                    value: initialValue,
                     writable: true,
                     enumerable: true,
                     configurable: true
@@ -349,6 +350,12 @@ export class MetaObjectsHandler {
                     MetaTypeImpl.getMetaTypeImpl.bind(MetaTypeImpl)
 
                 declaration = metaTypeResolver(descriptor.value, metaTypesArgs)
+            }
+
+            if (declaration && initialValue !== undefined) {
+                declaration = declaration.rebuild({
+                    default: initialValue
+                })
             }
 
             if (declaration && registryInfo) {

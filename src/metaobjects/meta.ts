@@ -81,7 +81,6 @@ export type MetaErrorHandlerPlaceType =
     | 'set'
     | 'define'
     | 'delete'
-    | 'validate'
     | 'deserialize'
     | 'serialize'
 
