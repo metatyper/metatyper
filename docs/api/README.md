@@ -25052,7 +25052,7 @@ Creates a handler bound to a particular builder/registry pair.
 copy<T>(targetObject: T): T | null;
 ```
 
-Defined in: [src/metaobjects/handler.ts:1104](https://github.com/metatyper/metatyper/blob/main/src/metaobjects/handler.ts#L1104)
+Defined in: [src/metaobjects/handler.ts:1108](https://github.com/metatyper/metatyper/blob/main/src/metaobjects/handler.ts#L1108)
 
 ###### Type Parameters
 
@@ -25160,7 +25160,7 @@ deserialize(
    deserializeArgs?: DeSerializeMetaObjectArgsType): Record<string | number | symbol, any> | null;
 ```
 
-Defined in: [src/metaobjects/handler.ts:998](https://github.com/metatyper/metatyper/blob/main/src/metaobjects/handler.ts#L998)
+Defined in: [src/metaobjects/handler.ts:1002](https://github.com/metatyper/metatyper/blob/main/src/metaobjects/handler.ts#L1002)
 
 ###### Parameters
 
@@ -25377,7 +25377,7 @@ initProp(
    propName: string | symbol,
    descriptor?: PropertyDescriptor,
    declaration?: MetaTypeImpl,
-   initialValue?: any): void;
+   initialValues?: Record<string | number | symbol, any>): void;
 ```
 
 Defined in: [src/metaobjects/handler.ts:298](https://github.com/metatyper/metatyper/blob/main/src/metaobjects/handler.ts#L298)
@@ -25443,12 +25443,12 @@ Defined in: [src/metaobjects/handler.ts:298](https://github.com/metatyper/metaty
 <tr>
 <td>
 
-`initialValue?`
+`initialValues?`
 
 </td>
 <td>
 
-`any`
+`Record`\<`string` \| `number` \| `symbol`, `any`\>
 
 </td>
 </tr>
@@ -25534,7 +25534,7 @@ proxyDefineProperty(
    newDescriptor: PropertyDescriptor): true;
 ```
 
-Defined in: [src/metaobjects/handler.ts:594](https://github.com/metatyper/metatyper/blob/main/src/metaobjects/handler.ts#L594)
+Defined in: [src/metaobjects/handler.ts:598](https://github.com/metatyper/metatyper/blob/main/src/metaobjects/handler.ts#L598)
 
 ###### Parameters
 
@@ -25595,7 +25595,7 @@ Defined in: [src/metaobjects/handler.ts:594](https://github.com/metatyper/metaty
 proxyDeleteProperty(baseObject: Record<keyof any, any>, propName: string | symbol): true;
 ```
 
-Defined in: [src/metaobjects/handler.ts:798](https://github.com/metatyper/metatyper/blob/main/src/metaobjects/handler.ts#L798)
+Defined in: [src/metaobjects/handler.ts:802](https://github.com/metatyper/metatyper/blob/main/src/metaobjects/handler.ts#L802)
 
 ###### Parameters
 
@@ -25644,7 +25644,7 @@ Defined in: [src/metaobjects/handler.ts:798](https://github.com/metatyper/metaty
 proxyGetOwnPropertyDescriptor(targetObject: Record<keyof any, any>, propName: string | symbol): TypedPropertyDescriptor<any> | undefined;
 ```
 
-Defined in: [src/metaobjects/handler.ts:889](https://github.com/metatyper/metatyper/blob/main/src/metaobjects/handler.ts#L889)
+Defined in: [src/metaobjects/handler.ts:893](https://github.com/metatyper/metatyper/blob/main/src/metaobjects/handler.ts#L893)
 
 ###### Parameters
 
@@ -25696,7 +25696,7 @@ proxyGetValue(
    targetObject: object): any;
 ```
 
-Defined in: [src/metaobjects/handler.ts:440](https://github.com/metatyper/metatyper/blob/main/src/metaobjects/handler.ts#L440)
+Defined in: [src/metaobjects/handler.ts:444](https://github.com/metatyper/metatyper/blob/main/src/metaobjects/handler.ts#L444)
 
 ###### Parameters
 
@@ -25757,7 +25757,7 @@ Defined in: [src/metaobjects/handler.ts:440](https://github.com/metatyper/metaty
 proxyHas(targetObject: Record<keyof any, any>, propName: string | symbol): boolean;
 ```
 
-Defined in: [src/metaobjects/handler.ts:881](https://github.com/metatyper/metatyper/blob/main/src/metaobjects/handler.ts#L881)
+Defined in: [src/metaobjects/handler.ts:885](https://github.com/metatyper/metatyper/blob/main/src/metaobjects/handler.ts#L885)
 
 ###### Parameters
 
@@ -25806,7 +25806,7 @@ Defined in: [src/metaobjects/handler.ts:881](https://github.com/metatyper/metaty
 proxyOwnKeys(targetObject: Record<keyof any, any>): (string | symbol)[];
 ```
 
-Defined in: [src/metaobjects/handler.ts:885](https://github.com/metatyper/metatyper/blob/main/src/metaobjects/handler.ts#L885)
+Defined in: [src/metaobjects/handler.ts:889](https://github.com/metatyper/metatyper/blob/main/src/metaobjects/handler.ts#L889)
 
 ###### Parameters
 
@@ -25847,7 +25847,7 @@ proxySetValue(
    targetObject: object): true;
 ```
 
-Defined in: [src/metaobjects/handler.ts:503](https://github.com/metatyper/metatyper/blob/main/src/metaobjects/handler.ts#L503)
+Defined in: [src/metaobjects/handler.ts:507](https://github.com/metatyper/metatyper/blob/main/src/metaobjects/handler.ts#L507)
 
 ###### Parameters
 
@@ -25959,7 +25959,7 @@ Builds a readable string representation of a meta object (used in `toString`).
 serialize(targetObject: Record<keyof any, any>, serializeArgs?: SerializeMetaObjectArgsType): Record<string, any> | null;
 ```
 
-Defined in: [src/metaobjects/handler.ts:944](https://github.com/metatyper/metatyper/blob/main/src/metaobjects/handler.ts#L944)
+Defined in: [src/metaobjects/handler.ts:948](https://github.com/metatyper/metatyper/blob/main/src/metaobjects/handler.ts#L948)
 
 ###### Parameters
 
@@ -26011,7 +26011,7 @@ validate(
    validateArgs?: ValidateMetaObjectArgsType): ValidationError | undefined;
 ```
 
-Defined in: [src/metaobjects/handler.ts:896](https://github.com/metatyper/metatyper/blob/main/src/metaobjects/handler.ts#L896)
+Defined in: [src/metaobjects/handler.ts:900](https://github.com/metatyper/metatyper/blob/main/src/metaobjects/handler.ts#L900)
 
 ###### Parameters
 
