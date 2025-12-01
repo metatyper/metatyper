@@ -70,9 +70,11 @@ function ARRAY<T, IsNullishT, IsNullableT, IsOptionalT, IsFrozenT, PreparedT, Re
 ): PrepareMetaType<ResultT, IsNullishT, IsNullableT, IsOptionalT>
 ```
 
-Defined in: [src/metatypes/types/array.ts:217](https://github.com/metatyper/metatyper/blob/main/src/metatypes/types/array.ts#L217)
+Defined in: [src/metatypes/types/array.ts:219](https://github.com/metatyper/metatyper/blob/main/src/metatypes/types/array.ts#L219)
 
 Creates an array meta type with optional item type, length limits, freezing, etc.
+
+When not optional, the default value is [].
 
 ##### Type Parameters
 
@@ -245,9 +247,11 @@ function ARRAY<T, IsNullishT, IsNullableT, IsOptionalT, IsFrozenT, PreparedT, Re
 ): PrepareMetaType<ResultT, IsNullishT, IsNullableT, IsOptionalT>
 ```
 
-Defined in: [src/metatypes/types/array.ts:230](https://github.com/metatyper/metatyper/blob/main/src/metatypes/types/array.ts#L230)
+Defined in: [src/metatypes/types/array.ts:232](https://github.com/metatyper/metatyper/blob/main/src/metatypes/types/array.ts#L232)
 
 Creates an array meta type with optional item type, length limits, freezing, etc.
+
+When not optional, the default value is [].
 
 ##### Type Parameters
 
@@ -420,9 +424,11 @@ function ARRAY<T, IsNullishT, IsNullableT, IsOptionalT, IsFrozenT, PreparedT, Re
 ): PrepareMetaType<ResultT, IsNullishT, IsNullableT, IsOptionalT>
 ```
 
-Defined in: [src/metatypes/types/array.ts:243](https://github.com/metatyper/metatyper/blob/main/src/metatypes/types/array.ts#L243)
+Defined in: [src/metatypes/types/array.ts:245](https://github.com/metatyper/metatyper/blob/main/src/metatypes/types/array.ts#L245)
 
 Creates an array meta type with optional item type, length limits, freezing, etc.
+
+When not optional, the default value is [].
 
 ##### Type Parameters
 
@@ -2365,7 +2371,7 @@ Creates a validator enforcing `value <= max`.
 function Meta<T>(protoObject?: T, metaArgs?: MetaArgsType): Meta<T>
 ```
 
-Defined in: [src/metaobjects/meta.ts:247](https://github.com/metatyper/metatyper/blob/main/src/metaobjects/meta.ts#L247)
+Defined in: [src/metaobjects/meta.ts:246](https://github.com/metatyper/metatyper/blob/main/src/metaobjects/meta.ts#L246)
 
 Create a Meta object
 
@@ -2506,7 +2512,7 @@ The methods are:
 function MetaClass(metaArgs?: MetaArgsType): <T>(cls: T) => any
 ```
 
-Defined in: [src/metaobjects/meta.ts:284](https://github.com/metatyper/metatyper/blob/main/src/metaobjects/meta.ts#L284)
+Defined in: [src/metaobjects/meta.ts:283](https://github.com/metatyper/metatyper/blob/main/src/metaobjects/meta.ts#L283)
 
 Transforms a class into a meta class using the provided meta arguments.
 
@@ -2628,7 +2634,7 @@ function MetaCopy<T>(metaObject: T): Required<T> extends Required<{
     : Meta<T> | null
 ```
 
-Defined in: [src/metaobjects/meta.ts:827](https://github.com/metatyper/metatyper/blob/main/src/metaobjects/meta.ts#L827)
+Defined in: [src/metaobjects/meta.ts:826](https://github.com/metatyper/metatyper/blob/main/src/metaobjects/meta.ts#L826)
 
 Creates a copy of a meta object, preserving its public properties, values, types, and prototype.
 This method is particularly useful for creating independent instances of meta objects that share the same structure but need to manage their own state.
@@ -2724,7 +2730,7 @@ console.log(copiedMetaObject)
 function MetaDeclare<T, K>(metaType: T[K]): (target: T, propName: K) => void
 ```
 
-Defined in: [src/metaobjects/meta.ts:314](https://github.com/metatyper/metatyper/blob/main/src/metaobjects/meta.ts#L314)
+Defined in: [src/metaobjects/meta.ts:313](https://github.com/metatyper/metatyper/blob/main/src/metaobjects/meta.ts#L313)
 
 Decorator for declaring meta type information for class properties.
 
@@ -2869,7 +2875,7 @@ function MetaDeclare<T, K, IsNullableT>(
 ): (target: T, propName: K) => void
 ```
 
-Defined in: [src/metaobjects/meta.ts:346](https://github.com/metatyper/metatyper/blob/main/src/metaobjects/meta.ts#L346)
+Defined in: [src/metaobjects/meta.ts:345](https://github.com/metatyper/metatyper/blob/main/src/metaobjects/meta.ts#L345)
 
 Decorator for declaring meta type information for class properties.
 
@@ -3019,7 +3025,7 @@ function MetaDeserialize<T>(
 ): Meta<T>
 ```
 
-Defined in: [src/metaobjects/meta.ts:776](https://github.com/metatyper/metatyper/blob/main/src/metaobjects/meta.ts#L776)
+Defined in: [src/metaobjects/meta.ts:775](https://github.com/metatyper/metatyper/blob/main/src/metaobjects/meta.ts#L775)
 
 Deserializes a raw object into a meta object, updating or creating it based on the provided arguments.
 This function is particularly useful for converting plain objects into structured, validated meta objects,
@@ -3154,7 +3160,7 @@ console.log(newUserMeta) // New meta object with id and name from rawObject
 function MetaDisableSerialization(metaObject: object): void
 ```
 
-Defined in: [src/metaobjects/meta.ts:595](https://github.com/metatyper/metatyper/blob/main/src/metaobjects/meta.ts#L595)
+Defined in: [src/metaobjects/meta.ts:594](https://github.com/metatyper/metatyper/blob/main/src/metaobjects/meta.ts#L594)
 
 Disables serialization for the specified meta object.
 
@@ -3223,7 +3229,7 @@ metaObject.id = '123' // No deserialization occurs and it will throw an validati
 function MetaDisableValidation(metaObject: object): void
 ```
 
-Defined in: [src/metaobjects/meta.ts:488](https://github.com/metatyper/metatyper/blob/main/src/metaobjects/meta.ts#L488)
+Defined in: [src/metaobjects/meta.ts:487](https://github.com/metatyper/metatyper/blob/main/src/metaobjects/meta.ts#L487)
 
 Disables validation for the specified meta object.
 
@@ -3291,7 +3297,7 @@ metaObject.id = 'not a number' // No validation error
 function MetaEnableSerialization(metaObject: object): void
 ```
 
-Defined in: [src/metaobjects/meta.ts:631](https://github.com/metatyper/metatyper/blob/main/src/metaobjects/meta.ts#L631)
+Defined in: [src/metaobjects/meta.ts:630](https://github.com/metatyper/metatyper/blob/main/src/metaobjects/meta.ts#L630)
 
 Enables serialization for the specified meta object.
 
@@ -3360,7 +3366,7 @@ metaObject.id = '123' // Deserialization occurs, converting '123' to number
 function MetaEnableValidation(metaObject: object): void
 ```
 
-Defined in: [src/metaobjects/meta.ts:524](https://github.com/metatyper/metatyper/blob/main/src/metaobjects/meta.ts#L524)
+Defined in: [src/metaobjects/meta.ts:523](https://github.com/metatyper/metatyper/blob/main/src/metaobjects/meta.ts#L523)
 
 Enables validation for the specified meta object.
 
@@ -3435,7 +3441,7 @@ function MetaFromJson<T>(
 ): Meta<T>
 ```
 
-Defined in: [src/metaobjects/meta.ts:958](https://github.com/metatyper/metatyper/blob/main/src/metaobjects/meta.ts#L958)
+Defined in: [src/metaobjects/meta.ts:957](https://github.com/metatyper/metatyper/blob/main/src/metaobjects/meta.ts#L957)
 
 Deserializes a JSON string into a meta object.
 This function parses a JSON string into a plain object and then deserializes it into a meta object
@@ -3597,7 +3603,7 @@ console.log(user)
 function MetaGetMetaArgs(metaObject: object): MetaArgsType | null
 ```
 
-Defined in: [src/metaobjects/meta.ts:1100](https://github.com/metatyper/metatyper/blob/main/src/metaobjects/meta.ts#L1100)
+Defined in: [src/metaobjects/meta.ts:1099](https://github.com/metatyper/metatyper/blob/main/src/metaobjects/meta.ts#L1099)
 
 Retrieves the meta arguments used to configure a meta object.
 This function extracts the configuration arguments (`MetaArgsType`) that were used to create or configure the provided meta object.
@@ -3677,7 +3683,7 @@ console.log(metaArgs)
 function MetaIsIgnoredProp(metaObject: object, propName: string | symbol): boolean
 ```
 
-Defined in: [src/metaobjects/meta.ts:415](https://github.com/metatyper/metatyper/blob/main/src/metaobjects/meta.ts#L415)
+Defined in: [src/metaobjects/meta.ts:414](https://github.com/metatyper/metatyper/blob/main/src/metaobjects/meta.ts#L414)
 
 Checks if propName is ignored.
 
@@ -3752,7 +3758,7 @@ console.log(Meta.isIgnoredProp(metaObject, 'prototype')) // true, because built-
 function MetaProto<T>(metaObject: T): Required<T> extends Required<Meta<U>> ? U : T | null
 ```
 
-Defined in: [src/metaobjects/meta.ts:865](https://github.com/metatyper/metatyper/blob/main/src/metaobjects/meta.ts#L865)
+Defined in: [src/metaobjects/meta.ts:864](https://github.com/metatyper/metatyper/blob/main/src/metaobjects/meta.ts#L864)
 
 Retrieves the prototype (original object) used to create a meta object.
 This function is particularly useful when you need to access the original structure or data of a meta object.
@@ -3851,7 +3857,7 @@ function MetaRebuild<T>(
     : Meta<T> | null
 ```
 
-Defined in: [src/metaobjects/meta.ts:906](https://github.com/metatyper/metatyper/blob/main/src/metaobjects/meta.ts#L906)
+Defined in: [src/metaobjects/meta.ts:905](https://github.com/metatyper/metatyper/blob/main/src/metaobjects/meta.ts#L905)
 
 Rebuilds a meta object using the same original object and arguments that were used to create the meta object.
 This function is useful for creating a new instance of a meta object with its initial state and configuration,
@@ -3965,7 +3971,7 @@ console.log(rebuiltMetaObject.name) // 'John Doe'
 function MetaRepresent(metaObject: object): string | null
 ```
 
-Defined in: [src/metaobjects/meta.ts:1052](https://github.com/metatyper/metatyper/blob/main/src/metaobjects/meta.ts#L1052)
+Defined in: [src/metaobjects/meta.ts:1051](https://github.com/metatyper/metatyper/blob/main/src/metaobjects/meta.ts#L1051)
 
 Generates a textual representation of a meta object.
 This function checks if the provided object is a meta object and,
@@ -4034,7 +4040,7 @@ console.log(representation)
 function MetaSerializationIsActive(metaObject: object): boolean
 ```
 
-Defined in: [src/metaobjects/meta.ts:558](https://github.com/metatyper/metatyper/blob/main/src/metaobjects/meta.ts#L558)
+Defined in: [src/metaobjects/meta.ts:557](https://github.com/metatyper/metatyper/blob/main/src/metaobjects/meta.ts#L557)
 
 Checks if serialization is active for the given meta object.
 
@@ -4104,7 +4110,7 @@ function MetaSerialize<ResultT, T>(
 ): [ResultT] extends [never] ? { [key in string | number | symbol]: any } : ResultT
 ```
 
-Defined in: [src/metaobjects/meta.ts:722](https://github.com/metatyper/metatyper/blob/main/src/metaobjects/meta.ts#L722)
+Defined in: [src/metaobjects/meta.ts:721](https://github.com/metatyper/metatyper/blob/main/src/metaobjects/meta.ts#L721)
 
 Serializes a meta object into a plain object.
 This function is particularly useful when you need to convert a meta object back into a simple JavaScript object,
@@ -4259,7 +4265,7 @@ function MetaToJson(
 }): string;
 ```
 
-Defined in: [src/metaobjects/meta.ts:1009](https://github.com/metatyper/metatyper/blob/main/src/metaobjects/meta.ts#L1009)
+Defined in: [src/metaobjects/meta.ts:1008](https://github.com/metatyper/metatyper/blob/main/src/metaobjects/meta.ts#L1008)
 
 Serializes a meta object into a JSON string.
 This function first converts a meta object into a plain object using the `Meta.serialize` method,
@@ -5051,7 +5057,7 @@ function MetaValidate(
 ): ValidationError | undefined
 ```
 
-Defined in: [src/metaobjects/meta.ts:667](https://github.com/metatyper/metatyper/blob/main/src/metaobjects/meta.ts#L667)
+Defined in: [src/metaobjects/meta.ts:666](https://github.com/metatyper/metatyper/blob/main/src/metaobjects/meta.ts#L666)
 
 Validates a plain object against a meta object schema or a meta object, ensuring it conforms to the defined types and constraints.
 If the object is valid according to the meta object schema, the function returns undefined.
@@ -5152,7 +5158,7 @@ const error = Meta.validate(userSchema, invalidUser)
 function MetaValidationIsActive(metaObject: object): boolean
 ```
 
-Defined in: [src/metaobjects/meta.ts:452](https://github.com/metatyper/metatyper/blob/main/src/metaobjects/meta.ts#L452)
+Defined in: [src/metaobjects/meta.ts:451](https://github.com/metatyper/metatyper/blob/main/src/metaobjects/meta.ts#L451)
 
 Checks if validation is active for the given meta object.
 
@@ -5428,10 +5434,12 @@ function OBJECT<
 ): PrepareMetaType<ResultT, IsNullishT, IsNullableT, IsOptionalT>
 ```
 
-Defined in: [src/metatypes/types/object.ts:274](https://github.com/metatyper/metatyper/blob/main/src/metatypes/types/object.ts#L274)
+Defined in: [src/metatypes/types/object.ts:276](https://github.com/metatyper/metatyper/blob/main/src/metatypes/types/object.ts#L276)
 
 Creates an object meta type. Accepts either a per-field schema or a single meta type applied to
 every property (record mode).
+
+When not optional, the default value is {}.
 
 ##### Type Parameters
 
@@ -5657,10 +5665,12 @@ function OBJECT<
 ): PrepareMetaType<ResultT, IsNullishT, IsNullableT, IsOptionalT>
 ```
 
-Defined in: [src/metatypes/types/object.ts:306](https://github.com/metatyper/metatyper/blob/main/src/metatypes/types/object.ts#L306)
+Defined in: [src/metatypes/types/object.ts:308](https://github.com/metatyper/metatyper/blob/main/src/metatypes/types/object.ts#L308)
 
 Creates an object meta type. Accepts either a per-field schema or a single meta type applied to
 every property (record mode).
+
+When not optional, the default value is {}.
 
 ##### Type Parameters
 
@@ -5868,10 +5878,12 @@ function OBJECT<T, RequiredKeysArrayT, IsNullishT, IsNullableT, IsOptionalT, IsF
 | (metaTypeImpl: ObjectImpl) => MetaTypeImpl, args?: ObjectMetaTypeArgs<RArgT, [...RequiredKeysArrayT[]], IsNullishT, IsNullableT, IsOptionalT, IsFrozenT>): PrepareMetaType<ResultT, IsNullishT, IsNullableT, IsOptionalT>;
 ```
 
-Defined in: [src/metatypes/types/object.ts:338](https://github.com/metatyper/metatyper/blob/main/src/metatypes/types/object.ts#L338)
+Defined in: [src/metatypes/types/object.ts:340](https://github.com/metatyper/metatyper/blob/main/src/metatypes/types/object.ts#L340)
 
 Creates an object meta type. Accepts either a per-field schema or a single meta type applied to
 every property (record mode).
+
+When not optional, the default value is {}.
 
 ##### Type Parameters
 
@@ -6065,10 +6077,12 @@ obj2.c = { _someKey: 10 } // type & validation error
 function OBJECT<T, RequiredKeysArrayT, IsNullishT, IsNullableT, IsOptionalT, IsFrozenT, PreparedT, ResultT, RArgT>(subType: T | (metaTypeImpl: ObjectImpl) => T, args?: ObjectMetaTypeArgs<RArgT, [...RequiredKeysArrayT[]], IsNullishT, IsNullableT, IsOptionalT, IsFrozenT>): PrepareMetaType<ResultT, IsNullishT, IsNullableT, IsOptionalT>;
 ```
 
-Defined in: [src/metatypes/types/object.ts:367](https://github.com/metatyper/metatyper/blob/main/src/metatypes/types/object.ts#L367)
+Defined in: [src/metatypes/types/object.ts:369](https://github.com/metatyper/metatyper/blob/main/src/metatypes/types/object.ts#L369)
 
 Creates an object meta type. Accepts either a per-field schema or a single meta type applied to
 every property (record mode).
+
+When not optional, the default value is {}.
 
 ##### Type Parameters
 
@@ -6274,10 +6288,12 @@ obj2.c = { _someKey: 10 } // type & validation error
 function OBJECT<T, IsNullishT, IsNullableT, IsOptionalT, IsFrozenT, KeysT, RequiredKeysT, OptionalKeysT, ResultObjectT, ResultT, RArgT>(subType?: T | (metaTypeImpl: ObjectImpl) => T, args?: ObjectMetaTypeArgs<RArgT, T extends any[] ? never[] : RequiredKeysT[], IsNullishT, IsNullableT, IsOptionalT, IsFrozenT>): PrepareMetaType<ResultT, IsNullishT, IsNullableT, IsOptionalT>;
 ```
 
-Defined in: [src/metatypes/types/object.ts:399](https://github.com/metatyper/metatyper/blob/main/src/metatypes/types/object.ts#L399)
+Defined in: [src/metatypes/types/object.ts:401](https://github.com/metatyper/metatyper/blob/main/src/metatypes/types/object.ts#L401)
 
 Creates an object meta type. Accepts either a per-field schema or a single meta type applied to
 every property (record mode).
+
+When not optional, the default value is {}.
 
 ##### Type Parameters
 
@@ -7681,9 +7697,11 @@ obj.field = {}
 type ARRAY<T> = MetaType<T, ArrayImpl>
 ```
 
-Defined in: [src/metatypes/types/array.ts:217](https://github.com/metatyper/metatyper/blob/main/src/metatypes/types/array.ts#L217)
+Defined in: [src/metatypes/types/array.ts:219](https://github.com/metatyper/metatyper/blob/main/src/metatypes/types/array.ts#L219)
 
 Creates an array meta type with optional item type, length limits, freezing, etc.
+
+When not optional, the default value is [].
 
 #### Type Parameters
 
@@ -8813,7 +8831,7 @@ type InitialClassPropertyDeclarationInfo = {
 }
 ```
 
-Defined in: [src/metaobjects/meta.ts:159](https://github.com/metatyper/metatyper/blob/main/src/metaobjects/meta.ts#L159)
+Defined in: [src/metaobjects/meta.ts:158](https://github.com/metatyper/metatyper/blob/main/src/metaobjects/meta.ts#L158)
 
 Metadata describing a class property decorated via `Meta.declare`.
 
@@ -8847,7 +8865,7 @@ Property descriptor snapshot at declaration time.
 </td>
 <td>
 
-[src/metaobjects/meta.ts:170](https://github.com/metatyper/metatyper/blob/main/src/metaobjects/meta.ts#L170)
+[src/metaobjects/meta.ts:169](https://github.com/metatyper/metatyper/blob/main/src/metaobjects/meta.ts#L169)
 
 </td>
 </tr>
@@ -8869,7 +8887,7 @@ Arguments used to rebuild or tweak the meta type implementation.
 </td>
 <td>
 
-[src/metaobjects/meta.ts:167](https://github.com/metatyper/metatyper/blob/main/src/metaobjects/meta.ts#L167)
+[src/metaobjects/meta.ts:166](https://github.com/metatyper/metatyper/blob/main/src/metaobjects/meta.ts#L166)
 
 </td>
 </tr>
@@ -8891,7 +8909,7 @@ Meta type implementation explicitly provided for the property.
 </td>
 <td>
 
-[src/metaobjects/meta.ts:164](https://github.com/metatyper/metatyper/blob/main/src/metaobjects/meta.ts#L164)
+[src/metaobjects/meta.ts:163](https://github.com/metatyper/metatyper/blob/main/src/metaobjects/meta.ts#L163)
 
 </td>
 </tr>
@@ -8913,7 +8931,7 @@ Property name on the prototype/constructor.
 </td>
 <td>
 
-[src/metaobjects/meta.ts:161](https://github.com/metatyper/metatyper/blob/main/src/metaobjects/meta.ts#L161)
+[src/metaobjects/meta.ts:160](https://github.com/metatyper/metatyper/blob/main/src/metaobjects/meta.ts#L160)
 
 </td>
 </tr>
@@ -8935,7 +8953,7 @@ Reflected design type (via reflect-metadata) if available.
 </td>
 <td>
 
-[src/metaobjects/meta.ts:173](https://github.com/metatyper/metatyper/blob/main/src/metaobjects/meta.ts#L173)
+[src/metaobjects/meta.ts:172](https://github.com/metatyper/metatyper/blob/main/src/metaobjects/meta.ts#L172)
 
 </td>
 </tr>
@@ -9338,7 +9356,7 @@ type Meta<T> = T extends (...args: infer A) => infer R
         }
 ```
 
-Defined in: [src/metaobjects/meta.ts:247](https://github.com/metatyper/metatyper/blob/main/src/metaobjects/meta.ts#L247)
+Defined in: [src/metaobjects/meta.ts:246](https://github.com/metatyper/metatyper/blob/main/src/metaobjects/meta.ts#L246)
 
 Create a Meta object
 
@@ -9366,7 +9384,7 @@ Create a Meta object
 </td>
 <td>
 
-[src/metaobjects/meta.ts:183](https://github.com/metatyper/metatyper/blob/main/src/metaobjects/meta.ts#L183)
+[src/metaobjects/meta.ts:182](https://github.com/metatyper/metatyper/blob/main/src/metaobjects/meta.ts#L182)
 
 </td>
 </tr>
@@ -9486,7 +9504,7 @@ type MetaArgsType = {
 } & Record<string, any>;
 ```
 
-Defined in: [src/metaobjects/meta.ts:140](https://github.com/metatyper/metatyper/blob/main/src/metaobjects/meta.ts#L140)
+Defined in: [src/metaobjects/meta.ts:139](https://github.com/metatyper/metatyper/blob/main/src/metaobjects/meta.ts#L139)
 
 Arguments that define how a meta object or class is built and behaves.
 
@@ -9514,7 +9532,7 @@ Arguments that define how a meta object or class is built and behaves.
 </td>
 <td>
 
-[src/metaobjects/meta.ts:151](https://github.com/metatyper/metatyper/blob/main/src/metaobjects/meta.ts#L151)
+[src/metaobjects/meta.ts:150](https://github.com/metatyper/metatyper/blob/main/src/metaobjects/meta.ts#L150)
 
 </td>
 </tr>
@@ -9531,7 +9549,7 @@ Arguments that define how a meta object or class is built and behaves.
 </td>
 <td>
 
-[src/metaobjects/meta.ts:154](https://github.com/metatyper/metatyper/blob/main/src/metaobjects/meta.ts#L154)
+[src/metaobjects/meta.ts:153](https://github.com/metatyper/metatyper/blob/main/src/metaobjects/meta.ts#L153)
 
 </td>
 </tr>
@@ -9548,7 +9566,7 @@ Arguments that define how a meta object or class is built and behaves.
 </td>
 <td>
 
-[src/metaobjects/meta.ts:145](https://github.com/metatyper/metatyper/blob/main/src/metaobjects/meta.ts#L145)
+[src/metaobjects/meta.ts:144](https://github.com/metatyper/metatyper/blob/main/src/metaobjects/meta.ts#L144)
 
 </td>
 </tr>
@@ -9565,7 +9583,7 @@ Arguments that define how a meta object or class is built and behaves.
 </td>
 <td>
 
-[src/metaobjects/meta.ts:152](https://github.com/metatyper/metatyper/blob/main/src/metaobjects/meta.ts#L152)
+[src/metaobjects/meta.ts:151](https://github.com/metatyper/metatyper/blob/main/src/metaobjects/meta.ts#L151)
 
 </td>
 </tr>
@@ -9582,7 +9600,7 @@ Arguments that define how a meta object or class is built and behaves.
 </td>
 <td>
 
-[src/metaobjects/meta.ts:146](https://github.com/metatyper/metatyper/blob/main/src/metaobjects/meta.ts#L146)
+[src/metaobjects/meta.ts:145](https://github.com/metatyper/metatyper/blob/main/src/metaobjects/meta.ts#L145)
 
 </td>
 </tr>
@@ -9600,7 +9618,7 @@ Arguments that define how a meta object or class is built and behaves.
 </td>
 <td>
 
-[src/metaobjects/meta.ts:143](https://github.com/metatyper/metatyper/blob/main/src/metaobjects/meta.ts#L143)
+[src/metaobjects/meta.ts:142](https://github.com/metatyper/metatyper/blob/main/src/metaobjects/meta.ts#L142)
 
 </td>
 </tr>
@@ -9617,7 +9635,7 @@ Arguments that define how a meta object or class is built and behaves.
 </td>
 <td>
 
-[src/metaobjects/meta.ts:142](https://github.com/metatyper/metatyper/blob/main/src/metaobjects/meta.ts#L142)
+[src/metaobjects/meta.ts:141](https://github.com/metatyper/metatyper/blob/main/src/metaobjects/meta.ts#L141)
 
 </td>
 </tr>
@@ -9634,7 +9652,7 @@ Arguments that define how a meta object or class is built and behaves.
 </td>
 <td>
 
-[src/metaobjects/meta.ts:155](https://github.com/metatyper/metatyper/blob/main/src/metaobjects/meta.ts#L155)
+[src/metaobjects/meta.ts:154](https://github.com/metatyper/metatyper/blob/main/src/metaobjects/meta.ts#L154)
 
 </td>
 </tr>
@@ -9651,7 +9669,7 @@ Arguments that define how a meta object or class is built and behaves.
 </td>
 <td>
 
-[src/metaobjects/meta.ts:153](https://github.com/metatyper/metatyper/blob/main/src/metaobjects/meta.ts#L153)
+[src/metaobjects/meta.ts:152](https://github.com/metatyper/metatyper/blob/main/src/metaobjects/meta.ts#L152)
 
 </td>
 </tr>
@@ -9669,7 +9687,7 @@ Arguments that define how a meta object or class is built and behaves.
 </td>
 <td>
 
-[src/metaobjects/meta.ts:149](https://github.com/metatyper/metatyper/blob/main/src/metaobjects/meta.ts#L149)
+[src/metaobjects/meta.ts:148](https://github.com/metatyper/metatyper/blob/main/src/metaobjects/meta.ts#L148)
 
 </td>
 </tr>
@@ -9686,7 +9704,7 @@ Arguments that define how a meta object or class is built and behaves.
 </td>
 <td>
 
-[src/metaobjects/meta.ts:150](https://github.com/metatyper/metatyper/blob/main/src/metaobjects/meta.ts#L150)
+[src/metaobjects/meta.ts:149](https://github.com/metatyper/metatyper/blob/main/src/metaobjects/meta.ts#L149)
 
 </td>
 </tr>
@@ -9703,7 +9721,7 @@ Arguments that define how a meta object or class is built and behaves.
 </td>
 <td>
 
-[src/metaobjects/meta.ts:141](https://github.com/metatyper/metatyper/blob/main/src/metaobjects/meta.ts#L141)
+[src/metaobjects/meta.ts:140](https://github.com/metatyper/metatyper/blob/main/src/metaobjects/meta.ts#L140)
 
 </td>
 </tr>
@@ -9720,7 +9738,7 @@ Arguments that define how a meta object or class is built and behaves.
 </td>
 <td>
 
-[src/metaobjects/meta.ts:144](https://github.com/metatyper/metatyper/blob/main/src/metaobjects/meta.ts#L144)
+[src/metaobjects/meta.ts:143](https://github.com/metatyper/metatyper/blob/main/src/metaobjects/meta.ts#L143)
 
 </td>
 </tr>
@@ -9737,7 +9755,7 @@ Arguments that define how a meta object or class is built and behaves.
 </td>
 <td>
 
-[src/metaobjects/meta.ts:148](https://github.com/metatyper/metatyper/blob/main/src/metaobjects/meta.ts#L148)
+[src/metaobjects/meta.ts:147](https://github.com/metatyper/metatyper/blob/main/src/metaobjects/meta.ts#L147)
 
 </td>
 </tr>
@@ -9754,7 +9772,7 @@ Arguments that define how a meta object or class is built and behaves.
 </td>
 <td>
 
-[src/metaobjects/meta.ts:147](https://github.com/metatyper/metatyper/blob/main/src/metaobjects/meta.ts#L147)
+[src/metaobjects/meta.ts:146](https://github.com/metatyper/metatyper/blob/main/src/metaobjects/meta.ts#L146)
 
 </td>
 </tr>
@@ -10096,7 +10114,7 @@ type MetaErrorHandlerArgsType = {
 }
 ```
 
-Defined in: [src/metaobjects/meta.ts:89](https://github.com/metatyper/metatyper/blob/main/src/metaobjects/meta.ts#L89)
+Defined in: [src/metaobjects/meta.ts:88](https://github.com/metatyper/metatyper/blob/main/src/metaobjects/meta.ts#L88)
 
 Arguments passed to an error handler when meta logic throws.
 
@@ -10130,7 +10148,7 @@ Underlying base object.
 </td>
 <td>
 
-[src/metaobjects/meta.ts:103](https://github.com/metatyper/metatyper/blob/main/src/metaobjects/meta.ts#L103)
+[src/metaobjects/meta.ts:102](https://github.com/metatyper/metatyper/blob/main/src/metaobjects/meta.ts#L102)
 
 </td>
 </tr>
@@ -10152,7 +10170,7 @@ The thrown error instance.
 </td>
 <td>
 
-[src/metaobjects/meta.ts:91](https://github.com/metatyper/metatyper/blob/main/src/metaobjects/meta.ts#L91)
+[src/metaobjects/meta.ts:90](https://github.com/metatyper/metatyper/blob/main/src/metaobjects/meta.ts#L90)
 
 </td>
 </tr>
@@ -10174,7 +10192,7 @@ Which lifecycle place raised the error.
 </td>
 <td>
 
-[src/metaobjects/meta.ts:94](https://github.com/metatyper/metatyper/blob/main/src/metaobjects/meta.ts#L94)
+[src/metaobjects/meta.ts:93](https://github.com/metatyper/metatyper/blob/main/src/metaobjects/meta.ts#L93)
 
 </td>
 </tr>
@@ -10196,7 +10214,7 @@ Property name involved in the error, if any.
 </td>
 <td>
 
-[src/metaobjects/meta.ts:97](https://github.com/metatyper/metatyper/blob/main/src/metaobjects/meta.ts#L97)
+[src/metaobjects/meta.ts:96](https://github.com/metatyper/metatyper/blob/main/src/metaobjects/meta.ts#L96)
 
 </td>
 </tr>
@@ -10218,7 +10236,7 @@ Proxy object exposed to consumers.
 </td>
 <td>
 
-[src/metaobjects/meta.ts:100](https://github.com/metatyper/metatyper/blob/main/src/metaobjects/meta.ts#L100)
+[src/metaobjects/meta.ts:99](https://github.com/metatyper/metatyper/blob/main/src/metaobjects/meta.ts#L99)
 
 </td>
 </tr>
@@ -10236,7 +10254,7 @@ type MetaErrorHandlerInfoType = {
 }
 ```
 
-Defined in: [src/metaobjects/meta.ts:107](https://github.com/metatyper/metatyper/blob/main/src/metaobjects/meta.ts#L107)
+Defined in: [src/metaobjects/meta.ts:106](https://github.com/metatyper/metatyper/blob/main/src/metaobjects/meta.ts#L106)
 
 Registration info for error handlers (which handler, for which places).
 
@@ -10270,7 +10288,7 @@ The handler callback to invoke.
 </td>
 <td>
 
-[src/metaobjects/meta.ts:109](https://github.com/metatyper/metatyper/blob/main/src/metaobjects/meta.ts#L109)
+[src/metaobjects/meta.ts:108](https://github.com/metatyper/metatyper/blob/main/src/metaobjects/meta.ts#L108)
 
 </td>
 </tr>
@@ -10292,7 +10310,7 @@ Optional place filter.
 </td>
 <td>
 
-[src/metaobjects/meta.ts:112](https://github.com/metatyper/metatyper/blob/main/src/metaobjects/meta.ts#L112)
+[src/metaobjects/meta.ts:111](https://github.com/metatyper/metatyper/blob/main/src/metaobjects/meta.ts#L111)
 
 </td>
 </tr>
@@ -10310,7 +10328,6 @@ type MetaErrorHandlerPlaceType =
     | 'set'
     | 'define'
     | 'delete'
-    | 'validate'
     | 'deserialize'
     | 'serialize'
 ```
@@ -11387,7 +11404,7 @@ Describes objects that carry the meta-type marker.
 type MetaTypesResolver = (value: any, args?: MetaTypeArgsType) => MetaTypeImpl
 ```
 
-Defined in: [src/metaobjects/meta.ts:116](https://github.com/metatyper/metatyper/blob/main/src/metaobjects/meta.ts#L116)
+Defined in: [src/metaobjects/meta.ts:115](https://github.com/metatyper/metatyper/blob/main/src/metaobjects/meta.ts#L115)
 
 Resolves any value into a concrete `MetaTypeImpl`.
 
@@ -11553,10 +11570,12 @@ Options for numeric meta types (NUMBER/INTEGER/BIGINT reuse this).
 type OBJECT<T> = MetaType<T, ObjectImpl> & ObjectFlag
 ```
 
-Defined in: [src/metatypes/types/object.ts:274](https://github.com/metatyper/metatyper/blob/main/src/metatypes/types/object.ts#L274)
+Defined in: [src/metatypes/types/object.ts:276](https://github.com/metatyper/metatyper/blob/main/src/metatypes/types/object.ts#L276)
 
 Creates an object meta type. Accepts either a per-field schema or a single meta type applied to
 every property (record mode).
+
+When not optional, the default value is {}.
 
 #### Type Parameters
 
@@ -11620,7 +11639,7 @@ type ObjectFlag = {
 }
 ```
 
-Defined in: [src/metatypes/types/object.ts:449](https://github.com/metatyper/metatyper/blob/main/src/metatypes/types/object.ts#L449)
+Defined in: [src/metatypes/types/object.ts:451](https://github.com/metatyper/metatyper/blob/main/src/metatypes/types/object.ts#L451)
 
 #### Properties
 
@@ -11652,7 +11671,7 @@ Defined in: [src/metatypes/types/object.ts:449](https://github.com/metatyper/met
 </td>
 <td>
 
-[src/metatypes/types/object.ts:450](https://github.com/metatyper/metatyper/blob/main/src/metatypes/types/object.ts#L450)
+[src/metatypes/types/object.ts:452](https://github.com/metatyper/metatyper/blob/main/src/metatypes/types/object.ts#L452)
 
 </td>
 </tr>
@@ -14150,7 +14169,7 @@ Symbol flag injected into every runtime meta type wrapper.
 const M: typeof Meta = Meta
 ```
 
-Defined in: [src/metaobjects/meta.ts:257](https://github.com/metatyper/metatyper/blob/main/src/metaobjects/meta.ts#L257)
+Defined in: [src/metaobjects/meta.ts:256](https://github.com/metatyper/metatyper/blob/main/src/metaobjects/meta.ts#L256)
 
 Alias for the `Meta`
 
@@ -14162,7 +14181,7 @@ Alias for the `Meta`
 const MetaIsMetaObject: (metaObject?: object | null) => any
 ```
 
-Defined in: [src/metaobjects/meta.ts:393](https://github.com/metatyper/metatyper/blob/main/src/metaobjects/meta.ts#L393)
+Defined in: [src/metaobjects/meta.ts:392](https://github.com/metatyper/metatyper/blob/main/src/metaobjects/meta.ts#L392)
 
 Checks if the provided object is a meta object.
 
@@ -25033,7 +25052,7 @@ Creates a handler bound to a particular builder/registry pair.
 copy<T>(targetObject: T): T | null;
 ```
 
-Defined in: [src/metaobjects/handler.ts:1097](https://github.com/metatyper/metatyper/blob/main/src/metaobjects/handler.ts#L1097)
+Defined in: [src/metaobjects/handler.ts:1104](https://github.com/metatyper/metatyper/blob/main/src/metaobjects/handler.ts#L1104)
 
 ###### Type Parameters
 
@@ -25141,7 +25160,7 @@ deserialize(
    deserializeArgs?: DeSerializeMetaObjectArgsType): Record<string | number | symbol, any> | null;
 ```
 
-Defined in: [src/metaobjects/handler.ts:991](https://github.com/metatyper/metatyper/blob/main/src/metaobjects/handler.ts#L991)
+Defined in: [src/metaobjects/handler.ts:998](https://github.com/metatyper/metatyper/blob/main/src/metaobjects/handler.ts#L998)
 
 ###### Parameters
 
@@ -25357,7 +25376,8 @@ initProp(
    baseObject: Record<keyof any, any>,
    propName: string | symbol,
    descriptor?: PropertyDescriptor,
-   declaration?: MetaTypeImpl): void;
+   declaration?: MetaTypeImpl,
+   initialValue?: any): void;
 ```
 
 Defined in: [src/metaobjects/handler.ts:298](https://github.com/metatyper/metatyper/blob/main/src/metaobjects/handler.ts#L298)
@@ -25417,6 +25437,18 @@ Defined in: [src/metaobjects/handler.ts:298](https://github.com/metatyper/metaty
 <td>
 
 [`MetaTypeImpl`](#metatypeimpl)
+
+</td>
+</tr>
+<tr>
+<td>
+
+`initialValue?`
+
+</td>
+<td>
+
+`any`
 
 </td>
 </tr>
@@ -25502,7 +25534,7 @@ proxyDefineProperty(
    newDescriptor: PropertyDescriptor): true;
 ```
 
-Defined in: [src/metaobjects/handler.ts:587](https://github.com/metatyper/metatyper/blob/main/src/metaobjects/handler.ts#L587)
+Defined in: [src/metaobjects/handler.ts:594](https://github.com/metatyper/metatyper/blob/main/src/metaobjects/handler.ts#L594)
 
 ###### Parameters
 
@@ -25563,7 +25595,7 @@ Defined in: [src/metaobjects/handler.ts:587](https://github.com/metatyper/metaty
 proxyDeleteProperty(baseObject: Record<keyof any, any>, propName: string | symbol): true;
 ```
 
-Defined in: [src/metaobjects/handler.ts:791](https://github.com/metatyper/metatyper/blob/main/src/metaobjects/handler.ts#L791)
+Defined in: [src/metaobjects/handler.ts:798](https://github.com/metatyper/metatyper/blob/main/src/metaobjects/handler.ts#L798)
 
 ###### Parameters
 
@@ -25612,7 +25644,7 @@ Defined in: [src/metaobjects/handler.ts:791](https://github.com/metatyper/metaty
 proxyGetOwnPropertyDescriptor(targetObject: Record<keyof any, any>, propName: string | symbol): TypedPropertyDescriptor<any> | undefined;
 ```
 
-Defined in: [src/metaobjects/handler.ts:882](https://github.com/metatyper/metatyper/blob/main/src/metaobjects/handler.ts#L882)
+Defined in: [src/metaobjects/handler.ts:889](https://github.com/metatyper/metatyper/blob/main/src/metaobjects/handler.ts#L889)
 
 ###### Parameters
 
@@ -25664,7 +25696,7 @@ proxyGetValue(
    targetObject: object): any;
 ```
 
-Defined in: [src/metaobjects/handler.ts:433](https://github.com/metatyper/metatyper/blob/main/src/metaobjects/handler.ts#L433)
+Defined in: [src/metaobjects/handler.ts:440](https://github.com/metatyper/metatyper/blob/main/src/metaobjects/handler.ts#L440)
 
 ###### Parameters
 
@@ -25725,7 +25757,7 @@ Defined in: [src/metaobjects/handler.ts:433](https://github.com/metatyper/metaty
 proxyHas(targetObject: Record<keyof any, any>, propName: string | symbol): boolean;
 ```
 
-Defined in: [src/metaobjects/handler.ts:874](https://github.com/metatyper/metatyper/blob/main/src/metaobjects/handler.ts#L874)
+Defined in: [src/metaobjects/handler.ts:881](https://github.com/metatyper/metatyper/blob/main/src/metaobjects/handler.ts#L881)
 
 ###### Parameters
 
@@ -25774,7 +25806,7 @@ Defined in: [src/metaobjects/handler.ts:874](https://github.com/metatyper/metaty
 proxyOwnKeys(targetObject: Record<keyof any, any>): (string | symbol)[];
 ```
 
-Defined in: [src/metaobjects/handler.ts:878](https://github.com/metatyper/metatyper/blob/main/src/metaobjects/handler.ts#L878)
+Defined in: [src/metaobjects/handler.ts:885](https://github.com/metatyper/metatyper/blob/main/src/metaobjects/handler.ts#L885)
 
 ###### Parameters
 
@@ -25815,7 +25847,7 @@ proxySetValue(
    targetObject: object): true;
 ```
 
-Defined in: [src/metaobjects/handler.ts:496](https://github.com/metatyper/metatyper/blob/main/src/metaobjects/handler.ts#L496)
+Defined in: [src/metaobjects/handler.ts:503](https://github.com/metatyper/metatyper/blob/main/src/metaobjects/handler.ts#L503)
 
 ###### Parameters
 
@@ -25927,7 +25959,7 @@ Builds a readable string representation of a meta object (used in `toString`).
 serialize(targetObject: Record<keyof any, any>, serializeArgs?: SerializeMetaObjectArgsType): Record<string, any> | null;
 ```
 
-Defined in: [src/metaobjects/handler.ts:937](https://github.com/metatyper/metatyper/blob/main/src/metaobjects/handler.ts#L937)
+Defined in: [src/metaobjects/handler.ts:944](https://github.com/metatyper/metatyper/blob/main/src/metaobjects/handler.ts#L944)
 
 ###### Parameters
 
@@ -25979,7 +26011,7 @@ validate(
    validateArgs?: ValidateMetaObjectArgsType): ValidationError | undefined;
 ```
 
-Defined in: [src/metaobjects/handler.ts:889](https://github.com/metatyper/metatyper/blob/main/src/metaobjects/handler.ts#L889)
+Defined in: [src/metaobjects/handler.ts:896](https://github.com/metatyper/metatyper/blob/main/src/metaobjects/handler.ts#L896)
 
 ###### Parameters
 

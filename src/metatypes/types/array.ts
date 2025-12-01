@@ -199,6 +199,8 @@ export class ArrayImpl extends StructuralMetaTypeImpl {
 /**
  * Creates an array meta type with optional item type, length limits, freezing, etc.
  *
+ * When not optional, the default value is [].
+ *
  * @param subType - Item schema (meta type, literal, array, or factory). Defaults to {@link ANY}.
  * @param args - {@link ArrayMetaTypeArgs} controlling length/default/nullability.
  *

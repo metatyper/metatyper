@@ -244,6 +244,8 @@ export class ObjectImpl extends StructuralMetaTypeImpl {
  * Creates an object meta type. Accepts either a per-field schema or a single meta type applied to
  * every property (record mode).
  *
+ * When not optional, the default value is {}.
+ *
  * @param subType - Schema object, meta type, or factory describing the object structure.
  * @param args - {@link ObjectMetaTypeArgs} controlling required keys, freezing, etc.
  *
