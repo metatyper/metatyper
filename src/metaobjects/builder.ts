@@ -415,10 +415,9 @@ export class MetaObjectsBuilder {
         const initialDeclarations = this.getInitialClassDeclarations(baseObject, protoObject)
 
         for (const { propName, descriptor, declaration } of initialDeclarations) {
-            const initialValue = initialValues?.[propName]
             const newDescriptor = descriptor && { ...descriptor }
 
-            this.handler.initProp(baseObject, propName, newDescriptor, declaration, initialValue)
+            this.handler.initProp(baseObject, propName, newDescriptor, declaration, initialValues)
         }
     }
 
@@ -428,10 +427,9 @@ export class MetaObjectsBuilder {
         initialValues?: Record<keyof any, any>
     ) {
         for (const propName of Reflect.ownKeys(protoObject)) {
-            const initialValue = initialValues?.[propName]
             const newDescriptor = Reflect.getOwnPropertyDescriptor(protoObject, propName)
 
-            this.handler.initProp(baseObject, propName, newDescriptor, undefined, initialValue)
+            this.handler.initProp(baseObject, propName, newDescriptor, undefined, initialValues)
         }
     }
 

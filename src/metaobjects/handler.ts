@@ -300,9 +300,12 @@ export class MetaObjectsHandler {
         propName: string | symbol,
         descriptor?: PropertyDescriptor,
         declaration?: MetaTypeImpl,
-        initialValue?: any
+        initialValues?: Record<keyof any, any>
     ) {
         try {
+            const hasInitialValue = initialValues && propName in initialValues
+            const initialValue = initialValues?.[propName]
+
             if (this.isIgnoredProp(baseObject, propName)) {
                 return
             }
@@ -352,10 +355,11 @@ export class MetaObjectsHandler {
                 declaration = metaTypeResolver(descriptor.value, metaTypesArgs)
             }
 
-            if (declaration && initialValue !== undefined) {
+            if (declaration && hasInitialValue) {
                 declaration = declaration.rebuild({
                     default: initialValue
                 })
+                descriptor.value = initialValue
             }
 
             if (declaration && registryInfo) {
