@@ -321,6 +321,7 @@ export class MetaObjectsHandler {
 
             const registryInfo = this.registry.get(baseObject)
 
+            const metaObjectSafe = registryInfo?.safe
             const metaTypesArgs = registryInfo?.metaTypesArgs
             const autoResolveType = registryInfo?.autoResolveMetaTypes
 
@@ -378,7 +379,7 @@ export class MetaObjectsHandler {
                             errorPlace: 'init'
                         })
 
-                        if (declaration.metaTypeArgs.safe) {
+                        if (declaration.metaTypeArgs.safe && metaObjectSafe) {
                             throw error
                         }
                     }
@@ -626,6 +627,7 @@ export class MetaObjectsHandler {
             }
 
             const declarations = registryInfo.declarations
+            const metaObjectSafe = registryInfo?.safe
 
             if ('value' in newDescriptor) {
                 const dynamicDeclarations = registryInfo.dynamicDeclarations
@@ -681,7 +683,7 @@ export class MetaObjectsHandler {
                         })
 
                         if (error) {
-                            if (declaration.metaTypeArgs.safe) {
+                            if (declaration.metaTypeArgs.safe && metaObjectSafe) {
                                 throw error
                             } else {
                                 this.emitErrorEvent({
@@ -993,6 +995,7 @@ export class MetaObjectsHandler {
         const declarations = registryInfo.declarations
         const serializationIsActive = registryInfo.serializationIsActive
         const validationIsActive = registryInfo.validationIsActive
+        const metaObjectSafe = registryInfo.safe
 
         const deserializedObj: Record<string, any> = {}
 
@@ -1035,7 +1038,7 @@ export class MetaObjectsHandler {
                             errorPlace: 'deserialize'
                         })
 
-                        if (declaration.metaTypeArgs.safe) {
+                        if (declaration.metaTypeArgs.safe && metaObjectSafe) {
                             throw error
                         }
                     }

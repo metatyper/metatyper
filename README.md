@@ -339,11 +339,13 @@ type MetaArgsType = {
 
     ignoreProps?: (string | symbol)[] | ((propName: string | symbol) => boolean)
 
-    validationIsActive?: boolean
-    serializationIsActive?: boolean
+    safe?: boolean // default true
 
     changeHandlers?: MetaChangeHandlerInfoType[]
     errorHandlers?: MetaErrorHandlerInfoType[]
+
+    validationIsActive?: boolean
+    serializationIsActive?: boolean
 
     metaTypesArgs?: MetaTypeArgsType | ((metaTypeImpl: MetaTypeImpl) => MetaTypeArgsType)
 
@@ -376,13 +378,10 @@ type MetaArgsType = {
 
 &nbsp;
 
--   `validationIsActive?: boolean` - A boolean that indicates whether the Meta object should perform validation on the Meta object or not.
-    The `default` value is `true`.
-
-&nbsp;
-
--   `serializationIsActive?: boolean` - A boolean that indicates whether the Meta object should perform serialization on the Meta object or not.
-    The `default` value is `true`.
+-   `safe?: boolean` - Controls data integrity enforcement for all fields in the meta object.
+    When `true` (default), validation errors are thrown immediately.
+    When `false`, invalid data can be written to object fields without throwing;
+    errors can be handled via event handling mechanisms instead (see `errorHandlers`).
 
 &nbsp;
 
@@ -393,6 +392,16 @@ type MetaArgsType = {
 
 -   `errorHandlers?: MetaErrorHandlerInfoType[]` - An array of handlers that handle errors in the Meta object.
     The `default` value is `[]`.
+
+&nbsp;
+
+-   `validationIsActive?: boolean` - A boolean that indicates whether the Meta object should perform validation on the Meta object or not.
+    The `default` value is `true`.
+
+&nbsp;
+
+-   `serializationIsActive?: boolean` - A boolean that indicates whether the Meta object should perform serialization on the Meta object or not.
+    The `default` value is `true`.
 
 &nbsp;
 
@@ -436,8 +445,6 @@ type MetaArgsType = {
     The `default` value is the global Meta objects builder (`MetaObjectsBuilder.instance`).
 
 &nbsp;
-
-> Record<string, any> - used if you want to use a custom builder
 
 > To get the Meta args of a Meta object you can use `Meta.getMetaArgs(metaObject)` method.
 

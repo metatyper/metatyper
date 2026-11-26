@@ -121,10 +121,14 @@ export type MetaTypesResolver = (value: any, args?: MetaTypeArgsType) => MetaTyp
  * @property name - Overrides the default display name of the meta object/class.
  * @property initialValues - Initial property values applied before validation/serialization.
  * @property ignoreProps - Properties to ignore or a predicate that decides which props to ignore.
- * @property validationIsActive - Enables/disables validation (enabled by default).
- * @property serializationIsActive - Enables/disables serialization/deserialization (enabled by default).
+ * @property safe - Controls data integrity enforcement for all fields in the meta object.
+ *                  When `true` (default), validation errors are thrown immediately.
+ *                  When `false`, invalid data can be written to object fields without throwing;
+ *                  errors can be handled via event handling mechanisms instead (see {@link MetaArgsType.errorHandlers}).
  * @property changeHandlers - Custom change handlers that react to meta object mutations.
  * @property errorHandlers - Custom error handlers invoked when meta operations throw.
+ * @property validationIsActive - Enables/disables validation (enabled by default).
+ * @property serializationIsActive - Enables/disables serialization/deserialization (enabled by default).
  * @property metaTypesArgs - Meta type arguments or resolver used while building declarations.
  * @property metaTypesResolver - Custom function that resolves a value to a `MetaType` implementation.
  * @property autoResolveMetaTypes - Automatically resolve declarations from initial values.
@@ -137,10 +141,11 @@ export type MetaArgsType = {
     name?: string
     initialValues?: Record<string | symbol, any>
     ignoreProps?: (string | symbol)[] | ((propName: string | symbol) => boolean)
-    validationIsActive?: boolean
-    serializationIsActive?: boolean
+    safe?: boolean
     changeHandlers?: MetaChangeHandlerInfoType[]
     errorHandlers?: MetaErrorHandlerInfoType[]
+    validationIsActive?: boolean
+    serializationIsActive?: boolean
     metaTypesArgs?: MetaTypeArgsType | ((metaTypeImpl: MetaTypeImpl) => MetaTypeArgsType)
     metaTypesResolver?: MetaTypesResolver
     autoResolveMetaTypes?: boolean

@@ -210,13 +210,16 @@ export class MetaObjectsBuilder {
         newInfo.declarations = existsInfo?.declarations ?? {}
 
         newInfo.ignoreProps = metaArgs.ignoreProps ?? existsInfo?.ignoreProps ?? []
+
+        newInfo.safe = metaArgs.safe ?? existsInfo?.safe ?? true
+
+        newInfo.changeHandlers = metaArgs.changeHandlers ?? existsInfo?.changeHandlers ?? []
+        newInfo.errorHandlers = metaArgs.errorHandlers ?? existsInfo?.errorHandlers ?? []
+
         newInfo.validationIsActive =
             metaArgs.validationIsActive ?? existsInfo?.validationIsActive ?? true
         newInfo.serializationIsActive =
             metaArgs.serializationIsActive ?? existsInfo?.serializationIsActive ?? true
-
-        newInfo.changeHandlers = metaArgs.changeHandlers ?? existsInfo?.changeHandlers ?? []
-        newInfo.errorHandlers = metaArgs.errorHandlers ?? existsInfo?.errorHandlers ?? []
 
         newInfo.metaTypesArgs = metaArgs.metaTypesArgs ?? existsInfo?.metaTypesArgs
         newInfo.autoResolveMetaTypes =

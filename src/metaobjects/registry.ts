@@ -45,17 +45,20 @@ export type MetaObjectRegistryInfo = {
     /** Ignored prop list or predicate. */
     ignoreProps: (string | symbol)[] | ((propName: string | symbol) => boolean)
 
-    /** Whether validation is active. */
-    validationIsActive: boolean
-
-    /** Whether serialization/deserialization is active. */
-    serializationIsActive: boolean
+    /** Whether data integrity enforcement is enabled. */
+    safe: boolean
 
     /** Registered change handlers. */
     changeHandlers: MetaChangeHandlerInfoType[]
 
     /** Registered error handlers. */
     errorHandlers: MetaErrorHandlerInfoType[]
+
+    /** Whether validation is active. */
+    validationIsActive: boolean
+
+    /** Whether serialization/deserialization is active. */
+    serializationIsActive: boolean
 
     /** Default meta type arguments or resolver callback. */
     metaTypesArgs: MetaTypeArgsType | ((metaTypeImpl: MetaTypeImpl) => MetaTypeArgsType)

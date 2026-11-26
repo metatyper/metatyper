@@ -1099,6 +1099,32 @@ describe('Meta objects', () => {
         expect(errorHandler).not.toHaveBeenCalled()
     })
 
+    test('meta args safe applies to all fields on deserialize', () => {
+        const errorHandler = jest.fn()
+
+        const metaObject = Meta(
+            {
+                a: NUMBER(),
+                b: NUMBER()
+            },
+            {
+                safe: false,
+                errorHandlers: [
+                    {
+                        handler: errorHandler,
+                        places: ['deserialize']
+                    }
+                ]
+            }
+        )
+
+        const result = Meta.deserialize(metaObject, { a: '1' as any, b: '2' as any })
+
+        expect(result).toBe(metaObject)
+        expect(errorHandler).toHaveBeenCalledTimes(2)
+        expect(errorHandler.mock.calls.map((args) => args[0].propName)).toEqual(['a', 'b'])
+    })
+
     test('validate exposes detailed sub error metadata', () => {
         const descriptor = {
             a: NUMBER(),
